@@ -1,0 +1,221 @@
+<style scoped>
+	.bl-wrapper{
+		width:100%;
+		/*padding-left:3%;*/
+		/*margin-bottom:3%;*/
+		background-color:#fff;
+	}
+
+	.bl-wrapper .line{
+		width: 95%;
+		width: 95%;
+		margin: 10px 5px 0px;
+		background-color: #fff;
+		border-bottom: #f2f2f2 solid 1px;
+		font-size: 0;
+		padding: 10px 5px;
+	}
+
+	.bl-wrapper .line-bottom{
+		border-bottom:none;
+		font-size:1.4rem;
+		color:#808080;
+		text-align:right;
+		letter-spacing:0.1rem;
+		white-space:nowrap;
+		text-overflow:ellipsis;
+		overflow:hidden;
+		background: #fff;
+		padding: 4% 4% 4% 0%;
+	}
+
+	.bl-wrapper .line.bottom>label{
+		color:#f9ad0c;
+	}
+
+	.bl-wrapper .line .img,.bl-wrapper .line .con{
+		display:inline-block;
+		vertical-align:top;
+	}
+
+	.bl-wrapper .line .img{
+		width:25%;
+		padding-top:25%;
+		background-size:cover;
+		background-position:center;
+		background-repeat:no-repeat;
+		background-color:#efefef;
+	}
+
+	.bl-wrapper .line .con{
+		width:73%;
+		font-size:0;
+		line-height:1.6rem;
+	}
+
+	.bl-wrapper .line .con>div{
+		display:inline-block;
+		vertical-align:top;
+		font-size:1.4rem;
+	}
+
+	.bl-wrapper .line .con>div.left{
+		width:75%;
+		margin-left:3%;
+		margin-right:3%;
+		
+		text-align:left;
+	}
+
+	.bl-wrapper .line .con>div.left .name{
+		color:#333;
+		color: #333;
+		text-overflow: ellipsis;
+		overfloW: hidden;
+		width: 100%;
+		height: 4rem;
+		line-height: 20px;
+		text-align: justify;
+	}
+
+	.bl-wrapper .line .con>div.left .format{
+		padding:0.2rem 0rem;
+		font-size:1.2rem;
+		color:#ccc;
+	}
+
+	.bl-wrapper .line .con>div.right{
+		width:19%;
+		text-align:right;
+	}
+
+	.bl-wrapper .line .con>div.right .price{
+		color:#f9ad0c;
+	}
+
+	.bl-wrapper .line .con>div.right .num{
+		color:#808080;
+		position: relative;
+		top: 5px;
+	}
+
+	.bl-wrapper .line.top{
+		color:#333;
+	}
+
+	.bl-wrapper .line.top .icon,.bl-wrapper .line.top .wtit{
+		display:inline-block;
+		vertical-align:middle;
+		font-size:1.4rem;
+	}
+
+	.bl-wrapper .line.top .icon{
+		width: 8%;
+		margin-right: 2%;
+		text-align: center;
+		position: relative;
+		top: 3px;
+	}
+
+	.bl-wrapper .line.top .icon>img{
+		width:80%;
+		height:auto;
+	}
+
+	.bl-wrapper .line.top .wtit{
+		width:90%;
+		white-space:nowrap;
+		text-overflow:ellipsis;
+		overflow:hidden;
+		letter-spacing:0.1rem;
+	}
+
+	.bl-wrapper .line.top .wtit>label{
+		color:#808080;
+	}
+
+
+</style>
+
+<template>
+	<div class="bl-wrapper">
+		<div class="line top" v-if="showTop">
+			<div class="icon">
+				<img src="../images/coupon.png" />
+			</div>
+			<div class="wtit">
+				购买清单
+				<label>（共{{ amount }}件商品）</label>
+			</div>
+		</div>
+		<div class="line" v-for="item in list" v-link="{name:'detail',params:{pid:item.id}}">
+			<div class="img" v-lazy:background-image="item.shotcut"></div>
+			<div class="con">
+				<div class="left">
+					<div class="name">{{ item.name }}</div>
+					<div class="format">{{ item.formatName }}</div>
+				</div>
+				<div class="right">
+					<div class="price">¥{{ item.price }}</div>
+					<div class="num">x{{ item.nums }}</div>
+				</div>
+			</div>
+		</div>
+		<div class="line-bottom" v-if="showBtm">
+			共{{ amount }}件商品合计：<label style="color:#f9ad0c;">¥{{ sum }}</label>
+		</div>
+	</div>
+
+</template>
+
+<script>
+
+    import Scroller from 'vux/src/components/scroller'
+
+	export default{
+		props: {
+			list: {
+				type: Array,
+				default() {
+					return []
+				}
+			},
+			showTop: {
+				type: Boolean,
+				default: false
+			},
+			showBtm: {
+				type: Boolean,
+				default: true
+			}
+		},
+		data() {
+			return {
+				amount:0
+			}
+		},
+		ready() {
+
+		},
+        components: {
+            Scroller
+		},
+		computed: {
+			amount: function(){
+				return this.list.length;
+			},
+			sum: function() {
+				let sum = 0;
+				if(this.amount > 0) {
+					for(let ll = 0;ll < this.list.length; ll++) {
+						sum += this.list[ll].price * this.list[ll].nums;
+					}
+				}
+				return sum.toFixed(2);
+			}
+		},
+		methods: {
+
+		}
+	}
+</script>
