@@ -138,8 +138,8 @@
 </style>
 
 <template>
-	<div class="bottom-buy" :class="{'fixed':fixed}" :style="{bottom:fixed===true&&btm>0 ? btm+unit : 0}">
-		<div class="collect" :class="{active:collect}" @click="setCollect">
+	<div class="bottom-buy" :class="{'fixed' : fixed}" :style="{bottom : fixed===true && btm > 0 ? btm + unit : 0}">
+		<div class="collect" :class="{active : collect}" @click="setCollect">
 			<div class="img"></div>
 			<p>收藏</p>
 		</div>

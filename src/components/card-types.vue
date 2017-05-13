@@ -9,12 +9,13 @@
 		left:0px;
 	}
 
+
 	.type-bg .cla-wrapper{
-		width:28%;
-		height:100%;
+		width:29%;
+		height:calc(100% - 100px);
 		background: #f2f2f2;
-		position:fixed;
-		top:46px;
+		position:relative;
+		top:0px;
 		left:0px;
 		overflow: hidden;
 		overflow-y: auto;
@@ -23,12 +24,39 @@
 		-ms-overflow-scrolling: touch;
 		-o-overflow-scrolling: touch;
 		overflow-scrolling: touch;
-		margin-bottom:100px;
 	}
 
-	.type-bg .cla-wrapper ul .cla-card-li{
-		width:100%;
-		height:auto;
+	.type-bg .cla-wrapper #scroller {
+		position: absolute;
+		z-index: 1;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		width: 100%;
+		-webkit-transform: translateZ(0);
+		-moz-transform: translateZ(0);
+		-ms-transform: translateZ(0);
+		-o-transform: translateZ(0);
+		transform: translateZ(0);
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		-webkit-text-size-adjust: none;
+		-moz-text-size-adjust: none;
+		-ms-text-size-adjust: none;
+		-o-text-size-adjust: none;
+		text-size-adjust: none;
+	}
+
+	.type-bg .cla-wrapper .menu-left {
+		height:calc(100% - 100px);
+		margin-bottom:50px;
+	}
+
+	@media screen and (min-width: 414px){
+		.type-bg .cla-wrapper{
+			height:87%;
+		}
 	}
 
 	.cla-wrapper .menu-item{
@@ -38,16 +66,13 @@
 		font-size: 1.4rem;
 		text-align: center;
 		max-width: 92%;
-		color: #81c429;
-		line-height: 24px;
+		color: #73a523;
+		line-height: 45px;
 		margin: 0px 4px;
-		word-wrap:break-word; word-break:break-all;
-
+		word-wrap:break-word;
+		word-break:break-all;
 	}
 
-	/*.cla-wrapper .menu-item:hover {*/
-		/*background: #fff;*/
-	/*}*/
 
 	.cla-message {
 		float: right;
@@ -69,27 +94,31 @@
 
 	.cla-message .ele-fixed {
 		width: 100%;
-		height: 100%;
+		height: calc(100% - 100px);
 		overflow:hidden;
 		overflow-y:  auto;
-		margin-bottom: 95px;
+		margin-bottom: 112px;
+		transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1);
+		transition-duration: 0ms;
+		transform: translate(0px, 0px) translateZ(0px);
 	}
 
 	.cla-message .main {
-		width:95%;
-		height:80px;
-		margin:10px auto;
-		border-bottom:1px solid #ccc;
-		clear:both;
+		width: 95%;
+		height: 87px;
+		margin: 10px auto;
+		border-bottom: 1px solid #ccc;
+		clear: both;
 		display: table;
+		position: relative;
 	}
 
 	.cla-message .main .shotcut{
-		width:40%;
-		height:70px;
-		background-color:#EFEFEF;
-		background-size:cover;
-		overflow:hidden;
+		width: 33%;
+		height: 76px;
+		background-color: #EFEFEF;
+		background-size: cover;
+		overflow: hidden;
 		float: left;
 	}
 
@@ -116,57 +145,85 @@
 		color:#f9ad0c;margin-top: 15px;
 	}
 
-	.shotcut-txt .icon-card {
+	.main .icon-card {
 		display:block;
 		float:right;
 		width:2rem;
 		height:2rem;
 		background: url(../images/gouwuche.png) no-repeat;
 		background-size: 100%;
+		position: absolute;
+		top:52px;
+		right:0px;
 	}
 
-	.active {
-		background:#fff;
+	#touch-ui {
+		transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+		transition-duration: 0ms;
+		transform: translate(0px, 0px) translateZ(0px);
 	}
+
+	#touch-ui .isChonse {
+		background: #fff;
+	}
+
+	.active {background: #fff;}
 
 </style>
 
 <template>
-	<div class="type-bg" style="">
-		<menu type="popup" class="cla-wrapper" id="cla-wrapper" style="float: left;">
-			<ul id="sidebar">
-				<li class="cla-card-li" :class="{'active':dtype == item.id}" v-for="item in types" @click="getChonse(item.id)">
-					<div class="menu-item" @click="chooseSort(item.id)">
-						{{ item.name }}
-					</div>
-				</li>
-			</ul>
+	<div class="type-bg" keep-alive>
+		<menu type="popup" class="cla-wrapper" id="left_Menu" style="float: left;" @touchstart="startTouch()">
+			<div id="scroller">
+				<div class="menu-left">
+					<ul id="touch-ui">
+						<li class="cla-card-li" :class="{'active':dtype == item.id}" v-for="item in types" @click="getChonse(item.id)">
+							<div class="menu-item" @click="chooseSort(item.id)">{{ item.name }}</div>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</menu>
-		<menu type="popup" class="cla-message">
-			<div class="ele-fixed">
-				<div class="main" v-for="item in data" v-link="{name:'detail',params:{pid:item.id}}">
-					<div class="shotcut">
-						<img :src="item.src" alt="" class="shotcut-img" />
-					</div>
-					<div class="shotcut-txt">
-						<p style="height:35px;width:100%;">{{ item.title }}</p>
-						<p class="relative" style="">
-							<i>￥</i>
-							<span class="money">{{item.price}}</span>
-							<span class="icon-card"></span>
-						</p>
+		<menu type="popup" class="cla-message" id="right_Menu">
+			<div id="scroller2">
+				<div class="ele-fixed">
+					<div class="main" v-for="item in data">
+						<div v-link="{name:'detail',params:{pid:item.id}}">
+							<div class="shotcut">
+								<img :src="item.src" alt="{{ item.title }}" class="shotcut-img" style="width:100%;height:100%;" />
+							</div>
+							<div class="shotcut-txt">
+								<p style="height:35px;width:100%;">{{ item.title }}</p>
+								<p class="relative" style="">
+									<i>￥</i>
+									<span class="money">{{item.price}}</span>
+								</p>
+							</div>
+						</div>
+						<span class="icon-card" @click="goCart(item.id)"></span>
 					</div>
 				</div>
 			</div>
 		</menu>
 	</div>
+
 </template>
 
 <script>
 
     import Scroller from 'vux/src/components/scroller'
+    import { setCartStorage } from 'vxpath/actions'
+    import { cartNums } from 'vxpath/getters'
 
 	export default{
+        vuex: {
+            getters: {
+                cartNums
+            },
+            actions: {
+                setCart: setCartStorage
+            }
+        },
         props: {
             types: {
                 type: Array,
@@ -176,77 +233,100 @@
             }
         },
         ready() {
-            var wrappe = document.getElementById("cla-wrapper");
-            wrappe.onmouseover = function () {
-                window.onmousewheel = function () {
-                    console.log(1);
-                    return false;
-                };
-            };
-            this.siblingsDom(26);
             this.dtype = localStorage.getItem('number');
+            this.chooseSort(this.dtype);
             this.getChonse(this.dtype);
+
+            $(function() {
+                //菜单框架自动获取高度
+                var doc_H = $(document).height();
+                $(".type-bg").height(doc_H);
+                window.onresize = function(){
+                    var doc_H = $(document).height();
+                    $(".type-bg").height(doc_H);
+                }
+            });
+
+            var myScroll_left;
+            var myScroll_right;
+
+			var intervalTime_left = null , intervalTime_right = null;
+            intervalTime_left = setInterval(function() {
+                var resultContentH = $("#left_Menu").height();
+                if (resultContentH > 0) {
+                    $("#left_Menu").height(resultContentH);
+                    setTimeout(function () {
+                        clearInterval(intervalTime_left);
+                        myScroll_left = new IScroll('#left_Menu', {
+                            vScroll: true,
+                            mouseWheel: true,
+                            vScrollbar: false,
+                            probeType: 2,
+							click: true
+                        });
+                        myScroll_left.refresh();
+                    }, 100);
+                }
+			} ,10);
+
+            intervalTime_right = setInterval(function() {
+                var resultContentH = $("#left_Menu").height();
+                if (resultContentH > 0) {
+                    $("#left_Menu").height(resultContentH);
+                    setTimeout(function () {
+                        clearInterval(intervalTime_right);
+                        myScroll_right = new IScroll('#right_Menu', {
+                            vScroll: true,
+                            mouseWheel: true,
+                            vScrollbar: false,
+                            probeType: 2,
+                            click: true
+                        });
+                        myScroll_right.refresh();
+                    }, 100);
+                }
+            } ,10);
         },
         data() {
             return {
-                data:[],
-				item:[],
-				isChonse: false,
-                dtype:-1,
+                data: [],
+				item: [],
+                myScroll: '',
+                dtype: -1,
             }
         },
         components: {
             Scroller
 		},
         methods: {
-            getChonse: function(type = 0) {
-				if(this.dtype == type) {
-					return true;
-				}
-				this.dtype = type;
-				localStorage.setItem('number',this.dtype);
+            startTouch: function() {
+                console.log("startTouch");
+                let msg = document.getElementById("claWrapper");
+			},
+            getChonse: function(type) {
+                if(this.dtype == type) {
+                    return true;
+                }
+                this.dtype = type;
+                localStorage.setItem('number',this.dtype);
+                this.menuIndex = type;
+            },
+            filters: {
+
 			},
             chooseSort(cid){
                 let url = localStorage.apiDomain+'/public/index/index/classifylist/cid/' + cid;
                 this.$http.get(url).then((response)=>{
                     this.data = response.data.list;
-                    localStorage.setItem('listNumber',cid)
                     console.log(response.data.list);
                 },(response)=>{
                     this.toastMessage = "网络开小差啦~";
                     this.toastShow = true;
                 });
             },
-            $id: function(id) {
-                return document.getElementById(id);
-            },
-            siblings: function (dom,callback){
-                var pdom = dom.parentElement;
-                var tabArr = [].slice.call(pdom.children);
-                tabArr.filter(function(obj){
-                    if(obj!=dom)callback.call(obj);
-                });
-            },
-            siblingsDom:function (){
-                var cardDom = this.$id("sidebar");
-                console.log(cardDom);
-                var liDomes = cardDom.childNodes;
-                console.log(liDomes);
-                var len = liDomes.length;
-                for(var i = 0; i < len; i++) {
-                    //给对象缓存自有属性
-                    liDomes[i].index = i;
-                    var _this = this;
-                    liDomes[i].onclick = function(){
-                        console.log(2);
-                        this.className = "cla-card-li active";
-                        //同辈元素互斥
-                        _this.siblings(this,function(){
-                            this.className = "cla-card-li";
-                        });
-                    };
-                }
-            }
-        }
+            goCart: function(cid) {
+
+			}
+        },
     }
 </script>

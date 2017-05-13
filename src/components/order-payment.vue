@@ -142,31 +142,6 @@
 </style>
 
 <template>
-    <!--&lt;!&ndash; ification-wrapper start &ndash;&gt;-->
-    <!--<div class="ification-wrapper" id="payment">-->
-        <!--<div class="orders-box">-->
-            <!--<div class="top-line">-->
-                <!--<div class="order">订单号：170204008002011</div>-->
-                <!--<div class="status">待付款</div>-->
-            <!--</div>-->
-            <!--<div class="mid-line">-->
-                <!--<div class="imgs"></div>-->
-                <!--<div class="arrow"></div>-->
-            <!--</div>-->
-            <!--<div class="btm-line">-->
-                <!--<div class="money">-->
-                    <!--总金额：-->
-                    <!--<label>￥999.9</label>-->
-                <!--</div>-->
-                <!--<div class="button">-->
-                    <!--<a class="manage-btn">取消订单</a>-->
-                    <!--<a class="manage-btn">去付款</a>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--&lt;!&ndash; ification-wrapper end &ndash;&gt;-->
-
     <div class="wrapper wrap-top">
         <div class="card-box box-chonse" v-for="item in orders">
             <div class="top-line">
@@ -189,10 +164,10 @@
                     总金额：<label>¥{{ item.price }}</label>
                 </div>
                 <div class="button">
-
-                    <!--<a class="manage-btn"-->
-                       <!--:class="{'disabled':disabled}"-->
-                       <!--@click="cancelOrder()">取消订单</a>-->
+                    <a class="manage-btn"
+                       v-if="item.pay==0&&item.send==0&&item.receive==0&&item.status==0"
+                       :class="{'disabled':disabled}"
+                       @click="cancelOrder()">取消订单</a>
 
                     <a class="manage-btn"
                        v-if="item.pay==0&&item.send==0&&item.receive==0&&item.status==0"
@@ -205,18 +180,18 @@
                     <a class="manage-btn"
                        v-if="item.pay==1&&(item.send==1||item.send==0)&&item.reject==0 || item.status==1"
                        @click="buyAgain(item.id)">再次购买</a>
-
                 </div>
             </div>
-
         </div>
     </div>
-
     <!-- toast提示框 -->
     <toast :show.sync="toastShow" type="text">{{ toastMessage }}</toast>
 
     <!-- loading加载框 -->
     <loading :show="loadingShow" :text="loadingMessage"></loading>
+
+    <!-- 确定弹框 -->
+    <confirm :show.sync="confirmShow" :title="confirmTitle" confirm-text="确定" cancel-text="取消" @on-confirm="confirmClcik" @on-cancel="cancelClick"><p style="text-align:center;">{{ confirmText }}</p></confirm>
 
 </template>
 
@@ -224,6 +199,9 @@
     import Loading from 'vux/src/components/loading'
     import { setCartAgain,clearAll } from 'vxpath/actions'
     import Toast from 'vux/src/components/toast'
+    import Swiper from 'vux/src/components/swiper'
+    import SwiperItem from 'vux/src/components/swiper-item'
+    import Confirm from 'vux/src/components/confirm'
 
     export default{
         vuex: {
@@ -247,11 +225,23 @@
         components: {
             Loading,
             Toast,
+            Swiper,
+            SwiperItem,
+            Confirm
+        },
+        ready() {
+
         },
         data() {
             return {
                 loadingShow:false,
                 loadingMessage:'',
+                data: {
+                    order:{},
+                },
+                confirmTitle: '',
+                confirmText: '',
+                btnStatus:false,
             }
         },
         methods: {
@@ -291,10 +281,45 @@
                 location.href='http://www.kuaidi100.com/chaxun?com='+scid+'&nu='+snum;
             },
             cancelOrder: function() {
-                if(this.disabled){
-                    return true;
-                }
-                this.$dispatch('orderCancel');
+
+                let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
+                ustore = JSON.parse(ustore);
+                this.$http.get(localStorage.apiDomain+'public/index/user/getsubmitorder/uid/'+ustore.id+'/token/'+ustore.token+'/oid/'+this.$route.params.oid).then((response)=>{
+                    if(response.data.status===1){
+                        this.data.order = response.data.order;
+
+                        if(this.data.order.pay == 1 || this.data.order.send == 1 || this.data.order.receive == 1) {
+                            this.toastMessage = '订单已支付';
+                            this.toastShow = true;
+                            return false;
+                        }
+                        this.clickType = 1;
+                        this.confirmTitle = '取消订单';
+                        this.confirmText = '确定取消该订单吗?';
+                        this.confirmShow = true;
+                        this.btnStatus = true;
+                        console.log(1);
+
+                    }else if(response.data.status===-1){
+                        this.toastMessage = response.data.info;
+                        this.toastShow = true;
+                        let context = this;
+                        setTimeout(function(){
+                            context.clearAll();
+                            sessionStorage.removeItem('userInfo');
+                            localStorage.removeItem('userInfo');
+                            context.$router.go({name:'login'});
+                        },800);
+                    }else{
+                        this.toastMessage = response.data.info;
+                        this.toastShow = true;
+                    }
+                },(response)=>{
+                    this.toastMessage = '网络开小差了~';
+                    this.toastShow = true;
+                });
+
+
             }
         }
     }

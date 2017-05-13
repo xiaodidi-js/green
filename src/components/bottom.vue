@@ -56,6 +56,61 @@
 		vertical-align:middle;
 	}
 
+	.wrapper .icons {
+		display:block;
+		width:2.5rem;
+		height:2.5rem;
+		background: url('../images/icon-s.png') no-repeat;
+		margin:0px auto;
+	}
+
+	.wrapper .icon-icon22fuzhi {
+		background-position: -122px 2px;
+		background-size: 600%;
+		position: relative;
+		top: 2px;
+	}
+
+	.wrapper .icon-home {
+		background-position: 2px -1px;
+		background-size: 600%;
+	}
+
+	.wrapper .icon-zizhuxiadan {
+		background-position: -30px -1px;
+		background-size: 600%;
+	}
+
+	.wrapper .icon-huodong {
+		background-position: -62px -1px;
+		background-size: 600%;
+	}
+
+	.wrapper .icon-gerenzhongxin {
+		background-position: -92px -1px;
+		background-size: 600%;
+	}
+
+	.wrapper .active .icon-home {
+		background-position: 2px -28px;
+		background-size: 600%;
+	}
+
+	.wrapper .active .icon-zizhuxiadan {
+		background-position: -30px -28px;
+		background-size: 600%;
+	}
+
+	.wrapper .active .icon-huodong {
+		background-position: -62px -28px;
+		background-size: 600%;
+	}
+
+	.wrapper .active .icon-gerenzhongxin {
+		background-position: -92px -28px;
+		background-size: 600%;
+	}
+
 	.wrapper .active {
 		color:#81c429;
 		display:inline-block;
@@ -110,32 +165,32 @@
 </style>
 
 <template>
-	<div class="wrapper">
+	<div class="wrapper" keep-alive>
 		<!-- 购物车 -->
 		<div class="group-cart" @click="cartFun()" v-link="{name:'cart'}">
-			<i class="iconfont icon-gouwuche icon-icon22fuzhi"></i>
+			<i class="icons icon-icon22fuzhi"></i>
 			<div class="name">购物车</div>
 			<badge :text="cartNumsText" class="my-badge cart-bor" v-show="cartNums > 0"></badge>
 		</div>
 		<div id="card">
 			<!-- 选项卡一 -->
 			<div class="group active" v-link="{name:'index'}">
-				<i class="iconfont icon-home"></i>
+				<i class="icons icon-home"></i>
 				<div class="name">首页</div>
 			</div>
 			<!-- 选项卡二 -->
 			<div class="group" style="position: relative;left: -15px;" v-link="{name:'classify'}">
-				<i class="iconfont icon-zizhuxiadan"></i>
+				<i class="icons icon-zizhuxiadan"></i>
 				<div class="name">下单</div>
 			</div>
 			<!-- 选项卡三 -->
 			<div class="group" style="position: relative;left: 15px;" v-link="{name:'activity'}">
-				<i class="iconfont icon-huodong"></i>
+				<i class="icons icon-huodong"></i>
 				<div class="name">活动</div>
 			</div>
 			<!-- 选项卡四 -->
-			<div class="group" v-link="{name:'personal'}">
-				<i class="iconfont icon-gerenzhongxin"></i>
+			<div class="group" @click="goConter()">
+				<i class="icons icon-gerenzhongxin"></i>
 				<div class="name">个人中心</div>
 			</div>
 		</div>
@@ -145,6 +200,7 @@
 <script>
 	import { cartNums } from 'vxpath/getters'
 	import Badge from 'vux/src/components/badge'
+    import { myActive } from 'vxpath/actions'
 
 	export default{
 		components: {
@@ -152,7 +208,10 @@
 		},
 		vuex: {
 			getters: {
-				cartNums
+				cartNums,
+			},
+            actions: {
+                myActive
 			}
 		},
 		data() {
@@ -164,6 +223,10 @@
 			this.siblingsDom();
 		},
         methods: {
+		    goConter: function() {
+                this.myActive(1);
+                this.$router.go({name: 'per-orders'})
+			},
             $id: function(id) {
                 return document.getElementById(id);
             },
@@ -183,7 +246,8 @@
                     liDomes[i].index = i;
                     var _this = this;
                     liDomes[i].onclick = function(){
-                        this.className = "active";
+                        this.className = "group active";
+                        localStorage.setItem("buttonActive",this.className);
                         //同辈元素互斥
                         _this.siblings(this,function(){
                             this.className = "group";

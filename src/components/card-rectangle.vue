@@ -110,6 +110,13 @@
 		box-sizing:border-box;
 	}
 
+	.index-conten .content_main .href-ui {
+		display:block;
+		width:100%;
+		height:100%;
+	}
+
+
 	.content_main .box{
 		/*width:100%;*/
 		height: auto;
@@ -127,6 +134,7 @@
 		border-radius:2px;
 		margin-top:3px;
 		position:relative;
+		margin-bottom: 10px;
 	}
 
 	.content_main .box-two .slide-banner {
@@ -158,11 +166,11 @@
 	}
 
 	.content_main .box-two .shop-item {
-		width: 31.2%;
-		/*height: 100%;*/
+		width: 32.1%;
+		height: auto;
 		background: #fff;
 		float: left;
-		margin: 10px 0px 0px 6.5px;
+		margin: 0px 1.5px 1rem;
 	}
 
 	.content_main .box-two .shop-item .box-money {
@@ -289,64 +297,9 @@
 		height: 20px;
 	}
 
-	/* find-more start */
-	.find-more {
-		width:150px;
-		height:10rem;
-		line-height: 10rem;
-		font-size:18px;
-		background: #fff;
-		margin:0px auto;
-	}
 
-	.find-more  .find-move-text {
-		float:left;
-	}
 
-	.find-more .allow-mvoe{
-		display: block;
-		width:3rem;
-		height:2.2rem;
-		float: left;
-		background: url(../images/jiantou.png) no-repeat;
-		background-size: 100%;
-		position: relative;
-		top: 40px;
-		left:10px;
-	}
-	/* find-more end */
 
-	/* partners start */
-	.partners {
-		width:100%;
-		height:300px;
-		clear:both;
-		background: #fff;
-	}
-
-	.partners .partners-title {
-		font-size: 20px;
-		height:50px;
-		width:100%;
-		text-align:center;
-		color:#81c429;
-		line-height:50px;
-	}
-
-	.partners .partners-title .line {
-		width:25%;
-		height:1px;
-		margin:27px 20px;
-		background: #81c429;
-	}
-
-	.partners .partners-title ul li {
-		float: left;
-		width: 25%;
-		height: 78px;
-		margin: 10px 13px;
-	}
-	/* partners */
 
 </style>
 
@@ -357,32 +310,32 @@
 			<div class="content_main">
 				<template v-for='item in testarr'>
 					<template v-if="item.type == 0">
-						<div style="width: 100%;">
+						<div style="width: 100%;clear:both;">
 							<template v-for='item1 in item.arr'>
 								<template v-if="item.arr.length == 1">
 									<div style="width:100%;float:left;">
-										<a v-bind:href="item1.htmlurl">
+										<a class="href-ui" :href="'//'+item1.htmlurl">
 											<img :src="item1.url" alt="" style="width:100%;" />
 										</a>
 									</div>
 								</template>
 								<template v-if="item.arr.length == 2">
 									<div style="width:50%;float:left;">
-										<a :href="item1.htmlurl">
+										<a class="href-ui" :href="'//'+item1.htmlurl">
 											<img :src="item1.url" alt="" style="width:100%;" />
 										</a>
 									</div>
 								</template>
 								<template v-if="item.arr.length == 3">
 									<div style="width:33.3%;float:left;">
-										<a :href="item1.htmlurl">
+										<a class="href-ui" :href="'//'+item1.htmlurl">
 											<img :src="item1.url" alt="" style="width:100%;" />
 										</a>
 									</div>
 								</template>
 								<template v-if="item.arr.length == 4">
 									<div style="width:25%;float:left;">
-										<a :href="item1.htmlurl">
+										<a class="href-ui" :href="'//'+item1.htmlurl">
 											<img :src="item1.url" alt="" style="width:100%;" />
 										</a>
 									</div>
@@ -390,82 +343,30 @@
 							</template>
 						</div>
 					</template>
-					<!--<template v-if="item.type == 1 || item.type == 2 || item.type == 3">-->
-						<!--<div class="box-two" style="clear:both;">-->
-							<!--<template v-for='item1 in item.arr'>-->
-								<!--<div class="shop-item">-->
-									<!--<div style="width:100%;height:130px;">-->
-										<!--<img :src="item1.shopshotcut" style="width: 100%;height:100%;"-->
-											 <!--v-link="{name:'detail',params:{pid:item1.shopid}}" />-->
-									<!--</div>-->
-									<!--<p class="shop-name" style="">{{ item1.shopname }}</p>-->
-									<!--<p class="box-money">-->
-										<!--<i style="font-size: 12px;">￥</i>-->
-										<!--<span style="font-size: 18px;">{{ item1.shopprice }}</span>-->
-										<!--<span class="add-cart" @click="addShopCart()"></span>-->
-									<!--</p>-->
-								<!--</div>-->
-							<!--</template>-->
-						<!--</div>-->
-					<!--</template>-->
+
+					<template v-if="item.type == 1 || item.type == 2 || item.type == 3">
+						<div class="box-two" style="clear:both;">
+							<template v-for='item1 in item.arr'>
+								<div class="shop-item">
+									<div style="width:100%;">
+										<img :src="item1.shopshotcut" style="width: 100%;height:100%;"
+											 v-link="{name:'detail',params:{pid:item1.shopid}}" />
+									</div>
+									<p class="shop-name" style="">{{ item1.shopname }}</p>
+									<p class="box-money">
+										<i style="font-size: 12px;">￥</i>
+										<span style="font-size: 18px;">{{ item1.shopprice }}</span>
+										<span class="add-cart"></span>
+									</p>
+								</div>
+							</template>
+						</div>
+					</template>
+					<template style="clear: both;"></template>
 				</template>
 			</div>
 		</div>
-
-
-	<!--<div style="background: #fff;width:100%;height:10rem;">-->
-		<!--<div class="find-more">-->
-			<!--<span class="find-move-text">查看更多商品</span>-->
-			<!--<i class="allow-mvoe"></i>-->
-		<!--</div>-->
-	<!--</div>-->
-
-	<!--&lt;!&ndash; partners start &ndash;&gt;-->
-	<!--<div class="partners">-->
-		<!--<div class="partners-title">-->
-			<!--<div class="line" style="float:left;"></div>-->
-			<!--<span>合作伙伴</span>-->
-			<!--<div class="line" style="float:right;"></div>-->
-			<!--<ul>-->
-				<!--<li><img src="../images/img5.png" alt="" style="width:100%;height:100%;" /></li>-->
-				<!--<li><img src="../images/img6.png" alt="" style="width:100%;height:100%;" /></li>-->
-				<!--<li><img src="../images/img7.png" alt="" style="width:100%;height:100%;" /></li>-->
-				<!--<li><img src="../images/img8.png" alt="" style="width:100%;height:100%;" /></li>-->
-				<!--<li><img src="../images/img9.png" alt="" style="width:100%;height:100%;" /></li>-->
-				<!--<li><img src="../images/img10.png" alt="" style="width:100%;height:100%;" /></li>-->
-			<!--</ul>-->
-		<!--</div>-->
-	<!--</div>-->
-	<!-- partners end -->
-
-	<!--<div class="index-content" v-for="item in testarr">-->
-		<!--<div v-if="item.type == '0'">-->
-			<!--<img src="../images/banner_peisong.png" class="ciri_banner" style="width: 100%;height:100px;">-->
-			<!--<div class="content_main">-->
-				<!--<div class="box" v-for='item1 in item.arr'>-->
-					<!--{{ item1 }}-->
-					<!--<img :src="item1.shopshotcut" alt="" v-link="{name:'detail',params:{pid:item1.shopid}}" />-->
-					<!--&lt;!&ndash; :width="(100/(item.arr.length) / 4) + '%'" &ndash;&gt;-->
-				<!--</div>-->
-			<!--</div>-->
-		<!--</div>-->
-	<!--</div>-->
-
-	<!--<div class="wrapper">-->
-		<!--<label class="title" v-if="hotproducts.title">{{ hotproducts.title }}</label>-->
-		<!--<div class="card-box" v-for="item in hotproducts.list" v-link="{name:'detail',params:{pid:item.id}}">-->
-			<!--<div class="img" v-lazy:background-image="item.img">-->
-				<!--<img v-if="$index <= 2" Vc='"src/images/top"+($index+1)+".png"' class="prize" />-->
-			<!--</div>-->
-			<!--<div class="mes">-->
-				<!--<div class="name">{{ item.name }}</div>-->
-				<!--<span class="desc">{{ item.sdesc }}</span>-->
-				<!--<div class="money">-->
-					<!--<label class="unit">¥</label>{{ item.money }}-->
-				<!--</div>-->
-			<!--</div>-->
-		<!--</div>-->
-	<!--</div>-->
+	</div>
 </template>
 
 <script>
@@ -475,10 +376,6 @@
 
     export default{
 		props: {
-//			hotproducts: {
-//				type: Object,
-//				required: true
-//			}
 			testarr:[]
 		},
 		data() {
@@ -493,9 +390,7 @@
             Swiper,
         },
 		methods: {
-            addShopCart: function() {
-                this.$dispatch('addCart');
-            }
+
 		}
 	}
 </script>

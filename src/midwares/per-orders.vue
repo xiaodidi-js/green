@@ -91,17 +91,77 @@
 		margin-right:0%;
 	}
 
-	/* 改变图标样式 开始 */
-	.list .tap-type .icon{
-		width: 52%;
-		padding-top: 8%;
-		margin: auto;
-		background-size: contain;
-		background-repeat: no-repeat;
-		background-position: center;
-		font-size: 26px;
-		color:#666;
+	.list .icon-ui {
+		width: 3.5rem;
+		height: 3.4rem;
+		background: url("../images/icon-s.png") no-repeat;
+		margin:0px auto;
 	}
+
+	.list .icon-ui-fukuan {
+		background-position: 1px -72px;
+		background-size: 595%;
+	}
+
+	.list .active .icon-ui-fukuan {
+		background-position: 1px -104px;
+		background-size: 595%;
+	}
+
+	.list .icon-ui-daifahuo {
+		background-position: -42px -72px;
+		background-size: 595%;
+	}
+
+	.list .active .icon-ui-daifahuo {
+		background-position: -42px -104px;
+		background-size: 595%;
+	}
+
+	.list .icon-ui-daishouhuo {
+		background-position: -86px -72px;
+		background-size: 595%;
+	}
+
+	.list .active .icon-ui-daishouhuo {
+		background-position: -86px -104px;
+		background-size: 595%;
+	}
+
+	.list .icon-ui-pingjia {
+		background-position: -130px -72px;
+		background-size: 595%;
+	}
+
+	.list .active .icon-ui-pingjia {
+		background-position: -130px -104px;
+		background-size: 595%;
+	}
+
+	.list .icon-ui-shouhou {
+		background-position: -175px -72px;
+		background-size: 595%;
+	}
+
+	.list .active .icon-ui-shouhou {
+		background-position: -175px -104px;
+		background-size: 595%;
+	}
+
+
+	/* 改变图标样式 开始 */
+	/*.list .tap-type .icon{*/
+		/*width: 52%;*/
+		/*padding-top: 8%;*/
+		/*margin: auto;*/
+		/*background-size: contain;*/
+		/*background-repeat: no-repeat;*/
+		/*background-position: center;*/
+		/*font-size: 26px;*/
+		/*color:#666;*/
+	/*}*/
+
+
 
 	.list .tap-type.active .icon.unpay{
 		color:#81c429;
@@ -177,7 +237,7 @@
 		width:100%;
 	}
 
-	.service-ul .icon-service{
+	.service-ul .icon-service {
 		margin: 0px 10px;
 		height: 48px;
 		border-bottom: 1px solid #CACACA;
@@ -186,15 +246,29 @@
 		text-align: left;
 	}
 
-	.service-ul li a .qq-icon{
-		font-size:24px;
-		color:#808080;
+	.service-ul .icon-service .little-icon {
+		width:4rem;
+		display:block;
+		height:4rem;
+		background: url("../images/icon-s.png") no-repeat;
+		float:left;
+	}
+
+	.service-ul .icon-service .qq-ui-icon{
+		background-position: 0px -177px;
+		background-size: 685%;
+	}
+
+	.service-ul .icon-service .call-icon {
+		background-position: -35px -178px;
+		background-size: 685%;
 	}
 
 	.service-ul li a .service-txt{
 		font-size:14px;
 		color:#4d4d4d;
 		padding-left: 5px;
+		line-height: 35px;
 	}
 
 	.service-ul li a .service-allow{
@@ -209,6 +283,7 @@
 
 <template>
 	<div class="sub-content">
+
 		<div class="sub-content-tab">
 			<div class="all-title" v-link="{name:'classification'}">
 				<label class="title">我的订单</label>
@@ -218,27 +293,27 @@
 			<div style="width:100%;height:58px;background: #efefef;">
 				<div class="list licon fixed justify" style="border-bottom: 1px solid #ccc;padding:0px;margin:0% 2%">
 					<div class="tap-type" :class="{'active':dtype == 1}" @click="getData(1)">
-						<div class="icon unpay iconfont icon-fukuan"></div>
+						<div class="icon unpay icon-ui icon-ui-fukuan"></div>
 						<div class="title">待付款</div>
 						<badge :text="count.unpay.toString()" class="my-badge" v-show="count.unpay>0"></badge>
 					</div>
 					<div class="tap-type" :class="{'active':dtype == 2}" @click="getData(2)">
-						<div class="icon unsend iconfont icon-daifahuo"></div>
+						<div class="icon unsend icon-ui icon-ui-daifahuo"></div>
 						<div class="title">待发货</div>
 						<badge :text="count.unsend.toString()" class="my-badge" v-show="count.unsend>0"></badge>
 					</div>
 					<div class="tap-type" :class="{'active':dtype == 3}" @click="getData(3)">
-						<div class="icon unget iconfont icon-daishouhuo"></div>
+						<div class="icon unget icon-ui icon-ui-daishouhuo"></div>
 						<div class="title">待收货</div>
 						<badge :text="count.unreceive.toString()" class="my-badge" v-show="count.unreceive>0"></badge>
 					</div>
 					<div class="tap-type" :class="{'active':dtype == 4}" @click="getData(4)">
-						<div class="icon comment iconfont icon-pingjia"></div>
+						<div class="icon comment icon-ui icon-ui-pingjia"></div>
 						<div class="title">待评价</div>
 						<badge :text="count.uncomment.toString()" class="my-badge" v-show="count.uncomment>0"></badge>
 					</div>
 					<div class="tap-type" :class="{'active':dtype == 5}" @click="getData(5)">
-						<div class="icon service iconfont icon-shouhou"></div>
+						<div class="icon service icon-ui icon-ui-shouhou"></div>
 						<div class="title">申请售后</div>
 						<badge :text="count.service.toString()" class="my-badge" v-show="count.service>0"></badge>
 					</div>
@@ -248,34 +323,29 @@
 
 		<div id="customer">
 			<ul class="service-ul" v-for="item in qqservice">
-
 				<li class="icon-service" v-if="item.class === 0">
 					<a href="tencent://message/?uin={{ item.num	 }}&Site=在线QQ&Menu=yes" style="display: block;padding-top: 7px;">
-						<i class="iconfont qq-icon">&#xe67c;</i>
+						<i class="little-icon qq-ui-icon"></i>
 						<span class="service-txt">客服QQ1</span>
 						<img src="../images/arrow.png" class="service-allow" alt="" />
 					</a>
 				</li>
 				<li class="icon-service" v-if="item.class === 0">
 					<a href="tencent://message/?uin={{ item.num	 }}&Site=在线QQ&Menu=yes" style="display: block;padding-top: 7px;">
-						<i class="iconfont qq-icon">&#xe67c;</i>
+						<i class="little-icon qq-ui-icon"></i>
 						<span class="service-txt">客服QQ1</span>
 						<img src="../images/arrow.png" class="service-allow" alt="" />
 					</a>
 				</li>
 				<li class="icon-service" v-if="item.class === 1">
 					<a href="tel:{{ item.num }}" style="display: block;padding-top: 7px;">
-						<i class="iconfont qq-icon">&#xe674;</i>
+						<i class="little-icon call-icon"></i>
 						<span class="service-txt">一键拨号</span>
 						<img src="../images/arrow.png" class="service-allow" alt="" />
 					</a>
 				</li>
 			</ul>
 		</div>
-
-		<!-- 过渡线条 -->
-		<!--<div class="time_list" id="time_list"></div>-->
-		<!-- 过渡线条 -->
 
 		<!--<separator :set-height="11.5"></separator>-->
 
@@ -293,7 +363,6 @@
 <script>
 	//待付款
 	import CardOrders from 'components/card-orders'
-
 	import Separator from 'components/separator'
 	import Toast from 'vux/src/components/toast'
 	import Badge from 'vux/src/components/badge'
@@ -314,10 +383,10 @@
 		},
 		data() {
 			return {
+			    dtype: -1, /* this.$store.state.dtype */
                 willShow:true,
 				toastShow: false,
 				toastMessage: '',
-				dtype:-1,
 				count:{
 					unpay: 0,
 					unsend: 0,
@@ -347,14 +416,14 @@
 		    $id: function(id){
 				return document.getElementById(id);
 			},
-			getData: function(type = 0){
+			getData: function(type = 0) {
 		        if(type === 5){
                     this.$id("customer").style.display = "block";
 				} else{
                     this.$id("customer").style.display = "none";
 				}
 		        var active = document.getElementsByClassName("box-item");
-                if(this.dtype == type){
+                if(this.dtype == type && this.data){
                     return true;
                 }
 				this.dtype = type;

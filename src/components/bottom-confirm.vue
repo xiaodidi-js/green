@@ -71,8 +71,8 @@
 <template>
 	<div class="bottom-buy" :class="{'fixed':fixed}" :style="{bottom:fixed===true&&btm>0 ? btm+unit : 0}">
 			<div v-if="pay==0&&send==0&&receive==0">
+				<div class="btn service" :class="{'disabled':disabled}" @click="clickCancel">取消订单</div>
 			<div class="btn again" :class="{'disabled':disabled}" @click="clickPay">确认支付</div>
-			<div class="btn service" :class="{'disabled':disabled}" @click="clickCancel">取消订单</div>
 		</div>
 		<div v-if="pay==1&&(send==0||send==1)&&receive==0">
 			<div class="btn confirm" :class="{'disabled':disabled}" @click="clickConfirm">确认收货</div>

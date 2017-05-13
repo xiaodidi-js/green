@@ -6,11 +6,15 @@ Vue.use(Vuex);
 //应用状态
 const state = {
 	cart: localStorage.getItem('myCart') ? JSON.parse(localStorage.getItem('myCart')) : [],
-	selCart: JSON.parse(sessionStorage.getItem('mySelCart')) || []
+	selCart: JSON.parse(sessionStorage.getItem('mySelCart')) || [],
+    dtype:1,
 }
 
 //应用状态操作
 const mutations = {
+	myActive (state, index) {
+       state.dtype = index
+    },
 	SETCARTOBJ (state,obj) {
 		if(state.cart.length>0){
 			let added = false;

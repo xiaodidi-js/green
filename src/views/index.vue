@@ -88,13 +88,14 @@
 
 		<!-- 轮播图 -->
 
-		<!--<swiper :list="banners" loop dots-position="center"-->
+		<!--<swiper :list="gallery" :url="gallery.url" loop dots-position="center"-->
 				<!--:show-desc-mask="false"-->
 				<!--:aspect-ratio="650/1242" auto dots-class="dots-my" style="width: 100%;margin-top:50px;"></swiper>-->
 
-
 		<!-- 导航栏 -->
-		<router-view></router-view>
+		<router-view keep-alive></router-view>
+
+		<!--<router-view></router-view>-->
 
         <!-- toast提示框 -->
 		<toast :show.sync="toastShow" type="text">{{ toastMessage }}</toast>
@@ -148,6 +149,7 @@ export default{
 		bannersFun: function() {  /* public/index/index/mainInfo */
 			this.$http.get(localStorage.apiDomain+'public/index/index/mainInfo').then((response)=>{
 				this.banners = response.data.banners;
+//				console.log(response.data);
 			},(response)=>{
 				this.toastMessage = "网络开小差啦~";
 				this.toastShow = true;
@@ -158,6 +160,7 @@ export default{
             if(sk.length > 0) url += '/search/'+sk;
             this.$http.get(url).then((response) => {
                 this.data.list = response.data.list;
+//                console.log(response.data);
             },(response)=>{
                 this.toastMessage = "网络开小差啦~";
                 this.toastShow = true;

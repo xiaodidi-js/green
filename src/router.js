@@ -6,7 +6,7 @@ const routers = {
         name:'index',
     	header:false,
     	footer:true,
-    	title:'趣果商城',
+    	title:'绿秧田商城',
     	position:1,
         component (resolve) {
             require(['./views/index.vue'], resolve);
@@ -541,7 +541,7 @@ const routers = {
     'tap-card': {
         name:'tap-card',
         header:false,
-        footer:false,
+        footer:true,
         title:'抢购',
         component (resolve) {
             require(['./components/tap-card.vue'], resolve);
@@ -554,15 +554,6 @@ const routers = {
         title:'banners',
         component (resolve) {
             require(['./components/banners.vue'], resolve);
-        }
-    },
-    'a': {
-        name:'a',
-        header:false,
-        footer:false,
-        title:'banners',
-        component (resolve) {
-            require(['./components/a.vue'], resolve);
         }
     }
 };

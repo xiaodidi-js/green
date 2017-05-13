@@ -42,3 +42,8 @@ export const setSelCartStorage = function ({dispatch},selarray) {
 export const clearSel = function ({dispatch}) {
 	dispatch('CLEARSELCART');
 }
+
+//客服
+export const myActive = function ({dispatch}, index) {
+    dispatch('myActive', index);
+}

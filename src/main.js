@@ -16,8 +16,8 @@ Vue.use(VueLazy,{
 	loading:'dist/assets/loading.svg',
 	attempt:3
 });
-Vue.use(VueResource);
 
+Vue.use(VueResource);
 Vue.use(VueRouter);
 
 // 开启debug模式
@@ -39,7 +39,7 @@ router.beforeEach((transition) => {
 		//微信openid检测
 		if(!sessionStorage.getItem('openid')){
 			let query = transition.to.query;
-			if(typeof query.opid!=='undefined'&&query.opid!=''){
+			if(typeof query.opid!=='undefined'&&query.opid!='') {
 				sessionStorage.setItem('openid',query.opid);
 			}else{
 				location.href = localStorage.getItem('apiDomain')+'public/index/home/index?back='+encodeURI(transition.to.path);

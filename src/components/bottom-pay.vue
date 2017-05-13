@@ -29,19 +29,20 @@
 		overflow:hidden;
 	}
 
-	.bottom-buy>div.btn{
+	.bottom-buy .btn{
 		width:35%;
 		text-align:center;
 		color:#FFF;
 		height:4.5rem;
 		line-height:4.5rem;
+		border:none;
 	}
 
-	.bottom-buy>div.btn.addCar{
+	.bottom-buy .addCar{
 		background-color:#81c429;
 	}
 
-	.bottom-buy>div.btn.addCar:active{
+	.bottom-buy .addCar:active{
 		background-color:#81c429;
 	}
 </style>
@@ -49,10 +50,11 @@
 <template>
 	<div class="bottom-buy" :class="{'fixed':fixed}" :style="{bottom:fixed===true&&btm>0 ? btm+unit : 0}">
 		<div class="mes">
-			合计：
-			<span style="margin-left:12px;">¥{{ sum }}<span>
+			<span>合计：</span>
+			<span style="margin-left:12px;">¥{{ sum }}</span>
 		</div>
-		<div class="btn addCar" @click="submit">提交订单</div>
+		<!--<div class="btn addCar" disabled="disabled" @click="submit">提交订单</div>-->
+		<button class="btn addCar" @click="submit">提交订单</button>
 	</div>
 </template>
 

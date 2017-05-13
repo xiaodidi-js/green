@@ -67,15 +67,15 @@
 	}
 
 	.mes-line .addcon .default{
-		display:inline-block;
-		vertical-align:middle;
-		color:#fff;
-		background-color:#f9ad0c;
-		font-size:1.2rem;
-		border-radius:0.2rem;
-		padding:0rem 0.3rem;
-		line-height:1.4rem;
-		margin-right:0.3rem;
+		display: inline-block;
+		vertical-align: middle;
+		color: #fff;
+		background-color: #f9ad0c;
+		font-size: 1.4rem;
+		border-radius: 0.2rem;
+		padding: 3px 6px;
+		line-height: 1.4rem;
+		/* margin-right: 0.3rem; */
 	}
 
 	.mes-line .addcon .name{

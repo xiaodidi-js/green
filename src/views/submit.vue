@@ -290,21 +290,31 @@
 		height: 145px;
 	}
 
-	.give-container .give-order ul li {
+	.give-container .give-order ul .notActive {
 		width: 29.4%;
 		float:left;
-		margin: 0px 6px;
+		margin: 0px 5px;
+		transition:0.5s;
+		border:2px solid #fff;
+	}
+
+	.give-container .give-order ul .activeGift {
+		width: 29.4%;
+		float:left;
+		margin: 0px 5px;
+		border:2px solid #c40000;
+		transition:0.5s;
 	}
 
 	.give-container .give-order ul li .shop-img {
 		width: 100%;
 		height: 95px;
-		border:1px solid #f2f2f2;
 	}
 
 	.give-container .give-order ul li p {
 		font-size:14px;
 		line-height: 30px;
+		text-align:center;
 	}
 
 
@@ -367,7 +377,7 @@
 
 		<!-- 首单列表 -->
 		<div class="give-container" id="give-list">
-			<div class="" style="margin:10px 0px;border-bottom: 1px solid #eee;height:46px;width:100%;" @click="oneGift()">
+			<div class="" style="margin:10px 0px;border-bottom: 1px solid #eee;height:46px;width:100%;">
 				<div style="margin:0px 10px;">
 					<p class="give-title">
 						<i class="icon-img1"></i>
@@ -378,11 +388,11 @@
 			<scroller v-ref:scroller lock-y :scrollbar-x="false">
 				<div class="give-order">
 					<ul>
-						<li v-for="item in 3">
+						<li @click="chosenGift(item.id)" v-for="item in listGift" class="notActive" :class="{'activeGift':dtype == item.id}">
 							<p class="shop-img">
-								<img src="../images/cm.png" alt="" style="width:100%;height:100%;" />
+								<img :src="item.shotcut" alt="" style="width:100%;height:100%;" />
 							</p>
-							<p>车厘子水果...</p>
+							<p>{{ item.name }}</p>
 						</li>
 					</ul>
 				</div>
@@ -519,7 +529,8 @@
                     address:null,
                     pay:[]
                 },
-                gift: []
+                listGift: [],
+				dtype: 0,
             }
         },
         components: {
@@ -549,8 +560,8 @@
             }
         },
         ready() {
-//			console.log(this.data.address.id);
 
+            this.oneGift(this.address);
 
             let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
             ustore = JSON.parse(ustore);
@@ -565,9 +576,9 @@
                 opid = '/openid/' + opid;
             }
             this.$http.get(localStorage.apiDomain+'public/index/user/ordersubmission/uid/'+ustore.id+'/token/'+ustore.token+'/ids/'+pids+opid).then((response)=>{
-                if(response.data.status===1){
+                if(response.data.status===1) {
                     this.data.deliver = response.data.deliver;
-                    if(typeof this.data.deliver.express!=='undefined'&&this.data.deliver.express!==''){
+                    if(typeof this.data.deliver.express !== 'undefined' && this.data.deliver.express !== '') {
                         this.deliverType = 'express';
                         this.deliverName = this.data.deliver.express;
                     }else{
@@ -582,11 +593,11 @@
                     }
                     this.score = response.data.score;
                     this.freight = response.data.freight;
-                }else if(response.data.status===-1){
+                }else if(response.data.status === -1) {
                     this.toastMessage = response.data.info;
                     this.toastShow = true;
                     let context = this;
-                    setTimeout(function(){
+                    setTimeout(function() {
                         context.clearAll();
                         sessionStorage.removeItem('userInfo');
                         localStorage.removeItem('userInfo');
@@ -615,8 +626,8 @@
             },
             couponMoney: function() {
                 let money = 0;
-                if(this.coupon>0&&this.couponObj!=null) {
-                    if(this.couponObj.type==1||this.couponObj.type==3) {
+                if(this.coupon > 0 && this.couponObj != null) {
+                    if(this.couponObj.type == 1 || this.couponObj.type == 3) {
                         money = this.couponObj.minus_money;
                     }else{
                         money = this.paySum * (1-this.couponObj.discount);
@@ -625,22 +636,31 @@
                 return money.toFixed(2);
             },
             lastPaySum: function() {
-                let lastMoney = parseFloat(this.paySum)+parseFloat(this.freight)-parseFloat(this.scoreMoney.makePrice)-parseFloat(this.couponMoney);
-                if(lastMoney<=0) {
-                    lastMoney = 0.01;
-                }
+                let lastMoney = parseFloat(this.paySum)+parseFloat(this.freight) - parseFloat(this.scoreMoney.makePrice) - parseFloat(this.couponMoney);
+                if(lastMoney <= 0) lastMoney = 0.01;
                 return lastMoney.toFixed(2);
             }
         },
         methods: {
-            oneGift: function () {
+            chosenGift: function (type = 0) {
+				if (this.dtype == type) return true;
+				this.dtype = type;
+                document.getElementsByClassName("addCar")[0].style.background = '#81c429';
+                //清除禁用按钮
+                document.getElementsByClassName("addCar")[0].disabled = "";
+            },
+            oneGift: function (id) {
                 let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
                 ustore = JSON.parse(ustore);
                 let pids = '';
-                this.$http.get(localStorage.apiDomain + 'public/index/user/manjiusong' + ustore.id +'/token/'+ustore.token +'/sinceid/' + 9).then((response)=>{
+                this.$http.get(localStorage.apiDomain + 'public/index/user/manjiusong/uid' + ustore.id +'/token/'+ustore.token +'/sinceid/' + id).then((response)=>{
                     console.log(response.data);
                     if(response.data.status===1){
-                        this.gift = response.data;
+                        this.listGift = response.data.maxmoney;
+                        console.log(this.listGift);
+
+
+
                     }else if(response.data.status===-1){
                         this.toastMessage = response.data.info;
                         this.toastShow = true;

@@ -204,6 +204,7 @@
 		color:#ccc;
 		text-align:center;
 	}
+
 </style>
 
 <template>
@@ -217,7 +218,7 @@
 			<div class="alladdress">
 				<span>地区选择:</span>
 				<div class="sel-bg">
-					<div class="select-add" @click="onChonse()">全部</div>
+					<div class="select-add" id="selectTitle" @click="onChonse()">全部</div>
 					<i class="iconfont icon-sanjiao icon-sanjiao" id="icon-sanjiao"></i>
 					<ul class="option-list" v-show="isChonse">
 						<li class="list-li" v-for="item in options">
@@ -225,11 +226,18 @@
 							<i class="list" style="display:block;width:10rem;height:1px;background: #f2f2f2;"></i>
 							<div class="double-list">
 								<ul>
-									<li v-for="items in item.sub" @click="onAddressFun(items.id)">{{ items.name }}</li>
+									<li class="select-li" v-for="items in item.sub" @click="onOnlyAddress(items.id)">{{ items.name }}</li>
 								</ul>
 							</div>
 						</li>
 					</ul>
+
+					<!--<select>-->
+						<!--<optgroup label="{{ item.name }}" v-for="item in options">-->
+							<!--<option v-for="items in item.sub" @click="onOnlyAddress(items.id)">{{ items.name }}</option>-->
+						<!--</optgroup>-->
+					<!--</select>-->
+
 				</div>
 			</div>
 		</div>
@@ -297,7 +305,6 @@
                 toastShow: false,
                 isChonse: false,
 				options: [],
-				sublist: [],
 				tmp_address:[]
 			}
 		},
@@ -305,17 +312,24 @@
 			this.selList();
 		},
 		methods: {
-            onAddressFun: function(id) {
-                console.log(id)
-				var tmp = this.address.filter(function (item) {
-					return item.pid == id
-                })
-                this.tmp_address = tmp
+            touchout: function() {
+                if(this.isChonse) {
+                    this.tansform('icon-sanjiao','rotate(0deg)');
+                    this.isChonse = false;
+                }
+			},
+            onOnlyAddress: function(id) {
                 let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
                 ustore = JSON.parse(ustore);
+                var _this = this;
                 this.$http.get(localStorage.apiDomain+'public/index/Usercenter/myaddress/uid/' + ustore.id +'/token/'+ustore.token+'/state/0/sinceid/' + id).then((response) => {
                     if(response.data.status===1) {
-
+                        var tmp = this.address.filter(function (item) {
+                            return item.pid == id;
+                        });
+                        this.tmp_address = tmp;
+                        this.isChonse = false;
+                        _this.tansform('icon-sanjiao','rotate(0deg)');
                     } else if(response.data.status===-1) {
                         this.toastMessage = response.data.info;
                         this.toastShow = true;
@@ -335,20 +349,19 @@
                     this.toastShow = true;
                 });
 			},
-            onChonse: function() {
-                this.tmp_address = this.address;
+            tansform: function(id,angle) {
+                var icon = document.getElementById(id);
+                icon.style.transform = angle;
+                icon.style.transition = '0.5s';
+                return icon;
+			},
+            onChonse: function() {	//全部
+//                this.tmp_address = this.address;
                 if(!this.isChonse) {
                     this.isChonse = true;
-                    var bgdialog = document.createElement("div");
-                    bgdialog.id = "dialog";
-                    document.body.appendChild(bgdialog);
-                    var icon = document.getElementById("icon-sanjiao");
-					icon.style.transform = 'rotate(180deg)';
-					icon.style.transition = '0.5s';
+                    this.tansform('icon-sanjiao','rotate(180deg)');
 				} else {
-                    var icon = document.getElementById("icon-sanjiao");
-                    icon.style.transform = 'rotate(0deg)';
-                    icon.style.transition = '0.5s';
+                    this.tansform('icon-sanjiao','rotate(0deg)');
                     this.isChonse = false;
 				}
 			},
@@ -402,10 +415,11 @@
 					}
 					let pdata = {uid:ustore.id,token:ustore.token,type:this.$parent.deliverType,ids:pids,area:obj.area};
 					this.$http.post(localStorage.apiDomain+'public/index/user/addresschosen',pdata).then((response) => {
+					    console.log(response.data);
 						if(response.data.status===1) {
 							this.chosen = obj.id;
                             this.$parent.data.address = obj;
-//                            this.$parent.data.tmp_address = obj;
+                            this.$parent.data.tmp_address = obj;
 							this.$parent.freight = response.data.freight;
 						}else if(response.data.status===-1) {
 							this.$parent.toastMessage = response.data.info;
@@ -435,10 +449,12 @@
 					ustore = JSON.parse(ustore);
 					this.getType = this.$parent.deliverType;
 					this.$http.get(localStorage.apiDomain+'public/index/user/addresschosen/uid/'+ustore.id+'/token/'+ustore.token+'/type/'+this.getType).then((response)=> {
+                        console.log(response.data);
 					    if(response.data.status===1) {
 							this.showStatus = false;
 							this.showTips = '加载中...';
 							this.address = response.data.list;
+                            this.tmp_address = response.data.list;
 						}else if(response.data.status=== -1) {
 							this.$parent.toastMessage = response.data.info;
 							this.$parent.toastShow = true;

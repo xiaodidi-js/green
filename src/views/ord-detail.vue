@@ -625,7 +625,7 @@ export default{
 			}
 		},
 		orderCancel: function(){
-			if(this.data.order.pay==1||this.data.order.send==1||this.data.order.receive==1){
+			if(this.data.order.pay==1 || this.data.order.send == 1 || this.data.order.receive == 1){
 				this.toastMessage = '订单已支付';
 				this.toastShow = true;
 				return false;

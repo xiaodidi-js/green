@@ -1087,7 +1087,6 @@
 			}
 		},
 		methods: {
-
             $id: function(id) {
                 return document.getElementById(id);
             },
@@ -1188,7 +1187,7 @@
 				}
 				this.buyNums++;
 			},
-			reduceNums: function(){
+			reduceNums: function() {
 				if(this.buyNums <= 1) {
 					return false;
 				}
@@ -1210,56 +1209,38 @@
 				}
 			},
 			buyNow: function(){
-				if(this.data.format){
-					if(!this.checkGuige()) {
-						this.showFormatPop();
-						return false;
-					}
-				}
-				if(this.proNums <= 0) {
-					this.toastMessage = '商品暂时缺货';
-					this.toastShow = true;
-					return false;
-				}else if(this.buyNums < 1) {
-					this.toastMessage = '购买数量不能小于1';
-					this.toastShow = true;
-					return false;
-				}else if(this.buyNums > this.proNums) {
-					this.toastMessage = '购买数量超过库存数量';
-					this.toastShow = true;
-					return false;
-				}
-				let cartObj = {};
-				let cartFormat = this.guige.length > 0 ? this.guige.join(',') : '';
-				let cartFormatName = this.guige.length > 0 ? this.guigeName.join('-') : '';
-				if(this.data.is_promote){
-					cartObj = {
-					    id:this.$route.params.pid,
-						shotcut:this.data.shotcut,
-						name:this.data.name,
-						price:this.data.promote_price,
-						format:cartFormat,
-						formatName:cartFormatName,
-						nums:this.buyNums,
-						store:this.proNums
-					};
-				}else{
-					cartObj = {
-					    id:this.$route.params.pid,
-						shotcut:this.data.shotcut,
-						name:this.data.name,
-						price:this.data.price,
-						format:cartFormat,
-						formatName:cartFormatName,
-						nums:this.buyNums,
-						store:this.proNums
-					};
-				}
-				this.setCart(cartObj);
-				cartObj = {};
-				cartFormat = null;
-				this.formatPopShow = false;
-				this.$router.go({name:'cart'});
+                if(this.data.format){
+                    if(!this.checkGuige()){
+                        this.showFormatPop();
+                        return false;
+                    }
+                }
+                if(this.proNums<=0){
+                    this.toastMessage = '商品暂时缺货';
+                    this.toastShow = true;
+                    return false;
+                }else if(this.buyNums<1){
+                    this.toastMessage = '购买数量不能小于1';
+                    this.toastShow = true;
+                    return false;
+                }else if(this.buyNums>this.proNums){
+                    this.toastMessage = '购买数量超过库存数量';
+                    this.toastShow = true;
+                    return false;
+                }
+                let cartObj = {};
+                let cartFormat = this.guige.length>0 ? this.guige.join(',') : '';
+                let cartFormatName = this.guige.length>0 ? this.guigeName.join('-') : '';
+                if(this.data.is_promote){
+                    cartObj = {id:this.$route.params.pid,shotcut:this.data.shotcut,name:this.data.name,price:this.data.promote_price,format:cartFormat,formatName:cartFormatName,nums:this.buyNums,store:this.proNums};
+                }else{
+                    cartObj = {id:this.$route.params.pid,shotcut:this.data.shotcut,name:this.data.name,price:this.data.price,format:cartFormat,formatName:cartFormatName,nums:this.buyNums,store:this.proNums};
+                }
+                this.setCart(cartObj);
+                cartObj = {};
+                cartFormat = null;
+                this.formatPopShow = false;
+                this.$router.go({name:'cart'});
 			},
 			addCart : function(){
                 if(this.data.format){
@@ -1268,57 +1249,34 @@
                         return false;
                     }
                 }
-
-                if(this.proNums <= 0 ) {
+                if(this.proNums<=0){
                     this.toastMessage = '商品暂时缺货';
                     this.toastShow = true;
                     return false;
-                }else if(this.buyNums < 1) {
+                }else if(this.buyNums<1){
                     this.toastMessage = '购买数量不能小于1';
                     this.toastShow = true;
                     return false;
-                }else if(this.buyNums > this.proNums) {
+                }else if(this.buyNums>this.proNums){
                     this.toastMessage = '购买数量超过库存数量';
                     this.toastShow = true;
                     return false;
                 }
-
                 let cartObj = {};
                 let cartFormat = this.guige.length > 0 ? this.guige.join(',') : '';
                 let cartFormatName = this.guige.length > 0 ? this.guigeName.join('-') : '';
-
-                if(this.data.is_promote) {
-                    cartObj = {
-                        id:this.$route.params.pid,
-                        shotcut:this.data.shotcut,
-                        name:this.data.name,
-                        price:this.data.promote_price,
-                        format:cartFormat,
-                        formatName:cartFormatName,
-                        nums:this.buyNums,
-                        store:this.proNums
-                    };
-                } else {
-                    cartObj = {
-                        id:this.$route.params.pid,
-                        shotcut:this.data.shotcut,
-                        name:this.data.name,
-                        price:this.data.price,
-                        format:cartFormat,
-                        formatName:cartFormatName,
-                        nums:this.buyNums,
-                        store:this.proNums
-                    };
+                if(this.data.is_promote){
+                    cartObj = {id:this.$route.params.pid,shotcut:this.data.shotcut,name:this.data.name,price:this.data.promote_price,format:cartFormat,formatName:cartFormatName,nums:this.buyNums,store:this.proNums};
+                }else{
+                    cartObj = {id:this.$route.params.pid,shotcut:this.data.shotcut,name:this.data.name,price:this.data.price,format:cartFormat,formatName:cartFormatName,nums:this.buyNums,store:this.proNums};
                 }
-
-                // 商品存入购物车
+                console.log(cartObj);
                 this.setCart(cartObj);
                 cartObj = {};
                 cartFormat = null;
                 this.formatPopShow = false;
                 this.stoastMessage = '加入购物车成功';
                 this.stoastShow = true;
-
             }
 		}
 	}

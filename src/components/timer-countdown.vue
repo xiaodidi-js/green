@@ -1,18 +1,23 @@
 <style scoped>
+    .counter{
 
-.counter{
-    
-}
-	
+    }
+
 </style>
-
 <template>
-    <span class="counter" v-if="status === 1">{{ desc }}{{ timeRes.hour }}{{ unith }}{{ timeRes.minute }}{{ unitm }}{{ timeRes.second }}{{ units }}</span>
+    <span class="counter" v-if="status === 1">
+        {{ desc }}
+        {{ timeRes.hour}}
+        {{ unith }}
+        {{ timeRes.minute}}
+        {{ unitm }}
+        {{ timeRes.second}}
+        {{ units }}
+    </span>
     <span class="counter" v-else>{{ end }}</span>
 </template>
-
 <script>
-	export default {
+    export default{
         props: {
             kind: {
                 type: Number,
@@ -44,14 +49,14 @@
                 default: ''
             }
         },
-		data() {
-			return {
+        data() {
+            return {
                 timer:null,
-				status:1
-			}
-		},
+                status:1
+            }
+        },
         methods: {
-            "setTime": function() {
+            "setTime": function(){
                 let _self = this;
                 this.timer = setInterval(function(){
                     _self.time --;
@@ -59,12 +64,12 @@
             }
         },
         ready() {
-            if(this.kind===1) {
+            if(this.kind===1){
                 this.unith = "小时";
                 this.unitm = "分";
                 this.units = "秒";
             }
-            if(this.time) {
+            if(this.time){
                 this.setTime();
             }else{
                 this.status = 0;
@@ -77,18 +82,18 @@
                 let htimes = 0,mtimes = 0;
                 //计算小时数
                 if(tmpTime >= 3600) {
-                    htimes = parseInt(tmpTime/3600);
+                    htimes = parseInt(tmpTime / 3600);
                     timeObj.hour = htimes.toString();
-                    if(htimes < 10) {
+                    if(htimes < 10){
                         timeObj.hour = "0"+timeObj.hour;
                     }
                     tmpTime = tmpTime - 3600 * htimes;
                 }
                 //计算分钟数
                 if(tmpTime >= 60) {
-                    mtimes = parseInt(tmpTime/60);
+                    mtimes = parseInt(tmpTime / 60);
                     timeObj.minute = mtimes.toString();
-                    if(mtimes < 10){
+                    if(mtimes < 10) {
                         timeObj.minute = "0"+timeObj.minute;
                     }
                     tmpTime = tmpTime - 60 * mtimes;
@@ -104,7 +109,7 @@
             }
         },
         watch: {
-            "time":function(nval,oval) {
+            "time": function(nval,oval) {
                 if(oval == ''){
                     this.setTime();
                 }else if(nval <= 0){
@@ -113,5 +118,5 @@
                 }
             }
         }
-	}
+    }
 </script>

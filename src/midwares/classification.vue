@@ -9,7 +9,7 @@
     }
 
     /* ification-nav start */
-    .ification-nav{
+    #wrapper{
         width: 100%;
         height: 4.1rem;
         background-color: #fff;
@@ -17,12 +17,37 @@
         top: 46px;
         left: 0px;
         z-index: 99;
+        overflow:hidden;
         box-shadow: 0 5px 15px #ccc;
+
+        -webkit-overflow-scrolling: touch;
+        -moz-overflow-scrolling: touch;
+        -ms-overflow-scrolling: touch;
+        -o-overflow-scrolling: touch;
+        overflow-scrolling: touch;
+    }
+
+    #wrapper #scroller {
+        position: absolute;
+        z-index: 1;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        width: 100%;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-text-size-adjust: none;
+        -ms-text-size-adjust: none;
+        -o-text-size-adjust: none;
+        text-size-adjust: none;
     }
 
     .ification-nav ul li{
         float:left;
-        line-height:4rem;
+        line-height:3.8rem;
         margin:0rem 0rem;
         width:20%;
         text-align:center;
@@ -41,7 +66,6 @@
         display:block;
         border-bottom:3px solid #81c429;
     }
-
     /* ification-nav end */
 
 
@@ -185,43 +209,22 @@
 
 <template>
     <!-- ification-nav start -->
-    <div class="ification-nav">
-
-        <ul id="card">
-
-            <li class="activeification-show" :class="{'active':dtype == 0}" @click="getData(0)">
-                全部
-                <!--<div class="nav-list active"></div>-->
-            </li>
-            <li class="ification-show" :class="{'active':dtype == 1}" @click="getData(1)">
-                待付款
-                <!--<div class="nav-list"></div>-->
-            </li>
-            <li class="ification-show" :class="{'active':dtype == 2}" @click="getData(2)">
-                待发货
-                <!--<div class="nav-list"></div>-->
-            </li>
-            <li class="ification-show" :class="{'active':dtype == 3}" @click="getData(3)">
-                待收货
-                <!--<div class="nav-list"></div>-->
-            </li>
-            <li class="ification-show" :class="{'active':dtype == 4}" @click="getData(4)">
-                评价
-                <!--<div class="nav-list"></div>-->
-            </li>
-        </ul>
+    <div class="ification-nav" id="wrapper">
+        <div id="scroller">
+            <ul id="card">
+                <li class="activeification-show" :class="{'active':dtype == 0}" @click="getData(0)">全部</li>
+                <li class="ification-show" :class="{'active':dtype == 1}" @click="getData(1)">待付款</li>
+                <li class="ification-show" :class="{'active':dtype == 2}" @click="getData(2)">待发货</li>
+                <li class="ification-show" :class="{'active':dtype == 3}" @click="getData(3)">待收货</li>
+                <li class="ification-show" :class="{'active':dtype == 4}" @click="getData(4)">评价</li>
+            </ul>
+        </div>
     </div>
+
     <!-- ification-nav end -->
-
-
     <div class="content" id="content">
-
-        <!-- 待付款 -->
         <payment :orders="data"></payment>
-
     </div>
-
-
 </template>
 
 <script>
@@ -230,8 +233,8 @@
     import Toast from 'vux/src/components/toast'
     import Badge from 'vux/src/components/badge'
     import { clearAll } from 'vxpath/actions'
-
-
+    import Swiper from 'vux/src/components/swiper'
+    import SwiperItem from 'vux/src/components/swiper-item'
     import payment from 'components/order-payment'
 
 
@@ -246,7 +249,9 @@
             Separator,
             Toast,
             Badge,
-            payment
+            payment,
+            Swiper,
+            SwiperItem,
         },
         data() {
             return {
@@ -269,18 +274,29 @@
         ready() {
             this.getData(0);
 
-            document.getElementById("content").ontouchstart = function() {
-                console.log(1);
-            }
-
-            document.getElementById("content").ontouchmove = function() {
-                console.log(2);
-            }
+            var intervalTime_top = null, top_menu = null;
+            intervalTime_top = setInterval(function() {
+                var resultContentH = $("#wrapper").width();
+                if (resultContentH > 0) {
+                    $("#wrapper").width(resultContentH);
+                    setTimeout(function () {
+                        clearInterval(intervalTime_top);
+                        top_menu = new IScroll('#wrapper', {
+                            hScroll: true,
+                            mouseWheel: true,
+                            vScrollbar: false,
+                            probeType: 2,
+                            click: true
+                        });
+                        top_menu.refresh();
+                    }, 100);
+                }
+            } ,10);
 
         },
         methods: {
-            getData: function(type=0){
-                if(this.dtype==type){
+            getData: function(type = 0) {
+                if(this.dtype == type) {
                     return true;
                 }
                 this.dtype = type;

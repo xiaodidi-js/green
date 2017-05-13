@@ -19,7 +19,6 @@
 		box-shadow:1px 1px 2px #e2e2e2;
 		vertical-align:middle;
 		font-size:1.6rem;
-		/*margin-right:2%;*/
 		border-radius:0.1rem;
 		text-align:center;
 		margin-top: 10px;
@@ -93,114 +92,145 @@
 		background-size: cover;
 		overflow: hidden;
 	}
-
-	.nav-wrap{
+	.buy{
 		width:100%;
-		height:70px;
-		padding: 10px 0px;
+		line-height: 40px;
+		position:relative;
+		font-size:14px;
 		background: #fff;
 	}
-
-	.nav-wrap .icon-box{float:left;width:25%;}
-	.nav-wrap .icon-box a img{width:100%;margin:0px auto;display:block;}
-	.nav-wrap .icon-box p{text-align:center;
-		font-family: "Microsoft YaHei";color:#000;font-size:1.2rem;
-		margin-top:3px;
+	.myp{
+		width:91px;
+		margin:0 auto;
+		font-size:14px;
+		color:#81c429;
+		text-align:center;
+		line-height: 25px;
 	}
 
-	.buy{width:100%;line-height: 40px;position:relative;font-size:14px;background: #fff;}
-	.myp{width:91px;margin:0 auto;font-size:14px;color:#81c429;text-align:center;line-height: 25px;}
 	.timer{width:22rem;margin:0 auto;overflow:hidden;height:3.64rem;margin:5px auto;display:flex;}
+
 	.timer_p{font-size: 14px;color:#999999;padding-right:0;padding-right:8px;line-height: 40px;}
-	.box{width: 3.64rem;
+
+	.box {
+		width: 3.64rem;
 		height: 3.64rem;
 		background: #373439;
 		border-radius: 2px;
 		color: #fff;
 		line-height: 0.64rem;
-		text-align: center;}
-	.box span{line-height:3.74rem; }
-	.timer_dian{padding:0 3px;font-size:18px;line-height:3.64rem; }
-	.watch_more{position:absolute;right:1.5rem;top:1.5rem;color:#b3b3b3;font-size:13px;}
+		text-align: center;
+	}
 
+	.box span {line-height:3.74rem;}
+
+	.timer_dian {
+		padding:0 3px;
+		font-size:18px;
+		line-height:3.64rem;
+	}
+	.watch_more {
+		position:absolute;
+		right:1.5rem;
+		top:3.2rem;
+		color:#b3b3b3;
+		font-size:13px;
+	}
+
+	.buy {
+		width: 100%;
+		line-height: 40px;
+		position: relative;
+		font-size: 14px;
+		background: #fff;
+		padding: 10px 0px;
+	}
+
+	.content {
+		width: 100%;
+		height: 100%;
+		background: #f5f9ea;
+		clear: both;
+	}
+	.content .box-list {
+		width: 32%;
+		height: auto;
+		background: #fff;
+		float: left;
+		text-align: center;
+		margin: 8px 2.1px 1rem;
+	}
+	.content .box-list .main-title {
+		color:#ff1d25;
+		font-size:1.6rem;
+		line-height: 3.0rem;
+		height:3.0rem;
+		display:block;
+		width:100%;
+	}
+
+	.content .box-list .main-price {
+		color:#f9ad0c;
+		display:block;
+		height:2.5rem;
+		line-height: 2.5rem;
+		width:100%;
+	}
+
+	.content .box-list .main-des {
+		font-size:1.3rem;
+		color:#999;
+		height:4.0rem;
+		line-height: 1.9rem;
+		width:90%;
+		display: block;
+		margin:0px auto;
+		word-wrap:break-word;
+		width:100%;
+	}
 
 </style>
 <template>
-	<div class="nav-wrap">
-		<div class="icon-box">
-			<a>
-				<img src="../images/xinpin.png" alt="" style="width:50px;height:50px;" />
-				<p>本周新品</p>
-			</a>
-		</div>
-		<div class="icon-box">
-			<a v-link="{ name : 'classify' }">
-				<img src="../images/tuijian.png" alt="" style="width:50px;height:50px;" />
-				<p>全部商品</p>
-			</a>
-		</div>
-		<div class="icon-box">
-			<a v-link="{ name : 'register' }">
-				<img src="../images/xinren.png" alt="" style="width:50px;height:50px;" >
-				<p>新人注册</p>
-			</a>
-		</div>
-		<div class="icon-box">
-			<a>
-				<img src="../images/tuijian.png" alt="" style="width:50px;height:50px;" >
-				<p>热门推荐</p>
-			</a>
-		</div>
-	</div>
-	<!--<div class="wrapper">-->
-		<!--<div class="card-box" v-for="item in 1" v-link="{}">-->
-			<!--<p class="title">{{ item.name }}</p>-->
-			<!--<div class="time" v-if="item.type">-->
-				<!--<template v-if="status > 0">-->
-					<!--<label class="number">{{ timeRes.hour }}</label>-->
-					<!--<label class="dotted">:</label>-->
-					<!--<label class="number">{{ timeRes.minute }}</label>-->
-					<!--<label class="dotted">:</label>-->
-					<!--<label class="number">{{ timeRes.second }}</label>-->
-				<!--</template>-->
-				<!--<label class="dotted" v-if="status == 0">抢购进行中!</label>-->
-				<!--<label class="none" v-if="status < 0">抢购已结束</label>-->
-			<!--</div>-->
-			<!--<div class="desc" v-else>{{ item.desc }}</div>-->
-			<!--<div class="img" v-lazy:background-image="item.img"></div>-->
-		<!--</div>-->
-	<!--</div>-->
-
 	<div class="buy">
 		<p class="myp">限时抢购</p>
 		<div class="timer">
 			<p class="timer_p">距结束</p>
-			<div class="box"><span>{{ timeRes.hour }}</span></div>
+			<div class="box"><span style="font-size: 1.4rem;">{{ timeRes.hour }}</span></div>
 			<p class="timer_dian">:</p>
-			<div class="box"><span>{{ timeRes.minute }}</span></div>
+			<div class="box"><span style="font-size: 1.4rem;">{{ timeRes.minute }}</span></div>
 			<p class="timer_dian">:</p>
-			<div class="box"><span>{{ timeRes.second }}</span></div>
+			<div class="box"><span style="font-size: 1.4rem;">{{ timeRes.second }}</span></div>
 			<div class="time">
 				<label class="dotted" v-if="status == 0">抢购进行中!</label>
 				<label class="none" v-if="status < 0">抢购已结束</label>
 			</div>
 		</div>
-		<div class="watch_more" v-link="{name : 'tap-card'}">
+		<div class="watch_more" v-link="{name:'tap-card'}">
 			<span>查看更多 &gt; </span>
 		</div>
-		<div class="bg-color">
-			<div class="card-box" style="margin:10px 0px 0px 5px" v-for="item in columns">
-				<p class="title">{{ item.name }}</p>
-				<p class="money"><i style="font-size:12px;">￥</i>{{ item.money }}</p>
-				<div class="desc">{{ item.desc }}</div>
-				<div class="img"></div><!--  v-lazy:background-image="item.img" -->
-			</div>
-		</div>
 	</div>
-
-
+	<div class="content">
+		<template  v-for="item in columns" v-if="item.nowsale == 1">
+			<div class="box-list" v-for="list in item.arr" v-link="{name:'detail',params:{pid:list.shopid}}">
+				<p class="main-title">秒杀价</p>
+				<template v-for="mon in list.saledata">
+					<p class="main-price">
+						<i style="font-size: 1.2rem;">￥</i>
+						<i style="font-size: 2.3rem;">{{ mon.saleprice }}</i>
+					</p>
+				</template>
+				<div class="main-des">{{ list.name }}</div>
+				<div style="width:90%;margin:7px auto;">
+					<img :src="list.shotcut" style="width:100%;height:100%;" />
+				</div>
+			</div>
+		</template>
+	</div>
 </template>
 <script>
+
+
+
     export default{
         props: {
             columns: {
@@ -208,6 +238,11 @@
                 default() {
                     return []
                 }
+            },
+            time: {
+                type: Number,
+                default: 0,
+                twoWay: true
             }
         },
         data() {
@@ -220,23 +255,25 @@
 				second: '',	//秒钟
             }
         },
+        components: {
+
+		},
         ready() {
             let _self = this;
-            this.$watch('columns',function(newVal,oldVal){
-                for(var i=0;i<newVal.length;i++){
-                    if(newVal[i].type == 1 && newVal[i].time > 0){
+            this.$watch('columns',function(newVal,oldVal) {
+                for(var i = 0;i < newVal.length; i++) {
+                    if(newVal[i].type == 1 && newVal[i].time > 0) {
                         _self.time = newVal[i].time;
                         _self.status = 1;
                     }
                 }
             });
-
         },
         methods: {
             setTime:function() {
                 let _self = this;
                 this.timer = setInterval(function(){
-                    _self.time --;
+                    _self.time--;
                 },1000);
             }
         },
@@ -249,7 +286,6 @@
                 if(tmpTime >= 3600) {
                     htimes = parseInt(tmpTime / 3600);
                     timeObj.hour = htimes.toString();
-                    console.log(timeObj.hour);
                     if(htimes < 10) {
                         timeObj.hour = "0" + timeObj.hour;
                     }
@@ -260,7 +296,7 @@
                     mtimes = parseInt(tmpTime / 60);
                     timeObj.minute = mtimes.toString();
                     if(mtimes < 10) {
-                        timeObj.minute = "0"+timeObj.minute;
+                        timeObj.minute = "0" + timeObj.minute;
                     }
                     tmpTime = tmpTime - 60 * mtimes;
                 }
@@ -268,7 +304,7 @@
                 if(tmpTime >= 0) {
                     timeObj.second = tmpTime.toString();
                     if(tmpTime < 10) {
-                        timeObj.second = "0"+timeObj.second;
+                        timeObj.second = "0" + timeObj.second;
                     }
                 }
                 return timeObj;

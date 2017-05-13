@@ -42,7 +42,14 @@
 	}
 
 	.order-search .customer .txt-service {
-		font-size: 14px;
+		display:block;
+		width: 2.8rem;
+		height: 3.7rem;
+		background: url('../images/logo_kefu.png') no-repeat;
+		background-size:100%;
+		position: absolute;
+		top: 0px;
+		left: 10px;
 	}
 
 	.order-search-btn{
@@ -88,11 +95,8 @@
 			<input type="text" class="" placeholder="请输入您要搜索的商品" v-model="searchKey" />
 			<input type="button" class="order-search-btn" @click="goSearch()" value="搜索" />
 		</div>
-		<div class="customer" v-for="item in qqservice">
-			<a href="tel:{{ item.num }}" style="display:block;color:#fff" v-if="item.class === 1">
-				<i class="iconfont icon-kefu"></i>
-				<p class="txt-service">客服</p>
-			</a>
+		<div class="customer">
+			<a href="javascript:void(0)" class="txt-service" @click="goPage"></a>
 		</div>
 	</div>
 
@@ -104,11 +108,17 @@
 <script>
 
     import Toast from 'vux/src/components/toast'
+    import { myActive } from 'vxpath/actions'
 
 	export default{
 		components: {
 			Toast,
 		},
+        vuex: {
+            actions: {
+                myActive
+            }
+        },
         props: {
             bgcolor: {
                 type: String,
@@ -131,20 +141,13 @@
 			return {
                 toastMessage:'',
                 toastShow:false,
-				searchKey: '',
-                qqservice: []
+				searchKey: ''
 			}
 		},
 		ready() {
-            this.kefu();
+
 		},
 		methods: {
-            kefu(){
-                let _this = this;
-                this.$http.get(/*localStorage.apiDomain +*/ 'http://green-f.cn/public/index/Usercenter/onlie').then((response)=> {
-                    _this.qqservice = response.data.list;
-                });
-            },
             goSearch: function() {
 				this.searchKey = this.searchKey.replace(/(^\s*)|(\s*$)/g,'');
 				if(this.searchKey === "") {
@@ -156,6 +159,10 @@
 					return false;
 				}
 				this.$dispatch('goSearch',this.searchKey);
+			},
+			goPage () {
+                this.myActive(5);
+                this.$router.go({name: 'per-orders'})
 			}
 		}
 	}

@@ -66,6 +66,7 @@
 		left:0;
 		font-size:0;
 		background: #EFEFEF;
+		z-index: 5;
 	}
 
 	.bottom.color{
