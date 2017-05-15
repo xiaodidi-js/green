@@ -158,7 +158,7 @@
 		background: #fff;
 		float: left;
 		text-align: center;
-		margin: 8px 2.1px 1rem;
+		margin: 5px 2.4px;
 	}
 	.content .box-list .main-title {
 		color:#ff1d25;

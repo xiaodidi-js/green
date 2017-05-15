@@ -29,7 +29,14 @@ localStorage.setItem('apiDomain','http://green-f.cn/'); /* http://newshop.com/ *
 // 路由配置
 let router = new VueRouter({
     // 是否开启History模式的路由,默认开发环境开启,生产环境不开启。如果生产环境的服务端没有进行相关配置,请慎用
-    history: Env != 'production'
+    history: Env != 'production',
+    scrollBehavior (to, from, savedPosition) {
+        if (savedPosition) {
+            return savedPosition
+        } else {
+            return { x: 0, y: 0 }
+        }
+    }
 });
 
 router.map(Routers);
@@ -57,7 +64,7 @@ router.beforeEach((transition) => {
 		}
 	}else if(['login','register','find'].indexOf(transition.to.name)>=0){
 		let ustore = localStorage.getItem('userInfo') || sessionStorage.getItem('userInfo');
-		if(ustore!==null){
+		if(ustore !== null) {
 			transition.abort();
 		}else{
 			transition.next();

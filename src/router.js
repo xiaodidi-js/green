@@ -8,6 +8,13 @@ const routers = {
     	footer:true,
     	title:'绿秧田商城',
     	position:1,
+        scrollBehavior (to, from, savedPosition) {
+            if (to.hash) {
+                return {
+                    selector: to.hash
+                }
+            }
+        },
         component (resolve) {
             require(['./views/index.vue'], resolve);
         },

@@ -178,6 +178,10 @@
                        @click="clickExpress(item.scid,item.snum)">查看快递</a>
 
                     <a class="manage-btn"
+                       v-if="item.pay==1&&item.send==1&&item.receive==0&&item.status==0"
+                       @click="clickConfirm(item.id)">确认收货</a>
+
+                    <a class="manage-btn"
                        v-if="item.pay==1&&(item.send==1||item.send==0)&&item.reject==0 || item.status==1"
                        @click="buyAgain(item.id)">再次购买</a>
                 </div>
@@ -202,6 +206,7 @@
     import Swiper from 'vux/src/components/swiper'
     import SwiperItem from 'vux/src/components/swiper-item'
     import Confirm from 'vux/src/components/confirm'
+    import ElButton from "../../node_modules/element-ui/packages/button/src/button";
 
     export default{
         vuex: {
@@ -223,7 +228,7 @@
             }
         },
         components: {
-            Loading,
+            ElButton, Loading,
             Toast,
             Swiper,
             SwiperItem,
@@ -245,6 +250,37 @@
             }
         },
         methods: {
+            clickConfirm: function(id) {
+                let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
+                ustore = JSON.parse(ustore);
+                //确认收货
+                this.loadingMessage = '正在确认';
+                this.loadingShow = true;
+                let pdata = {uid:ustore.id,token:ustore.token,oid:id};
+                console.log(1);
+                this.$http.put(localStorage.apiDomain + 'public/index/user/orderoperation',pdata).then((response)=>{
+                    this.loadingShow = false;
+                    this.toastMessage = response.data.info;
+                    this.toastShow = true;
+                    this.btnStatus = false;
+                    if(response.data.status === 1) {
+                        console.log(3);
+                    }else if(response.data.status===-1) {
+                        let context = this;
+                        setTimeout(function(){
+                            context.clearAll();
+                            sessionStorage.removeItem('userInfo');
+                            localStorage.removeItem('userInfo');
+                            context.$router.go({name:'login'});
+                        },800);
+                    }
+                },(response)=>{
+                    this.loadingShow = false;
+                    this.btnStatus = false;
+                    this.toastMessage = '网络开小差了~';
+                    this.toastShow = true;
+                });
+            },
             buyAgain: function(oid){
                 this.btnStatus = true;
                 this.loadingMessage = '请稍候...';

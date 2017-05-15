@@ -126,7 +126,7 @@ export default{
 
 	},
 	ready() {
-		
+		this.data.auto = true;
 	},
 	methods: {
 		checkBefore: function(){

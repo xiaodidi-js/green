@@ -302,11 +302,12 @@
                 this.dtype = type;
                 let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
                 ustore = JSON.parse(ustore);
-                this.$http.get(localStorage.apiDomain+'public/index/user/orderselection/uid/'+ustore.id+'/token/'+ustore.token+'/type/'+type).then((response)=>{
-                    if(response.data.status===1){
+                this.$http.get(localStorage.apiDomain+'public/index/user/orderselection/uid/'+ustore.id+'/token/'+ustore.token+'/type/'+type).then((response)=> {
+                    if(response.data.status === 1) {
                         document.body.scrollTop = 0;
                         this.count = response.data.count;
                         this.data = response.data.list;
+                        console.log(response.data);
                     }else if(response.data.status===-1){
                         this.toastMessage = response.data.info;
                         this.toastShow = true;

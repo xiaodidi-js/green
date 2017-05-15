@@ -637,7 +637,7 @@
             },
             lastPaySum: function() {
                 let lastMoney = parseFloat(this.paySum)+parseFloat(this.freight) - parseFloat(this.scoreMoney.makePrice) - parseFloat(this.couponMoney);
-                if(lastMoney <= 0) lastMoney = 0.01;
+                if(lastMoney <= 0) lastMoney = 0.02;
                 return lastMoney.toFixed(2);
             }
         },

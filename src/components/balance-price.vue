@@ -118,38 +118,38 @@
 			
 		},
 		computed: {
-			sfee: function(){
+			sfee: function() {
 				let fee = this.sum;
-				if(typeof fee==='string'){
+				if(typeof fee === 'string') {
 					fee = parseFloat(fee);
 				}
 				return fee.toFixed(2);
 			},
-			cfee: function(){
+			cfee: function() {
 				let fee = this.coupon;
-				if(typeof fee==='string'){
+				if(typeof fee === 'string') {
 					fee = parseFloat(fee);
 				}
 				return fee.toFixed(2);
 			},
-			scfee: function(){
+			scfee: function() {
 				let fee = this.score;
-				if(typeof fee==='string'){
+				if(typeof fee === 'string') {
 					fee = parseFloat(fee);
 				}
 				return fee.toFixed(2);
 			},
-			ffee: function(){
+			ffee: function() {
 				let fee = this.freight;
-				if(typeof fee==='string'){
+				if(typeof fee === 'string') {
 					fee = parseFloat(fee);
 				}
 				return fee.toFixed(2);
 			},
 			lastSum: function(){
-				let getSum = (this.sum+this.freight)-(this.coupon+this.score);
-				if(getSum<=0){
-					getSum = 0.01;
+				let getSum = (this.sum + this.freight) - (this.coupon + this.score);
+				if(getSum <= 0) {
+					getSum = 0.02;
 				}
 				return getSum.toFixed(2);
 			}

@@ -67,7 +67,7 @@
 
             // 按钮淡入淡出
             $(window).scroll(function(){
-                if($(window).scrollTop() >= 100){
+                if($(window).scrollTop() >= 350){
                     $(".goto_top").fadeIn(500);
                 } else {
                     $(".goto_top").stop(true,true).fadeOut(500);
@@ -85,7 +85,6 @@
 		    indexMessage: function() {
                 this.$http.get(localStorage.apiDomain+'public/index/index').then((response)=>{
                     this.data = response.data;
-                    console.log(this.data);
                     var data = this.data;
                     for (var i = 0; i < data.index_data.length; i++) {
                         if(data.index_data[i].type == 4){

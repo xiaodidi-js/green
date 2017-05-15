@@ -142,7 +142,7 @@
 	}
 
 	.shotcut-txt .relative {
-		color:#f9ad0c;margin-top: 15px;
+		color:#f9ad0c;margin-top: 20px;
 	}
 
 	.main .icon-card {
@@ -193,7 +193,7 @@
 								<img :src="item.src" alt="{{ item.title }}" class="shotcut-img" style="width:100%;height:100%;" />
 							</div>
 							<div class="shotcut-txt">
-								<p style="height:35px;width:100%;">{{ item.title }}</p>
+								<p style="height:35px;width:100%;overflow: hidden;text-overflow: ellipsis;">{{ item.title }}</p>
 								<p class="relative" style="">
 									<i>￥</i>
 									<span class="money">{{item.price}}</span>
@@ -230,6 +230,15 @@
                 default() {
                     return []
                 }
+            }
+        },
+        data() {
+            return {
+                data: [],
+                item: [],
+                myScroll: '',
+                dtype: -1,
+                guige:[],
             }
         },
         ready() {
@@ -287,14 +296,6 @@
                 }
             } ,10);
         },
-        data() {
-            return {
-                data: [],
-				item: [],
-                myScroll: '',
-                dtype: -1,
-            }
-        },
         components: {
             Scroller
 		},
@@ -325,7 +326,7 @@
                 });
             },
             goCart: function(cid) {
-
+				console.log(cid);
 			}
         },
     }

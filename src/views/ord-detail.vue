@@ -319,8 +319,6 @@
 		<!-- 商品列表 -->
 		<balance-list :list="data.products" :show-top="true" :show-btm="false"></balance-list>
 
-
-
 		<div class="comment" v-if="data.order.pay==1&&data.order.receive==1">
 			<a v-if="data.order.comment==1" v-link="{name:'comment-detail',params:{oid:this.$route.params.oid}}">查看评价</a>
 			<a v-else v-link="{name:'comment-submit',params:{oid:this.$route.params.oid}}">我要评价</a>
@@ -487,7 +485,7 @@ export default{
 		},
 		callpay: function(){
 			if (typeof WeixinJSBridge == "undefined"){
-			    if( document.addEventListener ){
+			    if(document.addEventListener ){
 			        document.addEventListener('WeixinJSBridgeReady',this.jsApiCall, false);
 			    }else if (document.attachEvent){
 			        document.attachEvent('WeixinJSBridgeReady',this.jsApiCall);
@@ -541,7 +539,7 @@ export default{
 						this.toastMessage = response.data.info;
 						this.toastShow = true;
 						this.btnStatus = false;
-						if(response.data.status===1){
+						if(response.data.status===1) {
 							this.data.order.receive = 1;
 							this.data.pindex = 3;
 							this.data.process[3].status = 1;
@@ -581,7 +579,7 @@ export default{
 			switch(this.data.order.paytype){
 				case 1:
 					//微信支付
-					if(typeof this.data.payment.appId==='string'&&typeof this.data.payment.package==='string'){
+					if(typeof this.data.payment.appId === 'string' && typeof this.data.payment.package === 'string') {
 						this.callpay();
 						return;
 					}
@@ -590,10 +588,10 @@ export default{
 					let opid = sessionStorage.getItem('openid');
 					let pdata = {uid:ustore.id,token:ustore.token,oid:this.$route.params.oid,opid:opid};
 					this.$http.put(localStorage.apiDomain+'public/index/user/getsubmitorder',pdata).then((response)=>{
-						if(response.data.status===1){
+						if(response.data.status === 1) {
 							this.data.payment = JSON.parse(response.data.payment);
 							this.callpay();
-						}else if(response.data.status===-1){
+						}else if(response.data.status === -1) {
 							this.btnStatus = false;
 							this.toastMessage = response.data.info;
 							this.toastShow = true;
@@ -636,15 +634,15 @@ export default{
 			this.btnStatus = true;
 		},
 		orderConfirm: function(){
-			if(this.data.order.pay!=1){
+			if(this.data.order.pay !=1) {
 				this.toastMessage = '订单未支付';
 				this.toastShow = true;
 				return false;
-			}else if(this.data.order.send!=1){
+			}else if(this.data.order.send !=1) {
 				this.toastMessage = '订单未发货';
 				this.toastShow = true;
 				return false;
-			}else if(this.data.order.receive==1){
+			}else if(this.data.order.receive == 1) {
 				this.toastMessage = '订单已确认收货';
 				this.toastShow = true;
 				return false;
@@ -664,7 +662,7 @@ export default{
 			this.$http.get(localStorage.apiDomain+'public/index/user/orderoperation/uid/'+ustore.id+'/token/'+ustore.token+'/oid/'+this.$route.params.oid).then((response)=>{
 				this.loadingShow = false;
 				this.btnStatus = false;
-				if(response.data.status===1){
+				if(response.data.status===1) {
 					this.setCartAgain(response.data.list);
 					this.$router.go({name:'cart'});
 				}else if(response.data.status===-1){

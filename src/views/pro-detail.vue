@@ -728,9 +728,7 @@
 					</div>
 					<div class="deliver">
 						<div class="son">快递：{{ makeFreight }}</div>
-						<template v-for="item in data.sale.nowshop.saledata">
-							<div class="son">销量：{{ item.salepaynub + data.virtual_sale }}</div>
-						</template>
+						<div class="son">销量：{{ data.store }}</div>
 						<div class="son">库存：{{ data.store }}</div>
 					</div>
 
@@ -828,7 +826,7 @@
 							<div class="com-title">最新评价</div>
 							<div class="com-arrow"></div>
 						</div>
-						<div v-if="data.comments&&data.comments.length>0">
+						<div v-if="data.comments&&data.comments.length > 0">
 							<div class="com-line" v-for="cms in data.comments">
 								<div class="cname">{{ cms.uname }}</div>
 								<div class="cdate">{{ cms.createtime }}</div>
@@ -909,7 +907,7 @@
 				<div class="num-counter">
 					<div class="btns" :class="{'disabled':buyNums <= 1}" @click="reduceNums">-</div>
 					<input type="number" class="input" :value="buyNums" readonly />
-					<div class="btns" :class="{'disabled':buyNums>=proNums}" @click="addNums">+</div>
+					<div class="btns" :class="{'disabled':buyNums >= proNums}" @click="addNums">+</div>
 				</div>
 			</div>
 		</div>
@@ -988,7 +986,7 @@
 		},
 		route: {
 			data(transition) {
-				if(typeof this.data.id!=='undefined'&&this.data.id!=transition.to.params.pid){
+				if(typeof this.data.id !== 'undefined' && this.data.id != transition.to.params.pid){
 					location.reload();
 				}
 			}
@@ -1272,21 +1270,21 @@
                 this.$router.go({name:'cart'});
 			},
 			addCart : function() {
-                if(this.data.format){
-                    if(!this.checkGuige()){
+                if(this.data.format) {
+                    if(!this.checkGuige()) {
                         this.formatPopShow = true;
                         return false;
                     }
                 }
-                if(this.proNums<=0){
+                if(this.proNums<=0) {
                     this.toastMessage = '商品暂时缺货';
                     this.toastShow = true;
                     return false;
-                }else if(this.buyNums<1){
+                }else if(this.buyNums<1) {
                     this.toastMessage = '购买数量不能小于1';
                     this.toastShow = true;
                     return false;
-                }else if(this.buyNums>this.proNums){
+                }else if(this.buyNums>this.proNums) {
                     this.toastMessage = '购买数量超过库存数量';
                     this.toastShow = true;
                     return false;
@@ -1294,7 +1292,7 @@
                 let cartObj = {};
                 let cartFormat = this.guige.length > 0 ? this.guige.join(',') : '';
                 let cartFormatName = this.guige.length > 0 ? this.guigeName.join('-') : '';
-                if(this.data.is_promote){
+                if(this.data.is_promote) {
                     cartObj = {id:this.$route.params.pid,shotcut:this.data.shotcut,name:this.data.name,price:this.data.promote_price,format:cartFormat,formatName:cartFormatName,nums:this.buyNums,store:this.proNums};
                 }else{
                     cartObj = {id:this.$route.params.pid,shotcut:this.data.shotcut,name:this.data.name,price:this.data.price,format:cartFormat,formatName:cartFormatName,nums:this.buyNums,store:this.proNums};
