@@ -436,7 +436,6 @@ export default{
 		});
 	},
 	methods: {
-
 		jumpExpress: function() {
 			if(this.data.order.pay !=1 || this.data.order.send !=1 || !this.data.order.snum) {
 				return false;

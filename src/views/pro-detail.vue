@@ -728,7 +728,9 @@
 					</div>
 					<div class="deliver">
 						<div class="son">快递：{{ makeFreight }}</div>
-						<div class="son">销量：{{ data.sale+data.virtual_sale }}</div>
+						<template v-for="item in data.sale.nowshop.saledata">
+							<div class="son">销量：{{ item.salepaynub + data.virtual_sale }}</div>
+						</template>
 						<div class="son">库存：{{ data.store }}</div>
 					</div>
 
@@ -736,7 +738,7 @@
 					<div class="divider"></div>
 
 					<!-- 抢购时间 -->
-					<Flashshop></Flashshop>
+					<!--<Flashshop :time="data.promote_start | time" end="" ></Flashshop>-->
 					<!-- 抢购时间 -->
 
 					<!-- 抢购 -->
@@ -962,7 +964,8 @@
 				stoastMessage:'',
 				stoastShow:false,
 				data:{},
-                toggle: true
+                toggle: true,
+                gotimeline: []
 			}
 		},
 		components: {
@@ -994,7 +997,7 @@
 
 		    //选项卡
 			this.siblingsDom();
-
+			this.timeline();
 			let getUrl = '',context = this;
 			let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
 			ustore = JSON.parse(ustore);
@@ -1006,10 +1009,9 @@
 			var gg = null;
 			this.$http.get(getUrl).then((response)=>{
 				this.data = response.data;
+				console.log(this.data);
                 //gg = this.data.format[0].value[0]
-
 //                this.changeGuige(0,gg['id'],gg['name']);
-
                 if(!this.data.format){
 					this.proNums = this.data.store;
 				}
@@ -1087,6 +1089,33 @@
 			}
 		},
 		methods: {
+            timeline: function() {
+                let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
+                ustore = JSON.parse(ustore);
+                var _this = this;
+                this.$http.get(localStorage.apiDomain+'public/index/sale/SaleTimeSolt/uid').then((response) => {
+                    if(response.data.status===1) {
+                        this.gotimeline = response.data.SaleTimeSolt;
+                        console.log(this.gotimeline);
+                    } else if(response.data.status===-1) {
+                        this.toastMessage = response.data.info;
+                        this.toastShow = true;
+                        let context = this;
+                        setTimeout(function(){
+                            context.clearAll();
+                            sessionStorage.removeItem('userInfo');
+                            localStorage.removeItem('userInfo');
+                            context.$router.go({name:'login'});
+                        },800);
+                    } else {
+                        this.toastMessage = response.data.info;
+                        this.toastShow = true;
+                    }
+                },(response)=>{
+                    this.toastMessage = '网络开小差了~';
+                    this.toastShow = true;
+                });
+            },
             $id: function(id) {
                 return document.getElementById(id);
             },
@@ -1242,7 +1271,7 @@
                 this.formatPopShow = false;
                 this.$router.go({name:'cart'});
 			},
-			addCart : function(){
+			addCart : function() {
                 if(this.data.format){
                     if(!this.checkGuige()){
                         this.formatPopShow = true;
@@ -1277,6 +1306,18 @@
                 this.formatPopShow = false;
                 this.stoastMessage = '加入购物车成功';
                 this.stoastShow = true;
+            },
+            filters: {
+                time: function (value) {
+                    let d = new Date(parseInt(value) * 1000);
+                    var years = d.getFullYear();
+                    var moneths = d.getMonth();
+                    var dates = d.getDate();
+                    var hours = d.getHours();
+                    var minutes = d.getMinutes();
+                    var seconds = d.getSeconds();
+                    return (hours > 9 ? hours : '0' + hours) + ':' + (minutes > 9 ? minutes : '0' + minutes) + ":" + (seconds > 9 ? seconds : '0' + seconds)
+                }
             }
 		}
 	}

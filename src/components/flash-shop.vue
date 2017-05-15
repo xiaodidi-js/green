@@ -6,7 +6,7 @@
 		margin:15px auto 0;
 		border:1px solid #f26c60;
 		border-radius:10px;
-		display:none;
+		display:block ;
 	}
 
 	.buying-time .buying-time-title{
@@ -47,7 +47,7 @@
 
 <template>
 	<!-- 抢购时间 -->
-	<div class="buying-time">
+	<div class="buying-time" v-if="status === 1">
 		<p class="buying-time-title">
 			<span>抢</span>
 			<span>购</span>
@@ -57,12 +57,13 @@
 				距离抢购结束还剩：
 			</span>
 				<span style="color:#f26c60;" id="timeline">
-					<i id="times_hour">{{ hour }}</i> 小时
-					<i id="times_minute">{{ second }}</i> 分
-					<i id="second"> {{ minute }}</i>秒
+					<i id="times_hour">{{ timeRes.hour}}</i> 小时
+					<i id="times_minute">{{ timeRes.minute}}</i> 分
+					<i id="second">{{ timeRes.second}}</i>秒
 			</span>
 		</p>
 	</div>
+	<div class="buying-time" v-else></div>
 	<!-- 抢购时间 -->
 </template>
 
@@ -72,11 +73,49 @@
 		components: {
 
 		},
-		props: {
-
-		},
+        props: {
+            kind: {
+                type: Number,
+                default: 0
+            },
+            time: {
+                type: Number,
+                default: 0,
+                twoWay: true
+            },
+            desc: {
+                type: String,
+                default: ''
+            },
+            end: {
+                type: String,
+                default: ''
+            },
+            unith: {
+                type: String,
+                default: ':'
+            },
+            unitm: {
+                type: String,
+                default: ':'
+            },
+            units: {
+                type: String,
+                default: ''
+            }
+        },
 		ready() {
-            this.startTimer()
+            this.startTimer();
+            if(this.kind===1){
+                this.unith = "小时";
+                this.unitm = "分";
+                this.units = "秒";
+            }
+            if(this.time){
+                this.setTime();
+            }else{
+                this.status = 0;
+            }
 		},
 		data() {
 			return {
@@ -85,9 +124,50 @@
 				minute: '40',//秒钟
                 stop: false,
                 Interval: null,
+                timer:null,
+                status:1,
+			}
+		},
+		computed: {
+			"timeRes": function() {
+				let timeObj = {"hour":"00","minute":"00","second":"00"};
+				let tmpTime = this.time;
+				let htimes = 0,mtimes = 0;
+				//计算小时数
+				if(tmpTime >= 3600) {
+					htimes = parseInt(tmpTime / 3600);
+					timeObj.hour = htimes.toString();
+					if(htimes < 10){
+						timeObj.hour = "0"+timeObj.hour;
+					}
+					tmpTime = tmpTime - 3600 * htimes;
+				}
+				//计算分钟数
+				if(tmpTime >= 60) {
+					mtimes = parseInt(tmpTime / 60);
+					timeObj.minute = mtimes.toString();
+					if(mtimes < 10) {
+						timeObj.minute = "0"+timeObj.minute;
+					}
+					tmpTime = tmpTime - 60 * mtimes;
+				}
+				//计算秒数
+				if(tmpTime >= 0) {
+					timeObj.second = tmpTime.toString();
+					if(tmpTime < 10) {
+						timeObj.second = "0"+timeObj.second;
+					}
+				}
+				return timeObj;
 			}
 		},
 		methods: {
+            setTime: function(){
+                let _self = this;
+                this.timer = setInterval(function(){
+                    _self.time --;
+                },1000);
+            },
             update_timer () {
                 if (this.minute <= 0) {
                     this.minute = 60;
@@ -114,6 +194,16 @@
                 }
                 this.stop = !this.stop
             }
+		},
+		watch: {
+			"time": function(nval,oval) {
+				if(oval == ''){
+					this.setTime();
+				}else if(nval <= 0){
+					this.status = 0;
+					clearInterval(this.timer);
+				}
+			}
 		}
 	}
 </script>
