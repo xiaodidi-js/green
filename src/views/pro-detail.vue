@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../../../../../../迅雷下载/98/animate.min.css">
+
 <style scoped>
 	.my-swiper{
 		width:100%;
