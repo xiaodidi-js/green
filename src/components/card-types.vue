@@ -237,14 +237,19 @@
                 data: [],
                 item: [],
                 myScroll: '',
-                dtype: -1,
+                dtype: null,
                 guige:[],
             }
         },
         ready() {
             this.dtype = localStorage.getItem('number');
-            this.chooseSort(this.dtype);
-            this.getChonse(this.dtype);
+            if(this.dtype == null){
+                this.chooseSort(this.dtype);
+                this.getChonse(this.dtype);
+            }else{
+                this.chooseSort(26);
+                this.getChonse(26);
+			}
 
             $(function() {
                 //菜单框架自动获取高度

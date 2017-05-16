@@ -18,7 +18,7 @@
 
 	<div class="sub-content">
 		<!-- 显示抢购 -->
-		<card-column :columns="maincolumns" keep-alive></card-column>
+		<!--<card-column :columns="maincolumns" keep-alive></card-column>-->
 		<!-- 热销产品排行榜 -->
 		<card-rectangle :testarr="data.index_data"></card-rectangle>
 		<!-- toast提示框 -->
@@ -80,6 +80,19 @@
                 },200);
             });
 
+
+            if(this.$route.query.sinceid) {
+                console.log(1);
+                var sinceid = this.$route.query.sinceid;
+                var openid = sessionStorage.getItem('openid');
+                this.$http.get(localStorage.apiDomain + 'public/index/index/sincestar?openid=' + openid + '&since=' + sinceid).then((response) => {
+                    if (response.data.status === 1) {
+
+                    }
+                });
+            }else{
+                console.log(2);
+			}
 		},
         methods: {
 		    indexMessage: function() {

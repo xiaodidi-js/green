@@ -187,6 +187,9 @@
 		margin:0px auto;
 		word-wrap:break-word;
 		width:100%;
+		overflow: hidden;
+		width: 100%;
+		text-overflow: ellipsis;
 	}
 
 </style>
@@ -195,11 +198,12 @@
 		<p class="myp">限时抢购</p>
 		<div class="timer">
 			<p class="timer_p">距结束</p>
-			<div class="box"><span style="font-size: 1.4rem;">{{ timeRes.hour }}</span></div>
-			<p class="timer_dian">:</p>
-			<div class="box"><span style="font-size: 1.4rem;">{{ timeRes.minute }}</span></div>
-			<p class="timer_dian">:</p>
-			<div class="box"><span style="font-size: 1.4rem;">{{ timeRes.second }}</span></div>
+				<div class="box"><span style="font-size: 1.4rem;">{{ timeRes.hour}}</span></div>
+				<p class="timer_dian">:</p>
+				<div class="box"><span style="font-size: 1.4rem;">{{ timeRes.minute}}</span></div>
+				<p class="timer_dian">:</p>
+				<div class="box"><span style="font-size: 1.4rem;">{{ timeRes.second}}</span></div>
+
 			<div class="time">
 				<label class="dotted" v-if="status == 0">抢购进行中!</label>
 				<label class="none" v-if="status < 0">抢购已结束</label>
@@ -209,27 +213,28 @@
 			<span>查看更多 &gt; </span>
 		</div>
 	</div>
+
 	<div class="content">
-		<template  v-for="item in columns" v-if="item.nowsale == 1">
-			<div class="box-list" v-for="list in item.arr" v-link="{name:'detail',params:{pid:list.shopid}}">
-				<p class="main-title">秒杀价</p>
-				<template v-for="mon in list.saledata">
-					<p class="main-price">
-						<i style="font-size: 1.2rem;">￥</i>
-						<i style="font-size: 2.3rem;">{{ mon.saleprice }}</i>
-					</p>
-				</template>
-				<div class="main-des">{{ list.name }}</div>
-				<div style="width:90%;margin:7px auto;">
-					<img :src="list.shotcut" style="width:100%;height:100%;" />
+		<template  v-for="item in columns">
+			<template v-if="item.nowsale == 1">
+				<div class="box-list" v-for="list in item.arr" v-link="{name:'detail',params:{pid:list.shopid}}">
+					<p class="main-title">秒杀价</p>
+					<template v-for="mon in list.saledata">
+						<p class="main-price">
+							<i style="font-size: 1.2rem;">￥</i>
+							<i style="font-size: 2.3rem;">{{ mon.saleprice }}</i>
+						</p>
+					</template>
+					<div class="main-des">{{ list.name }}</div>
+					<div style="width:90%;margin:7px auto;">
+						<img :src="list.shotcut" style="width:100%;height:100%;" />
+					</div>
 				</div>
-			</div>
+			</template>
 		</template>
 	</div>
 </template>
 <script>
-
-
 
     export default{
         props: {
@@ -238,11 +243,6 @@
                 default() {
                     return []
                 }
-            },
-            time: {
-                type: Number,
-                default: 0,
-                twoWay: true
             }
         },
         data() {
@@ -250,9 +250,6 @@
                 time:'',
                 timer:null,
                 status:1,
-				hour: '',	//小时
-				minute: '',	//分钟
-				second: '',	//秒钟
             }
         },
         components: {
@@ -262,10 +259,11 @@
             let _self = this;
             this.$watch('columns',function(newVal,oldVal) {
                 for(var i = 0;i < newVal.length; i++) {
-                    if(newVal[i].type == 1 && newVal[i].time > 0) {
-                        _self.time = newVal[i].time;
-                        _self.status = 1;
+                    if(newVal[i].nowsale == 1 && newVal[i].servertime > 0) {
+                        _self.time = newVal[i].servertime;
+                        _self.nowsale = 1;
                     }
+                    console.log(newVal[i]);
                 }
             });
         },
@@ -279,7 +277,7 @@
         },
         computed: {
             timeRes: function() {
-                let timeObj = {"hour":"00","minute":"00","second":"00"};
+                let timeObj = {"hour" : "00","minute" : "00","second" : "00"};
                 let tmpTime = this.time;
                 let htimes = 0,mtimes = 0;
                 //计算小时数
@@ -312,10 +310,10 @@
         },
         watch: {
             time:function(nval,oval) {
-                if(oval == '') {
+                if (oval == '') {
                     this.setTime();
-                }else if(nval <= 0) {
-                    this.status = 0;
+                } else if (nval <= 0) {
+                    this.nowsale = 0;
                     clearInterval(this.timer);
                 }
             }

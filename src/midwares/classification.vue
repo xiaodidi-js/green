@@ -225,6 +225,7 @@
     <div class="content" id="content">
         <payment :orders="data"></payment>
     </div>
+
 </template>
 
 <script>
@@ -236,7 +237,6 @@
     import Swiper from 'vux/src/components/swiper'
     import SwiperItem from 'vux/src/components/swiper-item'
     import payment from 'components/order-payment'
-
 
     export default{
         vuex: {
@@ -265,7 +265,11 @@
                     uncomment: 0,
                     service: 0
                 },
-                data:[]
+                data:[],
+                btnStatus:false,
+                confirmShow:false,
+                confirmTitle:'',
+                confirmText:'',
             }
         },
         route: {
@@ -273,7 +277,6 @@
         },
         ready() {
             this.getData(0);
-
             var intervalTime_top = null, top_menu = null;
             intervalTime_top = setInterval(function() {
                 var resultContentH = $("#wrapper").width();
@@ -292,7 +295,6 @@
                     }, 100);
                 }
             } ,10);
-
         },
         methods: {
             getData: function(type = 0) {

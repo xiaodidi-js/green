@@ -330,7 +330,6 @@
                 let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
                 ustore = JSON.parse(ustore);
                 var _this = this;
-
                 this.$http.get(localStorage.apiDomain + 'public/index/Usercenter/myaddress/uid/' + ustore.id + '/token/' + ustore.token + '/state/0/sinceid/' + id).then((response) => {
                     if (response.data.status === 1) {
                         var tmp = this.address.filter(function (item) {

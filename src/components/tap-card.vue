@@ -208,19 +208,12 @@
         filters: {
             time: function (value) {
                 let d = new Date(parseInt(value) * 1000);
-                var years = d.getFullYear();
-                var moneths = d.getMonth();
-                var dates = d.getDate();
                 var hours = d.getHours();
                 var minutes = d.getMinutes();
-                var seconds = d.getSeconds();
                 return (hours > 9 ? hours : '0' + hours) + ':' + (minutes > 9 ? minutes : '0' + minutes)
             },
             timeline: function (value) {
                 let d = new Date(parseInt(value) * 1000);
-                var years = d.getFullYear();
-                var moneths = d.getMonth();
-                var dates = d.getDate();
                 var hours = d.getHours();
                 var minutes = d.getMinutes();
                 var seconds = d.getSeconds();

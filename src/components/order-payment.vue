@@ -179,13 +179,23 @@
 
                     <a class="manage-btn"
                        v-if="item.pay==1&&item.send==1&&item.receive==0&&item.status==0"
-                       @click="clickConfirm(item.id)">确认收货</a>
+                       @click="clickConfirm()">确认收货</a>
 
                     <a class="manage-btn"
                        v-if="item.pay==1&&(item.send==1||item.send==0)&&item.reject==0 || item.status==1"
                        @click="buyAgain(item.id)">再次购买</a>
                 </div>
             </div>
+            <!-- 确定弹框 -->
+            <confirm
+                    :show.sync="confirmShow"
+                    :title="confirmTitle"
+                    confirm-text="确定"
+                    cancel-text="取消"
+                    @on-confirm="confirmClcik(item.id)"
+                    @on-cancel="cancelClick">
+                <p style="text-align:center;">{{ confirmText }}</p>
+            </confirm>
         </div>
     </div>
     <!-- toast提示框 -->
@@ -194,8 +204,7 @@
     <!-- loading加载框 -->
     <loading :show="loadingShow" :text="loadingMessage"></loading>
 
-    <!-- 确定弹框 -->
-    <confirm :show.sync="confirmShow" :title="confirmTitle" confirm-text="确定" cancel-text="取消" @on-confirm="confirmClcik" @on-cancel="cancelClick"><p style="text-align:center;">{{ confirmText }}</p></confirm>
+
 
 </template>
 
@@ -235,7 +244,7 @@
             Confirm
         },
         ready() {
-
+            console.log(this.$route.params.oid);
         },
         data() {
             return {
@@ -247,24 +256,17 @@
                 confirmTitle: '',
                 confirmText: '',
                 btnStatus:false,
+                confirmShow: false
             }
         },
         methods: {
-            clickConfirm: function(id) {
+            confirmClcik: function (id) {
                 let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
                 ustore = JSON.parse(ustore);
-                //确认收货
-                this.loadingMessage = '正在确认';
-                this.loadingShow = true;
                 let pdata = {uid:ustore.id,token:ustore.token,oid:id};
-                console.log(1);
                 this.$http.put(localStorage.apiDomain + 'public/index/user/orderoperation',pdata).then((response)=>{
-                    this.loadingShow = false;
-                    this.toastMessage = response.data.info;
-                    this.toastShow = true;
-                    this.btnStatus = false;
                     if(response.data.status === 1) {
-                        console.log(3);
+                        console.log(response.data);
                     }else if(response.data.status===-1) {
                         let context = this;
                         setTimeout(function(){
@@ -280,6 +282,15 @@
                     this.toastMessage = '网络开小差了~';
                     this.toastShow = true;
                 });
+            },
+            clickConfirm: function() {
+                this.confirmTitle = '确认收货';
+                this.confirmText = '请在收到货物后才确认收货,确认?';
+                this.btnStatus = true;
+                this.confirmShow = true;
+                //确认收货
+//                this.loadingMessage = '正在确认';
+//                this.loadingShow = true;
             },
             buyAgain: function(oid){
                 this.btnStatus = true;
@@ -323,7 +334,6 @@
                 this.$http.get(localStorage.apiDomain+'public/index/user/getsubmitorder/uid/'+ustore.id+'/token/'+ustore.token+'/oid/'+this.$route.params.oid).then((response)=>{
                     if(response.data.status===1){
                         this.data.order = response.data.order;
-
                         if(this.data.order.pay == 1 || this.data.order.send == 1 || this.data.order.receive == 1) {
                             this.toastMessage = '订单已支付';
                             this.toastShow = true;
@@ -334,7 +344,6 @@
                         this.confirmText = '确定取消该订单吗?';
                         this.confirmShow = true;
                         this.btnStatus = true;
-                        console.log(1);
 
                     }else if(response.data.status===-1){
                         this.toastMessage = response.data.info;
