@@ -210,7 +210,7 @@
 		},
 		ready() {
 			$(function() {
-			    $(".todaybtn").mousedown(function() {
+			    $(".todaybtn").mouseover(function() {
 			        $(this).css({
 						background: "#f9ad0c",
                         transition: "0.5s"
@@ -222,6 +222,8 @@
                     });
 				});
 			});
+
+
 		},
         components: {
             Scroller

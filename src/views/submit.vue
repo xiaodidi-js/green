@@ -560,7 +560,17 @@
             }
         },
         ready() {
-            this.oneGift(this.address);
+
+            if(this.oneGift(this.address,this.lastPaySum) === "") {
+				$("#give-list").css({
+					display:"none"
+				});
+			} else {
+                $("#give-list").css({
+                    display:"block"
+                });
+			}
+
             let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
             ustore = JSON.parse(ustore);
             let pids = '';
@@ -647,15 +657,17 @@
                 //清除禁用按钮
                 document.getElementsByClassName("addCar")[0].disabled = "";
             },
-            oneGift: function (id) {
+            oneGift: function (id,money) {
                 let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
                 ustore = JSON.parse(ustore);
                 let pids = '';
-                this.$http.get(localStorage.apiDomain + 'public/index/user/manjiusong/uid' + ustore.id +'/token/'+ustore.token +'/sinceid/' + id).then((response)=>{
+                this.$http.get(localStorage.apiDomain + 'public/index/user/manjiusong/uid/' + ustore.id +'/token/'+ustore.token +'/sinceid/' + id + '/money/' + money).then((response)=>{
                     console.log(response.data);
-                    if(response.data.status===1){
+                    if(response.data.status === 1) {
+                        $("#give-list").css({
+                            display:"block"
+                        });
                         this.listGift = response.data.maxmoney;
-                        console.log(this.listGift);
                     }else if(response.data.status===-1){
                         this.toastMessage = response.data.info;
                         this.toastShow = true;
@@ -666,7 +678,16 @@
                             localStorage.removeItem('userInfo');
                             context.$router.go({name:'login'});
                         },800);
-                    }else{
+                    } else if(response.data.status === 0) {
+                        $("#give-list").css({
+                            display:"none"
+                        });
+					} else {
+                        for(let i = 0; i < this.listGift.length; i++) {
+							if (response.data.status == 0) {
+							    console.log(1);
+							}
+						}
                         this.toastMessage = response.data.info;
                         this.toastShow = true;
                     }
@@ -752,7 +773,7 @@
             },
         },
         events: {
-				submitOrder: function() {
+			submitOrder: function() {
                 if(!this.deliverType) {
                     this.toastMessage = '未选择收货方式';
                     this.toastShow = true;
@@ -769,54 +790,76 @@
                     this.toastMessage = '未选择要购买的商品';
                     this.toastShow = true;
                     return false;
-                }else if(this.lastPaySum<=0){
+                }else if(this.lastPaySum <= 0){
                     this.toastMessage = '支付金额不能小于等于0';
                     this.toastShow = true;
                     return false;
                 }
-                this.loadingMessage = '正在提交...';
-                this.loadingShow = true;
-                let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
-                ustore = JSON.parse(ustore);
-                let pdata = {
-                    uid:ustore.id,
-					token:ustore.token,
-					paytype:this.payType,
-					products:this.cartInfo,
-					stype:this.deliverType,
-					address:this.address,
-					coupon:this.coupon,
-					score:this.scoreSwitch,
-					paysum:this.lastPaySum,
-					tips:this.memo
-                };
-                this.$http.post(localStorage.apiDomain+'public/index/user/getSubmitOrder',pdata).then((response)=>{
-                    if(response.data.status===1){
-                        console.log(response.data);
-                        this.clearSel();
-                        this.$router.replace('order/detail/'+response.data.oid);
-                        this.loadingShow = false;
-                    }else if(response.data.status===-1){
-                        this.loadingShow = false;
-                        this.toastMessage = response.data.info;
+				let _this = this;
+                for(let i = 0; i < this.cartInfo.length; i++) {
+                    if(this.cartInfo[i].deliverytime == 0 && this.cartInfo[i].peisongok == 0) {
+                        console.log(1);
+                        return false;
+					} else if(this.cartInfo[i].deliverytime == 0 && this.cartInfo[i].peisongok == 1){
+						console.log(2);
+                        _this.loadingMessage = '正在提交...';
+                        _this.loadingShow = true;
+                        let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
+                        ustore = JSON.parse(ustore);
+                        let pdata = {
+                            uid:ustore.id,
+                            token:ustore.token,
+                            paytype:_this.payType,
+                            products:_this.cartInfo,
+                            stype:_this.deliverType,
+                            address:_this.address,
+                            coupon:_this.coupon,
+                            score:_this.scoreSwitch,
+                            paysum:_this.lastPaySum,
+                            tips:_this.memo,
+                            openid:sessionStorage.getItem('openid')
+
+                        };
+                        this.$http.post(localStorage.apiDomain+'public/index/user/getSubmitOrder',pdata).then((response)=>{
+                            if(response.data.status===1){
+                                console.log(response.data);
+                                _this.clearSel();
+                                _this.$router.replace('order/detail/'+response.data.oid);
+                                _this.loadingShow = false;
+                            }else if(response.data.status===-1){
+                                _this.loadingShow = false;
+                                _this.toastMessage = response.data.info;
+                                _this.toastShow = true;
+                                let context = this;
+                                setTimeout(function(){
+                                    context.clearAll();
+                                    sessionStorage.removeItem('userInfo');
+                                    localStorage.removeItem('userInfo');
+                                    context.$router.go({name:'login'});
+                                },800);
+                            }else{
+                                _this.loadingShow = false;
+                                _this.toastMessage = response.data.info;
+                                _this.toastShow = true;
+                            }
+                        },(response)=>{
+                            _this.loadingShow = false;
+                            _this.toastMessage = '网络开小差了~';
+                            _this.toastShow = true;
+                        });
+						return true;
+					} else if(this.cartInfo[i].deliverytime == 1 && this.cartInfo[i].peisongok == 0) {
+                        console.log(3);
+                        this.toastMessage = '超时间了亲~~~';
                         this.toastShow = true;
-                        let context = this;
-                        setTimeout(function(){
-                            context.clearAll();
-                            sessionStorage.removeItem('userInfo');
-                            localStorage.removeItem('userInfo');
-                            context.$router.go({name:'login'});
-                        },800);
-                    }else{
-                        this.loadingShow = false;
-                        this.toastMessage = response.data.info;
-                        this.toastShow = true;
-                    }
-                },(response)=>{
-                    this.loadingShow = false;
-                    this.toastMessage = '网络开小差了~';
-                    this.toastShow = true;
-                });
+						return false;
+					} else if(this.cartList[i].deliverytime == 1 && this.cartList[i].peisongok == 1) {
+                        console.log(4);
+					}
+				}
+
+
+
             }
         }
     }

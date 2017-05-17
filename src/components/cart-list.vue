@@ -325,22 +325,22 @@
 							break;
 						}
 					}
-					if(getIndex>=0){
+					if(getIndex >= 0) {
 						this.chosen.splice(getIndex,1);
 					}
 				}
 			},
-			setDel: function(){
+			setDel: function() {
 				this.confirmShow = true;
 			},
-			addNums: function(){
-				if(this.pnums<this.pstore){
+			addNums: function() {
+				if(this.pnums < this.pstore) {
 					this.increNums(this.pid,this.pformat);
 				}
 			},
-			rdcNums: function(evt){
-				if(this.pnums>0){
-					if(this.pnums==1){
+			rdcNums: function(evt) {
+				if(this.pnums > 0) {
+					if(this.pnums == 1) {
 						this.setDel();
 					}else{
 						this.reduceNums(this.pid,this.pformat);

@@ -170,7 +170,7 @@
 </style>
 
 <template>
-	<div class="col-wrapper" v-if="cartList.length>0">
+	<div class="col-wrapper" v-if="cartList.length > 0">
 		<div class="notify-box">
 			<div class="ntips" v-show="editMode === 1">请选择删除商品</div>
 			<div class="ntips" v-else>购物车中共有{{ cartList.length }}个商品</div>
@@ -237,6 +237,10 @@
 	<!-- <猜你喜欢> -->
 	<!-- 确定弹框 -->
 	<confirm :show.sync="confirmShow" title="删除商品" confirm-text="确定" cancel-text="取消" @on-confirm="confirmDel"><p style="text-align:center;">确定删除选中的商品吗？</p></confirm>
+
+	<!-- toast显示框 -->
+	<toast type="text" :show.sync="toastShow">{{ toastMessage }}</toast>
+
 </template>
 
 <script>
@@ -247,10 +251,10 @@
     import Confirm from 'vux/src/components/confirm'
     import Separator from 'components/separator'
     import CartList from 'components/cart-list'
-
     import CardRecommend from 'components/card-recommend'
     import Scroller from 'vux/src/components/scroller'
 	import cardlike from 'components/buying-like'
+    import Toast from 'vux/src/components/toast'
 
     export default{
         vuex: {
@@ -271,7 +275,8 @@
             CartList,
             Scroller,
             CardRecommend,
-            cardlike
+            cardlike,
+            Toast,
         },
         data() {
             return {
@@ -280,9 +285,11 @@
                 btnDis:false,
                 editMode:0,
                 confirmShow:false,
+                toastMessage:'',
+                toastShow:false,
                 choseArr:[],
 				likeOrder:[],
-                data:{}
+                data:{},
             }
         },
         route: {
@@ -326,8 +333,32 @@
                     this.$dispatch('showMes','还未选择商品');
                     return false;
                 }
-                this.setSelCart(this.choseArr);
-                this.$router.go({name:'submit'});
+                let _this = this;
+                for(let i = 0 ;i < this.cartList.length; i++) {
+                    if(this.cartList[i].deliverytime == 0 && this.cartList[i].peisongok == 0) {
+                        this.loadingMessage = '正在提交...';
+                        this.loadingShow = true;
+                        console.log(2);
+                        return false;
+                    } else if(this.cartList[i].deliverytime == 0 && this.cartList[i].peisongok == 1) {
+                        _this.setSelCart(this.choseArr);
+                        _this.$router.go({name:'submit'});
+                        console.log(3);
+                        return true;
+                    } else if(this.cartList[i].deliverytime == 1 && this.cartList[i].peisongok == 0) {
+                        _this.toastMessage = '当日商品超时~~~';
+                        _this.toastShow = true;
+                        console.log(4);
+                        return false;
+                    } else if(this.cartList[i].deliverytime == 1 && this.cartList[i].peisongok == 1) {
+                        this.setSelCart(this.choseArr);
+                        this.$router.go({name:'submit'});
+                        console.log(5);
+                        return true;
+                    }
+                }
+                console.log(this.list[i].deliverytime);
+                console.log(this.list[i].peisongok);
             }
         },
         computed: {
@@ -337,7 +368,7 @@
                 }
                 return false;
             },
-            chosePrice: function(){
+            chosePrice: function() {
                 let sum = 0;
                 if(this.choseArr.length <= 0) {
                     return sum.toFixed(2);

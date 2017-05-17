@@ -42,9 +42,9 @@ let router = new VueRouter({
 router.map(Routers);
 
 router.beforeEach((transition) => {
-/*
-	if(Env == 'production'){
-		//微信openid检测
+
+	// if(Env == 'production'){
+	// 	//微信openid检测
 		if(!sessionStorage.getItem('openid')){
 			let query = transition.to.query;
 			if(typeof query.opid!=='undefined'&&query.opid!='') {
@@ -57,11 +57,10 @@ router.beforeEach((transition) => {
 				return true;
 			}
 		}
-	}
-*/
+	// }
 
-    let query = 'os0CqxGZlM3Z6kI6tm7hSV7oQsQY';
-    sessionStorage.setItem('openid',query);
+    // let query = 'os0CqxGZlM3Z6kI6tm7hSV7oQsQY';
+    // sessionStorage.setItem('openid',query);
 
     Vue.http.get(localStorage.apiDomain+'public/index/index/guanzhu?openid=' + query).then((response)=>{
         console.log(response);

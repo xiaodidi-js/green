@@ -184,6 +184,7 @@
 				</div>
 			</div>
 		</menu>
+
 		<menu type="popup" class="cla-message" id="right_Menu">
 			<div id="scroller2">
 				<div class="ele-fixed">
@@ -230,6 +231,9 @@
                 default() {
                     return []
                 }
+            },
+            cid:{
+            	type:Number
             }
         },
         data() {
@@ -241,16 +245,20 @@
                 guige:[],
             }
         },
+        watch:{
+        	cid(){
+        		if(this.cid != 0){
+	                this.chooseSort(this.cid);
+	                this.getChonse(this.cid);
+        		}
+        	}
+        },
         ready() {
             this.dtype = localStorage.getItem('number');
             if(this.dtype == null){
                 this.chooseSort(this.dtype);
                 this.getChonse(this.dtype);
-            }else{
-                this.chooseSort(26);
-                this.getChonse(26);
-			}
-
+            }
             $(function() {
                 //菜单框架自动获取高度
                 var doc_H = $(document).height();

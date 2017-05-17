@@ -32,7 +32,7 @@ export default{
 	},
 	events: {
 		showMes: function(mes){
-			if(typeof mes==='string'&&mes.length>0){
+			if(typeof mes === 'string' && mes.length > 0) {
 				this.toastMessage = mes;
 				this.toastShow = true;
 			}

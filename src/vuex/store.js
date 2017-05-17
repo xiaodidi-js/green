@@ -16,7 +16,7 @@ const mutations = {
        state.dtype = index
     },
 	SETCARTOBJ (state,obj) {
-		if(state.cart.length>0){
+		if(state.cart.length > 0) {
 			let added = false;
 			for(let plist=0;plist<state.cart.length;plist++){
 				if(typeof state.cart[plist]==='object'&&state.cart[plist].id==obj.id&&state.cart[plist].format==obj.format){
