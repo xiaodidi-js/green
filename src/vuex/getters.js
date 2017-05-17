@@ -23,7 +23,7 @@ export const cartIds = state => {
 //获取购物车
 export const cartSum = state => {
 	let sum = 0;
-	if(state.cart.length<=0){
+	if(state.cart.length<=0) {
 		return sum.toFixed(2);
 	}
 	for(let plist=0;plist<state.cart.length;plist++){

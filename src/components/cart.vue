@@ -182,16 +182,29 @@
 		<separator :set-height="40" unit="px"></separator>
 
 		<div class="card-wrapper">
-			<cart-list :chosen.sync="choseArr" :pid="item.id" v-for="item in cartList" :img="item.shotcut" :pname="item.name" :pprice="item.price" :pnums="item.nums" :pstore="item.store" :mode="editMode" :pformat="item.format" :pfname="item.formatName"></cart-list>
+			<cart-list
+					:chosen.sync="choseArr"
+					:pid="item.id" v-for="item in cartList"
+					:img="item.shotcut"
+					:pname="item.name"
+					:pprice="item.price"
+					:pnums="item.nums"
+					:pstore="item.store"
+					:mode="editMode"
+					:pformat="item.format"
+					:pfname="item.formatName"
+					:pdelivery="item.deliverytime"
+					:peisongok="item.peisongok" >
+			</cart-list>
 
 			<!-- 底部分隔 -->
 			<separator :set-height="4.5"></separator>
 
-			<div class="bottom" v-if="editMode===1">
+			<div class="bottom" v-if="editMode === 1">
 				<div class="left" style="color:#999;">
 					<icon type="success" class="my-icon-chosen" @click="changAll(0)" v-show="allsel"></icon>
 					<icon type="circle" class="my-icon" @click="changAll(1)" v-show="!allsel"></icon>
-					全选
+					<span>全选</span>
 				</div>
 				<div class="right">
 					<div class="btn" @click="setDel">删除</div>
@@ -212,7 +225,6 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 
 	<div class="col-wrapper" v-else>
@@ -221,7 +233,6 @@
 		<x-button text="逛一逛" style="width:40%;margin:2rem auto;" v-link="{name:'index'}"></x-button>
 	</div>
 	<!-- <猜你喜欢> -->
-
 	<cardlike></cardlike>
 	<!-- <猜你喜欢> -->
 	<!-- 确定弹框 -->
@@ -285,29 +296,32 @@
                 this.confirmShow = true;
             },
             confirmDel: function(){
-                if(this.cartList.length===this.choseArr.length){
+                if(this.cartList.length === this.choseArr.length) {
                     this.clearAll();
-                }else if(this.choseArr.length>0){
+                }else if(this.choseArr.length > 0) {
                     this.delMultiple(this.choseArr);
                 }
             },
-            changMode: function(){
+            changMode: function() {
                 this.modeText = this.modeText === '编辑' ? '完成' : '编辑';
                 this.editMode = this.editMode ? 0 : 1;
                 this.choseArr = [];
                 this.btnText = '删除';
             },
-            changAll: function(type){
-                if(this.choseArr.length>0){
+            changAll: function(type) {
+                if(this.choseArr.length > 0) {
                     this.choseArr.splice(0,this.choseArr.length);
                 }
-                if(type===1){
-                    for(let cl=0;cl<this.cartList.length;cl++){
-                        this.choseArr.push({id:this.cartList[cl].id,format:this.cartList[cl].format})
+                if(type === 1) {
+                    for(let cl = 0;cl < this.cartList.length; cl++) {
+                        this.choseArr.push({
+							id:this.cartList[cl].id,
+							format:this.cartList[cl].format
+                        });
                     }
                 }
             },
-            getOrders: function(){
+            getOrders: function() {
                 if(this.choseArr.length <= 0) {
                     this.$dispatch('showMes','还未选择商品');
                     return false;
@@ -317,21 +331,21 @@
             }
         },
         computed: {
-            allsel: function(){
-                if(this.cartList.length===this.choseArr.length){
+            allsel: function() {
+                if(this.cartList.length === this.choseArr.length) {
                     return true;
                 }
                 return false;
             },
             chosePrice: function(){
                 let sum = 0;
-                if(this.choseArr.length<=0){
+                if(this.choseArr.length <= 0) {
                     return sum.toFixed(2);
                 }
-                for(let ch=0;ch<this.choseArr.length;ch++){
-                    for(let pl=0;pl<this.cartList.length;pl++){
-                        if(this.choseArr[ch].id===this.cartList[pl].id&&this.choseArr[ch].format===this.cartList[pl].format){
-                            sum = sum + this.cartList[pl].price*this.cartList[pl].nums;
+                for(let ch = 0;ch < this.choseArr.length; ch++) {
+                    for(let pl = 0;pl < this.cartList.length; pl++) {
+                        if(this.choseArr[ch].id === this.cartList[pl].id && this.choseArr[ch].format === this.cartList[pl].format) {
+                            sum = sum + this.cartList[pl].price * this.cartList[pl].nums;
                             break;
                         }
                     }

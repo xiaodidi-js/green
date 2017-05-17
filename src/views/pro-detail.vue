@@ -1235,33 +1235,55 @@
 					this.toastShow = true;
 				}
 			},
-			buyNow: function(){
-                if(this.data.format){
-                    if(!this.checkGuige()){
+			buyNow: function() {
+                if(this.data.format) {
+                    if(!this.checkGuige()) {
                         this.showFormatPop();
                         return false;
                     }
                 }
-                if(this.proNums<=0){
+                if(this.proNums <= 0) {
                     this.toastMessage = '商品暂时缺货';
                     this.toastShow = true;
                     return false;
-                }else if(this.buyNums<1){
+                }else if(this.buyNums < 1) {
                     this.toastMessage = '购买数量不能小于1';
                     this.toastShow = true;
                     return false;
-                }else if(this.buyNums>this.proNums){
+                }else if(this.buyNums > this.proNums) {
                     this.toastMessage = '购买数量超过库存数量';
                     this.toastShow = true;
                     return false;
                 }
                 let cartObj = {};
-                let cartFormat = this.guige.length>0 ? this.guige.join(',') : '';
-                let cartFormatName = this.guige.length>0 ? this.guigeName.join('-') : '';
+                let cartFormat = this.guige.length > 0 ? this.guige.join(',') : '';
+                let cartFormatName = this.guige.length > 0 ? this.guigeName.join('-') : '';
                 if(this.data.is_promote){
-                    cartObj = {id:this.$route.params.pid,shotcut:this.data.shotcut,name:this.data.name,price:this.data.promote_price,format:cartFormat,formatName:cartFormatName,nums:this.buyNums,store:this.proNums};
+                    cartObj = {
+                        id:this.$route.params.pid,
+						shotcut:this.data.shotcut,
+						name:this.data.name,
+						price:this.data.promote_price,
+                        deliverytime:this.data.deliverytime,
+                        peisongok:this.data.peisongok,
+						format:cartFormat,
+						formatName:cartFormatName,
+						nums:this.buyNums,
+						store:this.proNums
+                    };
                 }else{
-                    cartObj = {id:this.$route.params.pid,shotcut:this.data.shotcut,name:this.data.name,price:this.data.price,format:cartFormat,formatName:cartFormatName,nums:this.buyNums,store:this.proNums};
+                    cartObj = {
+                        id:this.$route.params.pid,
+						shotcut:this.data.shotcut,
+						name:this.data.name,
+						price:this.data.price,
+                        deliverytime:this.data.deliverytime,
+                        peisongok:this.data.peisongok,
+						format:cartFormat,
+						formatName:cartFormatName,
+						nums:this.buyNums,
+						store:this.proNums
+                    };
                 }
                 this.setCart(cartObj);
                 cartObj = {};
@@ -1276,28 +1298,53 @@
                         return false;
                     }
                 }
-                if(this.proNums<=0) {
+                if(this.proNums <= 0) {
                     this.toastMessage = '商品暂时缺货';
                     this.toastShow = true;
                     return false;
-                }else if(this.buyNums<1) {
+                } else if (this.buyNums < 1) {
                     this.toastMessage = '购买数量不能小于1';
                     this.toastShow = true;
                     return false;
-                }else if(this.buyNums>this.proNums) {
+                } else if (this.buyNums > this.proNums) {
                     this.toastMessage = '购买数量超过库存数量';
                     this.toastShow = true;
                     return false;
+                } else if (this.data.deliverytime == 0) {
+
+				} else if (this.data.deliverytime == 1) {
+
                 }
                 let cartObj = {};
                 let cartFormat = this.guige.length > 0 ? this.guige.join(',') : '';
                 let cartFormatName = this.guige.length > 0 ? this.guigeName.join('-') : '';
                 if(this.data.is_promote) {
-                    cartObj = {id:this.$route.params.pid,shotcut:this.data.shotcut,name:this.data.name,price:this.data.promote_price,format:cartFormat,formatName:cartFormatName,nums:this.buyNums,store:this.proNums};
+                    cartObj = {
+                        id:this.$route.params.pid,
+						shotcut:this.data.shotcut,
+						name:this.data.name,
+						price:this.data.promote_price,
+                        deliverytime:this.data.deliverytime,
+                        peisongok:this.data.peisongok,
+						format:cartFormat,
+						formatName:cartFormatName,
+						nums:this.buyNums,
+						store:this.proNums
+                    };
                 }else{
-                    cartObj = {id:this.$route.params.pid,shotcut:this.data.shotcut,name:this.data.name,price:this.data.price,format:cartFormat,formatName:cartFormatName,nums:this.buyNums,store:this.proNums};
+                    cartObj = {
+                        id:this.$route.params.pid,
+						shotcut:this.data.shotcut,
+						name:this.data.name,
+						price:this.data.price,
+                        deliverytime:this.data.deliverytime,
+                        peisongok:this.data.peisongok,
+						format:cartFormat,
+						formatName:cartFormatName,
+						nums:this.buyNums,
+						store:this.proNums
+                    };
                 }
-                console.log(cartObj);
                 this.setCart(cartObj);
                 cartObj = {};
                 cartFormat = null;

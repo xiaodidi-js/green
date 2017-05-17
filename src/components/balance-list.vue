@@ -27,6 +27,16 @@
 		overflow:hidden;
 		background: #fff;
 		padding: 4% 4% 4% 0%;
+		line-height:3rem;
+	}
+
+	.bl-wrapper .line-bottom .todaybtn {
+		width:8rem;
+		height:3rem;
+		border:none;
+		color:#fff;
+		background: #81c429;
+		margin:0px 0.5rem;
 	}
 
 	.bl-wrapper .line.bottom>label{
@@ -162,7 +172,11 @@
 			</div>
 		</div>
 		<div class="line-bottom" v-if="showBtm">
-			共{{ amount }}件商品合计：<label style="color:#f9ad0c;">¥{{ sum }}</label>
+			<div style="float:left;">
+				<button class="todaybtn nextday" @click="nextday()">次日</button>
+				<button class="todaybtn sameday" @click="sameday()">当日</button>
+			</div>
+			<div style="display:block;float:right;">共{{ amount }}件商品合计：<label style="color:#f9ad0c;">¥{{ sum }}</label></div>
 		</div>
 	</div>
 
@@ -195,7 +209,19 @@
 			}
 		},
 		ready() {
-
+			$(function() {
+			    $(".todaybtn").mousedown(function() {
+			        $(this).css({
+						background: "#f9ad0c",
+                        transition: "0.5s"
+					});
+				}).mouseout(function() {
+                    $(this).css({
+                        background: "#81c429",
+						transition: "0.5s"
+                    });
+				});
+			});
 		},
         components: {
             Scroller
@@ -215,7 +241,18 @@
 			}
 		},
 		methods: {
-
+            nextday: function() {
+                for(let i = 0 ;i < this.list.length; i++) {
+                    console.log(this.list[i].deliverytime);
+                    console.log(this.list[i].peisongok);
+                }
+			},
+            sameday: function() {
+                for(let i = 0 ;i < this.list.length; i++) {
+                    console.log(this.list[i].deliverytime);
+                    console.log(this.list[i].peisongok);
+                }
+			}
 		}
 	}
 </script>

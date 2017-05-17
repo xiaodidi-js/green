@@ -98,6 +98,7 @@
 		    indexMessage: function() {
                 this.$http.get(localStorage.apiDomain+'public/index/index').then((response)=>{
                     this.data = response.data;
+                    console.log(this.data);
                     var data = this.data;
                     for (var i = 0; i < data.index_data.length; i++) {
                         if(data.index_data[i].type == 4){

@@ -178,17 +178,17 @@
 		<div class="maininfo">
 			<div class="img" v-lazy:background-image="img" v-link="{name:'detail',params:{pid:pid}}"></div>
 			<div class="mes">
-				<div class="name">{{ pname }}</div>
-				<div class="format" v-if="pfname==''">&nbsp;</div>
+				<div class="name">{{ pname }} {{ pdelivery }} </div>
+				<div class="format" v-if="pfname == ''">&nbsp;</div>
 				<div class="format" v-else>{{ pfname }}</div>
 				<div class="money">
 					<label class="unit">¥</label>{{ pprice }}
 				</div>
 				<div class="status">
 					<div class="num-counter">
-						<div class="btns" :class="{'disabled':pnums<=0}" @click.stop="rdcNums()">-</div>
+						<div class="btns" :class="{'disabled':pnums <= 0}" @click.stop="rdcNums()"> - </div>
 						<input type="number" class="input" :value="pnums" @click.stop @touchstart.stop readonly />
-						<div class="btns" :class="{'disabled':pnums>=pstore}" @click.stop="addNums()">+</div>
+						<div class="btns" :class="{'disabled':pnums >= pstore}" @click.stop="addNums()"> + </div>
 					</div>
 					<div class="del" v-show="mode === 1" @click.stop="setDel()"></div>
 				</div>
@@ -261,6 +261,14 @@
 			pfname: {
 				type: String,
 				default: ''
+			},
+            pdelivery: {
+			    type: [Number,String],
+				default: ''
+			},
+            peisongok: {
+			    type: [Number,String],
+				default: ''
 			}
 		},
 		data() {
@@ -271,12 +279,13 @@
 		computed: {
 			className: function(){
 				const obj = {};
-				if(this.chosen.length>0){
-					for(let ch=0;ch<this.chosen.length;ch++){
-						if(this.chosen[ch].id==this.pid&&this.chosen[ch].format==this.pformat){
+				if(this.chosen.length > 0) {
+					for(let ch = 0;ch < this.chosen.length; ch++) {
+						if(this.chosen[ch].id == this.pid && this.chosen[ch].format == this.pformat) {
+                            console.log(this.peisongok);
 							obj['active'] = true;
 							break;
-						}else{
+						} else {
 							obj['active'] = false;
 						}
 					}
@@ -293,17 +302,25 @@
 				}
 			}
 		},
+		ready () {
+			console.log(this.pname);
+            console.log(this.pdelivery);
+            console.log(this.peisongok);
+		},
 		methods: {
 			actIt: function(){
 				if(!this.className.active){
-					this.chosen.push({id:this.pid,format:this.pformat});
+					this.chosen.push({
+						id:this.pid,
+						format:this.pformat
+					});
 				}
 			},
 			unActIt: function(){
 				if(this.className.active){
 					let getIndex = null;
-					for(let ch=0;ch<this.chosen.length;ch++){
-						if(this.chosen[ch].id==this.pid&&this.chosen[ch].format==this.pformat){
+					for(let ch=0;ch < this.chosen.length;ch++) {
+						if(this.chosen[ch].id == this.pid && this.chosen[ch].format == this.pformat) {
 							getIndex = ch;
 							break;
 						}

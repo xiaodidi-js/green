@@ -560,9 +560,7 @@
             }
         },
         ready() {
-
             this.oneGift(this.address);
-
             let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
             ustore = JSON.parse(ustore);
             let pids = '';
@@ -658,9 +656,6 @@
                     if(response.data.status===1){
                         this.listGift = response.data.maxmoney;
                         console.log(this.listGift);
-
-
-
                     }else if(response.data.status===-1){
                         this.toastMessage = response.data.info;
                         this.toastShow = true;
@@ -757,7 +752,7 @@
             },
         },
         events: {
-            submitOrder: function() {
+				submitOrder: function() {
                 if(!this.deliverType) {
                     this.toastMessage = '未选择收货方式';
                     this.toastShow = true;
@@ -783,10 +778,21 @@
                 this.loadingShow = true;
                 let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
                 ustore = JSON.parse(ustore);
-                let pdata = {uid:ustore.id,token:ustore.token,paytype:this.payType,products:this.cartInfo,stype:this.deliverType,address:this.address,coupon:this.coupon,score:this.scoreSwitch,paysum:this.lastPaySum,tips:this.memo};
+                let pdata = {
+                    uid:ustore.id,
+					token:ustore.token,
+					paytype:this.payType,
+					products:this.cartInfo,
+					stype:this.deliverType,
+					address:this.address,
+					coupon:this.coupon,
+					score:this.scoreSwitch,
+					paysum:this.lastPaySum,
+					tips:this.memo
+                };
                 this.$http.post(localStorage.apiDomain+'public/index/user/getSubmitOrder',pdata).then((response)=>{
                     if(response.data.status===1){
-                        console.l
+                        console.log(response.data);
                         this.clearSel();
                         this.$router.replace('order/detail/'+response.data.oid);
                         this.loadingShow = false;
