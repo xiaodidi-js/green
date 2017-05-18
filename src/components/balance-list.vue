@@ -172,10 +172,10 @@
 			</div>
 		</div>
 		<div class="line-bottom" v-if="showBtm">
-			<div style="float:left;">
-				<button class="todaybtn nextday" @click="nextday()">次日</button>
-				<button class="todaybtn sameday" @click="sameday()">当日</button>
-			</div>
+			<!--<div style="float:left;">-->
+				<!--<button class="todaybtn nextday" @click="nextday()">次日</button>-->
+				<!--<button class="todaybtn sameday" @click="sameday()">当日</button>-->
+			<!--</div>-->
 			<div style="display:block;float:right;">共{{ amount }}件商品合计：<label style="color:#f9ad0c;">¥{{ sum }}</label></div>
 		</div>
 	</div>
@@ -222,8 +222,6 @@
                     });
 				});
 			});
-
-
 		},
         components: {
             Scroller

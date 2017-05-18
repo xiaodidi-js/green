@@ -330,7 +330,7 @@
 		</my-cell>
 
 		<!-- 自提点地址/收货地址 -->
-		<div class="address-box" @click="showPop">
+		<div class="address-box">
 			<div class="border-line"></div>
 			<div class="border-line-vertical" style="left: 0px;"></div>
 			<div class="add-con">
@@ -356,7 +356,7 @@
 				</div>
 				<div style="text-align:center;" class="words" v-else>
 					<div class="add noTips">
-						还未添加收货地址？<a @click="setAddress">点我设置</a>
+						选择自提点地址？<a @click="showPop">点我选择</a>  <!--  @click="setAddress" -->
 					</div>
 				</div>
 			</div>

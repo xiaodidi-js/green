@@ -155,7 +155,7 @@
 //                    this.toastShow = true;
 					alert("搜索还在维修中.....");
 				}
-				if(this.searchKey.length <= 0){
+				if(this.searchKey.length <= 0) {
 					return false;
 				}
 				this.$dispatch('goSearch',this.searchKey);

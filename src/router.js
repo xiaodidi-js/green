@@ -562,6 +562,15 @@ const routers = {
         component (resolve) {
             require(['./components/banners.vue'], resolve);
         }
+    },
+    'sao': {
+        name:'sao',
+        header:true,
+        footer:false,
+        title:'扫一扫关注',
+        component (resolve) {
+            require(['./components/sao.vue'], resolve);
+        }
     }
 };
 export default routers;

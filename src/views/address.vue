@@ -123,11 +123,11 @@ export default{
 
 	},
 	ready() {
-		if(this.$route.name==='address-edit'){
+		if(this.$route.name === 'address-edit') {
 			let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
 			ustore = JSON.parse(ustore);
 			this.$http.get(localStorage.apiDomain+'public/index/user/addressinfo/uid/'+ustore.id+'/token/'+ustore.token+'/aid/'+this.$route.params.aid).then((response)=>{
-				if(response.data.status===1){
+				if(response.data.status === 1) {
 					this.aname = response.data.person;
 					this.atel = response.data.tel;
 					this.acode = response.data.code;
@@ -135,7 +135,7 @@ export default{
 						this.aprovince = name2value(response.data.area,this.addressData).split(' ');
 					}
 					this.address = response.data.address;
-				}else if(response.data.status===-1){
+				}else if(response.data.status === -1) {
 					this.toastMessage = response.data.info;
 					this.toastShow = true;
 					let context = this;
@@ -162,40 +162,49 @@ export default{
 	},
 	methods: {
 		postData: function(){
-			if(this.aname==''){
+			if(this.aname == '') {
 				this.toastMessage = '请填写收货人姓名';
 				this.toastShow = true;
 				return false;
-			}else if(this.atel==''){
+			}else if(this.atel == '') {
 				this.toastMessage = '请填写收货人电话';
 				this.toastShow = true;
 				return false;
-			}else if(this.acode==''){
+			}else if(this.acode == '') {
 				this.toastMessage = '请填写邮政编码';
 				this.toastShow = true;
 				return false;
-			}else if(this.provinceName==''){
+			}else if(this.provinceName == '') {
 				this.toastMessage = '请选择收货省份地区';
 				this.toastShow = true;
 				return false;
-			}else if(this.address==''){
+			}else if(this.address == '') {
 				this.toastMessage = '请填写详细收货地址';
 				this.toastShow = true;
 				return false;
 			}
 			let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
 			ustore = JSON.parse(ustore);
-			if(this.$route.name==='address-edit'){
-				let pdata = {uid:ustore.id,token:ustore.token,person:this.aname,tel:this.atel,code:this.acode,area:this.provinceName,address:this.address,id:this.$route.params.aid};
+			if(this.$route.name === 'address-edit') {
+				let pdata = {
+				    uid:ustore.id,
+					token:ustore.token,
+					person:this.aname,
+					tel:this.atel,
+					code:this.acode,
+					area:this.provinceName,
+					address:this.address,
+					id:this.$route.params.aid
+				};
 				this.$http.put(localStorage.apiDomain+'public/index/user/addressinfo',pdata).then((response)=>{
-					if(response.data.status===1){
+					if (response.data.status === 1) {
 						this.toastMessage = response.data.info;
 						this.toastShow = true;
 						let context = this;
 						setTimeout(function(){
 							history.back();
 						},600);
-					}else if(response.data.status===-1){
+					} else if (response.data.status === -1) {
 						this.toastMessage = response.data.info;
 						this.toastShow = true;
 						let context = this;
@@ -205,7 +214,7 @@ export default{
 							localStorage.removeItem('userInfo');
 							context.$router.go({name:'login'});
 						},800);
-					}else{
+					} else {
 						this.toastMessage = response.data.info;
 						this.toastShow = true;
 					}
@@ -214,7 +223,15 @@ export default{
 					this.toastShow = true;
 				});
 			}else{
-				let pdata = {uid:ustore.id,token:ustore.token,person:this.aname,tel:this.atel,code:this.acode,area:this.provinceName,address:this.address};
+				let pdata = {
+				    uid:ustore.id,
+					token:ustore.token,
+					person:this.aname,
+					tel:this.atel,
+					code:this.acode,
+					area:this.provinceName,
+					address:this.address
+				};
 				this.$http.post(localStorage.apiDomain+'public/index/user/addressinfo',pdata).then((response)=>{
 					if(response.data.status===1){
 						this.toastMessage = response.data.info;

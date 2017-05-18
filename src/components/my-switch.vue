@@ -64,6 +64,7 @@
 	  -webkit-transform: translateX(14px);
 	  transform: translateX(14px);
 	}
+
 </style>
 
 <template>

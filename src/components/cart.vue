@@ -325,41 +325,43 @@
 							id:this.cartList[cl].id,
 							format:this.cartList[cl].format
                         });
-                        console.log("已全选!")
                     }
                 }
             },
             getOrders: function() {
+                let _this = this;
                 if(this.choseArr.length <= 0) {
                     this.$dispatch('showMes','还未选择商品');
                     return false;
-                }
-                let _this = this;
-                for(let i = 0 ;i < this.cartList.length; i++) {
-                    if(this.cartList[i].deliverytime == 0 && this.cartList[i].peisongok == 0) {
-                        this.loadingMessage = '正在提交...';
-                        this.loadingShow = true;
-                        console.log(2);
-                        return false;
-                    } else if(this.cartList[i].deliverytime == 0 && this.cartList[i].peisongok == 1) {
-                        _this.setSelCart(this.choseArr);
-                        _this.$router.go({name:'submit'});
-                        console.log(3);
-                        return true;
-                    } else if(this.cartList[i].deliverytime == 1 && this.cartList[i].peisongok == 0) {
-                        _this.toastMessage = '当日商品超时~~~';
-                        _this.toastShow = true;
-                        console.log(4);
-                        return false;
-                    } else if(this.cartList[i].deliverytime == 1 && this.cartList[i].peisongok == 1) {
-                        this.setSelCart(this.choseArr);
-                        this.$router.go({name:'submit'});
-                        console.log(5);
-                        return true;
-                    }
-                }
-                console.log(this.list[i].deliverytime);
-                console.log(this.list[i].peisongok);
+                } else if(this.choseArr.length > 0) {
+					for(let y = 0; y < this.choseArr.length; y++) {
+                        for(let i = 0 ;i < this.cartList.length; i++) {
+                            if(this.cartList[i].deliverytime === 0 && this.cartList[i].peisongok === 0) {
+                                _this.loadingMessage = '当日商品超次日时间~~~';
+                                _this.loadingShow = true;
+                                console.log(2);
+                                return false;
+                            } else if(this.cartList[i].deliverytime === 0 && this.cartList[i].peisongok === 1) {
+                                _this.setSelCart(this.choseArr);
+                                _this.$router.go({name:'submit'});
+                                console.log(3);
+                                return true;
+                            } else if(this.cartList[i].deliverytime === 1 && this.cartList[i].peisongok === 0) {
+                                _this.toastMessage = '当日商品超当日时间~~~';
+                                _this.toastShow = true;
+                                console.log(4);
+                                return false;
+                            } else if(this.cartList[i].deliverytime === 1 && this.cartList[i].peisongok === 1) {
+                                console.log(5);
+                                return false;
+                                _this.setSelCart(this.choseArr);
+                                _this.$router.go({name:'submit'});
+                            } else {
+                                console.log(1);
+							}
+                        }
+					}
+				}
             }
         },
         computed: {

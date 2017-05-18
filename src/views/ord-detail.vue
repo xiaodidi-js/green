@@ -341,7 +341,13 @@
 	<toast type="text" :show.sync="toastShow">{{ toastMessage }}</toast>
 
 	<!-- 确定弹框 -->
-	<confirm :show.sync="confirmShow" :title="confirmTitle" confirm-text="确定" cancel-text="取消" @on-confirm="confirmClcik" @on-cancel="cancelClick"><p style="text-align:center;">{{ confirmText }}</p></confirm>
+	<confirm :show.sync="confirmShow" :title="confirmTitle"
+			 confirm-text="确定"
+			 cancel-text="取消"
+			 @on-confirm="confirmClcik"
+			 @on-cancel="cancelClick">
+		<p style="text-align:center;">{{ confirmText }}</p>
+	</confirm>
 
 	<!-- loading加载框 -->
 	<loading :show="loadingShow" :text="loadingMessage"></loading>

@@ -104,6 +104,14 @@
         font-size: 14px;
     }
 
+    .search_panel .alladdress .sel-bg .option-list .everaddress {
+        clear:both;
+        height:3.5rem;
+        width:100%;
+        font-size:1.4rem;
+        line-height:3.5rem;
+    }
+
     /* search_panel end */
 
     .masker {
@@ -222,11 +230,11 @@
             </form>
             <div class="alladdress">
                 <span>地区选择:</span>
-
                 <div class="sel-bg">
                     <div class="select-add" id="selectTitle" @click="onChonse()">全部</div>
                     <i class="iconfont icon-sanjiao icon-sanjiao" id="icon-sanjiao"></i>
                     <ul class="option-list" v-show="isChonse">
+                        <div class="everaddress" @click="allChonse()">全部</div>
                         <li class="list-li" v-for="item in options">
                             <div style="">{{ item.name }}</div>
                             <i class="list" style="display:block;width:15rem;height:1px;background: #f2f2f2;"></i>
@@ -242,10 +250,10 @@
                 </div>
 
                 <!--<select class="sel-bg">-->
-                <!--<option @click="onChonse()">全部</option>-->
-                <!--<optgroup label="{{ item.name }}" v-for="item in options">-->
-                <!--<option v-for="items in item.sub" @click="onOnlyAddress(items.id)">{{ items.name }}</option>-->
-                <!--</optgroup>-->
+                    <!--<option @click="onChonse()">全部</option>-->
+                    <!--<optgroup label="{{ item.name }}" v-for="item in options">-->
+                        <!--<option v-for="items in item.sub" @click="onOnlyAddress(items.id)">{{ items.name }}</option>-->
+                    <!--</optgroup>-->
                 <!--</select>-->
             </div>
         </div>
@@ -368,8 +376,15 @@
                 icon.style.transition = '0.5s';
                 return icon;
             },
+            allChonse: function() {
+                this.tmp_address = this.address;
+                var values = $(".everaddress").text();
+                console.log(values);
+                $(".select-add").text(values);
+                this.isChonse = false;
+
+            },
             onChonse: function () {	//全部
-//                this.tmp_address = this.address;
                 if (!this.isChonse) {
                     this.isChonse = true;
                     this.tansform('icon-sanjiao', 'rotate(180deg)');
@@ -396,6 +411,8 @@
                 let pdata = {uid: ustore.id, token: ustore.token, addressid: id};
                 this.$http.put(localStorage.apiDomain + 'public/index/Usercenter/since', pdata).then((response) => {
                     if (response.data.status === 1) {
+                        this.showStatus = false;
+                        this.showTips = '加载中...';
                         console.log(response.data);
                         this.options = response.data.list;
                     } else if (response.data.status === -1) {

@@ -282,7 +282,7 @@
 				if(this.chosen.length > 0) {
 					for(let ch = 0;ch < this.chosen.length; ch++) {
 						if(this.chosen[ch].id == this.pid && this.chosen[ch].format == this.pformat) {
-                            console.log(this.peisongok);
+
 							obj['active'] = true;
 							break;
 						} else {
@@ -303,9 +303,7 @@
 			}
 		},
 		ready () {
-			console.log(this.pname);
-            console.log(this.pdelivery);
-            console.log(this.peisongok);
+
 		},
 		methods: {
 			actIt: function(){
@@ -319,7 +317,7 @@
 			unActIt: function(){
 				if(this.className.active){
 					let getIndex = null;
-					for(let ch=0;ch < this.chosen.length;ch++) {
+					for(let ch = 0;ch < this.chosen.length; ch++) {
 						if(this.chosen[ch].id == this.pid && this.chosen[ch].format == this.pformat) {
 							getIndex = ch;
 							break;
