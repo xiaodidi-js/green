@@ -5,7 +5,7 @@
 <template>
 	<div class="sub-content">
 		<!-- 分类列表 -->
-		<card-types :types="data" :cid="cid"></card-types>
+		<card-types :types="data"></card-types>
 		<!-- toast提示框 -->
 		<toast :show.sync="toastShow" type="text">{{ toastMessage }}</toast>
 	</div>
@@ -20,8 +20,7 @@ export default{
 		return {
 			toastMessage:'',
 			toastShow:false,
-			data:[],
-			cid:0
+			data:[]
 		}
 	},
 	components: {
@@ -32,12 +31,9 @@ export default{
 		
 	},
 	ready() {
-		var self = this
 		this.$http.get(localStorage.apiDomain+'public/index/index/columns').then((response)=>{
 			this.data = response.data.classify;
 			console.log(response.data.classify);
-			self.cid = this.data[0]['id'];
-			console.log(self.cid)
 		},(response)=>{
 			this.toastMessage = "网络开小差啦~";
 			this.toastShow = true;

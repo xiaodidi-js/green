@@ -48,23 +48,13 @@ router.beforeEach((transition) => {
 		if(!sessionStorage.getItem('openid')){
 			let query = transition.to.query;
 			if(typeof query.opid!=='undefined'&&query.opid!='') {
-				let openid = sessionStorage.setItem('openid',query.opid);
-                Vue.http.get(localStorage.apiDomain+'public/index/index/guanzhu?openid=' + openid).then((response)=>{
-					console.log(response);
-				});
+                sessionStorage.setItem('openid',query.opid);
 			}else{
 				location.href = localStorage.getItem('apiDomain')+'public/index/home/index?back='+encodeURI(transition.to.path);
 				return true;
 			}
 		}
 	// }
-
-    // let query = 'os0CqxGZlM3Z6kI6tm7hSV7oQsQY';
-    // sessionStorage.setItem('openid',query);
-
-    Vue.http.get(localStorage.apiDomain+'public/index/index/guanzhu?openid=' + query).then((response)=>{
-        console.log(response);
-    });
 
 	//登录检测
 	if(typeof(transition.to.login)!=='undefined'&&transition.to.login===true){
@@ -88,6 +78,16 @@ router.beforeEach((transition) => {
 });
 
 router.afterEach((transition) => {
+
+	let openid = sessionStorage.getItem("openid");
+
+    Vue.http.get(localStorage.apiDomain+'public/index/index/guanzhu?openid='+ openid).then((response)=>{
+        if(response.data.status===1) {
+            link:response.data.url;
+        }
+    });
+
+
 	//获取微信分享配置
 	if(transition.to.name!='detail'){
 		Vue.http.get(localStorage.apiDomain+'public/index/index/wxshare').then((response)=>{

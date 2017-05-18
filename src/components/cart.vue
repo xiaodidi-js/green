@@ -325,6 +325,7 @@
 							id:this.cartList[cl].id,
 							format:this.cartList[cl].format
                         });
+                        console.log("已全选!")
                     }
                 }
             },

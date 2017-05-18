@@ -215,7 +215,7 @@
 					this.uploadFailed(index);
 				});
 			},
-			uploadImgToUpyun: function(url,file,policy,signature,index,domain,notify,params,thumb=''){
+			uploadImgToUpyun: function(url,file,policy,signature,index,domain,notify,params,thumb='') {
 				let formData = new FormData();
 				formData.append('file',file);
 				formData.append('policy',policy);
@@ -231,7 +231,7 @@
 					context.imgs[index].url = upurl;
 					context.imgs[index].w = gdata['image-width'];
 					context.imgs[index].h = gdata['image-height'];
-					if(index<3){
+					if(index < 3) {
 						context.imgs[index+1].active = 1;
 					}
 				},(response)=>{
