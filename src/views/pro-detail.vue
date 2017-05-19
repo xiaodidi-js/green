@@ -894,10 +894,7 @@
 		<div class="line" v-for="(pindex,fmt) in data.format">
 			<div class="title">{{ fmt.name }}</div>
 			<div id="con" class="con" style="font-size:0;white-space:normal;">
-				<guige :value="val.id"
-					   :text="val.name"
-					   v-for="(sindex,val) in fmt.value"
-					   @click="changeGuige(pindex,val.id,val.name)"></guige>
+				<guige :value="val.id" :text="val.name" v-for="(sindex,val) in fmt.value" @click="changeGuige(pindex,val.id,val.name)"></guige>
 			</div>
 			<div class="divider"></div>
 		</div>
@@ -992,7 +989,6 @@
 			}
 		},
 		ready() {
-
 		    //选项卡
 			this.siblingsDom();
 			this.timeline();
@@ -1154,14 +1150,14 @@
 			},
 			telistener: function(e){
 				if(Math.abs(e.changedTouches[0].pageX - this.startX) - Math.abs(e.changedTouches[0].pageY - this.startY) > 0){
-					if(e.changedTouches[0].pageX - this.startX > 0&&this.column>0&&e.changedTouches[0].pageX - this.startX > 50){
+					if(e.changedTouches[0].pageX - this.startX > 0 && this.column > 0 && e.changedTouches[0].pageX - this.startX > 50) {
 						this.changeColumn(this.column-1);
-					}else if(e.changedTouches[0].pageX - this.startX < 0&&this.column<2&&e.changedTouches[0].pageX - this.startX < -50){
+					}else if(e.changedTouches[0].pageX - this.startX < 0 && this.column < 2 && e.changedTouches[0].pageX - this.startX < -50) {
 						this.changeColumn(this.column+1);
 					}
 				}
 			},
-			changeColumn: function(col){
+			changeColumn: function(col) {
 				this.column = col;
 				let iHeight = document.getElementsByClassName('ms-item')[col].offsetHeight < this.minHeight ? this.minHeight : document.getElementsByClassName('ms-item')[col].offsetHeight;
 				let scroller = document.getElementById('scroller');

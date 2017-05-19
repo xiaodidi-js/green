@@ -317,6 +317,39 @@
 		text-align:center;
 	}
 
+	/* getShop start */
+	.getShop {
+		width:100%;
+		height:100%;
+		background: #fff;
+		margin:10px 0px;
+		font-size:1.4rem;
+	}
+
+	.getShop .getShopTime {
+		border-bottom: 1px solid #f2f2f2;
+		height:4.5rem;
+		line-height:4.5rem;
+	}
+
+	.getShop .getShopTime {
+		width:95%;
+		margin:0px auto;
+		padding-top:5px;
+	}
+
+	.radio-time {
+		border:1px solid #ccc;
+		padding:5px;
+	}
+
+	.getShop .getInformation {
+		width:80%;
+		text-align:center;
+		margin: 10px auto;
+		background: #fff;
+	}
+	/* getShop end */
 
 </style>
 
@@ -330,7 +363,7 @@
 		</my-cell>
 
 		<!-- 自提点地址/收货地址 -->
-		<div class="address-box">
+		<div class="address-box" @click="showPop">
 			<div class="border-line"></div>
 			<div class="border-line-vertical" style="left: 0px;"></div>
 			<div class="add-con">
@@ -356,7 +389,7 @@
 				</div>
 				<div style="text-align:center;" class="words" v-else>
 					<div class="add noTips">
-						选择自提点地址？<a @click="showPop">点我选择</a>  <!--  @click="setAddress" -->
+						选择自提点地址？<a @click="showPop">点我设置</a>  <!--  @click="setAddress" -->
 					</div>
 				</div>
 			</div>
@@ -413,6 +446,37 @@
 				<!--</div>-->
 			<!--</my-cell-item>-->
 		<!--</my-cell>-->
+
+		<div class="getShop">
+			<div class="getShopTime">
+				<div style="float:left;">取菜时间:</div>
+				<div style="float:left;">
+					<label @click="unMorning()" v-show="showValA">
+						<icon type="success" class="my-icon-chosen" v-show="showValA"></icon>
+						<span>上午(<i>10:30</i>)</span>
+					</label>
+					<label @click="Morning()" v-show="!showValA">
+						<icon type="circle" class="my-icon" v-show="!showValA"></icon>
+						<!--<my-switch :value.sync="chonseMorning" @click="Morning()"></my-switch>-->
+						<span>上午(<i>10:30</i>)</span>
+					</label>
+
+					<label @click="unAfternoon()" v-show="showValB">
+						<icon type="success" class="my-icon-chosen" v-show="showValB"></icon>
+						<!--<my-switch :value.sync="chonseAfternoon" @click="Afternoon()"></my-switch>-->
+						<span>上午(<i>10:30</i>)</span>
+					</label>
+
+					<label  @click="Afternoon()" v-show="!showValB">
+						<icon type="circle" class="my-icon" v-show="!showValB"></icon>
+						<!--<my-switch :value.sync="chonseAfternoon" @click="Afternoon()"></my-switch>-->
+						<span>上午(<i>10:30</i>)</span>
+					</label>
+
+				</div>
+			</div>
+			<div class="getInformation">提示：菜品到货后请及时取菜超过3天的菜我们将在第4天进行回收，谢谢！</div>
+		</div>
 
 		<!-- 其他选项 -->
 		<my-cell>
@@ -531,6 +595,8 @@
                 },
                 listGift: [],
 				dtype: 0,
+                showValA: false,
+                showValB: false
             }
         },
         components: {
@@ -560,7 +626,6 @@
             }
         },
         ready() {
-
             if(this.oneGift(this.address,this.lastPaySum) === "") {
 				$("#give-list").css({
 					display:"none"
@@ -621,6 +686,7 @@
             });
         },
         computed: {
+
             scoreMoney: function() {
                 let obj = {};
                 let money = this.score / 100;
@@ -650,6 +716,22 @@
             }
         },
         methods: {
+            Morning: function() {
+                this.showValA = true;
+				console.log(1);
+			},
+            unMorning: function () {
+                this.showValA = false;
+                console.log(1);
+            },
+            Afternoon: function () {
+                this.showValB = true;
+                console.log(1);
+            },
+            unAfternoon: function () {
+                this.showValB = false;
+                console.log(1);
+            },
             chosenGift: function (type = 0) {
 				if (this.dtype == type) return true;
 				this.dtype = type;
@@ -797,69 +879,71 @@
                 }
 				let _this = this;
                 for(let i = 0; i < this.cartInfo.length; i++) {
-                    if(this.cartInfo[i].deliverytime == 0 && this.cartInfo[i].peisongok == 0) {
+
+                    this.loadingMessage = '正在提交...';
+                    this.loadingShow = true;
+                    let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
+                    ustore = JSON.parse(ustore);
+
+                    let pdata = {
+                        uid:ustore.id,
+                        token:ustore.token,
+                        paytype:this.payType,
+                        products:this.cartInfo,
+                        stype:this.deliverType,
+                        address:this.address,
+                        coupon:this.coupon,
+                        score:this.scoreSwitch,
+                        paysum:this.lastPaySum,
+                        tips:this.memo,
+                        openid:sessionStorage.getItem("openid")
+                    };
+
+                    console.log(pdata);
+                    this.$http.post(localStorage.apiDomain + 'public/index/user/getSubmitOrder',pdata).then((response)=>{
                         console.log(1);
-                        return false;
-					} else if(this.cartInfo[i].deliverytime == 0 && this.cartInfo[i].peisongok == 1){
-						console.log(2);
-                        _this.loadingMessage = '正在提交...';
-                        _this.loadingShow = true;
-                        let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
-                        ustore = JSON.parse(ustore);
-                        let pdata = {
-                            uid:ustore.id,
-                            token:ustore.token,
-                            paytype:_this.payType,
-                            products:_this.cartInfo,
-                            stype:_this.deliverType,
-                            address:_this.address,
-                            coupon:_this.coupon,
-                            score:_this.scoreSwitch,
-                            paysum:_this.lastPaySum,
-                            tips:_this.memo,
-                            openid:sessionStorage.getItem('openid')
-
-                        };
-                        this.$http.post(localStorage.apiDomain+'public/index/user/getSubmitOrder',pdata).then((response)=>{
-                            if(response.data.status===1){
-                                console.log(response.data);
-                                _this.clearSel();
-                                _this.$router.replace('order/detail/'+response.data.oid);
-                                _this.loadingShow = false;
-                            }else if(response.data.status===-1){
-                                _this.loadingShow = false;
-                                _this.toastMessage = response.data.info;
-                                _this.toastShow = true;
-                                let context = this;
-                                setTimeout(function(){
-                                    context.clearAll();
-                                    sessionStorage.removeItem('userInfo');
-                                    localStorage.removeItem('userInfo');
-                                    context.$router.go({name:'login'});
-                                },800);
-                            }else{
-                                _this.loadingShow = false;
-                                _this.toastMessage = response.data.info;
-                                _this.toastShow = true;
-                            }
-                        },(response)=>{
-                            _this.loadingShow = false;
-                            _this.toastMessage = '网络开小差了~';
-                            _this.toastShow = true;
-                        });
-						return true;
-					} else if(this.cartInfo[i].deliverytime == 1 && this.cartInfo[i].peisongok == 0) {
-                        console.log(3);
-                        this.toastMessage = '超时间了亲~~~';
+                        if(response.data.status===1){
+                            console.log(response.data);
+                            this.clearSel();
+                            this.$router.replace('order/detail/'+response.data.oid);
+                            this.loadingShow = false;
+                        }else if(response.data.status === -1) {
+                            this.loadingShow = false;
+                            this.toastMessage = response.data.info;
+                            this.toastShow = true;
+                            let context = this;
+                            setTimeout(function(){
+                                context.clearAll();
+                                sessionStorage.removeItem('userInfo');
+                                localStorage.removeItem('userInfo');
+                                context.$router.go({name:'login'});
+                            },800);
+                        }else{
+                            this.loadingShow = false;
+                            this.toastMessage = response.data.info;
+                            this.toastShow = true;
+                        }
+                    },(response)=>{
+                        this.loadingShow = false;
+                        this.toastMessage = '网络开小差了~';
                         this.toastShow = true;
-						return false;
-					} else if(this.cartList[i].deliverytime == 1 && this.cartList[i].peisongok == 1) {
-                        console.log(4);
-					}
+                    });
+                    return true;
+
+//                    if(this.cartInfo[i].deliverytime == 0 && this.cartInfo[i].peisongok == 0) {
+//                        console.log(1);
+//                        return false;
+//					} else if(this.cartInfo[i].deliverytime == 0 && this.cartInfo[i].peisongok == 1){
+//
+//					} else if(this.cartInfo[i].deliverytime == 1 && this.cartInfo[i].peisongok == 0) {
+//                        console.log(3);
+//                        this.toastMessage = '超时间了亲~~~';
+//                        this.toastShow = true;
+//						return false;
+//					} else if(this.cartList[i].deliverytime == 1 && this.cartList[i].peisongok == 1) {
+//                        console.log(4);
+//					}
 				}
-
-
-
             }
         }
     }

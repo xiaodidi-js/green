@@ -235,6 +235,7 @@
 	<!-- <猜你喜欢> -->
 	<cardlike></cardlike>
 	<!-- <猜你喜欢> -->
+
 	<!-- 确定弹框 -->
 	<confirm :show.sync="confirmShow" title="删除商品" confirm-text="确定" cancel-text="取消" @on-confirm="confirmDel"><p style="text-align:center;">确定删除选中的商品吗？</p></confirm>
 
@@ -334,37 +335,34 @@
                     this.$dispatch('showMes','还未选择商品');
                     return false;
                 } else if(this.choseArr.length > 0) {
-					for(let y = 0; y < this.choseArr.length; y++) {
-                        for(let i = 0 ;i < this.cartList.length; i++) {
-                            if(this.cartList[i].deliverytime === 0 && this.cartList[i].peisongok === 0) {
-                                _this.loadingMessage = '当日商品超次日时间~~~';
-                                _this.loadingShow = true;
-                                console.log(2);
-                                return false;
-                            } else if(this.cartList[i].deliverytime === 0 && this.cartList[i].peisongok === 1) {
-                                _this.setSelCart(this.choseArr);
-                                _this.$router.go({name:'submit'});
-                                console.log(3);
-                                return true;
-                            } else if(this.cartList[i].deliverytime === 1 && this.cartList[i].peisongok === 0) {
-                                _this.toastMessage = '当日商品超当日时间~~~';
-                                _this.toastShow = true;
-                                console.log(4);
-                                return false;
-                            } else if(this.cartList[i].deliverytime === 1 && this.cartList[i].peisongok === 1) {
-                                console.log(5);
-                                return false;
-                                _this.setSelCart(this.choseArr);
-                                _this.$router.go({name:'submit'});
-                            } else {
-                                console.log(1);
-							}
+                    for(let i = 0 ;i < this.choseArr.length; i++) {
+                        if(this.choseArr[i].id.indexOf(this.ids) != -1) {
+                            _this.toastMessage = '当日商品超次日时间~~~';
+                            _this.toastShow = true;
+                            console.log(2);
+                            return false;
+                        } else if(this.choseArr[i].id.indexOf(this.ids) != 0) {
+                            _this.setSelCart(this.choseArr);
+                            _this.$router.go({name:'submit'});
+                            console.log(3);
+                            return true;
                         }
-					}
+                    }
 				}
             }
         },
         computed: {
+            //判断购物车商品次日或者当日
+            ids: function() {
+                var arr = [];
+                console.log(this.cartList);
+                for(let i = 0; i < this.cartList.length; i++ ) {
+                    if(this.cartList[i].peisongok == 0) {
+                        arr.push(this.cartList[i].id);
+					}
+                }
+                return arr;
+            },
             allsel: function() {
                 if(this.cartList.length === this.choseArr.length) {
                     return true;

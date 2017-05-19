@@ -87,7 +87,6 @@
 		<index-search :fixed="true"></index-search>
 
 		<!-- 轮播图 -->
-
 		<!--<swiper :list="gallery" :url="gallery.url" loop dots-position="center"-->
 				<!--:show-desc-mask="false"-->
 				<!--:aspect-ratio="650/1242" auto dots-class="dots-my" style="width: 100%;margin-top:50px;"></swiper>-->
@@ -95,10 +94,12 @@
 		<!-- 导航栏 -->
 		<router-view keep-alive></router-view>
 
-		<!--<router-view></router-view>-->
-
         <!-- toast提示框 -->
 		<toast :show.sync="toastShow" type="text">{{ toastMessage }}</toast>
+
+		<!-- loading加载框 -->
+		<loading :show="loadingShow" :text="loadingMessage"></loading>
+
 	</div>
 </template>
 
@@ -108,11 +109,13 @@ import Swiper from 'vux/src/components/swiper'
 import Scroller from 'vux/src/components/scroller'
 import Toast from 'vux/src/components/toast'
 import indexSearch from 'components/index-search'
+import Loading from 'vux/src/components/loading'
 
 export default{
 	data() {
 		return {
 			toastMessage:'',
+            loadingMessage:'',
 			toastShow:false,
 			data:{
 				banners:[],
@@ -129,12 +132,12 @@ export default{
         Scroller,
         Toast,
         indexSearch,
+        Loading
     },
 	route: {
 		
 	},
 	ready() {
-		this.bannersFun();
 		var _this = this;
 		//回车搜索
         document.onkeydown = function(event) {
@@ -144,23 +147,18 @@ export default{
 			}
 		};
         this.getData('');
+
+
 	},
     methods: {
-		bannersFun: function() {  /* public/index/index/mainInfo */
-			this.$http.get(localStorage.apiDomain+'public/index/index/mainInfo').then((response)=>{
-				this.banners = response.data.banners;
-//				console.log(response.data);
-			},(response)=>{
-				this.toastMessage = "网络开小差啦~";
-				this.toastShow = true;
-			});
-		},
         getData: function(sk) {
+            //确认收货
+            this.loadingMessage = '正在加载...';
+            this.loadingShow = true;
             let url = localStorage.apiDomain+'/public/index/index/classifylist/cid/'+this.$route.params.cid+'/action/'+this.column;
             if(sk.length > 0) url += '/search/'+sk;
             this.$http.get(url).then((response) => {
                 this.data.list = response.data.list;
-//                console.log(response.data);
             },(response)=>{
                 this.toastMessage = "网络开小差啦~";
                 this.toastShow = true;

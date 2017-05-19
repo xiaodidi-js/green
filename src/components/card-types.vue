@@ -207,13 +207,21 @@
 		</menu>
 	</div>
 
+	<!-- toast显示框 -->
+	<toast type="text" :show.sync="toastShow">{{ toastMessage }}</toast>
+
+	<!-- loading加载框 -->
+	<loading :show="loadingShow" :text="loadingMessage"></loading>
+
 </template>
 
 <script>
 
     import Scroller from 'vux/src/components/scroller'
-    import { setCartStorage } from 'vxpath/actions'
     import { cartNums } from 'vxpath/getters'
+    import { setCartStorage } from 'vxpath/actions'
+    import Loading from 'vux/src/components/loading'
+    import Toast from 'vux/src/components/toast'
 
 	export default{
         vuex: {
@@ -234,18 +242,27 @@
         },
         data() {
             return {
-                data: [],
+                data: {},
                 item: [],
                 myScroll: '',
                 dtype: null,
                 guige:[],
+                toastShow: false,
+                toastMessage: '',
+                loadingMessage:'',
+            }
+        },
+        route: {
+            data(transition) {
+                if(typeof this.data.id !== 'undefined' && this.data.id != transition.to.params.pid){
+                    location.reload();
+                }
             }
         },
         ready() {
             this.dtype = localStorage.getItem('number');
             this.chooseSort(this.dtype);
             this.getChonse(this.dtype);
-
             $(function() {
                 //菜单框架自动获取高度
                 var doc_H = $(document).height();
@@ -297,7 +314,9 @@
             } ,10);
         },
         components: {
-            Scroller
+            Scroller,
+            Loading,
+            Toast
 		},
         methods: {
             startTouch: function() {
@@ -316,6 +335,9 @@
 
 			},
             chooseSort(cid){
+                //确认收货
+                this.loadingMessage = '正在确认';
+                this.loadingShow = true;
                 let url = localStorage.apiDomain+'/public/index/index/classifylist/cid/' + cid;
                 this.$http.get(url).then((response)=>{
                     this.data = response.data.list;
@@ -326,7 +348,8 @@
                 });
             },
             goCart: function(cid) {
-				console.log(cid);
+                this.toastMessage = "加入购物车还在修改~~~";
+				this.toastShow = true;
 			}
         },
     }

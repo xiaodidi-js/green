@@ -164,12 +164,12 @@
                     总金额：<label>¥{{ item.price }}</label>
                 </div>
                 <div class="button">
-                    <a class="manage-btn"
+                    <a class="manage-btn" id="cancel-btn"
                        v-if="item.pay==0&&item.send==0&&item.receive==0&&item.status==0"
                        :class="{'disabled':disabled}"
                        @click="cancelOrder()">取消订单</a>
 
-                    <a class="manage-btn"
+                    <a class="manage-btn" id="detail-btn"
                        v-if="item.pay==0&&item.send==0&&item.receive==0&&item.status==0"
                        v-link="{name:'order-detail',params:{oid:item.id}}">去付款</a>
 
@@ -240,7 +240,7 @@
             Confirm
         },
         ready() {
-            console.log(this.$route.params.oid);
+
         },
         data() {
             return {
@@ -260,7 +260,6 @@
             confirmClcik: function (id) {
                 let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
                 ustore = JSON.parse(ustore);
-                console.log(1);
                 switch(this.clickType) {
                     case 1:
                         let pdata = {uid:ustore.id,token:ustore.token,oid:id};
@@ -283,16 +282,12 @@
                             this.toastShow = true;
                         });
                     case 2:
-                        console.log(2);
-                        let d = {uid:ustore.id,token:ustore.token,oid:id};
+
                         this.$http.delete(localStorage.apiDomain + 'public/index/user/getsubmitorder/uid/' + ustore.id + '/token/' + ustore.token + '/oid/' + id).then((response)=>{
-                            console.log(3);
                             if(response.data.status === 1) {
-                                console.log(4);
-                                console.log(response.data + '1');
-                                this.data.order.statext = '用户取消';
-                                this.data.order.status = -1;
-                                this.btnStatus = false;
+                                console.log(response.data);
+                                this.orders.statext = '用户取消';
+                                this.orders.status = -1;
                             }else if(response.data.status === -1) {
                                 console.log(5);
                                 this.btnStatus = false;
@@ -323,9 +318,6 @@
                 this.confirmText = '请在收到货物后才确认收货,确认?';
                 this.btnStatus = true;
                 this.confirmShow = true;
-                //确认收货
-//                this.loadingMessage = '正在确认';
-//                this.loadingShow = true;
             },
             buyAgain: function(oid){
                 this.btnStatus = true;

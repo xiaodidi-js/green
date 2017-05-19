@@ -413,7 +413,6 @@
                     if (response.data.status === 1) {
                         this.showStatus = false;
                         this.showTips = '加载中...';
-                        console.log(response.data);
                         this.options = response.data.list;
                     } else if (response.data.status === -1) {
                         console.log(3);

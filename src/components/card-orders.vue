@@ -155,9 +155,9 @@
 					总金额：<label>¥{{ item.price }}</label>
 				</div>
 				<div class="button">
-					<!--<a class="manage-btn"-->
-					   <!--:class="{'disabled':disabled}"-->
-					   <!--@click="clickCancel()">取消订单</a>-->
+					<a class="manage-btn"
+					   v-if="item.pay==0&&item.send==0&&item.receive==0&&item.status==0"
+					   @click="clickCancel()">取消订单</a>
 
 					<a class="manage-btn"
 					   v-if="item.pay==0&&item.send==0&&item.receive==0&&item.status==0"
@@ -172,14 +172,15 @@
 					   @click="buyAgain(item.id)">再次购买</a>
 				</div>
 			</div>
-
+			<!-- 确定弹框 -->
+			<confirm :show.sync="confirmShow" :title="confirmTitle" confirm-text="确定" cancel-text="取消"
+					 @on-confirm="myConfirmClcik(item.id)" @on-cancel="cancelClick">
+				<p style="text-align:center;">{{ confirmText }}</p>
+			</confirm>
 		</div>
 	</div>
 	<!-- toast提示框 -->
 	<toast :show.sync="toastShow" type="text">{{ toastMessage }}</toast>
-
-	<!-- 确定弹框 -->
-	<confirm :show.sync="confirmShow" :title="confirmTitle" confirm-text="确定" cancel-text="取消" @on-confirm="confirmClcik" @on-cancel="cancelClick"><p style="text-align:center;">{{ confirmText }}</p></confirm>
 
 	<!-- loading加载框 -->
 	<loading :show="loadingShow" :text="loadingMessage"></loading>
@@ -190,11 +191,12 @@
 	import Loading from 'vux/src/components/loading'
     import Toast from 'vux/src/components/toast'
     import Confirm from 'vux/src/components/confirm'
-    import { clearAll } from 'vxpath/actions'
+    import { setCartAgain,clearAll } from 'vxpath/actions'
 
 	export default{
 		vuex: {
 			actions: {
+                setCartAgain,
 				clearAll,
 			}
 		},
@@ -219,12 +221,55 @@
 			return {
 				loadingShow:false,
 				loadingMessage:'',
+                confirmShow: false,
+                confirmTitle:'',
+                confirmText: '',
+                data: {
+                    order:{},
+                }
 			}
 		},
 		ready() {
 
 		},
 		methods: {
+            myConfirmClcik: function(id) {
+                let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
+                ustore = JSON.parse(ustore);
+                console.log(1);
+                switch(this.clickType) {
+                    case 1:
+                        let d = {uid:ustore.id,token:ustore.token,oid:id};
+                        this.$http.delete(localStorage.apiDomain + 'public/index/user/getsubmitorder/uid/' + ustore.id + '/token/' + ustore.token + '/oid/' + id).then((response)=>{
+                            if(response.data.status === 1) {
+                                console.log(response.data + '1');
+                                this.data.order.statext = '用户取消';
+                                this.data.order.status = -1;
+                                this.btnStatus = false;
+                                $("#cancel-btn").css("display","none");
+                                $("#detail-btn").css("display","none");
+                            }else if(response.data.status === -1) {
+                                this.btnStatus = false;
+                                this.toastMessage = response.data.info;
+                                this.toastShow = true;
+                                let context = this;
+                                setTimeout(function(){
+                                    context.clearAll();
+                                    sessionStorage.removeItem('userInfo');
+                                    localStorage.removeItem('userInfo');
+                                    context.$router.go({name:'login'});
+                                },800);
+                            }else{
+                                this.btnStatus = false;
+                                this.toastMessage = response.data.info;
+                                this.toastShow = true;
+                            }
+                        },(response)=>{
+                            this.toastMessage = '网络开小差了~';
+                            this.toastShow = true;
+                        });
+                }
+			},
 			buyAgain: function(oid){
 				this.btnStatus = true;
 				this.loadingMessage = '请稍候...';
@@ -261,12 +306,11 @@
 				location.href='http://www.kuaidi100.com/chaxun?com='+scid+'&nu='+snum;
 			},
 			clickCancel: function(){
-                console.log(1);
-				if(this.disabled){
-                    console.log(2);
-					return true;
-				}
-				this.$dispatch('orderCancel');
+                this.clickType = 1;
+                this.confirmTitle = '取消订单';
+                this.confirmText = '确定取消该订单吗,确认?';
+                this.btnStatus = true;
+                this.confirmShow = true;
 			}
 		}
 	}
