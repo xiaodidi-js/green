@@ -128,13 +128,7 @@
 		padding: 0px 5px;
 	}
 
-	.my-icon:before{
-		color:#ccc;
-	}
 
-	.my-icon-chosen:before{
-		color:#f9ad0c;
-	}
 
 	.address-box{
 		width:100%;
@@ -176,8 +170,6 @@
 		margin:0.5rem 0rem;
 		font-size:0;
 	}
-
-
 
 	.address-box .add-con>div{
 		display:inline-block;
@@ -332,10 +324,51 @@
 		line-height:4.5rem;
 	}
 
+	.bor {
+		position: relative;
+		height:4.5rem;
+		color: #fff;
+	}
+
+	.bor .rada {
+		position: absolute;
+	}
+
+	.bor .radb {
+		position: absolute;
+		left: 8rem;
+	}
+
+	.label-radio {
+		width:8rem;
+		display:block;
+		float:left;
+		text-indent: 3rem;
+		color: #333;
+	}
+
+	.label-radio span {
+		color: #333;
+	}
+
+	.my-icon{
+		width:2rem;
+		height:2rem;
+		border-radius: 1rem;
+		display:block;
+		border:1px solid #ccc;
+		float: left;
+		margin:12px 5px;
+	}
+
+	.my-icon-chosen {
+		border:1px solid #f9ad0c;
+		background: #f9ad0c;
+	}
+
 	.getShop .getShopTime {
 		width:95%;
 		margin:0px auto;
-		padding-top:5px;
 	}
 
 	.radio-time {
@@ -450,29 +483,12 @@
 		<div class="getShop">
 			<div class="getShopTime">
 				<div style="float:left;">取菜时间:</div>
-				<div style="float:left;">
-					<label @click="unMorning()" v-show="showValA">
-						<icon type="success" class="my-icon-chosen" v-show="showValA"></icon>
-						<span>上午(<i>10:30</i>)</span>
-					</label>
-					<label @click="Morning()" v-show="!showValA">
-						<icon type="circle" class="my-icon" v-show="!showValA"></icon>
-						<!--<my-switch :value.sync="chonseMorning" @click="Morning()"></my-switch>-->
-						<span>上午(<i>10:30</i>)</span>
-					</label>
+				<div class="bor" style="float:left;">
+					<input type="radio" value="0" v-model="shonse" class="my-icon rada" />
+					<input type="radio" value="1" v-model="shonse" class="my-icon radb" />
 
-					<label @click="unAfternoon()" v-show="showValB">
-						<icon type="success" class="my-icon-chosen" v-show="showValB"></icon>
-						<!--<my-switch :value.sync="chonseAfternoon" @click="Afternoon()"></my-switch>-->
-						<span>上午(<i>10:30</i>)</span>
-					</label>
-
-					<label  @click="Afternoon()" v-show="!showValB">
-						<icon type="circle" class="my-icon" v-show="!showValB"></icon>
-						<!--<my-switch :value.sync="chonseAfternoon" @click="Afternoon()"></my-switch>-->
-						<span>上午(<i>10:30</i>)</span>
-					</label>
-
+					<label class="label-radio" @click="isRadio"><span>10:30</span></label>
+					<label class="label-radio" @click="isRadio"><span>16:30</span></label>
 				</div>
 			</div>
 			<div class="getInformation">提示：菜品到货后请及时取菜超过3天的菜我们将在第4天进行回收，谢谢！</div>
@@ -595,8 +611,7 @@
                 },
                 listGift: [],
 				dtype: 0,
-                showValA: false,
-                showValB: false
+                shonse:0,
             }
         },
         components: {
@@ -626,6 +641,9 @@
             }
         },
         ready() {
+
+            this.isRadio();
+
             if(this.oneGift(this.address,this.lastPaySum) === "") {
 				$("#give-list").css({
 					display:"none"
@@ -686,7 +704,6 @@
             });
         },
         computed: {
-
             scoreMoney: function() {
                 let obj = {};
                 let money = this.score / 100;
@@ -716,22 +733,11 @@
             }
         },
         methods: {
-            Morning: function() {
-                this.showValA = true;
-				console.log(1);
+            isRadio: function() {
+				$(".my-icon").change(function () {
+					$(this).addClass("my-icon-chosen").siblings().removeClass("my-icon-chosen");
+                });
 			},
-            unMorning: function () {
-                this.showValA = false;
-                console.log(1);
-            },
-            Afternoon: function () {
-                this.showValB = true;
-                console.log(1);
-            },
-            unAfternoon: function () {
-                this.showValB = false;
-                console.log(1);
-            },
             chosenGift: function (type = 0) {
 				if (this.dtype == type) return true;
 				this.dtype = type;
@@ -879,12 +885,10 @@
                 }
 				let _this = this;
                 for(let i = 0; i < this.cartInfo.length; i++) {
-
                     this.loadingMessage = '正在提交...';
                     this.loadingShow = true;
                     let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
                     ustore = JSON.parse(ustore);
-
                     let pdata = {
                         uid:ustore.id,
                         token:ustore.token,
@@ -896,12 +900,11 @@
                         score:this.scoreSwitch,
                         paysum:this.lastPaySum,
                         tips:this.memo,
-                        openid:sessionStorage.getItem("openid")
+						openid:sessionStorage.getItem("openid"),
+                        pshonse:this.shonse
                     };
 
-                    console.log(pdata);
                     this.$http.post(localStorage.apiDomain + 'public/index/user/getSubmitOrder',pdata).then((response)=>{
-                        console.log(1);
                         if(response.data.status===1){
                             console.log(response.data);
                             this.clearSel();
@@ -929,20 +932,6 @@
                         this.toastShow = true;
                     });
                     return true;
-
-//                    if(this.cartInfo[i].deliverytime == 0 && this.cartInfo[i].peisongok == 0) {
-//                        console.log(1);
-//                        return false;
-//					} else if(this.cartInfo[i].deliverytime == 0 && this.cartInfo[i].peisongok == 1){
-//
-//					} else if(this.cartInfo[i].deliverytime == 1 && this.cartInfo[i].peisongok == 0) {
-//                        console.log(3);
-//                        this.toastMessage = '超时间了亲~~~';
-//                        this.toastShow = true;
-//						return false;
-//					} else if(this.cartList[i].deliverytime == 1 && this.cartList[i].peisongok == 1) {
-//                        console.log(4);
-//					}
 				}
             }
         }

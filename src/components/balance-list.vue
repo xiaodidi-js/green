@@ -144,6 +144,48 @@
 		color:#808080;
 	}
 
+	/* getShop start */
+	.getShop {
+		width:100%;
+		height:100%;
+		background: #fff;
+		margin:10px 0px;
+		font-size:1.4rem;
+	}
+
+	.getShop .getShopTime {
+		border-bottom: 1px solid #f2f2f2;
+		height:4.5rem;
+		line-height:4.5rem;
+	}
+
+	.getShop .getShopTime {
+		width:95%;
+		margin:0px auto;
+		padding-top:5px;
+	}
+
+	.radio-time {
+		border:1px solid #ccc;
+		padding:5px;
+	}
+
+	.getShop .getInformation {
+		width:80%;
+		text-align:center;
+		margin: 10px auto;
+		background: #fff;
+	}
+
+	.my-icon:before{
+		color:#ccc;
+	}
+
+	.my-icon-chosen:before{
+		color:#f9ad0c;
+	}
+
+	/* getShop end */
 
 </style>
 
@@ -168,23 +210,56 @@
 				<div class="right">
 					<div class="price">¥{{ item.price }}</div>
 					<div class="num">x{{ item.nums }}</div>
+					<!--<div class="num">{{ item.deliverytime }}</div>-->
 				</div>
 			</div>
 		</div>
 		<div class="line-bottom" v-if="showBtm">
-			<!--<div style="float:left;">-->
-				<!--<button class="todaybtn nextday" @click="nextday()">次日</button>-->
-				<!--<button class="todaybtn sameday" @click="sameday()">当日</button>-->
-			<!--</div>-->
 			<div style="display:block;float:right;">共{{ amount }}件商品合计：<label style="color:#f9ad0c;">¥{{ sum }}</label></div>
 		</div>
 	</div>
+
+	<!--<div class="getShop">-->
+		<!--<div class="getShopTime">-->
+			<!--<div style="float:left;">取菜时间:</div>-->
+			<!--<div style="float:left;">-->
+
+				<!--<input type="radio" value="0" @click="ids" v-model="shonse" class="weui_icon weui_icon_circle my-icon"/>-->
+				<!--<input type="radio" value="1" @click="ids" v-model="shonse" class="weui_icon weui_icon_circle my-icon"/>-->
+				<!--{{ shonse }}-->
+
+				<!--&lt;!&ndash;<label @click="Morning(0)" v-show="!showValA">-->
+					<!--<icon type="circle" class="my-icon" v-show="!showValA"></icon>-->
+					<!--&lt;!&ndash;<my-switch :value.sync="chonseMorning" @click="Morning()"></my-switch>&ndash;&gt;-->
+					<!--<span>上午(<i>10:30</i>)</span>-->
+				<!--</label>-->
+				<!--<label @click="unMorning(1)" v-show="showValA">-->
+					<!--<icon type="success" class="my-icon-chosen" v-show="showValA"></icon>-->
+					<!--<span>上午(<i>10:30</i>)</span>-->
+				<!--</label>-->
+				<!--<label @click="unAfternoon()" v-show="showValB">-->
+					<!--{{ shonse }}-->
+					<!--<icon type="success" class="my-icon-chosen" v-show="showValB"></icon>-->
+					<!--&lt;!&ndash;<my-switch :value.sync="chonseAfternoon" @click="Afternoon()"></my-switch>&ndash;&gt;-->
+					<!--<span>下午(<i>16:30</i>)</span>-->
+				<!--</label>-->
+
+				<!--<label  @click="Afternoon()" v-show="!showValB">-->
+					<!--<icon type="circle" class="my-icon" v-show="!showValB"></icon>-->
+					<!--&lt;!&ndash;<my-switch :value.sync="chonseAfternoon" @click="Afternoon()"></my-switch>&ndash;&gt;-->
+					<!--<span>下午(<i>16:30</i>)</span>-->
+				<!--</label>&ndash;&gt;-->
+			<!--</div>-->
+		<!--</div>-->
+		<!--<div class="getInformation">提示：菜品到货后请及时取菜超过3天的菜我们将在第4天进行回收，谢谢！</div>-->
+	<!--</div>-->
 
 </template>
 
 <script>
 
     import Scroller from 'vux/src/components/scroller'
+    import Icon from 'vux/src/components/icon'
 
 	export default{
 		props: {
@@ -205,7 +280,10 @@
 		},
 		data() {
 			return {
-				amount:0
+				amount:0,
+                showValA: false,
+                showValB: false,
+				shonse:0,
 			}
 		},
 		ready() {
@@ -224,7 +302,8 @@
 			});
 		},
         components: {
-            Scroller
+            Scroller,
+            Icon
 		},
 		computed: {
 			amount: function(){
@@ -241,18 +320,37 @@
 			}
 		},
 		methods: {
-            nextday: function() {
-                for(let i = 0 ;i < this.list.length; i++) {
-                    console.log(this.list[i].deliverytime);
-                    console.log(this.list[i].peisongok);
-                }
+
+		    ids: function() {
+
 			},
-            sameday: function() {
-                for(let i = 0 ;i < this.list.length; i++) {
-                    console.log(this.list[i].deliverytime);
-                    console.log(this.list[i].peisongok);
-                }
-			}
+
+//            Morning: function() {
+//                this.showValA = true;
+//                if(this.showValB = true) this.showValB = false;
+//                for(let i = 0; i < this.list.length; i++) {
+//                    if(this.list[i].deliverytime == 0) {
+//                        console.log(this.list[i].deliverytime);
+//					}
+//                    return true;
+//				}
+//            },
+//            unMorning: function () {
+//                this.showValA = false;
+//            },
+//            Afternoon: function () {
+//                this.showValB = true;
+//                if(this.showValA = true) this.showValA = false;
+//                for(let i = 0; i < this.list.length; i++) {
+//                    if(this.list[i].deliverytime == 1) {
+//                        console.log(this.list[i].deliverytime);
+//                    }
+//                    return true;
+//                }
+//            },
+//            unAfternoon: function () {
+//                this.showValB = false;
+//            },
 		}
 	}
 </script>

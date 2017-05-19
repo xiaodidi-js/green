@@ -24,6 +24,7 @@
     }
     .youlike_list ul li{
         width: 33.333%;
+        height:100%;
         background-color:#fff;
     }
     .youlike_list ul li:nth-of-type(1),

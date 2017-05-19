@@ -40,11 +40,11 @@ export const selCartInfo = state => {
 //获取选择购物车
 export const selCartSum = state => {
 	let sum = 0;
-	if(state.selCart.length<=0){
+	if(state.selCart.length <= 0) {
 		return sum.toFixed(2);
 	}
-	for(let slist=0;slist<state.selCart.length;slist++){
-		sum += state.selCart[slist].price*state.selCart[slist].nums;
+	for(let slist = 0;slist < state.selCart.length;slist++) {
+		sum += state.selCart[slist].price * state.selCart[slist].nums;
 	}
 	return sum.toFixed(2);
 }
@@ -52,10 +52,10 @@ export const selCartSum = state => {
 //获取选择购物车ids
 export const selCartIds = state => {
 	let ids = [];
-	if(state.selCart.length<=0){
+	if(state.selCart.length <= 0) {
 		return ids;
 	}
-	for(let slist=0;slist<state.selCart.length;slist++){
+	for(let slist = 0;slist < state.selCart.length; slist++) {
 		ids.push({id:state.selCart[slist].id,format:state.selCart[slist].format});
 	}
 	return ids;

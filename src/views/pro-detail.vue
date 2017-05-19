@@ -755,14 +755,14 @@
 						</div>
 					</div>
 
-					<div class="product_button">
-						<div class="product_button_num">数量：</div>
-						<div class="product_button_number">
-							<div class="product_button_cut":class="{'disabled':buyNums<=1}" @click="reduceNums">-</div>
-							<div class="product_button_text"><input type="number" id="num" class="input" :value="buyNums" readonly /></div>
-							<div class="product_button_add" :class="{'disabled':buyNums>=proNums}" @click="addNums">+</div>
-						</div>
-					</div>
+					<!--<div class="product_button">-->
+						<!--<div class="product_button_num">数量：</div>-->
+						<!--<div class="product_button_number">-->
+							<!--<div class="product_button_cut":class="{'disabled':buyNums<=1}" @click="reduceNums">-</div>-->
+							<!--<div class="product_button_text"><input type="number" id="num" class="input" :value="buyNums" readonly /></div>-->
+							<!--<div class="product_button_add" :class="{'disabled':buyNums>=proNums}" @click="addNums">+</div>-->
+						<!--</div>-->
+					<!--</div>-->
 
 				</div>
 
@@ -1232,12 +1232,16 @@
 				}
 			},
 			buyNow: function() {
-                if(this.data.format) {
-                    if(!this.checkGuige()) {
-                        this.showFormatPop();
-                        return false;
-                    }
+                if(!this.formatPopShow == true) {
+                    this.formatPopShow = true;
+                    return false;
                 }
+//                if(this.data.format) {
+//                    if(!this.checkGuige()) {
+//                        this.showFormatPop();
+//                        return false;
+//                    }
+//                }
                 if(this.proNums <= 0) {
                     this.toastMessage = '商品暂时缺货';
                     this.toastShow = true;
@@ -1288,12 +1292,16 @@
                 this.$router.go({name:'cart'});
 			},
 			addCart : function() {
-                if(this.data.format) {
-                    if(!this.checkGuige()) {
-                        this.formatPopShow = true;
-                        return false;
-                    }
-                }
+                if(!this.formatPopShow == true) {
+                    this.formatPopShow = true;
+                    return false;
+				}
+//                if(this.data.format) {
+//                    if(this.checkGuige()) {
+//                        this.formatPopShow = true;
+//                        return false;
+//                    }
+//                }
                 if(this.proNums <= 0) {
                     this.toastMessage = '商品暂时缺货';
                     this.toastShow = true;
@@ -1306,10 +1314,6 @@
                     this.toastMessage = '购买数量超过库存数量';
                     this.toastShow = true;
                     return false;
-                } else if (this.data.deliverytime == 0) {
-
-				} else if (this.data.deliverytime == 1) {
-
                 }
                 let cartObj = {};
                 let cartFormat = this.guige.length > 0 ? this.guige.join(',') : '';

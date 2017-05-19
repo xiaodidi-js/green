@@ -335,7 +335,6 @@
 
 			},
             chooseSort(cid){
-                //确认收货
                 this.loadingMessage = '正在确认';
                 this.loadingShow = true;
                 let url = localStorage.apiDomain+'/public/index/index/classifylist/cid/' + cid;

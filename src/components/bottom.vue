@@ -179,7 +179,7 @@
 				<div class="name">首页</div>
 			</div>
 			<!-- 选项卡二 -->
-			<div class="group" style="position: relative;left: -15px;" v-link="{name:'classify'}">
+			<div class="group" style="position: relative;left: -15px;" v-link="{name:'classify'}" @click="guanzhufun()">
 				<i class="icons icon-zizhuxiadan"></i>
 				<div class="name">下单</div>
 			</div>
@@ -223,6 +223,15 @@
 			this.siblingsDom();
 		},
         methods: {
+            guanzhufun: function() {
+                let openid = sessionStorage.getItem("openid");
+                this.$http.get(localStorage.apiDomain+'public/index/index/guanzhu?openid='+ openid).then((response)=>{
+                    if(response.data.status == 0) {
+                        this.$router.go({name: 'sao'});
+                        return;
+                    }
+                });
+			},
 		    goConter: function() {
                 this.myActive(1);
                 this.$router.go({name: 'per-orders'})

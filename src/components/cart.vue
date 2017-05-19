@@ -182,19 +182,12 @@
 		<separator :set-height="40" unit="px"></separator>
 
 		<div class="card-wrapper">
-			<cart-list
-					:chosen.sync="choseArr"
-					:pid="item.id" v-for="item in cartList"
-					:img="item.shotcut"
-					:pname="item.name"
-					:pprice="item.price"
-					:pnums="item.nums"
-					:pstore="item.store"
-					:mode="editMode"
-					:pformat="item.format"
-					:pfname="item.formatName"
-					:pdelivery="item.deliverytime"
-					:peisongok="item.peisongok" >
+			<cart-list :chosen.sync="choseArr" :pid="item.id" v-for="item in cartList"
+					:img="item.shotcut" :pname="item.name"
+					:pprice="item.price" :pnums="item.nums"
+					:pstore="item.store" :mode="editMode"
+					:pformat="item.format" :pfname="item.formatName"
+					:pdelivery="item.deliverytime" :peisongok="item.peisongok">
 			</cart-list>
 
 			<!-- 底部分隔 -->
@@ -334,21 +327,10 @@
                 if(this.choseArr.length <= 0) {
                     this.$dispatch('showMes','还未选择商品');
                     return false;
-                } else if(this.choseArr.length > 0) {
-                    for(let i = 0 ;i < this.choseArr.length; i++) {
-                        if(this.choseArr[i].id.indexOf(this.ids) != -1) {
-                            _this.toastMessage = '当日商品超次日时间~~~';
-                            _this.toastShow = true;
-                            console.log(2);
-                            return false;
-                        } else if(this.choseArr[i].id.indexOf(this.ids) != 0) {
-                            _this.setSelCart(this.choseArr);
-                            _this.$router.go({name:'submit'});
-                            console.log(3);
-                            return true;
-                        }
-                    }
-				}
+                }
+				this.ids;
+                _this.setSelCart(this.choseArr);
+                _this.$router.go({name:'submit'});
             }
         },
         computed: {
@@ -357,9 +339,10 @@
                 var arr = [];
                 console.log(this.cartList);
                 for(let i = 0; i < this.cartList.length; i++ ) {
-                    if(this.cartList[i].peisongok == 0) {
-                        arr.push(this.cartList[i].id);
-					}
+                    console.log(this.cartList[i]);
+//                    if(this.cartList[i].peisongok == 1) {
+//                        arr.push(this.cartList[i].id);
+//					}
                 }
                 return arr;
             },

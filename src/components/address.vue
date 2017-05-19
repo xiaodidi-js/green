@@ -169,11 +169,9 @@
 
     <div class="ui-address">
         <ul id="card">
-            <li class="active">
-                自提地点
-            </li>
+            <li class="active">自提地点</li>
             <li>
-                收货地址
+                <span>收货地址</span>
                 <div class="sel-active"></div>
             </li>
         </ul>
