@@ -103,11 +103,11 @@ const mutations = {
 		}
 	},
 	CLEARSELCART (state){
-		if(state.selCart.length>0){
+		if(state.selCart.length > 0) {
 			let delIndex = [];
-			for(let slist=0;slist<state.selCart.length;slist++){
-				for(let plist=0;plist<state.cart.length;plist++){
-					if(state.cart[plist].id==state.selCart[slist].id&&state.cart[plist].format==state.selCart[slist].format){
+			for(let slist = 0;slist < state.selCart.length;slist++) {
+				for(let plist = 0;plist < state.cart.length;plist++) {
+					if(state.cart[plist].id == state.selCart[slist].id && state.cart[plist].format == state.selCart[slist].format) {
 						delIndex.push(plist);
 						break;
 					}

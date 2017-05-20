@@ -78,7 +78,7 @@ const routers = {
         header:true,
         footer:true,
         title:'购物车',
-        position:3,
+        position:0,
         login:true,
         component (resolve) {
             require(['./views/cart.vue'], resolve);
@@ -341,7 +341,7 @@ const routers = {
         header:true,
         footer:true,
         title:'活动',
-        position:0,
+        position:3,
         component (resolve) {
             require(['./components/activity.vue'], resolve);
         }

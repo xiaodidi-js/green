@@ -17,7 +17,7 @@
 	<banners :testarr="data.index_data"></banners>
 	<div class="sub-content">
 		<!-- 显示抢购 -->
-		<card-column :columns="maincolumns" keep-alive></card-column>
+		<!--<card-column :columns="maincolumns" keep-alive></card-column>-->
 		<!-- 热销产品排行榜 -->
 		<card-rectangle :testarr="data.index_data"></card-rectangle>
 		<!-- toast提示框 -->

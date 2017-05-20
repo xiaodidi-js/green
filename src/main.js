@@ -89,7 +89,6 @@ router.afterEach((transition) => {
         }
     });
 
-
 	//获取微信分享配置
 	if(transition.to.name!='detail'){
 		Vue.http.get(localStorage.apiDomain+'public/index/index/wxshare').then((response)=>{

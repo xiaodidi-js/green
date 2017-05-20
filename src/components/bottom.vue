@@ -28,6 +28,19 @@
 		z-index:99;
 	}
 
+	.wrapper .goCart {
+		width:55px;
+		height:55px;text-align:center;color:#fff;
+		background: #81c429;
+		border-radius:100%;
+		position:fixed;
+		left:0px;
+		right:0px;
+		bottom:10px;
+		margin:0px auto;
+		z-index:99;
+	}
+
 	.cart-bor{
 		position: absolute;
 		top: 0px;
@@ -162,12 +175,14 @@
 
 	/* wrapper start */
 
+
+
 </style>
 
 <template>
 	<div class="wrapper" keep-alive>
 		<!-- 购物车 -->
-		<div class="group-cart" @click="cartFun()" v-link="{name:'cart'}">
+		<div class="group-cart" v-link="{name:'cart'}" @click="cartFun()">
 			<i class="icons icon-icon22fuzhi"></i>
 			<div class="name">购物车</div>
 			<badge :text="cartNumsText" class="my-badge cart-bor" v-show="cartNums > 0"></badge>
@@ -220,9 +235,12 @@
 			}
 		},
 		ready() {
-			this.siblingsDom();
+
 		},
         methods: {
+		    ids: function () {
+				console.log(1);
+            },
 		    goConter: function() {
                 let openid = sessionStorage.getItem("openid");
                 this.$http.get(localStorage.apiDomain+'public/index/index/guanzhu?openid='+ openid).then((response)=>{
@@ -234,36 +252,8 @@
                 this.myActive(1);
                 this.$router.go({name: 'per-orders'})
 			},
-            $id: function(id) {
-                return document.getElementById(id);
-            },
-            siblings: function (dom,callback){
-                var pdom = dom.parentElement;
-                var tabArr = [].slice.call(pdom.children);
-                tabArr.filter(function(obj){
-                    if(obj!=dom)callback.call(obj);
-                });
-            },
-            siblingsDom:function (){
-                var cardDom = this.$id("card");
-                var liDomes = cardDom.children;
-                var len = liDomes.length;
-                for(var i = 0; i < len; i++) {
-                    //给对象缓存自有属性
-                    liDomes[i].index = i;
-                    var _this = this;
-                    liDomes[i].onclick = function(){
-                        this.className = "group active";
-                        localStorage.setItem("buttonActive",this.className);
-                        //同辈元素互斥
-                        _this.siblings(this,function(){
-                            this.className = "group";
-                        });
-                    };
-                }
-            },
-            cartFun: function() {
 
+            cartFun: function() {
                 let openid = sessionStorage.getItem("openid");
                 this.$http.get(localStorage.apiDomain+'public/index/index/guanzhu?openid='+ openid).then((response)=>{
                     if(response.data.status == 0) {
@@ -271,7 +261,6 @@
                         return;
                     }
                 });
-
                 var cardDom = document.getElementById("card");
                 var active = cardDom.children;
                 for(var i = 0; i <= active.length; i++) {
