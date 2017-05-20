@@ -203,7 +203,6 @@
 				<div class="box"><span style="font-size: 1.4rem;">{{ timeRes.minute}}</span></div>
 				<p class="timer_dian">:</p>
 				<div class="box"><span style="font-size: 1.4rem;">{{ timeRes.second}}</span></div>
-
 			<div class="time">
 				<label class="dotted" v-if="status == 0">抢购进行中!</label>
 				<label class="none" v-if="status < 0">抢购已结束</label>
@@ -243,6 +242,11 @@
                 default() {
                     return []
                 }
+            },
+            time: {
+                type: Number,
+                default: 0,
+                twoWay: true
             }
         },
         data() {
@@ -257,13 +261,13 @@
 		},
         ready() {
             let _self = this;
-            this.$watch('columns',function(newVal,oldVal) {
+            this.$watch('columns',function(newVal) {
                 for(var i = 0;i < newVal.length; i++) {
-                    if(newVal[i].nowsale == 1 && newVal[i].servertime > 0) {
-                        _self.time = newVal[i].servertime;
+                    if(newVal[i].nowsale == 1 && newVal[i].etime > 0) {
+                        _self.time = newVal[i].etime;
+                        console.log(_self.time);
                         _self.nowsale = 1;
                     }
-                    console.log(newVal[i]);
                 }
             });
         },

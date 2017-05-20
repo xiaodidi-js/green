@@ -64,7 +64,7 @@
             }
         },
         ready() {
-            if(this.kind===1){
+            if(this.kind === 1) {
                 this.unith = "小时";
                 this.unitm = "分";
                 this.units = "秒";
@@ -109,7 +109,7 @@
             }
         },
         watch: {
-            "time": function(nval,oval) {
+            time: function(nval,oval) {
                 if(oval == ''){
                     this.setTime();
                 }else if(nval <= 0){

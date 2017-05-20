@@ -377,14 +377,19 @@
                 return icon;
             },
             allChonse: function() {
+                if (!this.isChonse) {
+                    this.isChonse = true;
+                    this.tansform('icon-sanjiao', 'rotate(180deg)');
+                } else {
+                    this.tansform('icon-sanjiao', 'rotate(0deg)');
+                    this.isChonse = false;
+                }
                 this.tmp_address = this.address;
                 var values = $(".everaddress").text();
-                console.log(values);
                 $(".select-add").text(values);
-                this.isChonse = false;
-
+                this.isChonse = false;x
             },
-            onChonse: function () {	//全部
+            onChonse: function () {
                 if (!this.isChonse) {
                     this.isChonse = true;
                     this.tansform('icon-sanjiao', 'rotate(180deg)');

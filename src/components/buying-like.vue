@@ -16,7 +16,6 @@
     }
     .youlike_list{
         width: 100%;
-        display: flex;
     }
     .youlike_list ul{
         width: 100%;

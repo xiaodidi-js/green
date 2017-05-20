@@ -155,9 +155,9 @@
 					总金额：<label>¥{{ item.price }}</label>
 				</div>
 				<div class="button">
-					<a class="manage-btn"
-					   v-if="item.pay==0&&item.send==0&&item.receive==0&&item.status==0"
-					   @click="clickCancel()">取消订单</a>
+					<!--<a class="manage-btn"-->
+					   <!--v-if="item.pay==0&&item.send==0&&item.receive==0&&item.status==0"-->
+					   <!--@click="clickCancel()">取消订单</a>-->
 
 					<a class="manage-btn"
 					   v-if="item.pay==0&&item.send==0&&item.receive==0&&item.status==0"

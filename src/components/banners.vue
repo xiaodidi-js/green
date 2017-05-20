@@ -1,11 +1,12 @@
 <template>
     <!-- 轮播图 -->
-    <div v-for="item in testarr">
-        <div v-if="item.type == 4">
+    <template v-for="item in testarr">
+        <template v-if="item.type == 4">
             <swiper :list="item.arr" url="item.url" loop dots-position="center" :show-desc-mask="false"
-                    :aspect-ratio="650/1242" auto dots-class="dots-my" style="width: 100%;margin-top:50px;"></swiper>
-        </div>
-    </div>
+                    :aspect-ratio="650/1242" auto dots-class="dots-my" style="width: 100%;margin-top:50px;">
+            </swiper>
+        </template>
+    </template>
 
     <!--<swiper :list="list" loop dots-position="center" :show-desc-mask="false"-->
             <!--:aspect-ratio="650/1242" auto dots-class="dots-my" style="width: 100%;margin-top:50px;"></swiper>-->

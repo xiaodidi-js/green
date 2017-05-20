@@ -565,8 +565,8 @@ const routers = {
     },
     'sao': {
         name:'sao',
-        header:true,
-        footer:false,
+        header:false,
+        footer:true,
         title:'扫一扫关注',
         component (resolve) {
             require(['./components/sao.vue'], resolve);

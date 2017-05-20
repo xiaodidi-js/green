@@ -169,59 +169,61 @@
 
 	.active {background: #fff;}
 
+	.type-bg .xs-container {
+		width:100%;
+		height:100%;
+	}
+
 </style>
 
 <template>
 	<div class="type-bg" keep-alive>
-		<menu type="popup" class="cla-wrapper" id="left_Menu" style="float: left;" @touchstart="startTouch()">
-			<div id="scroller">
-				<div class="menu-left">
-					<ul id="touch-ui">
-						<li class="cla-card-li" :class="{'active':dtype == item.id}" v-for="item in types" @click="getChonse(item.id)">
-							<div class="menu-item" @click="chooseSort(item.id)">{{ item.name }}</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</menu>
-		<menu type="popup" class="cla-message" id="right_Menu">
-			<div id="scroller2">
-				<div class="ele-fixed">
-					<div class="main" v-for="item in data">
-						<div v-link="{name:'detail',params:{pid:item.id}}">
-							<div class="shotcut">
-								<img :src="item.src" alt="{{ item.title }}" class="shotcut-img" style="width:100%;height:100%;" />
-							</div>
-							<div class="shotcut-txt">
-								<p style="height:35px;width:100%;overflow: hidden;text-overflow: ellipsis;">{{ item.title }}</p>
-								<p class="relative" style="">
-									<i>￥</i>
-									<span class="money">{{item.price}}</span>
-								</p>
-							</div>
-						</div>
-						<span class="icon-card" @click="goCart(item.id)"></span>
+
+			<div type="popup" class="cla-wrapper" id="left_Menu" style="float: left;">
+				<div id="scroller">
+					<div class="menu-left">
+						<scroller v-ref:scroller lock-x :scrollbar-x="false" style="height: 100%;width: 100%;">
+							<ul id="touch-ui">
+								<li class="cla-card-li" :class="{'active':dtype == item.id}" v-for="item in types" @click="getChonse(item.id)">
+									<div class="menu-item" @click="chooseSort(item.id)">{{ item.name }}</div>
+								</li>
+							</ul>
+						</scroller>
 					</div>
 				</div>
 			</div>
+		<menu type="popup" class="cla-message" id="right_Menu">
+			<div id="scroller2">
+				<scroller v-ref:scroller lock-x :scrollbar-y="false" style="height: 100%;width: 100%;">
+					<div class="ele-fixed">
+						<div class="main" v-for="item in data">
+							<div v-link="{name:'detail',params:{pid:item.id}}">
+								<div class="shotcut">
+									<img :src="item.src" alt="{{ item.title }}" class="shotcut-img" style="width:100%;height:100%;" />
+								</div>
+								<div class="shotcut-txt">
+									<p style="height:35px;width:100%;overflow: hidden;text-overflow: ellipsis;">{{ item.title }}</p>
+									<p class="relative" style="">
+										<i>￥</i>
+										<span class="money">{{item.price}}</span>
+									</p>
+								</div>
+							</div>
+							<span class="icon-card" @click="goCart(item.id)"></span>
+						</div>
+					</div>
+				</scroller>
+			</div>
 		</menu>
 	</div>
-
-	<!-- toast显示框 -->
-	<toast type="text" :show.sync="toastShow">{{ toastMessage }}</toast>
-
-	<!-- loading加载框 -->
-	<loading :show="loadingShow" :text="loadingMessage"></loading>
 
 </template>
 
 <script>
 
     import Scroller from 'vux/src/components/scroller'
-    import { cartNums } from 'vxpath/getters'
     import { setCartStorage } from 'vxpath/actions'
-    import Loading from 'vux/src/components/loading'
-    import Toast from 'vux/src/components/toast'
+    import { cartNums } from 'vxpath/getters'
 
 	export default{
         vuex: {
@@ -242,27 +244,23 @@
         },
         data() {
             return {
-                data: {},
+                data: [],
                 item: [],
                 myScroll: '',
                 dtype: null,
                 guige:[],
-                toastShow: false,
-                toastMessage: '',
-                loadingMessage:'',
-            }
-        },
-        route: {
-            data(transition) {
-                if(typeof this.data.id !== 'undefined' && this.data.id != transition.to.params.pid){
-                    location.reload();
-                }
             }
         },
         ready() {
             this.dtype = localStorage.getItem('number');
-            this.chooseSort(this.dtype);
-            this.getChonse(this.dtype);
+            if(this.dtype == null){
+                this.chooseSort(this.dtype);
+                this.getChonse(this.dtype);
+            }else{
+                this.chooseSort(26);
+                this.getChonse(26);
+			}
+
             $(function() {
                 //菜单框架自动获取高度
                 var doc_H = $(document).height();
@@ -314,15 +312,9 @@
             } ,10);
         },
         components: {
-            Scroller,
-            Loading,
-            Toast
+            Scroller
 		},
         methods: {
-            startTouch: function() {
-                console.log("startTouch");
-                let msg = document.getElementById("claWrapper");
-			},
             getChonse: function(type) {
                 if(this.dtype == type) {
                     return true;
@@ -335,8 +327,6 @@
 
 			},
             chooseSort(cid){
-                this.loadingMessage = '正在确认';
-                this.loadingShow = true;
                 let url = localStorage.apiDomain+'/public/index/index/classifylist/cid/' + cid;
                 this.$http.get(url).then((response)=>{
                     this.data = response.data.list;
@@ -347,8 +337,7 @@
                 });
             },
             goCart: function(cid) {
-                this.toastMessage = "加入购物车还在修改~~~";
-				this.toastShow = true;
+				console.log(cid);
 			}
         },
     }

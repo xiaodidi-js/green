@@ -76,32 +76,6 @@
 		border-bottom:#EFEFEF solid 1px;
 	}
 
-	.pro-mes .main{
-		width:100%;
-		padding:0.5rem 0rem 0rem 0rem;
-	}
-
-	.pro-mes .main .line{
-		width:100%;
-		padding-bottom:0.3rem;
-		font-size:0;
-	}
-
-	.pro-mes .main .line .title{
-		display:inline-block;
-		vertical-align:top;
-		font-size:1.4rem;
-		width:15%;
-	}
-
-	.pro-mes .main .line .con{
-		display:inline-block;
-		vertical-align:top;
-		font-size:1.4rem;
-		width:85%;
-		height:auto;
-	}
-
 	/* 商品優惠 */
 	.preferential {
 		width:100%;
@@ -736,24 +710,8 @@
 					<div class="divider"></div>
 
 					<!-- 抢购时间 -->
-					<!--<Flashshop :time="data.promote_start | time" end="" ></Flashshop>-->
+					<Flashshop :columns="gotimeline" end=""></Flashshop>
 					<!-- 抢购时间 -->
-
-					<!-- 抢购 -->
-					<!-- 限时抢购 -->
-					<div class="main">
-						<div class="line" v-if="data.countdown > 0">
-							<div class="rush">
-								<div class="rtit">抢<br />购</div>
-								<div class="rcon">
-									<div class="rctit">距离抢购开始还剩：</div>
-									<div class="rccon">
-										<timer-countdown :time.sync="data.countdown" desc="" end="" :kind="1"></timer-countdown>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
 
 					<!--<div class="product_button">-->
 						<!--<div class="product_button_num">数量：</div>-->

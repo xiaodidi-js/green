@@ -354,16 +354,19 @@
 	.my-icon{
 		width:2rem;
 		height:2rem;
-		border-radius: 1rem;
 		display:block;
-		border:1px solid #ccc;
+		background: url("../images/gou2.png") no-repeat;
+		background-size: 100%;
 		float: left;
 		margin:12px 5px;
 	}
 
 	.my-icon-chosen {
-		border:1px solid #f9ad0c;
-		background: #f9ad0c;
+		width:2rem;
+		height:2rem;
+		display:block;
+		background: url("../images/gou.png") no-repeat;
+		background-size: 100%;
 	}
 
 	.getShop .getShopTime {
@@ -734,7 +737,8 @@
         },
         methods: {
             isRadio: function() {
-				$(".my-icon").change(function () {
+                console.log(1);
+				$(".bor").find(".my-icon").change(function () {
 					$(this).addClass("my-icon-chosen").siblings().removeClass("my-icon-chosen");
                 });
 			},

@@ -124,7 +124,7 @@
 		<div class="card-box" v-for="list in item.arr" v-link="{name:'detail',params:{pid:list.shopid}}">
 			<div class="img" :style="{backgroundImage:'url('+list.shotcut+')'}"></div>
 			<!-- 即将开始 -->
-			<div class="mes" v-if="item.stime >= item.servertime">
+			<div class="mes" v-if="item.stime < item.servertime">
 				<div class="name">{{ list.name }}</div>
 				<div class="pre-desc">{{ item.stime | time }}准时开抢</div>
 				<div class="money" v-for="money in list.saledata">
@@ -132,7 +132,7 @@
 				</div>
 			</div>
 			<!-- 正在抢购/抢购完毕 -->
-			<div class="mes" v-if="item.stime <= item.servertime">
+			<div class="mes" v-else>
 				<div class="name">{{ list.name }}</div>
 				<div class="progress-bar">
 					<div class="progress"></div>

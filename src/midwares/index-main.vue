@@ -15,16 +15,14 @@
 <template>
 
 	<banners :testarr="data.index_data"></banners>
-
 	<div class="sub-content">
 		<!-- 显示抢购 -->
-		<!--<card-column :columns="maincolumns" keep-alive></card-column>-->
+		<card-column :columns="maincolumns" keep-alive></card-column>
 		<!-- 热销产品排行榜 -->
 		<card-rectangle :testarr="data.index_data"></card-rectangle>
 		<!-- toast提示框 -->
 		<toast :show.sync="toastShow" type="text">{{ toastMessage }}</toast>
 	</div>
-
 	<div class="goto_top"></div>
 
 </template>
@@ -61,9 +59,25 @@
 		route: {
 
 		},
+        filters: {
+            timeline: function (value) {
+                let d = new Date(parseInt(value) * 1000);
+                var hours = d.getHours();
+                var minutes = d.getMinutes();
+                var seconds = d.getSeconds();
+                for(let i = 0; i < this.maincolumns.length; i++) {
+                    console.log(this.maincolumns[i]);
+				}
+                return (hours > 9 ? hours : '0' + hours) + ':' + (minutes > 9 ? minutes : '0' + minutes) + ":" + (seconds > 9 ? seconds : '0' + seconds)
+            }
+        },
 		ready() {
 			this.indexMessage();
             this.timeline();
+
+            for(let i = 0; i < this.maincolumns.length; i++) {
+                console.log(this.maincolumns[i]);
+            }
 
             // 按钮淡入淡出
             $(window).scroll(function(){
@@ -80,25 +94,23 @@
                 },200);
             });
 
-
-            if(this.$route.query.sinceid) {
-                console.log(1);
-                var sinceid = this.$route.query.sinceid;
-                var openid = sessionStorage.getItem('openid');
-                this.$http.get(localStorage.apiDomain + 'public/index/index/sincestar?openid=' + openid + '&since=' + sinceid).then((response) => {
-                    if (response.data.status === 1) {
-
-                    }
-                });
-            }else{
-                console.log(2);
-			}
+//            if(this.$route.query.sinceid) {
+//                console.log(1);
+//                var sinceid = this.$route.query.sinceid;
+//                var openid = sessionStorage.getItem('openid');
+//                this.$http.get(localStorage.apiDomain + 'public/index/index/sincestar?openid=' + openid + '&since=' + sinceid).then((response) => {
+//                    if (response.data.status === 1) {
+//
+//                    }
+//                });
+//            }else{
+//                console.log(2);
+//			}
 		},
         methods: {
 		    indexMessage: function() {
                 this.$http.get(localStorage.apiDomain+'public/index/index').then((response)=>{
                     this.data = response.data;
-                    console.log(this.data);
                     var data = this.data;
                     for (var i = 0; i < data.index_data.length; i++) {
                         if(data.index_data[i].type == 4){

@@ -184,6 +184,7 @@
                     <a class="manage-btn"
                        v-if="item.pay==1&&(item.send==1||item.send==0)&&item.reject==0 || item.status==1"
                        @click="buyAgain(item.id)">再次购买</a>
+
                 </div>
             </div>
             <!-- 确定弹框 -->

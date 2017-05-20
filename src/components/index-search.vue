@@ -151,9 +151,8 @@
             goSearch: function() {
 				this.searchKey = this.searchKey.replace(/(^\s*)|(\s*$)/g,'');
 				if(this.searchKey === "") {
-//                    this.toastMessage = "请输入关键字...";
-//                    this.toastShow = true;
-					alert("搜索还在维修中.....");
+                    this.toastMessage = "请输入关键字...";
+                    this.toastShow = true;
 				}
 				if(this.searchKey.length <= 0) {
 					return false;

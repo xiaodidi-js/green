@@ -210,15 +210,17 @@
 <template>
     <!-- ification-nav start -->
     <div class="ification-nav" id="wrapper">
-        <div id="scroller">
-            <ul id="card">
-                <li class="activeification-show" :class="{'active':dtype == 0}" @click="getData(0)">全部</li>
-                <li class="ification-show" :class="{'active':dtype == 1}" @click="getData(1)">待付款</li>
-                <li class="ification-show" :class="{'active':dtype == 2}" @click="getData(2)">待发货</li>
-                <li class="ification-show" :class="{'active':dtype == 3}" @click="getData(3)">待收货</li>
-                <li class="ification-show" :class="{'active':dtype == 4}" @click="getData(4)">评价</li>
-            </ul>
-        </div>
+        <scroller v-ref:scroller lock-y :scrollbar-x="false" style="height: 100%;overflow:visible;">
+            <div id="scroller">
+                <ul id="card">
+                    <li class="activeification-show" :class="{'active':dtype == 0}" @click="getData(0)">全部</li>
+                    <li class="ification-show" :class="{'active':dtype == 1}" @click="getData(1)">待付款</li>
+                    <li class="ification-show" :class="{'active':dtype == 2}" @click="getData(2)">待发货</li>
+                    <li class="ification-show" :class="{'active':dtype == 3}" @click="getData(3)">待收货</li>
+                    <li class="ification-show" :class="{'active':dtype == 4}" @click="getData(4)">评价</li>
+                </ul>
+            </div>
+        </scroller>
     </div>
 
     <!-- ification-nav end -->
@@ -237,6 +239,7 @@
     import Swiper from 'vux/src/components/swiper'
     import SwiperItem from 'vux/src/components/swiper-item'
     import payment from 'components/order-payment'
+    import Scroller from 'vux/src/components/scroller'
 
     export default{
         vuex: {
@@ -252,6 +255,7 @@
             payment,
             Swiper,
             SwiperItem,
+            Scroller
         },
         data() {
             return {
@@ -277,24 +281,6 @@
         },
         ready() {
             this.getData(0);
-            var intervalTime_top = null, top_menu = null;
-            intervalTime_top = setInterval(function() {
-                var resultContentH = $("#wrapper").width();
-                if (resultContentH > 0) {
-                    $("#wrapper").width(resultContentH);
-                    setTimeout(function () {
-                        clearInterval(intervalTime_top);
-                        top_menu = new IScroll('#wrapper', {
-                            hScroll: true,
-                            mouseWheel: true,
-                            vScrollbar: false,
-                            probeType: 2,
-                            click: true
-                        });
-                        top_menu.refresh();
-                    }, 100);
-                }
-            } ,10);
         },
         methods: {
             getData: function(type = 0) {
