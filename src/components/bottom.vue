@@ -231,11 +231,11 @@
 		},
 		data() {
 			return {
-				
+				id:1
 			}
 		},
 		ready() {
-
+		    this.siblingsDom(this.id);
 		},
         methods: {
 		    ids: function () {
@@ -252,7 +252,36 @@
                 this.myActive(1);
                 this.$router.go({name: 'per-orders'})
 			},
-
+            $id: function(id) {
+                return document.getElementById(id);
+            },
+            siblings: function (dom,callback){
+                var pdom = dom.parentElement;
+                var tabArr = [].slice.call(pdom.children);
+                tabArr.filter(function(obj){
+                    if(obj!=dom)callback.call(obj);
+                });
+            },
+            siblingsDom:function (id){
+                var cardDom = this.$id("card");
+                var liDomes = cardDom.children;
+                var len = liDomes.length;
+                var _this = this;
+                for(var i = 0; i < len; i++) {
+                    //给对象缓存自有属性
+                    liDomes[i].index = i;
+                    var _this = this;
+                    liDomes[i].onclick = function() {
+                        this.className = "group active";
+                        _this.id = id;
+                        localStorage.setItem("button","group");
+                        //同辈元素互斥
+                        _this.siblings(this,function(){
+                            this.className = "group";
+                        });
+                    };
+                }
+            },
             cartFun: function() {
                 let openid = sessionStorage.getItem("openid");
                 this.$http.get(localStorage.apiDomain+'public/index/index/guanzhu?openid='+ openid).then((response)=>{
@@ -280,6 +309,9 @@
 			cartNumsText() {
 				return this.cartNums.toString()
 			}
+		},
+        watch: {
+
 		}
 	}
 </script>

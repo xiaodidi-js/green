@@ -8,10 +8,14 @@ const state = {
 	cart: localStorage.getItem('myCart') ? JSON.parse(localStorage.getItem('myCart')) : [],
 	selCart: JSON.parse(sessionStorage.getItem('mySelCart')) || [],
     dtype:1,
+	position:0
 }
 
 //应用状态操作
 const mutations = {
+	myPage(state,position) {
+        state.position = position
+	},
 	myActive (state, index) {
        state.dtype = index
     },

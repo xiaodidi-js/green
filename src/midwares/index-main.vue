@@ -34,8 +34,14 @@
 	import CardImage from 'components/card-image'
 	import Toast from 'vux/src/components/toast'
     import Swiper from 'vux/src/components/swiper'
+    import { myPage } from 'vxpath/actions'
 
 	export default{
+        vuex: {
+            actions: {
+                myPage
+            }
+        },
 		components: {
 			CardColumn,
 			CardRectangle,
@@ -71,14 +77,14 @@
                 return (hours > 9 ? hours : '0' + hours) + ':' + (minutes > 9 ? minutes : '0' + minutes) + ":" + (seconds > 9 ? seconds : '0' + seconds)
             }
         },
+        mounted() {
+			if(this.data.length == 0) {
+                this.loadData();
+			}
+		},
 		ready() {
 			this.indexMessage();
             this.timeline();
-
-            for(let i = 0; i < this.maincolumns.length; i++) {
-                console.log(this.maincolumns[i]);
-            }
-
             // 按钮淡入淡出
             $(window).scroll(function(){
                 if($(window).scrollTop() >= 350){
@@ -94,18 +100,6 @@
                 },200);
             });
 
-//            if(this.$route.query.sinceid) {
-//                console.log(1);
-//                var sinceid = this.$route.query.sinceid;
-//                var openid = sessionStorage.getItem('openid');
-//                this.$http.get(localStorage.apiDomain + 'public/index/index/sincestar?openid=' + openid + '&since=' + sinceid).then((response) => {
-//                    if (response.data.status === 1) {
-//
-//                    }
-//                });
-//            }else{
-//                console.log(2);
-//			}
 		},
         methods: {
 		    indexMessage: function() {
