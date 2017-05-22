@@ -692,14 +692,23 @@
 				<div class="pro-mes">
 					<div class="title">{{ data.name }}</div>
 					<div class="desc">{{ data.description }}</div>
-					<div class="price nowrap" v-if="data.is_promote">
-						<label class="unit">¥</label>
-						<span style="font-size:40px;">{{ data.price }}</span>
-						<div class="old">原价:¥ {{ data.price }}</div>
+					<div class="price nowrap" >
+						<template v-if="data.sale.nowshop.saledata != '' ">
+							<label class="unit">¥</label>
+							<span style="font-size:32px;">{{ data.sale.nowshop.saledata[0].saleprice }}</span>
+						</template>
+						<template v-else>
+							<div class="price nowrap" v-if="data.is_promote || !data.sale.nowshop">
+								<label class="unit">¥</label>
+								<span style="font-size:40px;">{{ data.price }}</span>
+								<div class="old">原价:¥ {{ data.price }}</div>
+							</div>
+							<div class="price nowrap" v-else>
+								<label class="unit">¥</label> {{ data.price }}
+							</div>
+						</template>
 					</div>
-					<div class="price nowrap" v-else>
-						<label class="unit">¥</label> {{ data.price }}
-					</div>
+
 					<div class="deliver">
 						<div class="son">快递：{{ makeFreight }}</div>
 						<div class="son">销量：{{ data.store }}</div>
@@ -961,9 +970,8 @@
 			var gg = null;
 			this.$http.get(getUrl).then((response)=>{
 				this.data = response.data;
+
 				console.log(this.data);
-                //gg = this.data.format[0].value[0]
-//                this.changeGuige(0,gg['id'],gg['name']);
                 if(!this.data.format){
 					this.proNums = this.data.store;
 				}

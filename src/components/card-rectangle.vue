@@ -309,7 +309,7 @@
 							<template v-for='item1 in item.arr'>
 								<template v-if="item.arr.length == 1">
 									<div style="width:100%;float:left;">
-										<a class="href-ui" :href="'//'+item1.htmlurl">
+										<a class="href-ui">
 											<img :src="item1.url" alt="" style="width:100%;" />
 										</a>
 									</div>

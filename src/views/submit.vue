@@ -1,4 +1,4 @@
-<style scoped>
+	<style scoped>
 	.bal-wrapper{
 		width:100%;
 		height:auto;

@@ -72,7 +72,6 @@
         color:#F26C60;
     }
 
-
     .format-pop .close{
         width:1.8rem;
         height:1.8rem;
@@ -114,33 +113,35 @@
 
 
 <template>
-    <div class="fpmasker" :class="{'show':formatPopShow}" @touchmove.stop.prevent @touchend.stop @touchstart.stop @click="hideFormatPop"></div>
-    <div class="format-pop" :class="{'show':formatPopShow}" @touchmove.stop.prevent @touchend.stop @touchstart.stop>
-        <div class="line">
-            <div class="pimg" v-lazy:background-image="data.shotcut"></div>
-            <div class="pmes">
-                <div class="price" v-if="data.is_promote">¥{{data.promote_price}}</div>
-                <div class="price" v-else>¥{{data.price}}</div>
-                <div>库存{{proNums}}件</div>
-                <div class="dialog">{{ getGuigeName }}</div>
+    <div class="pop">
+        <div class="fpmasker" :class="{'show':formatPopShow}" @touchmove.stop.prevent @touchend.stop @touchstart.stop @click="hideFormatPop"></div>
+        <div class="format-pop" :class="{'show':formatPopShow}" @touchmove.stop.prevent @touchend.stop @touchstart.stop>
+            <div class="line">
+                <div class="pimg" v-lazy:background-image="data.shotcut"></div>
+                <div class="pmes">
+                    <div class="price" v-if="data.is_promote">¥{{data.promote_price}}</div>
+                    <div class="price" v-else>¥{{data.price}}</div>
+                    <div>库存{{proNums}}件</div>
+                    <div class="dialog">{{ getGuigeName }}</div>
+                </div>
             </div>
-        </div>
-        <div class="close" @click="hideFormatPop">X</div>
-        <div class="divider" style="margin-top:23%;"></div>
-        <div class="line" v-for="(pindex,fmt) in data.format">
-            <div class="title">{{ fmt.name }}</div>
-            <div id="con" class="con" style="font-size:0;white-space:normal;">
-                <guige :value="val.id" :text="val.name" v-for="(sindex,val) in fmt.value" @click="changeGuige(pindex,val.id,val.name)"></guige>
+            <div class="close" @click="hideFormatPop">X</div>
+            <div class="divider" style="margin-top:23%;"></div>
+            <div class="line" v-for="(pindex,fmt) in data.format">
+                <div class="title">{{ fmt.name }}</div>
+                <div id="con" class="con" style="font-size:0;white-space:normal;">
+                    <guige :value="val.id" :text="val.name" v-for="(sindex,val) in fmt.value" @click="changeGuige(pindex,val.id,val.name)"></guige>
+                </div>
+                <div class="divider"></div>
             </div>
-            <div class="divider"></div>
-        </div>
-        <div class="line" style="padding-bottom:0.3rem;font-size:0;">
-            <div class="title inline">购买数量</div>
-            <div class="con inline">
-                <div class="num-counter">
-                    <div class="btns" :class="{'disabled':buyNums <= 1}" @click="reduceNums">-</div>
-                    <input type="number" class="input" :value="buyNums" readonly />
-                    <div class="btns" :class="{'disabled':buyNums >= proNums}" @click="addNums">+</div>
+            <div class="line" style="padding-bottom:0.3rem;font-size:0;">
+                <div class="title inline">购买数量</div>
+                <div class="con inline">
+                    <div class="num-counter">
+                        <div class="btns" :class="{'disabled':buyNums <= 1}" @click="reduceNums">-</div>
+                        <input type="number" class="input" :value="buyNums" readonly />
+                        <div class="btns" :class="{'disabled':buyNums >= proNums}" @click="addNums">+</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -198,31 +199,6 @@
             },
             showFormatPop: function(){
                 this.formatPopShow = true;
-            },
-            getChonse: function(type) {
-                if(this.dtype == type) {
-                    return true;
-                }
-                this.dtype = type;
-                localStorage.setItem('number',this.dtype);
-                this.menuIndex = type;
-            },
-            goCart: function(cid) {
-                this.formatPopShow = true;
-                console.log(123);
-                return;
-
-                for(let i = 0; i < this.data.length; i++) {
-                    let obj = {};
-                    obj = {
-                        cid:this.data[i].id,
-                        name:this.data[i].title,
-                        price:this.data[i].price,
-                        src:this.data[i].src,
-                        store:this.data[i].store
-                    }
-                    console.log(obj);
-                }
             }
         },
     }
