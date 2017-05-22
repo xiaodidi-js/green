@@ -67,8 +67,8 @@ export const selCartIdsNoFormat = state => {
 	if(state.selCart.length<=0){
 		return ids;
 	}
-	for(let slist=0;slist<state.selCart.length;slist++){
-		if(ids.indexOf(state.selCart[slist].id)<0){
+	for(let slist = 0;slist < state.selCart.length; slist++) {
+		if(ids.indexOf(state.selCart[slist].id) < 0) {
 			ids.push(state.selCart[slist].id);
 		}
 	}

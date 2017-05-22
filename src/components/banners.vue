@@ -7,10 +7,8 @@
             </swiper>
         </template>
     </template>
-
     <!--<swiper :list="list" loop dots-position="center" :show-desc-mask="false"-->
             <!--:aspect-ratio="650/1242" auto dots-class="dots-my" style="width: 100%;margin-top:50px;"></swiper>-->
-
 </template>
 
 <script>

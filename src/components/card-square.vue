@@ -65,6 +65,7 @@
 		color:#333;
 		line-height:1.8rem;
 		max-height:3.6rem;
+		height:3.6rem;
 		overflow:hidden;
 		text-overflow:ellipsis;
 		display:-webkit-box;

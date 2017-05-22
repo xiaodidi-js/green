@@ -710,7 +710,7 @@
 					<div class="divider"></div>
 
 					<!-- 抢购时间 -->
-					<Flashshop :columns="gotimeline" end=""></Flashshop>
+					<seckill-floor :columns="gotimeline" end=""></seckill-floor>
 					<!-- 抢购时间 -->
 
 					<!--<div class="product_button">-->
@@ -888,7 +888,7 @@
 	import Guige from 'components/guige'
 	import Spinner from'components/spinner'
 	import WxJssdk from 'weixin-js-sdk'
-	import Flashshop from 'components/flash-shop'
+	import SeckillFloor from 'components/seckill-floor'
 
 	export default{
 		vuex: {
@@ -937,7 +937,7 @@
 			Toast,
 			Guige,
 			Spinner,
-            Flashshop
+            SeckillFloor
 		},
 		route: {
 			data(transition) {
@@ -1124,13 +1124,13 @@
 				scroller.style.webkitTransform = "translate3d(-" + this.column * this.winWidth + "px,0px,0px)";
 				window.scrollTo(0, 0);
 			},
-			showPanelMes: function(){
+			showPanelMes: function() {
 				this.showPanel = true;
 			},
-			checkGuige: function(){
-				if(this.guige.length !== this.data.format.length){
+			checkGuige: function() {
+				if(this.guige.length !== this.data.format.length) {
 					return false;
-				}else{
+				} else {
 					for(let gg = 0; gg < this.guige.length; gg++) {
 						if(typeof this.guige[gg] === 'undefined' || this.guige[gg] == '') {
 						    console.log(this.guige.length);
@@ -1303,6 +1303,8 @@
 						store:this.proNums
                     };
                 }
+                console.log(cartObj.id + "--" + cartObj.shotcut + "--" + cartObj.name + "--" + cartObj.price + "--" + cartObj.deliverytime + "--" + cartObj.peisongok);
+                return;
                 this.setCart(cartObj);
                 cartObj = {};
                 cartFormat = null;

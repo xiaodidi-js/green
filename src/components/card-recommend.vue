@@ -33,8 +33,8 @@
 		font-size:1.2rem;
 		color:#333;
 		line-height:1.6rem;
-		height:3.2rem;
 		max-height:3.2rem;
+		height:3.2rem;
 		overflow:hidden;
 		text-overflow:ellipsis;
 		display:-webkit-box;
@@ -61,7 +61,7 @@
 		float: right;
 		text-align: right;
 		background: url('../images/gouwuche.png') no-repeat;
-		background-size: 100%;
+		background-size: 85%;
 	}
 
 	.icon_shopcar img{

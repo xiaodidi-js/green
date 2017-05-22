@@ -21,12 +21,14 @@
 	}
 
 	.bottom-buy>div.mes{
-		width:61%;
-		text-align:left;
-		margin:0% 2%;
-		white-space:nowrap;
-		text-overflow:ellipsis;
-		overflow:hidden;
+		width: 61%;
+		text-align: left;
+		margin: 0% 2%;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		line-height: 44px;
+		float: left;
 	}
 
 	.bottom-buy .btn{

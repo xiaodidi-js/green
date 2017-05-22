@@ -178,44 +178,65 @@
 
 <template>
 	<div class="type-bg" keep-alive>
-
-			<div type="popup" class="cla-wrapper" id="left_Menu" style="float: left;">
-				<div id="scroller">
-					<div class="menu-left">
-						<scroller v-ref:scroller lock-x :scrollbar-x="false" style="height: 100%;width: 100%;">
-							<ul id="touch-ui">
-								<li class="cla-card-li" :class="{'active':dtype == item.id}" v-for="item in types" @click="getChonse(item.id)">
-									<div class="menu-item" @click="chooseSort(item.id)">{{ item.name }}</div>
-								</li>
-							</ul>
-						</scroller>
+		<div type="popup" class="cla-wrapper" id="left_Menu" style="float: left;">
+			<div id="scroller">
+				<div class="menu-left">
+					<ul id="touch-ui">
+						<li class="cla-card-li" :class="{'active':dtype == item.id}" v-for="item in types" @click="getChonse(item.id)">
+							<div class="menu-item" @click="chooseSort(item.id)">{{ item.name }}</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<menu type="popup" class="cla-message" id="right_Menu">
+			<div id="scroller2">
+				<div class="ele-fixed">
+					<div class="main" v-for="item in data">
+						<div v-link="{name:'detail',params:{pid:item.id}}">
+							<div class="shotcut">
+								<img :src="item.src" alt="{{ item.title }}" class="shotcut-img" style="width:100%;height:100%;" />
+							</div>
+							<div class="shotcut-txt">
+								<p style="height:35px;width:100%;overflow: hidden;text-overflow: ellipsis;">{{ item.title }}</p>
+								<p class="relative" style="">
+									<i>￥</i>
+									<span class="money">{{item.price}}</span>
+								</p>
+							</div>
+						</div>
+						<span class="icon-card" @click="goCart(item.id)"></span>
 					</div>
 				</div>
 			</div>
-		<menu type="popup" class="cla-message" id="right_Menu">
-			<div id="scroller2">
-				<scroller v-ref:scroller lock-x :scrollbar-y="false" style="height: 100%;width: 100%;">
-					<div class="ele-fixed">
-						<div class="main" v-for="item in data">
-							<div v-link="{name:'detail',params:{pid:item.id}}">
-								<div class="shotcut">
-									<img :src="item.src" alt="{{ item.title }}" class="shotcut-img" style="width:100%;height:100%;" />
-								</div>
-								<div class="shotcut-txt">
-									<p style="height:35px;width:100%;overflow: hidden;text-overflow: ellipsis;">{{ item.title }}</p>
-									<p class="relative" style="">
-										<i>￥</i>
-										<span class="money">{{item.price}}</span>
-									</p>
-								</div>
-							</div>
-							<span class="icon-card" @click="goCart(item.id)"></span>
-						</div>
-					</div>
-				</scroller>
-			</div>
 		</menu>
 	</div>
+
+	<div class="fpmasker" :class="{'show':formatPopShow}" @touchmove.stop.prevent @touchend.stop @touchstart.stop @click="hideFormatPop"></div>
+	<div class="format-pop" :class="{'show':formatPopShow}" @touchmove.stop.prevent @touchend.stop @touchstart.stop>
+		<div class="line">
+			<div class="pimg" v-lazy:background-image="data.shotcut"></div>
+			<div class="pmes">
+				<div class="price" v-if="data.price">¥{{data.price}}</div>
+				<div class="price" v-else>¥{{data.price}}</div>
+				<div>库存{{proNums}}件</div>
+				<div class="dialog">{{ getGuigeName }}</div>
+			</div>
+		</div>
+		<div class="close" @click="hideFormatPop">X</div>
+		<div class="divider" style="margin-top:23%;"></div>
+		<div class="line" style="padding-bottom:0.3rem;font-size:0;">
+			<div class="title inline">购买数量</div>
+			<div class="con inline">
+				<div class="num-counter">
+					<div class="btns" :class="{'disabled':buyNums <= 1}" @click="reduceNums">-</div>
+					<input type="number" class="input" :value="buyNums" readonly />
+					<div class="btns" :class="{'disabled':buyNums >= proNums}" @click="addNums">+</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 </template>
 
@@ -249,18 +270,15 @@
                 myScroll: '',
                 dtype: null,
                 guige:[],
+                formatPopShow:false,
+                proNums:1,
+                buyNums:1,
             }
         },
         ready() {
             this.dtype = localStorage.getItem('number');
-            if(this.dtype == null){
-                this.chooseSort(this.dtype);
-                this.getChonse(this.dtype);
-            }else{
-                this.chooseSort(26);
-                this.getChonse(26);
-			}
-
+            this.chooseSort(this.dtype);
+            this.getChonse(this.dtype);
             $(function() {
                 //菜单框架自动获取高度
                 var doc_H = $(document).height();
@@ -271,50 +289,71 @@
                 }
             });
 
-            var myScroll_left;
-            var myScroll_right;
-
-			var intervalTime_left = null , intervalTime_right = null;
-            intervalTime_left = setInterval(function() {
-                var resultContentH = $("#left_Menu").height();
-                if (resultContentH > 0) {
-                    $("#left_Menu").height(resultContentH);
-                    setTimeout(function () {
-                        clearInterval(intervalTime_left);
-                        myScroll_left = new IScroll('#left_Menu', {
-                            vScroll: true,
-                            mouseWheel: true,
-                            vScrollbar: false,
-                            probeType: 2,
-							click: true
-                        });
-                        myScroll_left.refresh();
-                    }, 100);
-                }
-			} ,10);
-
-            intervalTime_right = setInterval(function() {
-                var resultContentH = $("#left_Menu").height();
-                if (resultContentH > 0) {
-                    $("#left_Menu").height(resultContentH);
-                    setTimeout(function () {
-                        clearInterval(intervalTime_right);
-                        myScroll_right = new IScroll('#right_Menu', {
-                            vScroll: true,
-                            mouseWheel: true,
-                            vScrollbar: false,
-                            probeType: 2,
-                            click: true
-                        });
-                        myScroll_right.refresh();
-                    }, 100);
-                }
-            } ,10);
+			this.onToure();
         },
         components: {
             Scroller
 		},
         methods: {
+            addNums: function(){
+                if(this.buyNums>=this.proNums){
+                    return false;
+                }
+                this.buyNums++;
+            },
+            reduceNums: function() {
+                if(this.buyNums <= 1) {
+                    return false;
+                }
+                this.buyNums--;
+            },
+            hideFormatPop: function(evt){
+                evt.stopPropagation();
+                this.formatPopShow = false;
+            },
+            showFormatPop: function(){
+                this.formatPopShow = true;
+            },
+            onToure:function() {
+                var myScroll_left;
+                var myScroll_right;
+                var intervalTime_left = null , intervalTime_right = null;
+                intervalTime_left = setInterval(function() {
+                    var resultContentH = $("#left_Menu").height();
+                    if (resultContentH > 0) {
+                        $("#left_Menu").height(resultContentH);
+                        setTimeout(function () {
+                            clearInterval(intervalTime_left);
+                            myScroll_left = new IScroll('#left_Menu', {
+                                vScroll: true,
+                                mouseWheel: true,
+                                vScrollbar: false,
+                                probeType: 2,
+                                click: true
+                            });
+                            myScroll_left.refresh();
+                        }, 100);
+                    }
+                } ,10);
+
+                intervalTime_right = setInterval(function() {
+                    var resultContentH = $("#left_Menu").height();
+                    if (resultContentH > 0) {
+                        $("#left_Menu").height(resultContentH);
+                        setTimeout(function () {
+                            clearInterval(intervalTime_right);
+                            myScroll_right = new IScroll('#right_Menu', {
+                                vScroll: true,
+                                mouseWheel: true,
+                                vScrollbar: false,
+                                probeType: 2,
+                                click: true
+                            });
+                            myScroll_right.refresh();
+                        }, 100);
+                    }
+                } ,10);
+			},
             getChonse: function(type) {
                 if(this.dtype == type) {
                     return true;
@@ -337,7 +376,21 @@
                 });
             },
             goCart: function(cid) {
-				console.log(cid);
+                this.formatPopShow = true;
+				for(let i = 0; i < this.data.length; i++) {
+				    let obj = {};
+				    obj = {
+				        pid:cid,
+				        name:this.data[i].title,
+						price:this.data[i].price,
+						img:this.data[i].img = this.data[i].src,
+						store:this.data[i].store
+					};
+                    console.log(obj);
+				    this.setCart(obj);
+				    return;
+				    console.log("加入购物车成功！");
+				}
 			}
         },
     }

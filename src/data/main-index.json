@@ -1,14 +1,14 @@
 {
 	"maincolumns":[
-//		{"id":1,
-//			"name":"限时抢购",
-//			"type":1,
-//			"moneys": 99.9,
-//			"img":"http://vue.wogoule.com/photos/banners/mcol1.jpg",
-//			"url":"#",
-//			"desc":"车厘子水果色泽红艳光洁玲珑珑如玛",
-//			"time":"65"
-//		},
+		{"id":1,
+			"name":"限时抢购",
+			"type":1,
+			"moneys": 99.9,
+			"img":"http://vue.wogoule.com/photos/banners/mcol1.jpg",
+			"url":"#",
+			"desc":"车厘子水果色泽红艳光洁玲珑珑如玛",
+			"time":"65"
+		},
 		{"id":1,
 			"name":"新品推荐",
 			"type":0,

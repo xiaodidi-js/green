@@ -264,8 +264,11 @@
             this.$watch('columns',function(newVal) {
                 for(var i = 0;i < newVal.length; i++) {
                     if(newVal[i].nowsale == 1 && newVal[i].etime > 0) {
-                        _self.time = newVal[i].etime;
-                        console.log(_self.time);
+                        console.log(newVal[i].etime);
+                        console.log(newVal[i].servertime);
+                        var mytime = newVal[i].etime - newVal[i].servertime;
+						console.log(mytime);
+                        _self.time = mytime;
                         _self.nowsale = 1;
                     }
                 }

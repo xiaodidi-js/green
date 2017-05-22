@@ -152,9 +152,6 @@ export default{
 	},
     methods: {
         getData: function(sk) {
-            //确认收货
-            this.loadingMessage = '正在加载...';
-            this.loadingShow = true;
             let url = localStorage.apiDomain+'/public/index/index/classifylist/cid/'+this.$route.params.cid+'/action/'+this.column;
             if(sk.length > 0) url += '/search/'+sk;
             this.$http.get(url).then((response) => {

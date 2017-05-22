@@ -47,9 +47,3 @@ export const clearSel = function ({dispatch}) {
 export const myActive = function ({dispatch}, index) {
     dispatch('myActive', index);
 }
-
-
-//定位
-export const myPage = function ({dispatch}, position) {
-    dispatch('myPage', position);
-}

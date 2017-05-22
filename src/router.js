@@ -8,7 +8,6 @@ const routers = {
     	footer:true,
     	title:'绿秧田商城',
     	position:1,
-        saveScrollPosition: true,
         scrollBehavior (to, from, savedPosition) {
             if (to.hash) {
                 return {
@@ -438,13 +437,13 @@ const routers = {
             require(['./components/comment-group.vue'], resolve);
         }
     },
-    'flash-shop': {
-        name:'flashshop',
+    'seckill-floor': {
+        name:'seckillfloor',
         header:false,
         footer:false,
         title:'活动抢购',
         component (resolve) {
-            require(['./components/flash-shop.vue'], resolve);
+            require(['./components/seckill-floor.vue'], resolve);
         }
     },
     'buying': {
@@ -571,6 +570,15 @@ const routers = {
         title:'扫一扫关注',
         component (resolve) {
             require(['./components/sao.vue'], resolve);
+        }
+    },
+    'format-pop': {
+        name:'formatpop',
+        header:false,
+        footer:false,
+        title:'选择规格',
+        component (resolve) {
+            require(['./components/format-pop.vue'], resolve);
         }
     }
 };

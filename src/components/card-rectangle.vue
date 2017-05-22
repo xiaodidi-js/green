@@ -296,11 +296,6 @@
 		width: 22px;
 		height: 20px;
 	}
-
-
-
-
-
 </style>
 
 <template>

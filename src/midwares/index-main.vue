@@ -13,18 +13,16 @@
 </style>
 
 <template>
-
 	<banners :testarr="data.index_data"></banners>
 	<div class="sub-content">
 		<!-- 显示抢购 -->
-		<!--<card-column :columns="maincolumns" keep-alive></card-column>-->
+		<card-column :columns="maincolumns" keep-alive></card-column>
 		<!-- 热销产品排行榜 -->
 		<card-rectangle :testarr="data.index_data"></card-rectangle>
 		<!-- toast提示框 -->
 		<toast :show.sync="toastShow" type="text">{{ toastMessage }}</toast>
 	</div>
 	<div class="goto_top"></div>
-
 </template>
 
 <script>
@@ -34,14 +32,8 @@
 	import CardImage from 'components/card-image'
 	import Toast from 'vux/src/components/toast'
     import Swiper from 'vux/src/components/swiper'
-    import { myPage } from 'vxpath/actions'
 
 	export default{
-        vuex: {
-            actions: {
-                myPage
-            }
-        },
 		components: {
 			CardColumn,
 			CardRectangle,
@@ -77,14 +69,14 @@
                 return (hours > 9 ? hours : '0' + hours) + ':' + (minutes > 9 ? minutes : '0' + minutes) + ":" + (seconds > 9 ? seconds : '0' + seconds)
             }
         },
-        mounted() {
-			if(this.data.length == 0) {
-                this.loadData();
-			}
-		},
 		ready() {
 			this.indexMessage();
             this.timeline();
+
+            for(let i = 0; i < this.maincolumns.length; i++) {
+                console.log(this.maincolumns[i]);
+            }
+
             // 按钮淡入淡出
             $(window).scroll(function(){
                 if($(window).scrollTop() >= 350){
@@ -99,7 +91,6 @@
                     scrollTop:0
                 },200);
             });
-
 		},
         methods: {
 		    indexMessage: function() {
