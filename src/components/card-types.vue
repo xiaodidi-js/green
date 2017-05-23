@@ -356,6 +356,8 @@
 		</div>
 	</div>
 
+	<!-- toast显示框 -->
+	<toast type="text" :show.sync="toastShow">{{ toastMessage }}</toast>
 
 </template>
 
@@ -365,6 +367,7 @@
     import { setCartStorage } from 'vxpath/actions'
     import { cartNums } from 'vxpath/getters'
 	import formatPop from 'components/format-pop'
+    import Toast from 'vux/src/components/toast'
 
 	export default{
         vuex: {
@@ -393,6 +396,8 @@
                 formatPopShow:false,
                 proNums:1,
                 buyNums:1,
+                toastMessage: '',
+                toastShow: false
             }
         },
         ready() {
@@ -413,7 +418,8 @@
         },
         components: {
             Scroller,
-            formatPop
+            formatPop,
+            Toast
 		},
         methods: {
             addNums: function(){
@@ -497,6 +503,9 @@
                 });
             },
             goCart: function(cid) {
+                this.toastShow = true;
+				this.toastMessage = "維修中~~~";
+				return;
                 if(!this.formatPopShow == true) {
                     this.formatPopShow = true;
                     return false;

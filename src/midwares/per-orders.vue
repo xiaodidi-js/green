@@ -295,27 +295,27 @@
 					<div class="tap-type" :class="{'active':dtype == 1}" @click="getData(1)">
 						<div class="icon unpay icon-ui icon-ui-fukuan"></div>
 						<div class="title">待付款</div>
-						<badge :text="count.unpay.toString()" class="my-badge" v-show="count.unpay>0"></badge>
+						<badge :text="count.unpay.toString()" class="my-badge" v-show="count.unpay > 0"></badge>
 					</div>
 					<div class="tap-type" :class="{'active':dtype == 2}" @click="getData(2)">
 						<div class="icon unsend icon-ui icon-ui-daifahuo"></div>
 						<div class="title">待发货</div>
-						<badge :text="count.unsend.toString()" class="my-badge" v-show="count.unsend>0"></badge>
+						<badge :text="count.unsend.toString()" class="my-badge" v-show="count.unsend > 0"></badge>
 					</div>
 					<div class="tap-type" :class="{'active':dtype == 3}" @click="getData(3)">
 						<div class="icon unget icon-ui icon-ui-daishouhuo"></div>
 						<div class="title">待收货</div>
-						<badge :text="count.unreceive.toString()" class="my-badge" v-show="count.unreceive>0"></badge>
+						<badge :text="count.unreceive.toString()" class="my-badge" v-show="count.unreceive > 0"></badge>
 					</div>
 					<div class="tap-type" :class="{'active':dtype == 4}" @click="getData(4)">
 						<div class="icon comment icon-ui icon-ui-pingjia"></div>
 						<div class="title">待评价</div>
-						<badge :text="count.uncomment.toString()" class="my-badge" v-show="count.uncomment>0"></badge>
+						<badge :text="count.uncomment.toString()" class="my-badge" v-show="count.uncomment > 0"></badge>
 					</div>
 					<div class="tap-type" :class="{'active':dtype == 5}" @click="getData(5)">
 						<div class="icon service icon-ui icon-ui-shouhou"></div>
 						<div class="title">申请售后</div>
-						<badge :text="count.service.toString()" class="my-badge" v-show="count.service>0"></badge>
+						<badge :text="count.service.toString()" class="my-badge" v-show="count.service > 0"></badge>
 					</div>
 				</div>
 			</div>
@@ -383,7 +383,7 @@
 		},
 		data() {
 			return {
-			    dtype: -1, /* this.$store.state.dtype */
+			    dtype: 0, /* this.$store.state.dtype */
                 willShow:true,
 				toastShow: false,
 				toastMessage: '',
@@ -417,12 +417,7 @@
 				return document.getElementById(id);
 			},
 			getData: function(type = 0) {
-		        if(type === 5){
-                    this.$id("customer").style.display = "block";
-				} else{
-                    this.$id("customer").style.display = "none";
-				}
-		        var active = document.getElementsByClassName("box-item");
+		        type === 5 ? this.$id("customer").style.display = "block" : this.$id("customer").style.display = "none";
                 if(this.dtype == type && this.data){
                     return true;
                 }

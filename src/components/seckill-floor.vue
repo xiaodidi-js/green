@@ -47,7 +47,7 @@
 
 <template>
 	<!-- 抢购时间 -->
-	<div class="buying-time" v-show="showele">
+	<div class="buying-time">
 		<p class="buying-time-title">
 			<span>抢</span>
 			<span>购</span>
@@ -107,7 +107,6 @@
             return {
                 timer:null,
                 status:1,
-				showele: false
             }
         },
         methods: {
@@ -123,13 +122,10 @@
             this.$watch('columns',function(newVal) {
                 for(var i = 0;i < newVal.length; i++) {
                     if(newVal[i].nowsale == 1 && newVal[i].etime > 0) {
-                        _self.showele = true;
                         var mytime = newVal[i].etime - newVal[i].servertime;
                         _self.time = mytime;
                         _self.nowsale = 1;
-                    } else if (newVal[i].nowsale == 0) {
-						_self.showele = false;
-					}
+                    }
                 }
             });
 

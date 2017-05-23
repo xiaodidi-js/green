@@ -72,7 +72,7 @@
 		background-position: 5px 2px;
 		border-radius: 5px;
 		text-indent: 2.5em;
-		margin-top: 7px;
+		margin: 7px auto;
 		text-align: center;
 	}
 

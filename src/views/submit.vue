@@ -327,7 +327,7 @@
 	.bor {
 		position: relative;
 		height:4.5rem;
-		color: #fff;
+		/*color: #fff;*/
 	}
 
 	.bor .rada {
@@ -487,9 +487,8 @@
 			<div class="getShopTime">
 				<div style="float:left;">取菜时间:</div>
 				<div class="bor" style="float:left;">
-					<input type="radio" value="0" v-model="shonse" class="my-icon rada" />
-					<input type="radio" value="1" v-model="shonse" class="my-icon radb" />
-
+					<input type="radio" value="1" v-model="shonse" class="my-icon rada" />
+					<input type="radio" value="2" v-model="shonse" class="my-icon radb" />
 					<label class="label-radio" @click="isRadio"><span>10:30</span></label>
 					<label class="label-radio" @click="isRadio"><span>16:30</span></label>
 				</div>
@@ -614,7 +613,7 @@
                 },
                 listGift: [],
 				dtype: 0,
-                shonse:0,
+                shonse:1,
             }
         },
         components: {
@@ -644,7 +643,6 @@
             }
         },
         ready() {
-
             this.isRadio();
 
             if(this.oneGift(this.address,this.lastPaySum) === "") {
@@ -737,7 +735,7 @@
         },
         methods: {
             isRadio: function() {
-                console.log(1);
+                console.log(this.shonse);
 				$(".bor").find(".my-icon").change(function () {
 					$(this).addClass("my-icon-chosen").siblings().removeClass("my-icon-chosen");
                 });
@@ -904,10 +902,10 @@
                         score:this.scoreSwitch,
                         paysum:this.lastPaySum,
                         tips:this.memo,
-						openid:sessionStorage.getItem("openid"),
-                        pshonse:this.shonse
+						openid:123,
+                        pshonse:this.shonse,
                     };
-
+					console.log(pdata);
                     this.$http.post(localStorage.apiDomain + 'public/index/user/getSubmitOrder',pdata).then((response)=>{
                         if(response.data.status===1){
                             console.log(response.data);

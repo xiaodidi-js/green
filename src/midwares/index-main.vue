@@ -16,7 +16,7 @@
 	<banners :testarr="data.index_data"></banners>
 	<div class="sub-content">
 		<!-- 显示抢购 -->
-		<card-column :columns="maincolumns" keep-alive></card-column>
+		<card-column v-show="columnShow" :columns="maincolumns" keep-alive></card-column>
 		<!-- 热销产品排行榜 -->
 		<card-rectangle :testarr="data.index_data"></card-rectangle>
 		<!-- toast提示框 -->
@@ -51,7 +51,8 @@
 					hotproducts: {title:'',list:[]},
 					maincolumns: []
 				},
-                maincolumns:[]
+                maincolumns:[],
+                columnShow: false
 			}
 		},
 		route: {
@@ -72,11 +73,9 @@
 		ready() {
 			this.indexMessage();
             this.timeline();
-
             for(let i = 0; i < this.maincolumns.length; i++) {
                 console.log(this.maincolumns[i]);
             }
-
             // 按钮淡入淡出
             $(window).scroll(function(){
                 if($(window).scrollTop() >= 350){
@@ -118,7 +117,14 @@
                 this.$http.get(localStorage.apiDomain+'public/index/sale/SaleTimeSolt/uid').then((response) => {
                     if(response.data.status===1) {
                         this.maincolumns = response.data.SaleTimeSolt;
-                        console.log(this.maincolumns);
+                        for(let i = 0; i < _this.maincolumns.length; i++) {
+                            if(this.maincolumns[i].etime > 0) {
+								_this.columnShow = true;
+                            } else if(this.maincolumns[i].etime  == 0) {
+                                _this.columnShow = false;
+
+							}
+						}
                     } else if(response.data.status===-1) {
                         this.toastMessage = response.data.info;
                         this.toastShow = true;

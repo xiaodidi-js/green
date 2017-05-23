@@ -238,9 +238,6 @@
 
 		},
         methods: {
-		    ids: function () {
-				console.log(1);
-            },
 		    goConter: function() {
                 let openid = sessionStorage.getItem("openid");
                 this.$http.get(localStorage.apiDomain+'public/index/index/guanzhu?openid='+ openid).then((response)=>{

@@ -9,7 +9,7 @@ import App from 'components/app.vue';
 import Routers from './router';
 import Env from './config/env';
 import WxJssdk from 'weixin-js-sdk'
-
+import { fetchGet } from './libs/util'
 Vue.use(VueLazy,{
 	preLoad:1.2,
 	error:'dist/assets/error.png',
@@ -22,7 +22,6 @@ Vue.use(VueRouter);
 
 // 开启debug模式
 Vue.config.debug = true;
-
 //设置请求域名
 localStorage.setItem('apiDomain','http://green-f.cn/'); /* http://newshop.com/ */
 

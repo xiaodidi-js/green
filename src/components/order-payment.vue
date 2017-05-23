@@ -283,7 +283,6 @@
                             this.toastShow = true;
                         });
                     case 2:
-
                         this.$http.delete(localStorage.apiDomain + 'public/index/user/getsubmitorder/uid/' + ustore.id + '/token/' + ustore.token + '/oid/' + id).then((response)=>{
                             if(response.data.status === 1) {
                                 console.log(response.data);

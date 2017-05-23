@@ -9,3 +9,8 @@ util.alert = function(content) {
 };
 
 export default util;
+
+export const fetchGet = (target, data) => {
+    console.log(target)
+    console.log(data)
+}

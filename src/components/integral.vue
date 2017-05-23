@@ -9,7 +9,7 @@
 
     .integral-head .integral-head-h1{
         width:100%;
-        margin:0px auto;
+        margin:10px auto;
     }
 
     .integral-head .integral-title{

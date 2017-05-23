@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 //应用状态
 const state = {
-	cart: localStorage.getItem('myCart') ? JSON.parse(localStorage.getItem('myCart')) : [],
+	cart: sessionStorage.getItem('myCart') ? JSON.parse(sessionStorage.getItem('myCart')) : [],
 	selCart: JSON.parse(sessionStorage.getItem('mySelCart')) || [],
     dtype:1,
 }
@@ -31,14 +31,14 @@ const mutations = {
 		}else{
 			state.cart.push(obj);
 		}
-		localStorage.setItem('myCart',JSON.stringify(state.cart));
+        sessionStorage.setItem('myCart',JSON.stringify(state.cart));
 	},
 	SETCARTOBJS (state,objs) {
 		state.cart = objs.slice(0);
 		for(let plist=0;plist<state.cart.length;plist++){
 			state.cart[plist].price = state.cart[plist].price/state.cart[plist].nums;
 		}
-		localStorage.setItem('myCart',JSON.stringify(state.cart));
+        sessionStorage.setItem('myCart',JSON.stringify(state.cart));
 	},
 	INCRECARTNUMS (state,id,format) {
 		for(let plist=0;plist<state.cart.length;plist++){
@@ -47,7 +47,7 @@ const mutations = {
 				break;
 			}
 		}
-		localStorage.setItem('myCart',JSON.stringify(state.cart));
+        sessionStorage.setItem('myCart',JSON.stringify(state.cart));
 	},
 	REDUCECARTNUMS (state,id,format) {
 		for(let plist=0;plist<state.cart.length;plist++){
@@ -56,7 +56,7 @@ const mutations = {
 				break;
 			}
 		}
-		localStorage.setItem('myCart',JSON.stringify(state.cart));
+        sessionStorage.setItem('myCart',JSON.stringify(state.cart));
 	},
 	DELCARTOBJ (state,id,format) {
 		for(let plist=0;plist<state.cart.length;plist++){
@@ -65,7 +65,7 @@ const mutations = {
 				break;
 			}
 		}
-		localStorage.setItem('myCart',JSON.stringify(state.cart));
+        sessionStorage.setItem('myCart',JSON.stringify(state.cart));
 	},
 	DELCARTOBJS (state,objs) {
 		for(let po=0;po<objs.length;po++){
@@ -76,13 +76,13 @@ const mutations = {
 				}
 			}
 		}
-		localStorage.setItem('myCart',JSON.stringify(state.cart));
+        sessionStorage.setItem('myCart',JSON.stringify(state.cart));
 	},
 	CLEARCART (state) {
 		state.selCart = [];
 		state.cart = [];
 		sessionStorage.removeItem('mySelCart');
-		localStorage.removeItem('myCart');
+        sessionStorage.removeItem('myCart');
 	},
 	SETSELCART (state,sarray) {
 		if(typeof sarray==='object'&&sarray.length>0){
@@ -123,7 +123,7 @@ const mutations = {
 			state.cart = [];
 		}
 		sessionStorage.setItem('mySelCart',JSON.stringify(state.selCart));
-		localStorage.setItem('myCart',JSON.stringify(state.cart));
+        sessionStorage.setItem('myCart',JSON.stringify(state.cart));
 	}
 }
 

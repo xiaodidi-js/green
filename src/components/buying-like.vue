@@ -144,7 +144,6 @@
             var _this = this;
             this.$http.get(localStorage.apiDomain+'public/index/user/cainixihuan').then((response)=>{
                 _this.likedate = response.data.tuijian_shop;
-                console.log(response.data.tuijian_shop);
             },(response)=>{
                 this.toastMessage = '网络开小差了~';
                 this.toastShow = true;

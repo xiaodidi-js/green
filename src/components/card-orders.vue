@@ -279,10 +279,10 @@
 				this.$http.get(localStorage.apiDomain+'public/index/user/orderoperation/uid/'+ustore.id+'/token/'+ustore.token+'/oid/'+oid).then((response)=>{
 					this.loadingShow = false;
 					this.btnStatus = false;
-					if(response.data.status===1){
+					if(response.data.status===1) {
 						this.setCartAgain(response.data.list);
 						this.$router.go({name:'cart'});
-					}else if(response.data.status===-1){
+					}else if(response.data.status === -1) {
 						this.toastMessage = response.data.info;
 						this.toastShow = true;
 						let context = this;

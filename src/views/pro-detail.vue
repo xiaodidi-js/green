@@ -746,18 +746,6 @@
 					</ul>
 				</div>
 
-				<!-- 服务栏 -->
-				<!--<div class="service-bar" @click="showPanelMes" v-if="data.notice">-->
-					<!--<div class="words nowrap">-->
-						<!--<span v-for="not in data.notice" class="service-span">-->
-							<!--<icon type="success_circle" class="my-icon"></icon>{{ not.title }}&nbsp;&nbsp;-->
-						<!--</span>-->
-					<!--</div>-->
-					<!--&lt;!&ndash;<div class="arrow">&ndash;&gt;-->
-						<!--&lt;!&ndash;<img src="../images/arrow.png" />&ndash;&gt;-->
-					<!--&lt;!&ndash;</div>&ndash;&gt;-->
-				<!--</div>-->
-
 				<div class="product_titile">
 					<ul id="card">
 						<li class="active">图文详情</li>
@@ -927,7 +915,8 @@
 				stoastShow:false,
 				data:{},
                 toggle: true,
-                gotimeline: []
+                gotimeline: [],
+                seckillShow: false
 			}
 		},
 		components: {
@@ -970,11 +959,17 @@
 			var gg = null;
 			this.$http.get(getUrl).then((response)=>{
 				this.data = response.data;
-
 				console.log(this.data);
-                if(!this.data.format){
-					this.proNums = this.data.store;
-				}
+				var _self = this;
+				console.log(this.data.sale.nextsaletime);
+//				if(this.data.sale.nextsaletime == null && this.data.sale.nowshop.saledata == '') {
+//					this.seckillShow = false;
+//				} else {
+//                    this.seckillShow = true;
+//				}
+//                if(!this.data.format){
+//					this.proNums = this.data.store;
+//				}
 				//微信分享
 				this.$http.get(localStorage.apiDomain+'public/index/index/wxshare').then((response)=>{
 					let getSession = response.data;
@@ -1262,6 +1257,21 @@
                     this.formatPopShow = true;
                     return false;
 				}
+				var _self = this;
+				var shoping = JSON.parse(sessionStorage.getItem("myCart"));
+				for(let i = 0; i < shoping.length; i++) {
+				    if(shoping[i]["deliverytime"] != this.data.deliverytime) {
+				        if(this.data.deliverytime == 0){
+                            _self.toastMessage = "购物车有当日商品！";
+							_self.toastShow = true;
+						} else {
+                            _self.toastMessage = "购物车有次日商品！";
+                            _self.toastShow = true;
+						}
+						return;
+					}
+				}
+
 //                if(this.data.format) {
 //                    if(this.checkGuige()) {
 //                        this.formatPopShow = true;
@@ -1297,7 +1307,7 @@
 						nums:this.buyNums,
 						store:this.proNums
                     };
-                }else{
+                } else {
                     cartObj = {
                         id:this.$route.params.pid,
 						shotcut:this.data.shotcut,
