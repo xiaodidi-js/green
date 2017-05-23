@@ -843,8 +843,15 @@
 		<div class="line">
 			<div class="pimg" v-lazy:background-image="data.shotcut"></div>
 			<div class="pmes">
-				<div class="price" v-if="data.is_promote">¥{{data.promote_price}}</div>
-				<div class="price" v-else>¥{{data.price}}</div>
+
+				<div v-if="data.is_promote || !data.sale.nowshop">
+					<div class="price">¥{{data.price}}</div>
+				</div>
+
+				<div v-else>
+					<div class="price">¥{{ data.sale.nowshop.saledata[0].saleprice }}</div>
+				</div>
+
 				<div>库存{{proNums}}件</div>
 				<div class="dialog">{{ getGuigeName }}</div>
 			</div>
@@ -1237,33 +1244,34 @@
                 let cartObj = {};
                 let cartFormat = this.guige.length > 0 ? this.guige.join(',') : '';
                 let cartFormatName = this.guige.length > 0 ? this.guigeName.join('-') : '';
-                if(this.data.is_promote){
+                if(this.data.sale.nowshop == null) {
                     cartObj = {
                         id:this.$route.params.pid,
-						shotcut:this.data.shotcut,
-						name:this.data.name,
-						price:this.data.promote_price,
+                        shotcut:this.data.shotcut,
+                        name:this.data.name,
+                        price:this.data.price,
                         deliverytime:this.data.deliverytime,
                         peisongok:this.data.peisongok,
-						format:cartFormat,
-						formatName:cartFormatName,
-						nums:this.buyNums,
-						store:this.proNums
+                        format:cartFormat,
+                        formatName:cartFormatName,
+                        nums:this.buyNums,
+                        store:this.proNums
                     };
-                }else{
+                } else {
                     cartObj = {
                         id:this.$route.params.pid,
-						shotcut:this.data.shotcut,
-						name:this.data.name,
-						price:this.data.price,
+                        shotcut:this.data.shotcut,
+                        name:this.data.name,
+                        price:this.data.sale.nowshop.saledata[0].saleprice,
                         deliverytime:this.data.deliverytime,
                         peisongok:this.data.peisongok,
-						format:cartFormat,
-						formatName:cartFormatName,
-						nums:this.buyNums,
-						store:this.proNums
+                        format:cartFormat,
+                        formatName:cartFormatName,
+                        nums:this.buyNums,
+                        store:this.proNums
                     };
                 }
+                console.log(cartObj.price);
                 var _self = this;
                 this.gofun();
                 if(this.data.peisongok == 0){
@@ -1299,20 +1307,7 @@
                 let cartObj = {};
                 let cartFormat = this.guige.length > 0 ? this.guige.join(',') : '';
                 let cartFormatName = this.guige.length > 0 ? this.guigeName.join('-') : '';
-                if(this.data.is_promote) {
-                    cartObj = {
-                        id:this.$route.params.pid,
-						shotcut:this.data.shotcut,
-						name:this.data.name,
-						price:this.data.promote_price,
-                        deliverytime:this.data.deliverytime,
-                        peisongok:this.data.peisongok,
-						format:cartFormat,
-						formatName:cartFormatName,
-						nums:this.buyNums,
-						store:this.proNums
-                    };
-                } else {
+                if(this.data.sale.nowshop == null) {
                     cartObj = {
                         id:this.$route.params.pid,
 						shotcut:this.data.shotcut,
@@ -1325,7 +1320,21 @@
 						nums:this.buyNums,
 						store:this.proNums
                     };
+                } else {
+                    cartObj = {
+                        id:this.$route.params.pid,
+						shotcut:this.data.shotcut,
+						name:this.data.name,
+						price:this.data.sale.nowshop.saledata[0].saleprice,
+                        deliverytime:this.data.deliverytime,
+                        peisongok:this.data.peisongok,
+						format:cartFormat,
+						formatName:cartFormatName,
+						nums:this.buyNums,
+						store:this.proNums
+                    };
                 }
+                console.log(cartObj.price);
                 var _self = this;
                 this.gofun();
                 if(this.data.peisongok == 0) {

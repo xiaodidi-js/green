@@ -9,7 +9,7 @@ import App from 'components/app.vue';
 import Routers from './router';
 import Env from './config/env';
 import WxJssdk from 'weixin-js-sdk'
-import { fetchGet } from './libs/util'
+
 Vue.use(VueLazy,{
 	preLoad:1.2,
 	error:'dist/assets/error.png',

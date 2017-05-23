@@ -293,7 +293,7 @@
 
         },
         ready() {
-
+			console.log(this.cartList);
         },
         methods: {
             setDel: function(it){
@@ -342,17 +342,17 @@
 					console.log(response);
 				})
                 var nary = shoping.sort();
+
                 for(var i = 0;i < shoping.length;i++){
                     if(nary[i].deliverytime == 0) {
                         nary[i].deliverytime = 1;
 					}else{
                         nary[i].deliverytime = 2;
 					}
-					console.log(nary[i]['deliverytime']);
-                    if (nary[i]['deliverytime'] != nary[i+1]['deliverytime']) {
+                    if (nary[i].deliverytime != nary[i++].deliverytime) {
                         _this.toastMessage = "购物车有配送类别不一样的商品@！";
                         _this.toastShow = true;
-                        return;
+                        return false;
                     }
                 }
                 _this.setSelCart(this.choseArr);
@@ -360,18 +360,6 @@
             }
         },
         computed: {
-            //判断购物车商品次日或者当日
-            ids: function() {
-                var arr = [];
-                console.log(this.cartList);
-                for(let i = 0; i < this.cartList.length; i++ ) {
-                    console.log(this.cartList[i]);
-//                    if(this.cartList[i].peisongok == 1) {
-//                        arr.push(this.cartList[i].id);
-//					}
-                }
-                return arr;
-            },
             allsel: function() {
                 if(this.cartList.length === this.choseArr.length) {
                     return true;

@@ -613,7 +613,7 @@
                 },
                 listGift: [],
 				dtype: 0,
-                shonse:1,
+                shonse:-1,
             }
         },
         components: {
@@ -735,7 +735,6 @@
         },
         methods: {
             isRadio: function() {
-                console.log(this.shonse);
 				$(".bor").find(".my-icon").change(function () {
 					$(this).addClass("my-icon-chosen").siblings().removeClass("my-icon-chosen");
                 });
@@ -884,7 +883,11 @@
                     this.toastMessage = '支付金额不能小于等于0';
                     this.toastShow = true;
                     return false;
-                }
+                } else if(this.shonse != 0 && this.shonse == -1) {
+                    this.toastMessage = '请选择配送时间！';
+                    this.toastShow = true;
+                    return false;
+				}
 				let _this = this;
                 for(let i = 0; i < this.cartInfo.length; i++) {
                     this.loadingMessage = '正在提交...';
@@ -902,7 +905,7 @@
                         score:this.scoreSwitch,
                         paysum:this.lastPaySum,
                         tips:this.memo,
-						openid:123,
+						openid:sessionStorage.getItem("openid"),
                         pshonse:this.shonse,
                     };
 					console.log(pdata);
