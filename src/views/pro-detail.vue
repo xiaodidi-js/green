@@ -708,18 +708,23 @@
 							</div>
 						</template>
 					</div>
-
 					<div class="deliver">
 						<div class="son">快递：{{ makeFreight }}</div>
-						<div class="son">销量：{{ data.store }}</div>
-						<div class="son">库存：{{ data.store }}</div>
+                        <div class="son">销量：{{ data.virtual_sale }}</div>
+                        <template v-if="data.sale.nowshop.saledata != '' ">
+                            <div class="son">库存：{{ data.sale.nowshop.saledata[0].salenub }}</div>
+                        </template>
+                        <template v-else>
+                            <div class="son">库存：{{ data.store }}</div>
+                        </template>
+
 					</div>
 
 					<!-- 分割线 -->
 					<div class="divider"></div>
 
 					<!-- 抢购时间 -->
-					<seckill-floor :columns="gotimeline" end=""></seckill-floor>
+					<seckill-floor v-show="seckillShow" :columns="gotimeline" end=""></seckill-floor>
 					<!-- 抢购时间 -->
 
 					<!--<div class="product_button">-->
@@ -961,15 +966,14 @@
 				this.data = response.data;
 				console.log(this.data);
 				var _self = this;
-				console.log(this.data.sale.nextsaletime);
-//				if(this.data.sale.nextsaletime == null && this.data.sale.nowshop.saledata == '') {
-//					this.seckillShow = false;
-//				} else {
-//                    this.seckillShow = true;
-//				}
-//                if(!this.data.format){
-//					this.proNums = this.data.store;
-//				}
+				if(this.data.sale.nowshop == null) {
+					this.seckillShow = false;
+				} else {
+                    this.seckillShow = true;
+				}
+                if(!this.data.format){
+					this.proNums = this.data.store;
+				}
 				//微信分享
 				this.$http.get(localStorage.apiDomain+'public/index/index/wxshare').then((response)=>{
 					let getSession = response.data;
@@ -1044,6 +1048,27 @@
 			}
 		},
 		methods: {
+		    gofun: function() {
+                var _self = this;
+                var shoping = JSON.parse(sessionStorage.getItem("myCart"));
+                if(shoping === null) {
+                    return true;
+                } else {
+                    for(let i = 0; i < shoping.length; i++) {
+                        if(shoping[i]["deliverytime"] != this.data.deliverytime) {
+                            if(this.data.deliverytime == 0){
+                                _self.toastMessage = "购物车有当日商品！";
+                                _self.toastShow = true;
+                            } else if (this.data.deliverytime == 1) {
+                                _self.toastMessage = "购物车有次日商品！";
+                                _self.toastShow = true;
+                            }
+                            return false;
+                        }
+                    }
+                }
+
+            },
             timeline: function() {
                 let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
                 ustore = JSON.parse(ustore);
@@ -1051,7 +1076,6 @@
                 this.$http.get(localStorage.apiDomain+'public/index/sale/SaleTimeSolt/uid').then((response) => {
                     if(response.data.status===1) {
                         this.gotimeline = response.data.SaleTimeSolt;
-                        console.log(this.gotimeline);
                     } else if(response.data.status===-1) {
                         this.toastMessage = response.data.info;
                         this.toastShow = true;
@@ -1197,12 +1221,6 @@
                     this.formatPopShow = true;
                     return false;
                 }
-//                if(this.data.format) {
-//                    if(!this.checkGuige()) {
-//                        this.showFormatPop();
-//                        return false;
-//                    }
-//                }
                 if(this.proNums <= 0) {
                     this.toastMessage = '商品暂时缺货';
                     this.toastShow = true;
@@ -1246,38 +1264,25 @@
 						store:this.proNums
                     };
                 }
-                this.setCart(cartObj);
-                cartObj = {};
-                cartFormat = null;
-                this.formatPopShow = false;
-                this.$router.go({name:'cart'});
+                var _self = this;
+                this.gofun();
+                if(this.data.peisongok == 0){
+                    alert("亲！您选购的菜品与您购物车的菜品，在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
+                    _self.toastShow = false;
+                    return false;
+                } else {
+                    this.setCart(cartObj);
+                    cartObj = {};
+                    cartFormat = null;
+                    this.formatPopShow = false;
+                    this.$router.go({name:'cart'});
+                }
 			},
 			addCart : function() {
                 if(!this.formatPopShow == true) {
                     this.formatPopShow = true;
                     return false;
 				}
-				var _self = this;
-				var shoping = JSON.parse(sessionStorage.getItem("myCart"));
-				for(let i = 0; i < shoping.length; i++) {
-				    if(shoping[i]["deliverytime"] != this.data.deliverytime) {
-				        if(this.data.deliverytime == 0){
-                            _self.toastMessage = "购物车有当日商品！";
-							_self.toastShow = true;
-						} else {
-                            _self.toastMessage = "购物车有次日商品！";
-                            _self.toastShow = true;
-						}
-						return;
-					}
-				}
-
-//                if(this.data.format) {
-//                    if(this.checkGuige()) {
-//                        this.formatPopShow = true;
-//                        return false;
-//                    }
-//                }
                 if(this.proNums <= 0) {
                     this.toastMessage = '商品暂时缺货';
                     this.toastShow = true;
@@ -1321,14 +1326,20 @@
 						store:this.proNums
                     };
                 }
-                console.log(cartObj.id + "--" + cartObj.shotcut + "--" + cartObj.name + "--" + cartObj.price + "--" + cartObj.deliverytime + "--" + cartObj.peisongok);
-                return;
-                this.setCart(cartObj);
-                cartObj = {};
-                cartFormat = null;
-                this.formatPopShow = false;
-                this.stoastMessage = '加入购物车成功';
-                this.stoastShow = true;
+                var _self = this;
+                this.gofun();
+                if(this.data.peisongok == 0) {
+                    alert("亲！您选购的菜品与您购物车的菜品，在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
+                    _self.toastShow = false;
+                    return false;
+                } else {
+                    this.setCart(cartObj);
+                    cartObj = {};
+                    cartFormat = null;
+                    this.formatPopShow = false;
+                    this.stoastMessage = '加入购物车成功';
+                    this.stoastShow = true;
+                }
             },
             filters: {
                 time: function (value) {

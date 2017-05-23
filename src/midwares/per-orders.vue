@@ -383,7 +383,7 @@
 		},
 		data() {
 			return {
-			    dtype: 0, /* this.$store.state.dtype */
+			    dtype: this.$store.state.dtype, /* this.$store.state.dtype */
                 willShow:true,
 				toastShow: false,
 				toastMessage: '',
@@ -402,7 +402,7 @@
 
 		},
 		ready() {
-			this.getData(1);
+			this.getData(this.dtype);
 			this.kefu();
 		},
 		methods: {

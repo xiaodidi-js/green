@@ -339,58 +339,24 @@
 					data: qs.stringify({ 'shoping': shoping })
 	            })
 				.then((response) => {
-					console.log(response)
+					console.log(response);
 				})
-				return
-                this.$http.post(localStorage.apiDomain + 'public/index/usercenter/shopingclick', {data: 'xxx'}).then((response)=>{
-                    if(response.data.status === 1) {
-                        console.log(response.data)
-                    }else if(response.data.status === -1) {
-                        console.log(response.data);
-                        this.loadingShow = false;
-                        this.toastMessage = response.data.info;
-                        this.toastShow = true;
-                        let context = this;
-                        setTimeout(function(){
-                            context.clearAll();
-                            sessionStorage.removeItem('userInfo');
-                            localStorage.removeItem('userInfo');
-                            context.$router.go({name:'login'});
-                        },800);
-                    }else{
-                        console.log(response.data);
-                        this.loadingShow = false;
-                        this.toastMessage = response.data.info;
-                        this.toastShow = true;
+                var nary = shoping.sort();
+                for(var i = 0;i < shoping.length;i++){
+                    if(nary[i].deliverytime == 0) {
+                        nary[i].deliverytime = 1;
+					}else{
+                        nary[i].deliverytime = 2;
+					}
+					console.log(nary[i]['deliverytime']);
+                    if (nary[i]['deliverytime'] != nary[i+1]['deliverytime']) {
+                        _this.toastMessage = "购物车有配送类别不一样的商品@！";
+                        _this.toastShow = true;
+                        return;
                     }
-                },(response)=>{
-                    this.loadingShow = false;
-                    this.toastMessage = '网络开小差了~';
-                    this.toastShow = true;
-                });
-
-                return;
+                }
                 _this.setSelCart(this.choseArr);
                 _this.$router.go({name:'submit'});
-
-//                var nary = shoping.sort();
-//                for(var i = 0;i < shoping.length;i++){
-
-//                    console.log(cartObj);
-//
-//                    if(nary[i].deliverytime == 0){
-//                        nary[i].deliverytime = 1;
-//					}else{
-//                        nary[i].deliverytime = 2;
-//					}
-//					console.log(nary[i]['deliverytime']);
-//                    if (nary[i]['deliverytime'] != nary[i+1]['deliverytime']) {
-//                        _this.toastMessage = "购物车有配送类别不一样的商品@！";
-//                        _this.toastShow = true;
-//                        return;
-//                    }
-//                }
-
             }
         },
         computed: {
