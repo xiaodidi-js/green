@@ -662,6 +662,15 @@
 	}
 	/* 增加数量 */
 
+	.ms-item-class {
+		clear: both;
+		padding-top: 10px;
+		padding-bottom: 13px;
+		font-size: 1.6rem;
+		text-align:center;
+		color:#ccc;
+	}
+
 </style>
 
 <style>
@@ -768,7 +777,7 @@
 				<div id="content">
 					<!-- 图文详情 -->
 					<div class="product_details">
-						<div class="ms-item" style="clear: both;padding-top: 10px;padding-bottom: 13px;">
+						<div class="ms-item ms-item-class">
 							<spinner class="my-spinner"></spinner>
 						</div>
 						<div class="product_details_share">
@@ -820,9 +829,6 @@
 					</div>
 				</div>
 			</div>
-			<!--<div class="ms-item">-->
-				<!--<spinner class="my-spinner"></spinner>-->
-			<!--</div>-->
 		</div>
 	</div>
 
@@ -843,11 +849,9 @@
 		<div class="line">
 			<div class="pimg" v-lazy:background-image="data.shotcut"></div>
 			<div class="pmes">
-
 				<div v-if="data.is_promote || !data.sale.nowshop">
 					<div class="price">¥{{data.price}}</div>
 				</div>
-
 				<div v-else>
 					<div class="price">¥{{ data.sale.nowshop.saledata[0].saleprice }}</div>
 				</div>
@@ -1031,7 +1035,13 @@
 //                        document.getElementById('scbox').style.width = bwid ? (bwid-0.8) +'rem' : '100%';
 //                        this.$refs.scroller.reset();
 //                    }
-                    document.getElementsByClassName('ms-item')[1].innerHTML = this.data.content;
+                    var scaleBox = this.data.content;
+                    console.log(scaleBox);
+					if(scaleBox === '') {
+                        document.getElementsByClassName('ms-item')[1].innerHTML = "暂时没有详情图~~~";
+					} else {
+                        document.getElementsByClassName('ms-item')[1].innerHTML = scaleBox;
+					}
 //                    document.getElementsByClassName('ms-item')[2].innerHTML = this.data.detail;
 				});
 			},(response)=>{
