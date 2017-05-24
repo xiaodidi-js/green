@@ -122,7 +122,6 @@
 								_this.columnShow = true;
                             } else if(this.maincolumns[i].etime  == 0) {
                                 _this.columnShow = false;
-
 							}
 						}
                     } else if(response.data.status===-1) {

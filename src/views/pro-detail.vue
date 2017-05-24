@@ -710,7 +710,7 @@
 							<div class="price nowrap" v-if="data.is_promote || !data.sale.nowshop">
 								<label class="unit">¥</label>
 								<span style="font-size:40px;">{{ data.price }}</span>
-								<div class="old">原价:¥ {{ data.price }}</div>
+								<div class="old">原价:¥ {{ data.starprice }}</div>
 							</div>
 							<div class="price nowrap" v-else>
 								<label class="unit">¥</label> {{ data.price }}
@@ -1282,36 +1282,32 @@
                 }
                 var _self = this;
                 var shoping = JSON.parse(sessionStorage.getItem("myCart"));
-                if(shoping === null) {
-                    return true;
-                } else {
+                if(this.data.peisongok == 0) {
+                    alert("抱歉，商品已截单，请到首页选购菜品，谢谢合作！");
+                    _self.toastMessage = "";
+                    _self.toastShow = false;
+                    return false;
+                }
+                if(shoping != null) {
                     for(let i = 0; i < shoping.length; i++) {
-                        if(shoping[i]["deliverytime"] != this.data.deliverytime) {
-                            if(this.data.peisongok == 1 && this.data.deliverytime == 0){
-                                _self.toastMessage = "购物车有当日商品！";
+                        if (shoping[i]["deliverytime"] != this.data.deliverytime) {
+                            if (this.data.peisongok == 1 && this.data.deliverytime == 0) {
+                                alert("亲！您选购的商品为次日配送商品，购物车里存在当日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的商品，再进行选购结付既可；谢谢您的配合！");
                                 _self.toastShow = true;
                                 return false;
-                            } else if(this.data.peisongok == 1 && this.data.deliverytime == 1) {
-                                _self.toastMessage = "购物车有次日商品！";
+                            } else if (this.data.peisongok == 1 && this.data.deliverytime == 1) {
+                                alert("亲！您选购的商品为当日配送商品，购物车里存在次日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的商品，再进行选购结付既可；谢谢您的配合！！");
                                 _self.toastShow = true;
                                 return false;
                             }
                         }
                     }
                 }
-                if(this.data.peisongok == 0) {
-                    alert("亲！您选购的菜品与您购物车的菜品，在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
-                    _self.toastMessage = "";
-                    _self.toastShow = false;
-                    return false;
-                } else {
-                    this.setCart(cartObj);
-                    cartObj = {};
-                    cartFormat = null;
-                    this.formatPopShow = false;
-                    this.stoastMessage = '加入购物车成功';
-                    this.stoastShow = true;
-                }
+                this.setCart(cartObj);
+                cartObj = {};
+                cartFormat = null;
+                this.formatPopShow = false;
+                this.$router.go({name:'cart'});
 			},
 			addCart : function() {
                 if(!this.formatPopShow == true) {
@@ -1363,36 +1359,33 @@
                 }
                 var _self = this;
                 var shoping = JSON.parse(sessionStorage.getItem("myCart"));
-                if(shoping === null) {
-                    return true;
-                } else {
+                if(this.data.peisongok == 0) {
+                    alert("抱歉，菜品已截单，请到首页选购菜品，谢谢合作！");
+                    _self.toastMessage = "";
+                    _self.toastShow = false;
+                    return false;
+                }
+                if(shoping != null) {
                     for(let i = 0; i < shoping.length; i++) {
-                        if(shoping[i]["deliverytime"] != this.data.deliverytime) {
-                            if(this.data.peisongok == 1 && this.data.deliverytime == 0){
-                                _self.toastMessage = "购物车有当日商品！";
+                        if (shoping[i]["deliverytime"] != this.data.deliverytime) {
+                            if (this.data.peisongok == 1 && this.data.deliverytime == 0) {
+                                alert("亲！您选购的菜品为次日配送商品，购物车里存在当日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
                                 _self.toastShow = true;
                                 return false;
-                            } else if(this.data.peisongok == 1 && this.data.deliverytime == 1) {
-                                _self.toastMessage = "购物车有次日商品！";
+                            } else if (this.data.peisongok == 1 && this.data.deliverytime == 1) {
+                                alert("亲！您选购的菜品为当日配送商品，购物车里存在次日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！！");
                                 _self.toastShow = true;
                                 return false;
                             }
                         }
                     }
                 }
-                if(this.data.peisongok == 0) {
-                    alert("亲！您选购的菜品与您购物车的菜品，在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
-                    _self.toastMessage = "";
-                    _self.toastShow = false;
-                    return false;
-                } else {
-                    this.setCart(cartObj);
-                    cartObj = {};
-                    cartFormat = null;
-                    this.formatPopShow = false;
-                    this.stoastMessage = '加入购物车成功';
-                    this.stoastShow = true;
-                }
+                this.setCart(cartObj);
+                cartObj = {};
+                cartFormat = null;
+                this.formatPopShow = false;
+                this.stoastMessage = '加入购物车成功';
+                this.stoastShow = true;
             },
             filters: {
                 time: function (value) {

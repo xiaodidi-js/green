@@ -285,11 +285,9 @@
                     case 2:
                         this.$http.delete(localStorage.apiDomain + 'public/index/user/getsubmitorder/uid/' + ustore.id + '/token/' + ustore.token + '/oid/' + id).then((response)=>{
                             if(response.data.status === 1) {
-                                console.log(response.data);
                                 this.orders.statext = '用户取消';
                                 this.orders.status = -1;
                             }else if(response.data.status === -1) {
-                                console.log(5);
                                 this.btnStatus = false;
                                 this.toastMessage = response.data.info;
                                 this.toastShow = true;
@@ -301,7 +299,6 @@
                                     context.$router.go({name:'login'});
                                 },800);
                             }else{
-                                console.log(6);
                                 this.btnStatus = false;
                                 this.toastMessage = response.data.info;
                                 this.toastShow = true;

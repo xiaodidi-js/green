@@ -501,19 +501,18 @@
                 });
             },
             goCart: function(cid) {
-                for(let i = 0; i < this.data.length; i++) {
-				    let obj = {};
-				    obj = {
-				        pid:cid,
-				        name:this.data[i].title,
-						price:this.data[i].price,
-						img:this.data[i].src,
-						store:this.data[i].store
-					};
-                    console.log(obj);
-                    this.setCart(obj);
-				    console.log("加入购物车成功！");
-				}
+                let obj = {};
+                obj = {
+                    pid:cid,
+                    name:this.data.title,
+                    price:this.data.price,
+                    img:this.data.src,
+                    store:this.data.store,
+                    pnums:1
+                };
+                console.log(obj);
+                this.setCart(obj);
+                console.log("加入购物车成功！");
 			}
         },
     }

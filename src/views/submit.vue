@@ -318,16 +318,36 @@
 		font-size:1.4rem;
 	}
 
+	.getShop .getShopDate {
+		width:95%;
+		margin:0px auto;
+		border-bottom: 1px solid #f2f2f2;
+		height:3.5rem;
+		line-height:3.5rem;
+	}
+
+	.getShop .getShopDate .selectInput {
+		margin:2px 10px 0px;
+		height:3rem;
+		width:10rem;
+	}
+
+	.getShop .getShopDate .selectInput select {
+		width:10rem;
+		height:2.5rem;
+		text-indent:0.5em;
+		line-height:2.5rem;
+	}
+
 	.getShop .getShopTime {
 		border-bottom: 1px solid #f2f2f2;
-		height:4.5rem;
-		line-height:4.5rem;
+		height:3.5rem;
+		line-height:3.5rem;
 	}
 
 	.bor {
 		position: relative;
-		height:4.5rem;
-		/*color: #fff;*/
+		height:3.5rem;
 	}
 
 	.bor .rada {
@@ -358,7 +378,7 @@
 		background: url("../images/gou2.png") no-repeat;
 		background-size: 100%;
 		float: left;
-		margin:12px 5px;
+		margin:8px 5px;
 	}
 
 	.my-icon-chosen {
@@ -468,7 +488,6 @@
 			</scroller>
 		</div>
 
-
 		<!-- 支付方式 -->
 		<!--<my-cell title="请选择支付方式" style="clear:both;">-->
 			<!--<my-cell-item @click="changePayType(pitem.ptype)" v-for="pitem in data.pay">-->
@@ -484,10 +503,19 @@
 		<!--</my-cell>-->
 
 		<div class="getShop">
+			<div class="getShopDate">
+				<div style="float:left;">取菜日期:</div>
+				<div style="float:left;" class="selectInput">
+					<select id="today">
+						<option></option>
+					</select>
+				</div>
+				<div style="float:left;">(<i>{{ theDay }}</i>)</div>
+			</div>
 			<div class="getShopTime">
 				<div style="float:left;">取菜时间:</div>
 				<div class="bor" style="float:left;">
-					<input type="radio" value="1" v-model="shonse" class="my-icon rada" />
+					<input type="radio" value="1" v-model="shonse" class="my-icon rada my-icon-chosen" />
 					<input type="radio" value="2" v-model="shonse" class="my-icon radb" />
 					<label class="label-radio" @click="isRadio"><span>10:30</span></label>
 					<label class="label-radio" @click="isRadio"><span>16:30</span></label>
@@ -613,7 +641,9 @@
                 },
                 listGift: [],
 				dtype: 0,
-                shonse:-1,
+                shonse:1,
+                deliverytime:0,
+                theDay: "当日"
             }
         },
         components: {
@@ -644,7 +674,6 @@
         },
         ready() {
             this.isRadio();
-
             if(this.oneGift(this.address,this.lastPaySum) === "") {
 				$("#give-list").css({
 					display:"none"
@@ -654,7 +683,6 @@
                     display:"block"
                 });
 			}
-
             let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
             ustore = JSON.parse(ustore);
             let pids = '';
@@ -735,6 +763,18 @@
         },
         methods: {
             isRadio: function() {
+                var date = new Date() , y = date.getFullYear() , m = date.getMonth() + 1 , d = date.getDate();
+				for(let i = 0; i < this.cartInfo.length; i++) {
+					if (this.cartInfo[i].deliverytime == 0) {
+						this.theDay = "次日";
+                        d = date.getDate() + 1;
+					} else if (this.cartInfo[i].deliverytime == 1) {
+                        this.theDay = "当日";
+					}
+				}
+                var time = y + "-" + m + "-" + d;
+                $("#today").find("option:selected").text(time);
+
 				$(".bor").find(".my-icon").change(function () {
 					$(this).addClass("my-icon-chosen").siblings().removeClass("my-icon-chosen");
                 });
