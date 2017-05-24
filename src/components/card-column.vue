@@ -182,11 +182,9 @@
 		color:#999;
 		height:4.0rem;
 		line-height: 1.9rem;
-		width:90%;
 		display: block;
 		margin:0px auto;
 		word-wrap:break-word;
-		width:100%;
 		overflow: hidden;
 		width: 100%;
 		text-overflow: ellipsis;
@@ -194,7 +192,7 @@
 
 </style>
 <template>
-	<div>
+	<div v-show="showele">
 		<div class="buy">
 			<p class="myp">限时抢购</p>
 			<div class="timer">
@@ -256,6 +254,7 @@
                 time:'',
                 timer:null,
                 status:1,
+                showele: false
             }
         },
         components: {
@@ -265,8 +264,9 @@
             let _self = this;
             this.$watch('columns',function(newVal) {
                 for(var i = 0;i < newVal.length; i++) {
+                    var mytime = newVal[i].etime - newVal[i].servertime;
                     if(newVal[i].nowsale == 1 && newVal[i].etime > 0) {
-                        var mytime = newVal[i].etime - newVal[i].servertime;
+                        this.showele = true;
                         _self.time = mytime;
                         _self.nowsale = 1;
                     }
@@ -278,6 +278,11 @@
                 let _self = this;
                 this.timer = setInterval(function(){
                     _self.time--;
+                    if(_self.time == 0) {
+                        console.log(_self.time);
+                        _self.showele = false;
+                        _self.$router.go({name:'index'});
+					}
                 },1000);
             }
         },

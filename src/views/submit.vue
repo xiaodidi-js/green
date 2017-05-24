@@ -337,6 +337,9 @@
 		height:2.5rem;
 		text-indent:0.5em;
 		line-height:2.5rem;
+		background: url("../images/xia.png") no-repeat right;
+		background-size: 12%;
+		background-position-x: 80px;
 	}
 
 	.getShop .getShopTime {

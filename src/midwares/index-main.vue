@@ -16,7 +16,7 @@
 	<banners :testarr="data.index_data"></banners>
 	<div class="sub-content">
 		<!-- 显示抢购 -->
-		<card-column v-show="columnShow" :columns="maincolumns" keep-alive></card-column>
+		<card-column :columns="maincolumns" keep-alive></card-column>
 		<!-- 热销产品排行榜 -->
 		<card-rectangle :testarr="data.index_data"></card-rectangle>
 		<!-- toast提示框 -->
@@ -52,7 +52,6 @@
 					maincolumns: []
 				},
                 maincolumns:[],
-                columnShow: false
 			}
 		},
 		route: {
@@ -117,13 +116,7 @@
                 this.$http.get(localStorage.apiDomain+'public/index/sale/SaleTimeSolt/uid').then((response) => {
                     if(response.data.status===1) {
                         this.maincolumns = response.data.SaleTimeSolt;
-                        for(let i = 0; i < _this.maincolumns.length; i++) {
-                            if(this.maincolumns[i].etime > 0) {
-								_this.columnShow = true;
-                            } else if(this.maincolumns[i].etime  == 0) {
-                                _this.columnShow = false;
-							}
-						}
+
                     } else if(response.data.status===-1) {
                         this.toastMessage = response.data.info;
                         this.toastShow = true;

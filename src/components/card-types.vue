@@ -200,11 +200,19 @@
 		background-color:#fff;
 		padding:1rem;
 		position:fixed;
-		bottom:4.5rem;
+		bottom:0rem;
 		left:0;
 		z-index:99;
 		transform:scale(0);
 		-webkit-transform:scale(0);
+	}
+
+	.format-pop .priceButton {
+		width:100%;height:3.5rem;clear:both;
+	}
+
+	.format-pop .priceButton .price-pop {
+		width:100%;height:100%;border:1px solid #c40000;color:#fff;background: #c40000;text-align:center;line-height:3.5rem;
 	}
 
 	.format-pop.show{
@@ -284,6 +292,62 @@
 		text-align:right;
 	}
 
+	.num-counter{
+		max-width:100%;
+		height:auto;
+		text-align:left;
+		font-size:0;
+		overflow:hidden;
+	}
+
+	.num-counter .btns{
+		display:inline-block;
+		vertical-align:top;
+		width:2.5rem;
+		height:2.5rem;
+		line-height:2.5rem;
+		font-size:1.6rem;
+		font-weight:bold;
+		color:#333;
+		border:#ccc solid 1px;
+		text-align:center;
+	}
+
+	.num-counter .btns.disabled{
+		color:#ccc;
+	}
+
+	.num-counter .btns.disabled:active{
+		background-color:#fff;
+	}
+
+	.num-counter .btns:active{
+		background-color:#ccc;
+	}
+
+	.num-counter .input{
+		display:inline-block;
+		vertical-align:top;
+		width:6rem;
+		height:2.5rem;
+		line-height:2.5rem;
+		font-size:1.4rem;
+		color:#333;
+		border-top:#ccc solid 1px;
+		border-bottom:#ccc solid 1px;
+		border-radius:0;
+		text-align:center;
+	}
+
+	.fpmasker.show{
+		width:100%;
+		height:100%;
+		background-color:rgba(0,0,0,0.6);
+		display:block;
+		transition:background .5s;
+		-webkit-transition:background .5s;
+	}
+
 </style>
 
 <template>
@@ -322,37 +386,43 @@
 		</menu>
 	</div>
 
-	<div class="fpmasker" :class="{'show':formatPopShow}" @touchmove.stop.prevent @touchend.stop @touchstart.stop @click="hideFormatPop"></div>
-	<div class="format-pop" :class="{'show':formatPopShow}" @touchmove.stop.prevent @touchend.stop @touchstart.stop>
-		<div class="line">
-			<div class="pimg" v-lazy:background-image="data.shotcut"></div>
-			<div class="pmes">
-				<div class="price" v-if="data.is_promote">¥{{data.promote_price}}</div>
-				<div class="price" v-else>¥{{data.price}}</div>
-				<div>库存{{proNums}}件</div>
-				<div class="dialog">{{ getGuigeName }}</div>
-			</div>
-		</div>
-		<div class="close" @click="hideFormatPop">X</div>
-		<div class="divider" style="margin-top:23%;"></div>
-		<div class="line" v-for="(pindex,fmt) in data.format">
-			<div class="title">{{ fmt.name }}</div>
-			<div id="con" class="con" style="font-size:0;white-space:normal;">
-				<guige :value="val.id" :text="val.name" v-for="(sindex,val) in fmt.value" @click="changeGuige(pindex,val.id,val.name)"></guige>
-			</div>
-			<div class="divider"></div>
-		</div>
-		<div class="line" style="padding-bottom:0.3rem;font-size:0;">
-			<div class="title inline">购买数量</div>
-			<div class="con inline">
-				<div class="num-counter">
-					<div class="btns" :class="{'disabled':buyNums <= 1}" @click="reduceNums">-</div>
-					<input type="number" class="input" :value="buyNums" readonly />
-					<div class="btns" :class="{'disabled':buyNums >= proNums}" @click="addNums">+</div>
+	<template  v-for="item in data">
+		<div class="fpmasker" :class="{'show':formatShow}" @touchmove.stop.prevent @touchend.stop @touchstart.stop @click="hideFormatPop"></div>
+		<div class="format-pop" :class="{'show':formatShow}" @touchmove.stop.prevent @touchend.stop @touchstart.stop>
+			<div class="line">
+				<div class="pimg" v-lazy:background-image="item.src"></div>
+				<div class="pmes">
+					<!--<div class="price" v-if="data.is_promote">¥{{data.promote_price}}</div>-->
+					<div class="price">¥{{ item.price }}</div>
+					<div>库存{{proNums}}件</div>
+					<div class="dialog">{{ getGuigeName }}</div>
 				</div>
 			</div>
+			<div class="close" @click="hideFormatPop">X</div>
+			<div class="divider" style="margin-top:23%;"></div>
+			<div class="line" v-for="(pindex,fmt) in item.format">
+				<div class="title">{{ fmt.name }}</div>
+				<div id="con" class="con" style="font-size:0;white-space:normal;">
+					<guige :value="val.id" :text="val.name" v-for="(sindex,val) in fmt.value" @click="changeGuige(pindex,val.id,val.name)"></guige>
+				</div>
+				<div class="divider"></div>
+			</div>
+			<div class="line" style="padding-bottom:0.3rem;font-size:0;">
+				<div class="title inline">购买数量</div>
+				<div class="con inline">
+					<div class="num-counter">
+						<div class="btns" :class="{'disabled':buyNums <= 1}" @click="reduceNums">-</div>
+						<input type="number" class="input" :value="buyNums" readonly />
+						<div class="btns" :class="{'disabled':buyNums >= proNums}" @click="addNums">+</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="priceButton">
+				<button class="price-pop" @click="comfirmFun(item.id)">确定</button>
+			</div>
 		</div>
-	</div>
+	</template>
 
 	<!-- toast显示框 -->
 	<toast type="text" :show.sync="toastShow">{{ toastMessage }}</toast>
@@ -391,7 +461,7 @@
                 myScroll: '',
                 dtype: null,
                 guige:[],
-                formatPopShow:false,
+                formatShow:false,
                 proNums:1,
                 buyNums:1,
                 toastMessage: '',
@@ -500,19 +570,25 @@
                     this.toastShow = true;
                 });
             },
-            goCart: function(cid) {
+            comfirmFun: function (cid) {
+                this.formatShow = false;
                 let obj = {};
-                obj = {
-                    pid:cid,
-                    name:this.data.title,
-                    price:this.data.price,
-                    img:this.data.src,
-                    store:this.data.store,
-                    pnums:1
-                };
-                console.log(obj);
+                for(let i = 0; i < this.data.length; i++) {
+                    obj = {
+                        pid:cid,
+                        name:this.data[i].title,
+                        price:this.data[i].price,
+                        img:this.data[i].src,
+                        store:this.data[i].store,
+                        nums:this.buyNums,
+                        store:this.proNums
+                    };
+                }
                 this.setCart(obj);
                 console.log("加入购物车成功！");
+            },
+            goCart: function(cid) {
+                this.formatShow = true;
 			}
         },
     }

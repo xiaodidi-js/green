@@ -92,7 +92,7 @@
 			<img src="../images/logo_lv.png" alt="" style="width:40px;height:40px;margin: 5px 15px;" />
 		</div>
 		<div class="search" style="width:65%;position:relative;left:12px;">
-			<input type="text" class="" placeholder="请输入您要搜索的商品" v-model="searchKey" />
+			<input type="text" @keydown="keyCodefun" placeholder="请输入您要搜索的商品" v-model="searchKey" />
 			<input type="button" class="order-search-btn" @click="goSearch()" value="搜索" />
 		</div>
 		<div class="customer">
@@ -145,9 +145,19 @@
 			}
 		},
 		ready() {
+			this.keyCodefun();
+		},
+		computed: {
 
 		},
 		methods: {
+            keyCodefun: function (event) {
+                var _this = this;
+                var e = event || window.event;
+                if(e && e.keyCode == 13) {
+                    _this.goSearch();
+                }
+            },
             goSearch: function() {
 				this.searchKey = this.searchKey.replace(/(^\s*)|(\s*$)/g,'');
 				if(this.searchKey === "") {
