@@ -1036,7 +1036,6 @@
 //                        this.$refs.scroller.reset();
 //                    }
                     var scaleBox = this.data.content;
-                    console.log(scaleBox);
 					if(scaleBox === '') {
                         document.getElementsByClassName('ms-item')[1].innerHTML = "暂时没有详情图~~~";
 					} else {
@@ -1065,7 +1064,7 @@
 			}
 		},
 		methods: {
-		    gofun: function() {
+            gofun: function() {
                 var _self = this;
                 var shoping = JSON.parse(sessionStorage.getItem("myCart"));
                 if(shoping === null) {
@@ -1076,15 +1075,15 @@
                             if(this.data.deliverytime == 0){
                                 _self.toastMessage = "购物车有当日商品！";
                                 _self.toastShow = true;
+                                return false;
                             } else if (this.data.deliverytime == 1) {
                                 _self.toastMessage = "购物车有次日商品！";
                                 _self.toastShow = true;
+                                return false;
                             }
-                            return false;
                         }
                     }
                 }
-
             },
             timeline: function() {
                 let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
@@ -1281,11 +1280,11 @@
                         store:this.proNums
                     };
                 }
-                console.log(cartObj.price);
                 var _self = this;
                 this.gofun();
-                if(this.data.peisongok == 0){
+                if(this.data.peisongok == 0) {
                     alert("亲！您选购的菜品与您购物车的菜品，在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
+                    _self.toastMessage = "";
                     _self.toastShow = false;
                     return false;
                 } else {
@@ -1293,7 +1292,8 @@
                     cartObj = {};
                     cartFormat = null;
                     this.formatPopShow = false;
-                    this.$router.go({name:'cart'});
+                    this.stoastMessage = '加入购物车成功';
+                    this.stoastShow = true;
                 }
 			},
 			addCart : function() {
@@ -1344,11 +1344,28 @@
 						store:this.proNums
                     };
                 }
-                console.log(cartObj.price);
                 var _self = this;
-                this.gofun();
+                var shoping = JSON.parse(sessionStorage.getItem("myCart"));
+                if(shoping === null) {
+                    return true;
+                } else {
+                    for(let i = 0; i < shoping.length; i++) {
+                        if(shoping[i]["deliverytime"] != this.data.deliverytime) {
+                            if(this.data.peisongok == 1 && this.data.deliverytime == 0){
+                                _self.toastMessage = "购物车有当日商品！";
+                                _self.toastShow = true;
+                                return false;
+                            } else if(this.data.peisongok == 1 && this.data.deliverytime == 1) {
+                                _self.toastMessage = "购物车有次日商品！";
+                                _self.toastShow = true;
+                                return false;
+                            }
+                        }
+                    }
+                }
                 if(this.data.peisongok == 0) {
                     alert("亲！您选购的菜品与您购物车的菜品，在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
+                    _self.toastMessage = "";
                     _self.toastShow = false;
                     return false;
                 } else {
