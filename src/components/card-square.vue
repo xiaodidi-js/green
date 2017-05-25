@@ -3,7 +3,7 @@
 		width:100%;
 		padding:0rem 0rem 1rem 0rem;
 		font-size:0;
-		margin-bottom:70px;
+		margin-bottom:165px;
 	}
 
 	.wrapper.nopadding{

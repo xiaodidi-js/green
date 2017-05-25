@@ -580,6 +580,15 @@ const routers = {
         component (resolve) {
             require(['./components/format-pop.vue'], resolve);
         }
+    },
+    'balance-price': {
+        name:'balance-price',
+        header:false,
+        footer:false,
+        title:'选择规格',
+        component (resolve) {
+            require(['./components/balance-price.vue'], resolve);
+        }
     }
 };
 export default routers;

@@ -520,8 +520,8 @@
 				<div class="bor" style="float:left;">
 					<input type="radio" value="1" v-model="shonse" class="my-icon rada my-icon-chosen" />
 					<input type="radio" value="2" v-model="shonse" class="my-icon radb" />
-					<label class="label-radio" @click="isRadio"><span>10:30</span></label>
-					<label class="label-radio" @click="isRadio"><span>16:39</span></label>
+					<label class="label-radio" @click="isRadio">10:30</label>
+					<label class="label-radio" @click="isRadio">16:39</label>
 				</div>
 			</div>
 			<div class="getInformation">提示：菜品到货后请及时取菜超过3天的菜我们将在第4天进行回收，谢谢！</div>
@@ -767,6 +767,9 @@
         methods: {
             isRadio: function() {
                 var date = new Date() , y = date.getFullYear() , m = date.getMonth() + 1 , d = date.getDate();
+                var radA = $(".label-radio").eq(0).text();
+                var radB = $(".label-radio").eq(1).text();
+                sessionStorage.setItem("rad",radA);
 				for(let i = 0; i < this.cartInfo.length; i++) {
 					if (this.cartInfo[i].deliverytime == 0) {
 						this.theDay = "次日";
@@ -781,11 +784,16 @@
                         this.theDay = "当日";
 					}
 				}
-                var time = y + "-" + m + "-" + d;
-				sessionStorage.setItem("deliverytime",time);
+                var time = y + "-" + m + "-" + d , _self = this;
                 $("#today").find("option:selected").text(time);
+                sessionStorage.setItem("deliverytime",time);
 				$(".bor").find(".my-icon").change(function () {
 					$(this).addClass("my-icon-chosen").siblings().removeClass("my-icon-chosen");
+                    if(_self.shonse == 1) {
+                        sessionStorage.setItem("rad",radA);
+                    } else if(_self.shonse == 2) {
+                        sessionStorage.setItem("rad",radB);
+                    }
                 });
 			},
             chosenGift: function (type = 0) {
@@ -806,7 +814,7 @@
                             display:"block"
                         });
                         this.listGift = response.data.maxmoney;
-                    }else if(response.data.status===-1){
+                    }else if(response.data.status=== -1) {
                         this.toastMessage = response.data.info;
                         this.toastShow = true;
                         let context = this;
@@ -954,7 +962,7 @@
                         score:this.scoreSwitch,
                         paysum:this.lastPaySum,
                         tips:this.memo,
-						openid:123,
+						openid:sessionStorage.getItem("openid"),
                         pshonse:this.shonse,
                     };
 					console.log(pdata);

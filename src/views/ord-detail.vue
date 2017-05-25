@@ -422,7 +422,8 @@ export default{
 				this.data.order = response.data.order;
 				this.data.products = response.data.products;
 				var getime = sessionStorage.getItem("deliverytime");
-                $(".peisongdate").text(getime + " " + "10:30");
+				var selfDay = sessionStorage.getItem("rad");
+                $(".peisongdate").text(getime + " " + selfDay);
 			} else if (response.data.status===-1) {
 				this.toastMessage = response.data.info;
 				this.toastShow = true;
