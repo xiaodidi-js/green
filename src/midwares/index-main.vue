@@ -63,18 +63,12 @@
                 var hours = d.getHours();
                 var minutes = d.getMinutes();
                 var seconds = d.getSeconds();
-                for(let i = 0; i < this.maincolumns.length; i++) {
-                    console.log(this.maincolumns[i]);
-				}
                 return (hours > 9 ? hours : '0' + hours) + ':' + (minutes > 9 ? minutes : '0' + minutes) + ":" + (seconds > 9 ? seconds : '0' + seconds)
             }
         },
 		ready() {
 			this.indexMessage();
             this.timeline();
-            for(let i = 0; i < this.maincolumns.length; i++) {
-                console.log(this.maincolumns[i]);
-            }
             // 按钮淡入淡出
             $(window).scroll(function(){
                 if($(window).scrollTop() >= 350){

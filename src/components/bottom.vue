@@ -56,7 +56,7 @@
 	}
 
 	.wrapper .group-cart .name{
-		line-height: 23px;
+		line-height: 32px;
 	}
 
 	.wrapper .group{
@@ -71,57 +71,57 @@
 
 	.wrapper .icons {
 		display:block;
-		width:2.5rem;
-		height:2.5rem;
-		background: url('../images/icon-s.png') no-repeat;
+		width:2rem;
+		height:2rem;
 		margin:0px auto;
 	}
 
 	.wrapper .icon-icon22fuzhi {
-		background-position: -122px 2px;
-		background-size: 600%;
+		background: url('../images/img32.png') no-repeat;
+		background-size: 100%;
 		position: relative;
-		top: 2px;
+		top: 10px;
+		left: -2px;
 	}
 
 	.wrapper .icon-home {
-		background-position: 2px -1px;
-		background-size: 600%;
+		background: url('../images/img14.png') no-repeat;
+		background-size: 100%;
 	}
 
 	.wrapper .icon-zizhuxiadan {
-		background-position: -30px -1px;
-		background-size: 600%;
+		background: url('../images/img16.png') no-repeat;
+		background-size: 100%;
 	}
 
 	.wrapper .icon-huodong {
-		background-position: -62px -1px;
-		background-size: 600%;
+		background: url('../images/img18.png') no-repeat;
+		background-size: 100%;
 	}
 
 	.wrapper .icon-gerenzhongxin {
-		background-position: -92px -1px;
-		background-size: 600%;
+		background: url('../images/img20.png') no-repeat;
+		background-size: 100%;
 	}
 
 	.wrapper .active .icon-home {
-		background-position: 2px -28px;
-		background-size: 600%;
+		background: url('../images/img15.png') no-repeat;
+		background-size: 100%;
 	}
 
 	.wrapper .active .icon-zizhuxiadan {
-		background-position: -30px -28px;
-		background-size: 600%;
+		background: url('../images/img17.png') no-repeat;
+		background-size: 100%;
 	}
 
 	.wrapper .active .icon-huodong {
-		background-position: -62px -28px;
-		background-size: 600%;
+		background: url('../images/img19.png') no-repeat;
+		background-size: 100%;
 	}
 
 	.wrapper .active .icon-gerenzhongxin {
-		background-position: -92px -28px;
-		background-size: 600%;
+		background: url('../images/img21.png') no-repeat;
+		background-size: 100%;
 	}
 
 	.wrapper .active {
@@ -152,8 +152,8 @@
 	}
 
 	.name{
-		font-size:1.2rem;
-		line-height:1.4rem;
+		font-size: 1.2rem;
+		line-height: 1.9rem;
 	}
 
 	.cart{

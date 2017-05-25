@@ -521,7 +521,7 @@
 					<input type="radio" value="1" v-model="shonse" class="my-icon rada my-icon-chosen" />
 					<input type="radio" value="2" v-model="shonse" class="my-icon radb" />
 					<label class="label-radio" @click="isRadio"><span>10:30</span></label>
-					<label class="label-radio" @click="isRadio"><span>16:30</span></label>
+					<label class="label-radio" @click="isRadio"><span>16:39</span></label>
 				</div>
 			</div>
 			<div class="getInformation">提示：菜品到货后请及时取菜超过3天的菜我们将在第4天进行回收，谢谢！</div>
@@ -771,13 +771,19 @@
 					if (this.cartInfo[i].deliverytime == 0) {
 						this.theDay = "次日";
                         d = date.getDate() + 1;
+                        $(".my-icon").eq(1).removeAttr("disabled")
 					} else if (this.cartInfo[i].deliverytime == 1) {
+						$(".my-icon").eq(0).hide();
+                        $(".my-icon").eq(1).css({
+							left:"0px"
+						});
+						$(".label-radio").eq(0).hide();
                         this.theDay = "当日";
 					}
 				}
                 var time = y + "-" + m + "-" + d;
+				sessionStorage.setItem("deliverytime",time);
                 $("#today").find("option:selected").text(time);
-
 				$(".bor").find(".my-icon").change(function () {
 					$(this).addClass("my-icon-chosen").siblings().removeClass("my-icon-chosen");
                 });
@@ -948,7 +954,7 @@
                         score:this.scoreSwitch,
                         paysum:this.lastPaySum,
                         tips:this.memo,
-						openid:sessionStorage.getItem("openid"),
+						openid:123,
                         pshonse:this.shonse,
                     };
 					console.log(pdata);

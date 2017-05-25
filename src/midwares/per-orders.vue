@@ -7,35 +7,28 @@
 		border-bottom:#ccc solid 1px;
 		position:relative;
 	}
-
 	.list-all-order{
 		width:100%;
 	}
-
 	.list.justify{
 		font-size:0;
 		text-align:justify;
 		text-align-last:justify;
 	}
-
 	.list.justify:after{
 		content:'';
 		width:100%;
 		display:inline-block;
 	}
-
 	.list:last-child{
 		border-bottom:none;
 	}
-
-
 	.all-title{
 		height:35px;
 		line-height:35px;
 		border-bottom:1px solid #ccc;
 		position: relative;
 	}
-
 	.all-title .title{
 		font-size: 14px;
 		line-height: 3.5rem;
@@ -45,11 +38,9 @@
 		display: block;
 		float: left;
 	}
-
 	.all-title.active .title{
 		color:#81c429;
 	}
-
 	.all-title .arrow{
 		width:1.5%;
 		height:100%;
@@ -61,11 +52,9 @@
 		background-repeat:no-repeat;
 		background-position:center;
 	}
-
 	.all-title .view{
 		float:right;font-size:14px;color:#999;margin-right: 20px;
 	}
-
 	.list .tap-type{
 		display: inline-block;
 		width: 5rem;
@@ -76,117 +65,92 @@
 		padding: 0px 0px 5px;
 		border-bottom: 3px solid #efefef;
 	}
-
 	.list .tap-type.active{
 		border-bottom:3px solid #81c429;
 	}
-
 	.list .tap-type .active{
 		background: #81c429;
 		top: 64px;
 		left: 3px;
 	}
-
 	.list .tap-type:last-child{
 		margin-right:0%;
 	}
-
 	.list .icon-ui {
 		width: 3.5rem;
 		height: 3.4rem;
 		background: url("../images/icon-s.png") no-repeat;
 		margin:0px auto;
 	}
-
 	.list .icon-ui-fukuan {
 		background-position: 1px -72px;
 		background-size: 595%;
 	}
-
 	.list .active .icon-ui-fukuan {
 		background-position: 1px -104px;
 		background-size: 595%;
 	}
-
 	.list .icon-ui-daifahuo {
 		background-position: -42px -72px;
 		background-size: 595%;
 	}
-
 	.list .active .icon-ui-daifahuo {
 		background-position: -42px -104px;
 		background-size: 595%;
 	}
-
 	.list .icon-ui-daishouhuo {
 		background-position: -86px -72px;
 		background-size: 595%;
 	}
-
 	.list .active .icon-ui-daishouhuo {
 		background-position: -86px -104px;
 		background-size: 595%;
 	}
-
 	.list .icon-ui-pingjia {
 		background-position: -130px -72px;
 		background-size: 595%;
 	}
-
 	.list .active .icon-ui-pingjia {
 		background-position: -130px -104px;
 		background-size: 595%;
 	}
-
 	.list .icon-ui-shouhou {
 		background-position: -175px -72px;
 		background-size: 595%;
 	}
-
 	.list .active .icon-ui-shouhou {
 		background-position: -175px -104px;
 		background-size: 595%;
 	}
-
-
 	/* 改变图标样式 开始 */
 	/*.list .tap-type .icon{*/
-		/*width: 52%;*/
-		/*padding-top: 8%;*/
-		/*margin: auto;*/
-		/*background-size: contain;*/
-		/*background-repeat: no-repeat;*/
-		/*background-position: center;*/
-		/*font-size: 26px;*/
-		/*color:#666;*/
+	/*width: 52%;*/
+	/*padding-top: 8%;*/
+	/*margin: auto;*/
+	/*background-size: contain;*/
+	/*background-repeat: no-repeat;*/
+	/*background-position: center;*/
+	/*font-size: 26px;*/
+	/*color:#666;*/
 	/*}*/
-
-
-
 	.list .tap-type.active .icon.unpay{
 		color:#81c429;
 	}
-
 	.list .tap-type.active .icon.unsend{
 		color:#81c429;
 	}
-
 	.list .tap-type.active .title{
 		color:#81c429;
 	}
-
 	.list .tap-type.active .icon.unget{
 		color:#81c429;
 	}
-
 	.list .tap-type.active .icon.comment{
 		color:#81c429;
 	}
-
 	.list .tap-type.active .icon.service{
 		color:#81c429;
 	}
-
 	.list .tap-type .title{
 		width:100%;
 		height:auto;
@@ -199,18 +163,15 @@
 		text-align-last:center;
 	}
 	/* 改变图标样式 开始 */
-
 	.list.ltit{
 		height:2rem;
 	}
-
 	.list.fixed{
 		position:fixed;
 		left:0;
 		z-index:100;
 		background-color:#efefef;
 	}
-
 	.list .tap-type .my-badge{
 		background-color: #f9ad0c;
 		position: absolute;
@@ -218,9 +179,7 @@
 		right: 2px;
 		text-align-last: center;
 	}
-
 	#customer{display:none;padding-top: 110px;}
-
 	.sub-content-tab{
 		clear: both;
 		position: fixed;
@@ -230,13 +189,10 @@
 		top: 222px;
 		background: #efefef;
 	}
-
-
 	/* servier start */
 	.service-ul{
 		width:100%;
 	}
-
 	.service-ul .icon-service {
 		margin: 0px 10px;
 		height: 48px;
@@ -245,7 +201,6 @@
 		width: 93%;
 		text-align: left;
 	}
-
 	.service-ul .icon-service .little-icon {
 		width:4rem;
 		display:block;
@@ -253,24 +208,20 @@
 		background: url("../images/icon-s.png") no-repeat;
 		float:left;
 	}
-
 	.service-ul .icon-service .qq-ui-icon{
 		background-position: 0px -177px;
 		background-size: 685%;
 	}
-
 	.service-ul .icon-service .call-icon {
 		background-position: -35px -178px;
 		background-size: 685%;
 	}
-
 	.service-ul li a .service-txt{
 		font-size:14px;
 		color:#4d4d4d;
 		padding-left: 5px;
 		line-height: 35px;
 	}
-
 	.service-ul li a .service-allow{
 		width:10px;
 		height: 18px;
@@ -278,9 +229,7 @@
 		margin: 10px 0px;
 	}
 	/* servier end */
-
 </style>
-
 <template>
 	<div class="sub-content">
 

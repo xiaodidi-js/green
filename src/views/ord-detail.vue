@@ -285,6 +285,9 @@
 					订单总计：<label>￥{{ data.order.money }} （含运费 ￥{{ data.order.freight }}）</label>
 				</div>
 				<div class="sta-line">
+					配送时间：<label class="peisongdate"><i></i></label>
+				</div>
+				<div class="sta-line">
 					订单编号：<label>{{ data.order.orderid }}</label>
 				</div>
 			</div>
@@ -410,27 +413,27 @@ export default{
 		}
 	},
 	ready() {
-
 		let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
 		ustore = JSON.parse(ustore);
 		this.$http.get(localStorage.apiDomain+'public/index/user/getsubmitorder/uid/'+ustore.id+'/token/'+ustore.token+'/oid/'+this.$route.params.oid).then((response)=>{
-
-			if(response.data.status===1){
+			if(response.data.status===1) {
 				this.data.pindex = response.data.pindex;
 				this.data.process = response.data.process;
 				this.data.order = response.data.order;
 				this.data.products = response.data.products;
-			}else if(response.data.status===-1){
+				var getime = sessionStorage.getItem("deliverytime");
+                $(".peisongdate").text(getime + " " + "10:30");
+			} else if (response.data.status===-1) {
 				this.toastMessage = response.data.info;
 				this.toastShow = true;
 				let context = this;
-				setTimeout(function(){
+				setTimeout(function() {
 					context.clearAll();
 					sessionStorage.removeItem('userInfo');
 					localStorage.removeItem('userInfo');
 					context.$router.go({name:'login'});
 				},800);
-			}else{
+			} else {
 				this.toastMessage = response.data.info;
 				this.toastShow = true;
 			}

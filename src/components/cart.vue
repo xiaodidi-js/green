@@ -337,26 +337,32 @@
 					method: 'post',
 					url: localStorage.apiDomain + 'public/index/usercenter/shopingclick',
 					data: qs.stringify({ 'shoping': shoping })
-	            })
-				.then((response) => {
+	            }).then((response) => {
 					console.log(response);
-				})
+				});
                 var nary = shoping.sort();
-
-                for(var i = 0;i < shoping.length;i++){
-                    if(nary[i].deliverytime == 0) {
-                        nary[i].deliverytime = 1;
-					}else{
-                        nary[i].deliverytime = 2;
-					}
+                for(var i = 0;i < shoping.length;i++) {
+                    let ok = nary[i].peisongok;
+                    nary[i].deliverytime == 0 ? nary[i].deliverytime == 1 : nary[i].deliverytime == 2;
                     if (nary[i].deliverytime != nary[i++].deliverytime) {
                         _this.toastMessage = "购物车有配送类别不一样的商品@！";
                         _this.toastShow = true;
                         return false;
-                    }
+                    } else if(ok == 0) {
+                        alert("抱歉，菜品已截单，请到首页选购菜品，谢谢合作！");
+                        if(this.cartList.length === this.choseArr.length) {
+                            this.clearAll();
+                        }else if(this.choseArr.length > 0) {
+                            this.delMultiple(this.choseArr);
+                        }
+                        sessionStorage.removeItem("myCart");
+                        _this.$router.go({name:'index'});
+                        return false;
+					} else {
+                        _this.setSelCart(this.choseArr);
+                        _this.$router.go({name:'submit'});
+					}
                 }
-                _this.setSelCart(this.choseArr);
-                _this.$router.go({name:'submit'});
             }
         },
         computed: {

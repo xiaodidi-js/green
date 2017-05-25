@@ -342,7 +342,7 @@
 	.fpmasker.show{
 		width:100%;
 		height:100%;
-		background-color:rgba(0,0,0,0.6);
+		background-color:rgba(0,0,0,0.3);
 		display:block;
 		transition:background .5s;
 		-webkit-transition:background .5s;
@@ -387,7 +387,7 @@
 	</div>
 
 	<template  v-for="item in data">
-		<div class="fpmasker" :class="{'show':formatShow}" @touchmove.stop.prevent @touchend.stop @touchstart.stop @click="hideFormatPop"></div>
+		<div class="fpmasker" :class="{'show':formatShow}" @touchmove.stop.prevent @touchend.stop @touchstart.stop @click="hidePop"></div>
 		<div class="format-pop" :class="{'show':formatShow}" @touchmove.stop.prevent @touchend.stop @touchstart.stop>
 			<div class="line">
 				<div class="pimg" v-lazy:background-image="item.src"></div>
@@ -502,7 +502,7 @@
                 }
                 this.buyNums--;
             },
-            hideFormatPop: function(evt){
+            hidePop: function(evt){
                 evt.stopPropagation();
                 this.formatPopShow = false;
             },
@@ -573,9 +573,10 @@
             comfirmFun: function (cid) {
                 this.formatShow = false;
                 let obj = {};
-                for(let i = 0; i < this.data.length; i++) {
+                for(let i in this.data) {
+                    this.data[i].index = i;
                     obj = {
-                        pid:cid,
+                        pid:this.data[i].id,
                         name:this.data[i].title,
                         price:this.data[i].price,
                         img:this.data[i].src,
@@ -583,11 +584,14 @@
                         nums:this.buyNums,
                         store:this.proNums
                     };
-                }
+
+				}
+				console.log(obj);
                 this.setCart(obj);
                 console.log("加入购物车成功！");
             },
-            goCart: function(cid) {
+            goCart: function() {
+                return;
                 this.formatShow = true;
 			}
         },

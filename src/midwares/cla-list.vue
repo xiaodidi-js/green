@@ -6,9 +6,6 @@
 		width:100%;
 		z-index:100;
 	}
-
-
-
 </style>
 <template>
 	<div class="sub-content">
@@ -20,7 +17,6 @@
 			<tab-item :selected="column === 'new'" @click="changeColumn('new')">新品</tab-item>
 			<tab-item :selected="column === 'price'" @click="changeColumn('price')">价格</tab-item>
 		</tab>
-
 		<separator :set-height="90" unit="px"></separator>
 		<!-- 分类列表 -->
 		<card-square :info="data" :no-padding="true"></card-square>
@@ -29,13 +25,14 @@
 	</div>
 </template>
 <script>
+
     import HeaderSearch from 'components/header-search'
     import Tab from 'vux/src/components/tab/tab.vue'
     import TabItem from 'vux/src/components/tab/tab-item'
     import CardSquare from 'components/card-square'
     import Toast from 'vux/src/components/toast'
     import Separator from 'components/separator'
-    export default{
+    export default {
         data() {
             return {
                 toastMessage:'',
@@ -64,7 +61,7 @@
         methods: {
             getData: function(sk){
                 let url = localStorage.apiDomain+'public/index/index/classifylist/cid/'+this.$route.params.cid+'/action/'+this.column;
-                if(sk.length>0){
+                if(sk.length > 0) {
                     url += '/search/'+sk;
                 }
                 this.$http.get(url).then((response)=>{
@@ -74,8 +71,8 @@
                     this.toastShow = true;
                 });
             },
-            changeColumn: function(col){
-                if(this.column===col){
+            changeColumn: function(col) {
+                if(this.column === col) {
                     return false;
                 }
                 this.column = col;
@@ -89,3 +86,5 @@
         }
     }
 </script>
+
+<!--  tuijian -->
