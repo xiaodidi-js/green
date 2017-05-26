@@ -521,7 +521,7 @@
 					<input type="radio" value="1" v-model="shonse" class="my-icon rada my-icon-chosen" />
 					<input type="radio" value="2" v-model="shonse" class="my-icon radb" />
 					<label class="label-radio" @click="isRadio">10:30</label>
-					<label class="label-radio" @click="isRadio">16:39</label>
+					<label class="label-radio" @click="isRadio">16:30</label>
 				</div>
 			</div>
 			<div class="getInformation">提示：菜品到货后请及时取菜超过3天的菜我们将在第4天进行回收，谢谢！</div>
@@ -855,7 +855,6 @@
                     pids = this.cartIds.join(',');
                 }
                 this.$http.get(localStorage.apiDomain+'public/index/user/addesschange/uid/'+ustore.id+'/token/'+ustore.token+'/type/'+key+'/ids/'+pids).then((response)=>{
-                    console.log(response.data);
                     if(response.data.status===1){
                         this.deliverType = key;
                         this.deliverName = key === 'express' ? this.data.deliver.express : this.data.deliver.parcel;

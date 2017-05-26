@@ -594,8 +594,8 @@ export default{
         time: function (value) {
             let d = new Date(parseInt(value) * 1000);
             var years = d.getFullYear();
-            var month = d.getMonth();
-            var days = d.getDay();
+            var month = d.getMonth() + 1;
+            var days = d.getDate();
             var hours = d.getHours();
             var minutes = d.getMinutes();
             var seconds = d.getSeconds();

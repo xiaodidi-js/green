@@ -42,7 +42,7 @@ router.map(Routers);
 
 router.beforeEach((transition) => {
 
-	// if(Env == 'production'){
+	if(Env == 'production'){
 		//微信openid检测
 		if(!sessionStorage.getItem('openid')){
 			let query = transition.to.query;
@@ -53,7 +53,7 @@ router.beforeEach((transition) => {
 				return true;
 			}
 		}
-	// }
+	}
 
 	//登录检测
 	if(typeof(transition.to.login)!=='undefined'&&transition.to.login===true){
@@ -77,18 +77,6 @@ router.beforeEach((transition) => {
 });
 
 router.afterEach((transition) => {
-
-	let openid = sessionStorage.getItem("openid");
-
-    Vue.http.get(localStorage.apiDomain+'public/index/index/guanzhu?openid='+ openid).then((response)=>{
-        if(response.data.status == 0) {
-            this.$router.go({name: 'sao'});
-            // location.href = "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI5OTQ5MjAxOQ==";
-            return;
-        }
-    });
-
-
 	//获取微信分享配置
 	if(transition.to.name!='detail'){
 		Vue.http.get(localStorage.apiDomain+'public/index/index/wxshare').then((response)=>{
