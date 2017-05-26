@@ -178,7 +178,7 @@
 		font-size: 14px;
 		float: left;
 		color: #f9ad0c;
-		width: 100%;
+		width: 79%;
 		margin-top: 10px;
 	}
 
@@ -199,6 +199,7 @@
 		float: right;
 		background: url('../images/shopcar_youlike.png') no-repeat;
 		background-size: 100%;
+		margin-top: 10px;
 	}
 
 	.content_main .box .box-author {
@@ -348,11 +349,11 @@
 											 v-link="{name:'detail',params:{pid:item1.shopid}}" />
 									</div>
 									<p class="shop-name" style="">{{ item1.shopname }}</p>
-									<p class="box-money">
+									<p class="box-money" style="float:left;">
 										<i style="font-size: 12px;">￥</i>
 										<span style="font-size: 18px;">{{ item1.shopprice }}</span>
-										<span class="add-cart"></span>
 									</p>
+									<p class="add-cart" style="float:right;" @click="addCart(item1.shopid)"></p>
 								</div>
 							</template>
 						</div>
@@ -367,7 +368,6 @@
 <script>
 
     import Swiper from 'vux/src/components/swiper'
-
 
     export default{
 		props: {
@@ -385,7 +385,9 @@
             Swiper,
         },
 		methods: {
+            addCart: function (id) {
 
+            }
 		}
 	}
 </script>

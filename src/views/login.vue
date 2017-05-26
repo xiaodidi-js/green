@@ -62,7 +62,6 @@
 <template>
 	<!-- 输入内容 -->
 	<group title="">
-
 		<div class="tabmain">
 			<i class="iconfont user_icon icon-yonghu"></i>
 			<x-input :show-clear=true placeholder="手机号码" type="text" :value.sync="data.uname" class="login-ipt"></x-input>
@@ -71,7 +70,6 @@
 			<i class="iconfont user_icon icon-mima"></i>
 			<x-input :show-clear=true placeholder="账号密码" type="password" :value.sync="data.pwd" class="login-ipt"></x-input>
 		</div>
-
 	</group>
 	<!-- 底部选择 -->
 	<bottom-check title="下次自动登录（公众场所请慎用）" desc="" :status.sync="data.auto"></bottom-check>
@@ -84,7 +82,6 @@
 		</div>
 	</div>
 	<!-- 输入内容 -->
-	
 	<!-- loading提示框 -->
 	<loading :show="loadingShow" text="正在登录..."></loading>
 	<!-- toast提示框 -->
@@ -140,7 +137,7 @@ export default{
 				this.toastMessage = '请填写登录账号和密码';
 				this.toastShow = true;
 				return false;
-			} else{
+			} else {
 			    if(this.data.auto === false) {
                     this.toastMessage = '请选择是否下次自动登录';
                     this.toastShow = true;

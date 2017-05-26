@@ -664,11 +664,11 @@
 
 	.ms-item-class {
 		clear: both;
-		padding-top: 10px;
 		padding-bottom: 13px;
 		font-size: 1.6rem;
+		font-weight: 500;
 		text-align:center;
-		color:#ccc;
+		color:#333;
 	}
 
 </style>
@@ -1035,10 +1035,14 @@
 //                        this.$refs.scroller.reset();
 //                    }
                     var scaleBox = this.data.content;
+                    var itemEle = document.getElementsByClassName('ms-item')[1];
 					if(scaleBox === '') {
-                        document.getElementsByClassName('ms-item')[1].innerHTML = "暂时没有详情图~~~";
+                        itemEle.innerHTML = "暂时没有详情图~~~";
+                        itemEle.style.paddingTop = "10px";
+                        itemEle.style.height = "150px";
+                        itemEle.style.lineHeight = "150px";
 					} else {
-                        document.getElementsByClassName('ms-item')[1].innerHTML = scaleBox;
+                        itemEle.innerHTML = scaleBox;
 					}
 //                    document.getElementsByClassName('ms-item')[2].innerHTML = this.data.detail;
 				});

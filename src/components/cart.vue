@@ -51,7 +51,7 @@
 	}
 
 	.my-icon:before{
-		color:#cccccc;
+		color:#ccc;
 	}
 
 	.my-icon-chosen:before{

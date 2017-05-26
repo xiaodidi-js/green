@@ -31,12 +31,17 @@
 	.my-icon:before{
 		font-size:1.8rem;
 	}
+
+	.my-icon-chosen:before{
+		color:#f9ad0c;
+	}
+
 </style>
 
 <template>
 	<div class="wrapper" @click="changeStatus">
 		<div class="cbox">
-			<icon type="success" class="my-icon" v-show="status"></icon>
+			<icon type="success" class="my-icon my-icon-chosen" v-show="status"></icon>
 			<icon type="circle" class="my-icon" v-show="!status"></icon>
 		</div>
 		<div class="wbox">

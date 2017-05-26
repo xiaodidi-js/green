@@ -387,8 +387,8 @@
 	</div>
 
 	<template  v-for="item in data">
-		<div class="fpmasker" :class="{'show':formatShow}" @touchmove.stop.prevent @touchend.stop @touchstart.stop @click="hidePop"></div>
-		<div class="format-pop" :class="{'show':formatShow}" @touchmove.stop.prevent @touchend.stop @touchstart.stop>
+		<div class="fpmasker" :class="{'show':popShow}" @touchmove.stop.prevent @touchend.stop @touchstart.stop @click="hidePop"></div>
+		<div class="format-pop" :class="{'show':popShow}" @touchmove.stop.prevent @touchend.stop @touchstart.stop>
 			<div class="line">
 				<div class="pimg" v-lazy:background-image="item.src"></div>
 				<div class="pmes">
@@ -398,15 +398,15 @@
 					<div class="dialog">{{ getGuigeName }}</div>
 				</div>
 			</div>
-			<div class="close" @click="hideFormatPop">X</div>
+			<div class="close" @click="hidePop">X</div>
 			<div class="divider" style="margin-top:23%;"></div>
-			<div class="line" v-for="(pindex,fmt) in item.format">
-				<div class="title">{{ fmt.name }}</div>
-				<div id="con" class="con" style="font-size:0;white-space:normal;">
-					<guige :value="val.id" :text="val.name" v-for="(sindex,val) in fmt.value" @click="changeGuige(pindex,val.id,val.name)"></guige>
-				</div>
-				<div class="divider"></div>
-			</div>
+			<!--<div class="line" v-for="(pindex,fmt) in item.format">-->
+				<!--<div class="title">{{ fmt.name }}</div>-->
+				<!--<div id="con" class="con" style="font-size:0;white-space:normal;">-->
+					<!--<guige :value="val.id" :text="val.name" v-for="(sindex,val) in fmt.value" @click="changeGuige(pindex,val.id,val.name)"></guige>-->
+				<!--</div>-->
+				<!--<div class="divider"></div>-->
+			<!--</div>-->
 			<div class="line" style="padding-bottom:0.3rem;font-size:0;">
 				<div class="title inline">购买数量</div>
 				<div class="con inline">
@@ -461,7 +461,7 @@
                 myScroll: '',
                 dtype: null,
                 guige:[],
-                formatShow:false,
+                popShow:false,
                 proNums:1,
                 buyNums:1,
                 toastMessage: '',
@@ -504,10 +504,10 @@
             },
             hidePop: function(evt){
                 evt.stopPropagation();
-                this.formatPopShow = false;
+                this.popShow = false;
             },
             showFormatPop: function(){
-                this.formatPopShow = true;
+                this.popShow = true;
             },
             onToure:function() {
                 var myScroll_left;
@@ -571,7 +571,9 @@
                 });
             },
             comfirmFun: function (cid) {
-                this.formatShow = false;
+
+            },
+            goCart: function() {
                 let obj = {};
                 for(let i in this.data) {
                     this.data[i].index = i;
@@ -585,14 +587,11 @@
                         store:this.proNums
                     };
 
-				}
-				console.log(obj);
+                }
+                console.log(obj);
+                return;
                 this.setCart(obj);
                 console.log("加入购物车成功！");
-            },
-            goCart: function() {
-                return;
-                this.formatShow = true;
 			}
         },
     }

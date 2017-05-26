@@ -170,26 +170,23 @@
 		</div>
 		<div class="mid-card white-bg">
 			<div class="tap-logo orders" v-link="{name:'per-orders'}">
-				<div class="arrow" :class="{'actived':$route.name==='per-orders' || $route.name==='per-default'}"></div>
+				<div class="arrow" :class="{'actived':$route.name === 'per-orders' || $route.name==='per-default'}"></div>
 			</div>
 			<div class="tap-logo coupons" v-link="{name:'per-coupons'}">
-				<div class="arrow" :class="{'actived':$route.name==='per-coupons'}"></div>
+				<div class="arrow" :class="{'actived':$route.name === 'per-coupons'}"></div>
 			</div>
 			<div class="tap-logo collections" v-link="{name:'per-collections'}">
-				<div class="arrow" :class="{'actived':$route.name==='per-collections'}"></div>
+				<div class="arrow" :class="{'actived':$route.name === 'per-collections'}"></div>
 			</div>
 			<div class="tap-logo addresses" v-link="{name:'per-addresses'}">
-				<div class="arrow" :class="{'actived':$route.name==='per-addresses'}"></div>
+				<div class="arrow" :class="{'actived':$route.name === 'per-addresses'}"></div>
 			</div>
 			<div class="tap-logo settings" v-link="{name:'per-settings'}">
-				<div class="arrow" :class="{'actived':$route.name==='per-settings'}"></div>
+				<div class="arrow" :class="{'actived':$route.name === 'per-settings'}"></div>
 			</div>
 		</div>
-
 		<separator :set-height="21"></separator>
-
 		<router-view></router-view>
-		
 		<toast :show.sync="toastShow" type="text">{{ toastMessage}}</toast>
 	</div>
 </template>
@@ -197,12 +194,13 @@
 <script>
 	import Toast from 'vux/src/components/toast'
 	import Separator from 'components/separator'
-	import { clearAll } from 'vxpath/actions'
+	import { clearAll,myActive } from 'vxpath/actions'
 
 	export default{
 		vuex: {
 			actions: {
-				clearAll
+				clearAll,
+                myActive
 			}
 		},
 		components: {
@@ -220,11 +218,12 @@
 			}
 		},
 		ready() {
+		    //记录索引
+            this.myActive(1);
 			let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
 			ustore = JSON.parse(ustore);
 			this.$http.get(localStorage.apiDomain+'public/index/user/userinfo/uid/'+ustore.id+'/token/'+ustore.token).then((response)=>{
 				if(response.data.status===1){
-				    console.log(response.data);
 					this.uname = response.data.uname;
 					this.uscore = response.data.score;
 					if(response.data.shotcut!==null){
@@ -295,9 +294,9 @@
 				ustore = JSON.parse(ustore);
 				this.$http.put(localStorage.apiDomain+'/public/index/user/makeInfoForUpyun',{'allow-file-type':'jpg,jpeg,gif,png','ext-param':'himg,'+ustore.id+',1','ftype':file.type}).then((response)=>{
 					let resdata = response.data;
-					if(resdata.status===1){
+					if(resdata.status === 1) {
 						this.uploadImgToUpyun(resdata.domain,resdata.url,file,resdata.policy,resdata.signature,resdata.notify,resdata.param,resdata.thumb);
-					}else{
+					} else {
 						this.toastMessage = resdata.info;
 						this.toastShow = true;
 						this.upsta = 0;
@@ -308,7 +307,7 @@
 					this.upsta = 0;
 				});
 			},
-			uploadImgToUpyun: function(domain,url,file,policy,signature,notify,param,thumb=''){
+			uploadImgToUpyun: function(domain,url,file,policy,signature,notify,param,thumb='') {
 				let formData = new FormData();
 				formData.append('file',file);
 				formData.append('policy',policy);

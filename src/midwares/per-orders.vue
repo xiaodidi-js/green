@@ -235,7 +235,7 @@
 
 		<div class="sub-content-tab">
 			<div class="all-title" v-link="{name:'classification'}">
-				<label class="title">我的订单</label>
+				<label class="title">订单分类 </label>
 				<span class="view" style="">查看所有订单</span>
 				<div class="arrow"></div>
 			</div>
@@ -264,7 +264,7 @@
 					<div class="tap-type" :class="{'active':dtype == 5}" @click="getData(5)">
 						<div class="icon service icon-ui icon-ui-shouhou"></div>
 						<div class="title">申请售后</div>
-						<badge :text="count.service.toString()" class="my-badge" v-show="count.service > 0"></badge>
+						<!--<badge :text="count.service.toString()" class="my-badge" v-show="count.service > 0"></badge>-->
 					</div>
 				</div>
 			</div>
@@ -332,7 +332,7 @@
 		},
 		data() {
 			return {
-			    dtype: this.$store.state.dtype, /* this.$store.state.dtype */
+			    dtype: -1, /* this.$store.state.dtype */
                 willShow:true,
 				toastShow: false,
 				toastMessage: '',
@@ -351,8 +351,15 @@
 
 		},
 		ready() {
-			this.getData(this.dtype);
-			this.kefu();
+            this.getData(1);
+            this.kefu();
+		    if(this.$store.state.dtype == 5) {
+                this.getData(this.$store.state.dtype);
+                $("#cardOrder").css("display","none");
+			} else {
+                $("#cardOrder").css("display","block");
+                this.getData(1);
+			}
 		},
 		methods: {
 		    kefu(){
@@ -365,8 +372,14 @@
 		    $id: function(id){
 				return document.getElementById(id);
 			},
-			getData: function(type = 0) {
-		        type === 5 ? this.$id("customer").style.display = "block" : this.$id("customer").style.display = "none";
+			getData: function(type) {
+		        if(type === 5) {
+                    this.$id("customer").style.display = "block"
+					$("#cardOrder").css("display","none");
+				} else {
+                    this.$id("customer").style.display = "none";
+                    $("#cardOrder").css("display","block");
+				}
                 if(this.dtype == type && this.data){
                     return true;
                 }
@@ -378,6 +391,7 @@
 						document.body.scrollTop = 0;
 						this.count = response.data.count;
 						this.data = response.data.list;
+						console.log(this.count);
 					}else if(response.data.status === -1){
 						this.toastMessage = response.data.info;
 						this.toastShow = true;

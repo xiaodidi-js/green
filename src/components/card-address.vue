@@ -2,7 +2,7 @@
 	.card-box{
 		width: 92%;
 		height: auto;
-		padding: 4% 0%;
+		padding: 4% 2%;
 		border-bottom: #B3B3B3 solid 1px;
 		margin: 10px auto 0;
 	}
@@ -18,6 +18,10 @@
 		white-space:nowrap;
 		text-overflow:ellipsis;
 		overflow:hidden;
+	}
+
+	.my-icon-chosen:before{
+		color:#f9ad0c;
 	}
 
 	.text-right{
@@ -230,7 +234,7 @@
 	</div>
 
 	<div id="content">
-		<!-- 自提 -->
+		<!-- 自提地址 -->
 		<div id="ziti">
 			<div class="main_ziti" id="Ele-chonse">
 				<div class="address" :class="{'isActive':item.is_default === 1}" v-for="item in chosens">
@@ -262,15 +266,16 @@
 				<x-button text="确认"></x-button>
 			</div>
 		</div>
-		<!-- 自提 -->
+
+		<!-- 快递地址 -->
 		<div id="cardbox" style="display:none;position: relative;top: 60px;">
 			<div class="card-box" v-for="item in addresses" style="background: #f2f2f2;box-shadow: none;border:none;">
 				<div class="half-div">{{ item.name }}</div>
 				<div class="half-div text-right">{{ item.tel }}</div>
 				<div class="address" style="background:none">{{ item.address }}</div>
 				<div class="half-div" @click="setDefault($index,item.id)">
-					<icon type="success" v-show="item.is_default === 1"></icon>
-					<icon type="circle" v-show="item.is_default !== 1"></icon>
+					<icon type="success" class="my-icon-chosen" v-show="item.is_default === 1"></icon>
+					<icon type="circle" class="my-icon" v-show="item.is_default !== 1"></icon>
 					<i>默认地址</i>
             </div>
 				<div class="half-div text-right">
@@ -285,7 +290,6 @@
 			</div>
 		</div>
 	</div>
-
 	<!-- 确定弹框 -->
 	<confirm :show.sync="confirmShow" title="删除地址" confirm-text="确定" cancel-text="取消" @on-confirm="confirmDel" @on-cancel="cancelDel"><p style="text-align:center;">确定删除该地址吗？</p></confirm>
 </template>
