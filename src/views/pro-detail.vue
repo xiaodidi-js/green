@@ -1317,11 +1317,9 @@
                         if (shoping[i]["deliverytime"] != this.data.deliverytime) {
                             if (this.data.peisongok == 1 && this.data.deliverytime == 0) {
                                 alert("亲！您选购的菜品为次日配送商品，购物车里存在当日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
-                                _self.toastShow = true;
                                 return false;
                             } else if (this.data.peisongok == 1 && this.data.deliverytime == 1) {
                                 alert("亲！您选购的菜品为当日配送商品，购物车里存在次日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！！");
-                                _self.toastShow = true;
                                 return false;
                             }
                         }
@@ -1397,11 +1395,9 @@
                         if (shoping[i]["deliverytime"] != this.data.deliverytime) {
                             if (this.data.peisongok == 1 && this.data.deliverytime == 0) {
                                 alert("亲！您选购的商品为次日配送商品，购物车里存在当日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
-                                _self.toastShow = true;
                                 return false;
                             } else if (this.data.peisongok == 1 && this.data.deliverytime == 1) {
                                 alert("亲！您选购的商品为当日配送商品，购物车里存在次日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！！");
-                                _self.toastShow = true;
                                 return false;
                             }
                         }
@@ -1412,7 +1408,7 @@
                 cartFormat = null;
                 this.formatPopShow = false;
                 this.stoastMessage = '加入购物车成功';
-                this.stoastShow = true;
+                this.stoastShow = false;
             },
             filters: {
                 time: function (value) {

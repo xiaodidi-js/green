@@ -645,7 +645,6 @@
                 listGift: [],
 				dtype: 0,
                 shonse:1,
-                deliverytime:0,
                 theDay: "当日"
             }
         },
@@ -769,7 +768,6 @@
                 var date = new Date() , y = date.getFullYear() , m = date.getMonth() + 1 , d = date.getDate();
                 var radA = $(".label-radio").eq(0).text();
                 var radB = $(".label-radio").eq(1).text();
-                sessionStorage.setItem("rad",radA);
 				for(let i = 0; i < this.cartInfo.length; i++) {
 					if (this.cartInfo[i].deliverytime == 0) {
 						this.theDay = "次日";
@@ -777,23 +775,15 @@
                         $(".my-icon").eq(1).removeAttr("disabled")
 					} else if (this.cartInfo[i].deliverytime == 1) {
 						$(".my-icon").eq(0).hide();
-                        $(".my-icon").eq(1).css({
-							left:"0px"
-						});
+                        $(".my-icon").eq(1).css("left","0px");
 						$(".label-radio").eq(0).hide();
                         this.theDay = "当日";
 					}
 				}
-                var time = y + "-" + m + "-" + d , _self = this;
+                var time = y + "-" + m + "-" + d;
                 $("#today").find("option:selected").text(time);
-                sessionStorage.setItem("deliverytime",time);
 				$(".bor").find(".my-icon").change(function () {
 					$(this).addClass("my-icon-chosen").siblings().removeClass("my-icon-chosen");
-                    if(_self.shonse == 1) {
-                        sessionStorage.setItem("rad",radA);
-                    } else if(_self.shonse == 2) {
-                        sessionStorage.setItem("rad",radB);
-                    }
                 });
 			},
             chosenGift: function (type = 0) {
@@ -962,10 +952,10 @@
                         score:this.scoreSwitch,
                         paysum:this.lastPaySum,
                         tips:this.memo,
-						openid:sessionStorage.getItem("openid"),
+						openid: sessionStorage.getItem("openid"),
                         pshonse:this.shonse,
                     };
-					console.log(pdata);
+					console.log(pdata.products);
                     this.$http.post(localStorage.apiDomain + 'public/index/user/getSubmitOrder',pdata).then((response)=>{
                         if(response.data.status===1){
                             console.log(response.data);

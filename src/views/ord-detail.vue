@@ -42,6 +42,11 @@
 		padding-bottom:2%;
 	}
 
+	.bl-info-box.status .content .sta-line .peisongdate {
+		font-size:14px;
+		color:#c40000;
+	}
+
 	.bl-info-box.status .content .sta-line:last-child{
 		padding-bottom:0%;
 	}
@@ -279,13 +284,13 @@
 					<label class="stat">{{ data.order.statext }}</label>
 				</div>
 				<div class="sta-line">
-					支付方式：<label v-if="data.order.paytype==1">微信支付</label><label v-else>支付宝支付</label>
+					支付方式：<label v-if="data.order.paytype == 1">微信支付</label><label v-else>支付宝支付</label>
 				</div>
 				<div class="sta-line">
 					订单总计：<label>￥{{ data.order.money }} （含运费 ￥{{ data.order.freight }}）</label>
 				</div>
-				<div class="sta-line">
-					配送时间：<label class="peisongdate"><i></i></label>
+				<div class="sta-line" style="color:#c40000">
+					配送时间：<label class="peisongdate">{{ stime | time}}</label>
 				</div>
 				<div class="sta-line">
 					订单编号：<label>{{ data.order.orderid }}</label>
@@ -391,7 +396,8 @@ export default{
 				order:{},
 				products:[],
 				payment:{}
-			}
+			},
+            stime: ''
 		}
 	},
 	components: {
@@ -421,9 +427,9 @@ export default{
 				this.data.process = response.data.process;
 				this.data.order = response.data.order;
 				this.data.products = response.data.products;
-				var getime = sessionStorage.getItem("deliverytime");
-				var selfDay = sessionStorage.getItem("rad");
-                $(".peisongdate").text(getime + " " + selfDay);
+				for(let i in this.data.products) {
+                    this.stime = this.data.products[i].stime;
+				}
 			} else if (response.data.status===-1) {
 				this.toastMessage = response.data.info;
 				this.toastShow = true;
@@ -584,6 +590,18 @@ export default{
 			this.confirmText = '';
 		}
 	},
+    filters: {
+        time: function (value) {
+            let d = new Date(parseInt(value) * 1000);
+            var years = d.getFullYear();
+            var month = d.getMonth();
+            var days = d.getDay();
+            var hours = d.getHours();
+            var minutes = d.getMinutes();
+            var seconds = d.getSeconds();
+            return years + "-" + month + "-" + days + " " + (hours > 9 ? hours : '0' + hours) + ':' + (minutes > 9 ? minutes : '0' + minutes);
+        }
+    },
 	events: {
 		payOrder: function(){
 			this.btnStatus = true;
@@ -670,17 +688,18 @@ export default{
 			this.loadingShow = true;
 			let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
 			ustore = JSON.parse(ustore);
-			this.$http.get(localStorage.apiDomain+'public/index/user/orderoperation/uid/'+ustore.id+'/token/'+ustore.token+'/oid/'+this.$route.params.oid).then((response)=>{
+			this.$http.get(localStorage.apiDomain + 'public/index/user/orderoperation/uid/'+ustore.id+'/token/'+ustore.token+'/oid/'+this.$route.params.oid).then((response)=>{
 				this.loadingShow = false;
 				this.btnStatus = false;
-				if(response.data.status===1) {
+				if (response.data.status === 1) {
+				    console.log(response.data.list);
 					this.setCartAgain(response.data.list);
 					this.$router.go({name:'cart'});
-				}else if(response.data.status===-1){
+				} else if (response.data.status === -1) {
 					this.toastMessage = response.data.info;
 					this.toastShow = true;
 					let context = this;
-					setTimeout(function(){
+					setTimeout(function() {
 						context.clearAll();
 						sessionStorage.removeItem('userInfo');
 						localStorage.removeItem('userInfo');

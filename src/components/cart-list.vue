@@ -200,7 +200,12 @@
 	</div>
 	
 	<!-- 确定弹框 -->
-	<confirm :show.sync="confirmShow" title="删除商品" confirm-text="确定" cancel-text="取消" @on-confirm="confirmDel"><p style="text-align:center;">确定删除该商品吗？</p></confirm>
+	<confirm :show.sync="confirmShow"
+			 title="删除商品" confirm-text="确定" cancel-text="取消"
+			 @on-confirm="confirmDel">
+		<p style="text-align:center;">确定删除该商品吗？</p>
+	</confirm>
+	
 </template>
 
 <script>

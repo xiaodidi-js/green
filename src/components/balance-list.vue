@@ -210,7 +210,6 @@
 				<div class="right">
 					<div class="price">¥{{ item.price }}</div>
 					<div class="num">x{{ item.nums }}</div>
-					<!--<div class="num">{{ item.deliverytime }}</div>-->
 				</div>
 			</div>
 		</div>
@@ -218,42 +217,6 @@
 			<div style="display:block;float:right;">共{{ amount }}件商品合计：<label style="color:#f9ad0c;">¥{{ sum }}</label></div>
 		</div>
 	</div>
-
-	<!--<div class="getShop">-->
-		<!--<div class="getShopTime">-->
-			<!--<div style="float:left;">取菜时间:</div>-->
-			<!--<div style="float:left;">-->
-
-				<!--<input type="radio" value="0" @click="ids" v-model="shonse" class="weui_icon weui_icon_circle my-icon"/>-->
-				<!--<input type="radio" value="1" @click="ids" v-model="shonse" class="weui_icon weui_icon_circle my-icon"/>-->
-				<!--{{ shonse }}-->
-
-				<!--&lt;!&ndash;<label @click="Morning(0)" v-show="!showValA">-->
-					<!--<icon type="circle" class="my-icon" v-show="!showValA"></icon>-->
-					<!--&lt;!&ndash;<my-switch :value.sync="chonseMorning" @click="Morning()"></my-switch>&ndash;&gt;-->
-					<!--<span>上午(<i>10:30</i>)</span>-->
-				<!--</label>-->
-				<!--<label @click="unMorning(1)" v-show="showValA">-->
-					<!--<icon type="success" class="my-icon-chosen" v-show="showValA"></icon>-->
-					<!--<span>上午(<i>10:30</i>)</span>-->
-				<!--</label>-->
-				<!--<label @click="unAfternoon()" v-show="showValB">-->
-					<!--{{ shonse }}-->
-					<!--<icon type="success" class="my-icon-chosen" v-show="showValB"></icon>-->
-					<!--&lt;!&ndash;<my-switch :value.sync="chonseAfternoon" @click="Afternoon()"></my-switch>&ndash;&gt;-->
-					<!--<span>下午(<i>16:30</i>)</span>-->
-				<!--</label>-->
-
-				<!--<label  @click="Afternoon()" v-show="!showValB">-->
-					<!--<icon type="circle" class="my-icon" v-show="!showValB"></icon>-->
-					<!--&lt;!&ndash;<my-switch :value.sync="chonseAfternoon" @click="Afternoon()"></my-switch>&ndash;&gt;-->
-					<!--<span>下午(<i>16:30</i>)</span>-->
-				<!--</label>&ndash;&gt;-->
-			<!--</div>-->
-		<!--</div>-->
-		<!--<div class="getInformation">提示：菜品到货后请及时取菜超过3天的菜我们将在第4天进行回收，谢谢！</div>-->
-	<!--</div>-->
-
 </template>
 
 <script>
@@ -320,37 +283,9 @@
 			}
 		},
 		methods: {
-
 		    ids: function() {
 
 			},
-
-//            Morning: function() {
-//                this.showValA = true;
-//                if(this.showValB = true) this.showValB = false;
-//                for(let i = 0; i < this.list.length; i++) {
-//                    if(this.list[i].deliverytime == 0) {
-//                        console.log(this.list[i].deliverytime);
-//					}
-//                    return true;
-//				}
-//            },
-//            unMorning: function () {
-//                this.showValA = false;
-//            },
-//            Afternoon: function () {
-//                this.showValB = true;
-//                if(this.showValA = true) this.showValA = false;
-//                for(let i = 0; i < this.list.length; i++) {
-//                    if(this.list[i].deliverytime == 1) {
-//                        console.log(this.list[i].deliverytime);
-//                    }
-//                    return true;
-//                }
-//            },
-//            unAfternoon: function () {
-//                this.showValB = false;
-//            },
 		}
 	}
 </script>
