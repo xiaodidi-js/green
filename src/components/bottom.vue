@@ -180,7 +180,7 @@
 </style>
 
 <template>
-	<div class="wrapper" keep-alive>
+	<div class="wrapper" keep-alive style="margin-bottom:0px;">
 		<!-- 购物车 -->
 		<div class="group-cart" v-link="{name:'cart'}" @click="cartFun()">
 			<i class="icons icon-icon22fuzhi"></i>

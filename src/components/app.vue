@@ -6,7 +6,7 @@
         <!-- 头部 -->
         <x-header :fixed="true" color="#343136" :left-options="{showBack:true,backText:''}" v-show="$route.header">{{ $route.title }}</x-header>
         <!-- 顶部间距 -->
-        <separator :set-height="46" unit="px" v-show="$route.header"></separator>
+        <!--<separator :set-height="46" unit="px" v-show="$route.header"></separator>-->
 
         <router-view></router-view>
 

@@ -80,26 +80,13 @@
 </style>
 
 <template>
-	
 	<div class="wrapper">
-
-		<!-- 头部 -->
-		<index-search :fixed="true"></index-search>
-
-		<!-- 轮播图 -->
-		<!--<swiper :list="gallery" :url="gallery.url" loop dots-position="center"-->
-				<!--:show-desc-mask="false"-->
-				<!--:aspect-ratio="650/1242" auto dots-class="dots-my" style="width: 100%;margin-top:50px;"></swiper>-->
-
 		<!-- 导航栏 -->
 		<router-view keep-alive></router-view>
-
         <!-- toast提示框 -->
 		<toast :show.sync="toastShow" type="text">{{ toastMessage }}</toast>
-
 		<!-- loading加载框 -->
 		<loading :show="loadingShow" :text="loadingMessage"></loading>
-
 	</div>
 </template>
 
@@ -108,7 +95,6 @@
 import Swiper from 'vux/src/components/swiper'
 import Scroller from 'vux/src/components/scroller'
 import Toast from 'vux/src/components/toast'
-import indexSearch from 'components/index-search'
 import Loading from 'vux/src/components/loading'
 
 export default{
@@ -131,7 +117,6 @@ export default{
         Swiper,
         Scroller,
         Toast,
-        indexSearch,
         Loading
     },
 	route: {
@@ -147,8 +132,6 @@ export default{
 			}
 		};
         this.getData('');
-
-
 	},
     methods: {
         getData: function(sk) {

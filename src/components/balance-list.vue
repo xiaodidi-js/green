@@ -50,7 +50,6 @@
 
 	.bl-wrapper .line .img{
 		width:25%;
-		padding-top:25%;
 		background-size:cover;
 		background-position:center;
 		background-repeat:no-repeat;
@@ -201,7 +200,9 @@
 			</div>
 		</div>
 		<div class="line" v-for="item in list" v-link="{name:'detail',params:{pid:item.id}}">
-			<div class="img" v-lazy:background-image="item.shotcut"></div>
+			<div class="img"> <!--  v-lazy:background-image="item.shotcut" -->
+				<img :src="item.shotcut" style="width:100%;height:100%;" />
+			</div>
 			<div class="con">
 				<div class="left">
 					<div class="name">{{ item.name }}</div>

@@ -364,15 +364,6 @@ const routers = {
         component (resolve) {
             require(['./components/integral.vue'], resolve);
         }
-    },//订单分类
-    '/classification': {
-        name:'classification',
-        header:true,
-        footer:true,
-        title:'订单分类',
-        component (resolve) {
-            require(['./midwares/classification.vue'], resolve);
-        }
     },//全部订单
     '/order-all': {
         name:'orderAll',
@@ -381,15 +372,6 @@ const routers = {
         title:'全部订单',
         component (resolve) {
             require(['./components/order-all.vue'], resolve);
-        }
-    },//待付款
-    '/order-payment': {
-        name:'orderpayment',
-        header:false,
-        footer:true,
-        title:'待付款',
-        component (resolve) {
-            require(['./components/order-payment.vue'], resolve);
         }
     },
     '/order-deliver': {
@@ -536,13 +518,13 @@ const routers = {
             require(['./components/card-list.vue'], resolve);
         }
     },
-    'index-search': {
-        name:'index-search',
-        header:false,
-        footer:false,
+    'search': {
+        name:'search',
+        header:true,
+        footer:true,
         title:'搜索',
         component (resolve) {
-            require(['./components/index-search.vue'], resolve);
+            require(['./components/search.vue'], resolve);
         }
     },
     'tap-card': {
@@ -588,6 +570,24 @@ const routers = {
         title:'选择规格',
         component (resolve) {
             require(['./components/balance-price.vue'], resolve);
+        }
+    },
+    '/order-type': {
+        name:'order-type',
+        header:true,
+        footer:true,
+        title:'订单分类',
+        component (resolve) {
+            require(['./midwares/order-type.vue'], resolve);
+        }
+    },
+    '/order-payment': {
+        name:'order-payment',
+        header:true,
+        footer:true,
+        title:'订单分类',
+        component (resolve) {
+            require(['./components/order-payment.vue'], resolve);
         }
     }
 };

@@ -234,7 +234,7 @@
 	<div class="sub-content">
 
 		<div class="sub-content-tab">
-			<div class="all-title" v-link="{name:'classification'}">
+			<div class="all-title" v-link="{name:'order-type'}"> <!-- v-link="{name:'order-type'}" -->
 				<label class="title">订单分类 </label>
 				<span class="view" style="">查看所有订单</span>
 				<div class="arrow"></div>

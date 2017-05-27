@@ -1,31 +1,22 @@
-<!-- 待付款 开始  -->
-
-<style>
+<style scoped>
     .wrapper{
         width:100%;
         padding:0;
         font-size:0;
-    }
-
-    .wrap-top {
-        margin:50px 0px 57px 0px;
+        margin-top: 27px;
     }
 
     .card-box{
-        width: 92%;
-        height: auto;
-        margin: 2% 2%;
-        background-color: #fff;
-        display: block;
-        font-size: 0;
-        color: #333;
-        box-shadow: 1px 1px 2px #e2e2e2;
-
-    }
-
-    .box-chonse {
-        border-radius: 8px;
-        padding:7px;
+        width:96%;
+        height:auto;
+        margin:0% 0% 2% 0%;
+        background-color:#fff;
+        display:block;
+        font-size:0;
+        color:#333;
+        box-shadow:1px 1px 2px #e2e2e2;
+        padding:2%;
+        border-radius:0.6rem;
     }
 
     .card-box .top-line,.card-box .mid-line{
@@ -90,12 +81,10 @@
         display:inline-block;
         vertical-align:middle;
         width:20%;
-        padding-top:20%;
         margin:2% 1% 2% 0%;
-        background-color:#eee;
         background-repeat:no-repeat;
         background-position:center;
-        background-size:cover;
+        background-size:100%;
     }
 
     .card-box .mid-line .imgs:last-child{
@@ -136,14 +125,14 @@
     }
 
     .manage-btn:active{
-        background: #81c429;
+        background:#81c429;
         color:#fff;
     }
 </style>
 
 <template>
-    <div class="wrapper wrap-top">
-        <div class="card-box box-chonse" v-for="item in orders">
+    <div class="wrapper" id="cardOrder" style="margin:50px auto 0px;width:97%;">
+        <div class="card-box" v-for="item in orders">
             <div class="top-line">
                 <div class="date">{{ item.createtime }}</div>
                 <div class="status" v-if="item.pay==0&&item.send==0&&item.receive==0&&item.status==0">待付款</div>
@@ -156,7 +145,9 @@
                 <div class="status" v-if="item.reject==1">已退货</div>
             </div>
             <div class="mid-line" v-link="{name:'order-detail',params:{oid:item.id}}">
-                <div class="imgs" v-for="img in item.imgs" v-lazy:background-image="img"></div>
+                <div class="imgs" v-for="img in item.imgs"> <!--  v-lazy:background-image="img" -->
+                    <img :src="img" style="width:100%;height: 100%;" />
+                </div>
                 <div class="arrow"></div>
             </div>
             <div class="btm-line">
@@ -164,12 +155,8 @@
                     总金额：<label>¥{{ item.price }}</label>
                 </div>
                 <div class="button">
-                    <a class="manage-btn" id="cancel-btn"
-                       v-if="item.pay==0&&item.send==0&&item.receive==0&&item.status==0"
-                       :class="{'disabled':disabled}"
-                       @click="cancelOrder()">取消订单</a>
 
-                    <a class="manage-btn" id="detail-btn"
+                    <a class="manage-btn"
                        v-if="item.pay==0&&item.send==0&&item.receive==0&&item.status==0"
                        v-link="{name:'order-detail',params:{oid:item.id}}">去付款</a>
 
@@ -178,21 +165,14 @@
                        @click="clickExpress(item.scid,item.snum)">查看快递</a>
 
                     <a class="manage-btn"
-                       v-if="item.pay==1&&item.send==1&&item.receive==0&&item.status==0"
-                       @click="clickConfirm()">确认收货</a>
-
-                    <a class="manage-btn"
                        v-if="item.pay==1&&(item.send==1||item.send==0)&&item.reject==0 || item.status==1"
                        @click="buyAgain(item.id)">再次购买</a>
 
                 </div>
             </div>
             <!-- 确定弹框 -->
-            <confirm :show.sync="confirmShow" :title="confirmTitle"
-                    confirm-text="确定"
-                    cancel-text="取消"
-                    @on-confirm="confirmClcik(item.id)"
-                    @on-cancel="cancelClick">
+            <confirm :show.sync="confirmShow" :title="confirmTitle" confirm-text="确定" cancel-text="取消"
+                     @on-confirm="myConfirmClcik(item.id)" @on-cancel="cancelClick">
                 <p style="text-align:center;">{{ confirmText }}</p>
             </confirm>
         </div>
@@ -207,19 +187,21 @@
 
 <script>
     import Loading from 'vux/src/components/loading'
-    import { setCartAgain,clearAll } from 'vxpath/actions'
     import Toast from 'vux/src/components/toast'
-    import Swiper from 'vux/src/components/swiper'
-    import SwiperItem from 'vux/src/components/swiper-item'
     import Confirm from 'vux/src/components/confirm'
-    import ElButton from "../../node_modules/element-ui/packages/button/src/button";
+    import { setCartAgain,clearAll } from 'vxpath/actions'
 
     export default{
         vuex: {
             actions: {
                 setCartAgain,
-                clearAll
+                clearAll,
             }
+        },
+        components: {
+            Loading,
+            Toast,
+            Confirm,
         },
         props: {
             disabled: {
@@ -233,60 +215,37 @@
                 }
             }
         },
-        components: {
-            ElButton, Loading,
-            Toast,
-            Swiper,
-            SwiperItem,
-            Confirm
-        },
-        ready() {
-
-        },
         data() {
             return {
                 loadingShow:false,
                 loadingMessage:'',
+                confirmShow: false,
+                confirmTitle:'',
+                confirmText: '',
                 data: {
                     order:{},
-                },
-                confirmTitle: '',
-                confirmText: '',
-                btnStatus:false,
-                confirmShow: false,
-                clickType:0,
+                }
             }
         },
+        ready() {
+
+        },
         methods: {
-            confirmClcik: function (id) {
+            myConfirmClcik: function(id) {
                 let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
                 ustore = JSON.parse(ustore);
+                console.log(1);
                 switch(this.clickType) {
                     case 1:
-                        let pdata = {uid:ustore.id,token:ustore.token,oid:id};
-                        this.$http.put(localStorage.apiDomain + 'public/index/user/orderoperation',pdata).then((response)=>{
-                            if(response.data.status === 1) {
-                                console.log(response.data);
-                            }else if(response.data.status===-1) {
-                                let context = this;
-                                setTimeout(function(){
-                                    context.clearAll();
-                                    sessionStorage.removeItem('userInfo');
-                                    localStorage.removeItem('userInfo');
-                                    context.$router.go({name:'login'});
-                                },800);
-                            }
-                        },(response)=>{
-                            this.loadingShow = false;
-                            this.btnStatus = false;
-                            this.toastMessage = '网络开小差了~';
-                            this.toastShow = true;
-                        });
-                    case 2:
+                        let d = {uid:ustore.id,token:ustore.token,oid:id};
                         this.$http.delete(localStorage.apiDomain + 'public/index/user/getsubmitorder/uid/' + ustore.id + '/token/' + ustore.token + '/oid/' + id).then((response)=>{
                             if(response.data.status === 1) {
-                                this.orders.statext = '用户取消';
-                                this.orders.status = -1;
+                                console.log(response.data + '1');
+                                this.data.order.statext = '用户取消';
+                                this.data.order.status = -1;
+                                this.btnStatus = false;
+                                $("#cancel-btn").css("display","none");
+                                $("#detail-btn").css("display","none");
                             }else if(response.data.status === -1) {
                                 this.btnStatus = false;
                                 this.toastMessage = response.data.info;
@@ -309,13 +268,6 @@
                         });
                 }
             },
-            clickConfirm: function() {
-                this.clickType = 1;
-                this.confirmTitle = '确认收货';
-                this.confirmText = '请在收到货物后才确认收货,确认?';
-                this.btnStatus = true;
-                this.confirmShow = true;
-            },
             buyAgain: function(oid){
                 this.btnStatus = true;
                 this.loadingMessage = '请稍候...';
@@ -325,10 +277,10 @@
                 this.$http.get(localStorage.apiDomain+'public/index/user/orderoperation/uid/'+ustore.id+'/token/'+ustore.token+'/oid/'+oid).then((response)=>{
                     this.loadingShow = false;
                     this.btnStatus = false;
-                    if(response.data.status===1){
+                    if(response.data.status===1) {
                         this.setCartAgain(response.data.list);
                         this.$router.go({name:'cart'});
-                    }else if(response.data.status===-1){
+                    }else if(response.data.status === -1) {
                         this.toastMessage = response.data.info;
                         this.toastShow = true;
                         let context = this;
@@ -351,18 +303,12 @@
             clickExpress: function(scid,snum){
                 location.href='http://www.kuaidi100.com/chaxun?com='+scid+'&nu='+snum;
             },
-            cancelOrder: function() {
-                this.clickType = 2;
+            clickCancel: function(){
+                this.clickType = 1;
                 this.confirmTitle = '取消订单';
                 this.confirmText = '确定取消该订单吗,确认?';
                 this.btnStatus = true;
                 this.confirmShow = true;
-            },
-            cancelClick: function() {
-                this.btnStatus = false;
-                this.clickType = 0;
-                this.confirmTitle = '';
-                this.confirmText = '';
             }
         }
     }

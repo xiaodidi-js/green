@@ -41,7 +41,6 @@
 		display:inline-block;
 		vertical-align:middle;
 		width:33%;
-		padding-top:33%;
 		margin-right:2%;
 		background-color:#eee;
 		background-repeat:no-repeat;
@@ -176,7 +175,9 @@
 			<icon type="circle" class="my-icon" @click="actIt()" v-show="!showVal"></icon>
 		</div>
 		<div class="maininfo">
-			<div class="img" v-lazy:background-image="img" v-link="{name:'detail',params:{pid:pid}}"></div>
+			<div class="img"  v-link="{name:'detail',params:{pid:pid}}"> <!-- v-lazy:background-image="img" -->
+				<img :src="img" style="width:100%;height:100%;" alt="" />
+			</div>
 			<div class="mes">
 				<div class="name">{{ pname }} {{ pdelivery }} </div>
 				<div class="format" v-if="pfname == ''">&nbsp;</div>

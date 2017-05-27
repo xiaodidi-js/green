@@ -356,7 +356,7 @@
 			<div id="scroller">
 				<div class="menu-left">
 					<ul id="touch-ui">
-						<li class="cla-card-li" :class="{'active':dtype == item.id}" v-for="item in types" @click="getChonse(item.id)">
+						<li class="cla-card-li" style="border:none;" :class="{'active':dtype == item.id}" v-for="item in types" @click="getChonse(item.id)">
 							<div class="menu-item" @click="chooseSort(item.id)">{{ item.name }}</div>
 						</li>
 					</ul>

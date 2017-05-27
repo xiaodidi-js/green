@@ -17,7 +17,7 @@
 
 	.my-switch:checked {
 	  border-color: #04BE02;
-	  background-color: #04BE02;
+	  /*background-color: #04BE02;*/
 	}
 
 	.my-switch:before {

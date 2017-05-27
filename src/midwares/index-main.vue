@@ -10,10 +10,108 @@
 		z-index:1000;
 		display:none;
 	}
+
+	.order-search{
+		width:100%;
+		height:50px;
+		background: #343136;
+		position: fixed;
+		top:0px;
+		left:0px;
+		z-index: 99;
+	}
+
+	.order-search .search{
+		font-size: 14px;width: 70%;
+		height: 35px;margin: 0px auto;
+		position: relative;top: 8px;
+		background: url("../images/search-1.png") no-repeat #fff left;
+		background-size: 20px 20px;
+		background-position-x: 6px;
+	}
+
+	.order-search .search input[type='text']{
+		margin: 5px 0px 0px 29px;
+		height: 25px;
+		border: none;
+		width: 67%;
+	}
+
+	.order-search .customer {
+		float:right;
+		position: absolute;
+		top:5px;
+		text-align:center;
+		width:14%;
+		right:0px;
+		color:#fff;
+	}
+
+
+	.order-search .customer .icon-kefu {
+		font-size: 21px;
+	}
+
+	.order-search .customer .txt-service {
+		display:block;
+		width: 2.8rem;
+		height: 3.7rem;
+		background: url('../images/logo_kefu.png') no-repeat;
+		background-size:100%;
+		position: absolute;
+		top: 0px;
+		left: 10px;
+	}
+
+	.order-search-btn{
+		position: absolute;
+		right: 0px;
+		top: 0px;
+		line-height: 35px;
+		width: 18%;
+		height: 35px;
+		color: #81c429;
+		background: #f7f7f7;
+		font-size: 14px;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		-ms-appearance: none;
+		-o-appearance: none;
+		appearance: none;
+	}
+
+	/* search start */
+	.search{
+		background: #81c429;
+		width:100%;
+		height:66px;
+	}
+	.search .logo{
+		width:56px;
+		height:54px;
+		float:left;
+		padding: 5px 5px 5px 10px;
+	}
+
+	/* search end */
+
 </style>
 
 <template>
-	<banners :testarr="data.index_data"></banners>
+	<div class="order-search"  style="background: #81c429;">
+		<div class="logo" style="background: none;width:50px;float:left;">
+			<img src="../images/logo_lv.png" alt="" style="width:40px;height:40px;margin: 5px 15px;" />
+		</div>
+		<div class="search" style="width:65%;position:relative;left:12px;">
+			<input type="text" placeholder="请输入您要搜索的商品" v-model="searchKey" />
+			<input type="button" class="order-search-btn" @click="goSearch()" value="搜索" />
+		</div>
+		<div class="customer">
+			<a href="javascript:void(0)" class="txt-service" @click="goPage"></a>
+		</div>
+	</div>
+	<!-- 轮播图 -->
+	<banners></banners> <!--  :testarr="data.index_data" -->
 	<div class="sub-content">
 		<!-- 显示抢购 -->
 		<card-column :columns="maincolumns" keep-alive></card-column>
@@ -32,6 +130,9 @@
 	import CardImage from 'components/card-image'
 	import Toast from 'vux/src/components/toast'
     import Swiper from 'vux/src/components/swiper'
+    import { myActive } from 'vxpath/actions'
+    import axios from 'axios'
+    import qs from 'qs'
 
 	export default{
 		components: {
@@ -42,6 +143,11 @@
             Swiper,
             banners
 		},
+        vuex: {
+            actions: {
+                myActive
+            }
+        },
 		data() {
 			return {
 				toastMessage:'',
@@ -52,6 +158,7 @@
 					maincolumns: []
 				},
                 maincolumns:[],
+                searchKey: ''
 			}
 		},
 		route: {
@@ -67,6 +174,9 @@
             }
         },
 		ready() {
+
+
+
 			this.indexMessage();
             this.timeline();
             // 按钮淡入淡出
@@ -85,6 +195,15 @@
             });
 		},
         methods: {
+            goSearch: function() {
+                axios({
+                    method: 'get',
+                    url: localStorage.apiDomain + '/public/index/index/searchshop?shopname=' + this.searchKey,
+                }).then((response) => {
+                    console.log(response);
+                });
+                this.$router.go({name:"search",data:this.searchKey});
+			},
 		    indexMessage: function() {
                 this.$http.get(localStorage.apiDomain+'public/index/index').then((response)=>{
                     this.data = response.data;
@@ -110,7 +229,6 @@
                 this.$http.get(localStorage.apiDomain+'public/index/sale/SaleTimeSolt/uid').then((response) => {
                     if(response.data.status===1) {
                         this.maincolumns = response.data.SaleTimeSolt;
-
                     } else if(response.data.status===-1) {
                         this.toastMessage = response.data.info;
                         this.toastShow = true;
@@ -129,6 +247,10 @@
                     this.toastMessage = '网络开小差了~';
                     this.toastShow = true;
                 });
+            },
+            goPage () {
+                this.myActive(5);
+                this.$router.go({name: 'per-orders'})
             }
 		}
 	}

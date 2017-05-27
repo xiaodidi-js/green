@@ -81,7 +81,6 @@
 		display:inline-block;
 		vertical-align:middle;
 		width:20%;
-		padding-top:20%;
 		margin:2% 1% 2% 0%;
 		background-color:#eee;
 		background-repeat:no-repeat;
@@ -147,7 +146,9 @@
 				<div class="status" v-if="item.reject==1">已退货</div>
 			</div>
 			<div class="mid-line" v-link="{name:'order-detail',params:{oid:item.id}}">
-				<div class="imgs" v-for="img in item.imgs" v-lazy:background-image="img"></div>
+				<div class="imgs" v-for="img in item.imgs"> <!--  v-lazy:background-image="img" -->
+					<img :src="img" style="width:100%;height:100%;" alt="" />
+				</div>
 				<div class="arrow"></div>
 			</div>
 			<div class="btm-line">
@@ -155,9 +156,6 @@
 					总金额：<label>¥{{ item.price }}</label>
 				</div>
 				<div class="button">
-					<!--<a class="manage-btn"-->
-					   <!--v-if="item.pay==0&&item.send==0&&item.receive==0&&item.status==0"-->
-					   <!--@click="clickCancel()">取消订单</a>-->
 
 					<a class="manage-btn"
 					   v-if="item.pay==0&&item.send==0&&item.receive==0&&item.status==0"
@@ -170,6 +168,7 @@
 					<a class="manage-btn"
 					   v-if="item.pay==1&&(item.send==1||item.send==0)&&item.reject==0 || item.status==1"
 					   @click="buyAgain(item.id)">再次购买</a>
+
 				</div>
 			</div>
 			<!-- 确定弹框 -->

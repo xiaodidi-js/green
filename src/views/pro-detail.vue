@@ -443,7 +443,6 @@
 	.format-pop .line .pimg{
 		box-sizing:border-box;
 		width:25%;
-		padding-top:25%;
 		border:#fff solid 0.3rem;
 		border-radius:0.3rem;
 		background-color:#efefef;
@@ -847,7 +846,9 @@
 	<div class="fpmasker" :class="{'show':formatPopShow}" @touchmove.stop.prevent @touchend.stop @touchstart.stop @click="hideFormatPop"></div>
 	<div class="format-pop" :class="{'show':formatPopShow}" @touchmove.stop.prevent @touchend.stop @touchstart.stop>
 		<div class="line">
-			<div class="pimg" v-lazy:background-image="data.shotcut"></div>
+			<div class="pimg" style="padding-top:0%;"> <!--  v-lazy:background-image="data.shotcut" -->
+				<img :src="data.shotcut" style="width:100%;height:100%;" alt="">
+			</div>
 			<div class="pmes">
 				<div v-if="data.is_promote || !data.sale.nowshop">
 					<div class="price">¥{{data.price}}</div>
