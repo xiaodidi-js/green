@@ -10,6 +10,10 @@
 		padding-bottom: 0;
 	}
 
+	.wrapper-top {
+		margin-top: 166px;
+	}
+
 	.wrapper .title{
 		display:block;
 		margin:0.5rem 0rem 1rem 0rem;
@@ -84,7 +88,8 @@
 </style>
 
 <template>
-	<div class="wrapper" :class="{'nopadding':noPadding}" v-if="info.title">
+
+	<div class="wrapper" style="margin-top: 166px;padding-bottom: 100px;" :class="{'nopadding':noPadding}" v-if="info.title">
 		<label class="title">{{ info.title }}</label>
 		<div class="parent">
 			<div class="ui-box" v-link="{name:'detail',params:{pid:item.id}}" v-for="item in info.list">
@@ -102,7 +107,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="wrapper" :class="{'nopadding':noPadding}" v-else>
+		<div class="wrapper" style="margin-top: 166px;padding-bottom: 100px;" :class="{'nopadding':noPadding}" v-else>
 		<div class="ui_box" v-link="{name:'detail',params:{pid:item.id}}" v-for="item in info.list">
 			<div class="img">
 				<img :src="item.src" alt="" style="width:100%;height:100%;" />
@@ -117,6 +122,7 @@
 			</div>
 		</div>
 	</div>
+
 </template>
 
 <script>

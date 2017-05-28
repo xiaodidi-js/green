@@ -28,7 +28,7 @@
 <style>
 
 .weui_cells{
-	margin-top:0 !important;
+	margin-top:45px !important;
 }
 
 .weui_btn_default{

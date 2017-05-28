@@ -223,8 +223,8 @@
 			},
 		    indexMessage: function() {
                 /*let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
-                ustore = JSON.parse(ustore);
-                console.log(ustore);*/
+				 ustore = JSON.parse(ustore);
+				 console.log(ustore);*/
                 let url = '';
                 url = localStorage.apiDomain + 'public/index/index';
                 this.$http.get(url).then((response)=>{
@@ -251,7 +251,6 @@
                 this.$http.get(localStorage.apiDomain+'public/index/sale/SaleTimeSolt/uid').then((response) => {
                     if(response.data.status===1) {
                         this.maincolumns = response.data.SaleTimeSolt;
-                        console.log(this.maincolumns);
                     } else if(response.data.status===-1) {
                         this.toastMessage = response.data.info;
                         this.toastShow = true;
@@ -272,7 +271,6 @@
                 });
             },
             goPage () {
-                console.log(1);
                 this.myActive(5);
                 this.$router.go({name: 'per-orders'})
             }

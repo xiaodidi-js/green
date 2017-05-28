@@ -261,7 +261,7 @@
 </style>
 
 <template>
-	<div class="bal-wrapper">
+	<div class="bal-wrapper" style="margin-top:80px;">
 		<!-- 快递状态 -->
 		<div class="bl-express-box">
 			<div class="mid-line"></div>

@@ -10,8 +10,6 @@
 		padding:10px 3%;
 		background-color:#81c429;
 		font-size:0;
-		position:absolute;
-		left:0;
 	}
 
 	.notify-box div{
@@ -170,7 +168,7 @@
 </style>
 
 <template>
-	<div class="col-wrapper" v-if="cartList.length > 0">
+	<div class="col-wrapper" v-if="cartList.length > 0" style="padding-top: 46px;">
 		<div class="notify-box">
 			<div class="ntips" v-show="editMode === 1">请选择删除商品</div>
 			<div class="ntips" v-else>购物车中共有{{ cartList.length }}个商品</div>
@@ -178,9 +176,6 @@
 				<a @click="changMode">{{ modeText }}</a>
 			</div>
 		</div>
-
-		<separator :set-height="40" unit="px"></separator>
-
 		<div class="card-wrapper">
 			<cart-list :chosen.sync="choseArr" :pid="item.id" v-for="item in cartList"
 					:img="item.shotcut" :pname="item.name"
@@ -220,7 +215,7 @@
 		</div>
 	</div>
 
-	<div class="col-wrapper" v-else>
+	<div class="col-wrapper" style="padding:25px 0px 5px;" v-else>
 		<div class="image"></div>
 		<p class="tips">亲，您的购物车空空如也~</p>
 		<x-button text="逛一逛" style="width:40%;margin:2rem auto;" v-link="{name:'index'}"></x-button>

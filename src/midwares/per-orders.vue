@@ -366,7 +366,6 @@
 		        let _this = this;
                 this.$http.get(/*localStorage.apiDomain +*/ 'http://green-f.cn/public/index/Usercenter/onlie').then((response)=> {
 					_this.qqservice = response.data.list;
-					console.log(response.data.list);
                 });
             },
 		    $id: function(id){
@@ -391,7 +390,6 @@
 						document.body.scrollTop = 0;
 						this.count = response.data.count;
 						this.data = response.data.list;
-						console.log(this.count);
 					}else if(response.data.status === -1){
 						this.toastMessage = response.data.info;
 						this.toastShow = true;

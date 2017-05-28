@@ -171,17 +171,17 @@
         </template>
         <!-- 消费积分 -->
         <template v-for="item in integral">
-        <div id="consumption" class="body-list">
-            <ul>
-                <li v-if="item.type == 'order'">
-                    <div class="all-date">
-                        <p>签到</p>
-                        <p>2014-01-29  15 : 38 : 04</p>
-                    </div>
-                    <div class="add-number">+1</div>
-                </li>
-            </ul>
-        </div>
+            <div id="consumption" class="body-list">
+                <ul>
+                    <li v-if="item.type == 'order'">
+                        <div class="all-date">
+                            <p>签到</p>
+                            <p>2014-01-29  15 : 38 : 04</p>
+                        </div>
+                        <div class="add-number">+1</div>
+                    </li>
+                </ul>
+            </div>
         </template>
     </div>
 

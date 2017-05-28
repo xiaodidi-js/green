@@ -1,5 +1,17 @@
 <style scoped>
     @import '../styles/common.css';
+
+    .vux-header {
+        position: fixed;
+        width: 100%;
+        top:0px;
+        left:0px;
+        padding: 3px 0;
+        box-sizing: border-box;
+        background-color: #35495e;
+        z-index: 10;
+    }
+
 </style>
 <template>
     <div>

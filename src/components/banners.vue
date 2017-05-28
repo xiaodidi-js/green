@@ -7,13 +7,18 @@
             <!--</swiper>-->
         <!--</template>-->
     <!--</template>-->
-    <swiper :list="banners" loop dots-position="center" :show-desc-mask="false"
-            :aspect-ratio="650/1242" auto dots-class="dots-my" style="width: 100%;margin-top:50px;"></swiper>
+    <swiper :list="banners"
+            :show-desc-mask="false"
+            :aspect-ratio="650/1242"
+            loop dots-position="center"
+            auto dots-class="dots-my"
+            style="width: 100%;margin-top:50px;">
+    </swiper>
 </template>
 
 <script>
 
-    import Swiper from 'vux/src/components/swiper'
+        import Swiper from 'vux/src/components/swiper'
     import Scroller from 'vux/src/components/scroller'
     import Toast from 'vux/src/components/toast'
 
@@ -40,7 +45,6 @@
             ban: function () {
                 this.$http.get(localStorage.apiDomain + 'public/index/index/mainInfo').then((response)=>{
                     this.banners = response.data.banners;
-                    console.log(this.banners);
                 },(response)=>{
                     this.toastMessage = '网络开小差了~';
                     this.toastShow = true;

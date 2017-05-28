@@ -131,7 +131,7 @@
 </style>
 
 <template>
-    <div class="wrapper" id="cardOrder" style="margin:50px auto 0px;width:97%;">
+    <div class="wrapper" id="cardOrder" style="margin: 93px auto 0px;width: 97%;">
         <div class="card-box" v-for="item in orders">
             <div class="top-line">
                 <div class="date">{{ item.createtime }}</div>

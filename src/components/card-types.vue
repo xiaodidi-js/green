@@ -1,5 +1,6 @@
 <style scoped>
 
+
 	.type-bg {
 		width:100%;
 		height:100%;
@@ -366,63 +367,27 @@
 		<menu type="popup" class="cla-message" id="right_Menu">
 			<div id="scroller2">
 				<div class="ele-fixed">
-					<div class="main" v-for="item in data">
-						<div v-link="{name:'detail',params:{pid:item.id}}">
-							<div class="shotcut">
-								<img :src="item.src" alt="{{ item.title }}" class="shotcut-img" style="width:100%;height:100%;" />
+					<template v-for="item in pdata">
+						<div class="main">
+							<div v-link="{name:'detail',params:{pid:item.id}}">
+								<div class="shotcut">
+									<img :src="item.src" alt="{{ item.title }}" class="shotcut-img" style="width:100%;height:100%;" />
+								</div>
+								<div class="shotcut-txt">
+									<p style="height:35px;width:100%;overflow: hidden;text-overflow: ellipsis;">{{ item.title }}</p>
+									<p class="relative" style="">
+										<i>￥</i>
+										<span class="money">{{item.price}}</span>
+									</p>
+								</div>
 							</div>
-							<div class="shotcut-txt">
-								<p style="height:35px;width:100%;overflow: hidden;text-overflow: ellipsis;">{{ item.title }}</p>
-								<p class="relative" style="">
-									<i>￥</i>
-									<span class="money">{{item.price}}</span>
-								</p>
-							</div>
+							<span class="icon-card" @click="goCart(item.id)"></span>
 						</div>
-						<span class="icon-card" @click="goCart(item.id)"></span>
-					</div>
+					</template>
 				</div>
 			</div>
 		</menu>
 	</div>
-
-	<template  v-for="item in data">
-		<div class="fpmasker" :class="{'show':popShow}" @touchmove.stop.prevent @touchend.stop @touchstart.stop @click="hidePop"></div>
-		<div class="format-pop" :class="{'show':popShow}" @touchmove.stop.prevent @touchend.stop @touchstart.stop>
-			<div class="line">
-				<div class="pimg" v-lazy:background-image="item.src"></div>
-				<div class="pmes">
-					<!--<div class="price" v-if="data.is_promote">¥{{data.promote_price}}</div>-->
-					<div class="price">¥{{ item.price }}</div>
-					<div>库存{{proNums}}件</div>
-					<div class="dialog">{{ getGuigeName }}</div>
-				</div>
-			</div>
-			<div class="close" @click="hidePop">X</div>
-			<div class="divider" style="margin-top:23%;"></div>
-			<!--<div class="line" v-for="(pindex,fmt) in item.format">-->
-				<!--<div class="title">{{ fmt.name }}</div>-->
-				<!--<div id="con" class="con" style="font-size:0;white-space:normal;">-->
-					<!--<guige :value="val.id" :text="val.name" v-for="(sindex,val) in fmt.value" @click="changeGuige(pindex,val.id,val.name)"></guige>-->
-				<!--</div>-->
-				<!--<div class="divider"></div>-->
-			<!--</div>-->
-			<div class="line" style="padding-bottom:0.3rem;font-size:0;">
-				<div class="title inline">购买数量</div>
-				<div class="con inline">
-					<div class="num-counter">
-						<div class="btns" :class="{'disabled':buyNums <= 1}" @click="reduceNums">-</div>
-						<input type="number" class="input" :value="buyNums" readonly />
-						<div class="btns" :class="{'disabled':buyNums >= proNums}" @click="addNums">+</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="priceButton">
-				<button class="price-pop" @click="comfirmFun(item.id)">确定</button>
-			</div>
-		</div>
-	</template>
 
 	<!-- toast显示框 -->
 	<toast type="text" :show.sync="toastShow">{{ toastMessage }}</toast>
@@ -456,7 +421,7 @@
         },
         data() {
             return {
-                data: [],
+                pdata: [],
                 item: [],
                 myScroll: '',
                 dtype: null,
@@ -481,7 +446,6 @@
                     $(".type-bg").height(doc_H);
                 }
             });
-
 			this.onToure();
         },
         components: {
@@ -561,10 +525,9 @@
 
 			},
             chooseSort(cid){
-                let url = localStorage.apiDomain+'/public/index/index/classifylist/cid/' + cid;
+                let url = localStorage.apiDomain + 'public/index/index/classifylist/cid/' + cid;
                 this.$http.get(url).then((response)=>{
-                    this.data = response.data.list;
-                    console.log(response.data.list);
+                    this.pdata = response.data.info.list;
                 },(response)=>{
                     this.toastMessage = "网络开小差啦~";
                     this.toastShow = true;
@@ -574,24 +537,7 @@
 
             },
             goCart: function() {
-                let obj = {};
-                for(let i in this.data) {
-                    this.data[i].index = i;
-                    obj = {
-                        pid:this.data[i].id,
-                        name:this.data[i].title,
-                        price:this.data[i].price,
-                        img:this.data[i].src,
-                        store:this.data[i].store,
-                        nums:this.buyNums,
-                        store:this.proNums
-                    };
 
-                }
-                console.log(obj);
-                return;
-                this.setCart(obj);
-                console.log("加入购物车成功！");
 			}
         },
     }

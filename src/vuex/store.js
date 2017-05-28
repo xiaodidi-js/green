@@ -8,11 +8,15 @@ const state = {
 	cart: sessionStorage.getItem('myCart') ? JSON.parse(sessionStorage.getItem('myCart')) : [],
 	selCart: JSON.parse(sessionStorage.getItem('mySelCart')) || [],
     dtype: 1,
-	shopname: {}
+	shopname: {},
+	vipmessage: {},
 }
 
 //应用状态操作
 const mutations = {
+    myVipMessage (state,message) {
+        state.vipmessage = message;
+    },
 	mySearch (state,shopName) {
        state.shopname = shopName;
 	},

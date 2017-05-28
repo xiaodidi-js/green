@@ -134,6 +134,7 @@
 		background: #efefef;
 		box-shadow: 1px 1px 10px #efefef;
 		position: fixed;
+		top: 222px;
 		z-index: 9;
 		box-shadow: 0 2px 15px #ccc;
     }

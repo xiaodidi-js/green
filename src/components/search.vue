@@ -36,7 +36,7 @@
 	}
 
 	.wrapper .ui_box:nth-last-child(2),.wrapper .ui_box:last-child{
-		margin-bottom:0%;
+		/*margin-bottom:3%;*/
 	}
 
 	.parent{
@@ -48,7 +48,7 @@
 
 	.ui_box .img{
 		width:100%;
-		height:19rem;
+		height:15rem;
 	}
 
 	.wrapper .ui_box .mes{
@@ -82,7 +82,7 @@
 </style>
 
 <template>
-	<div class="wrapper">
+	<div class="wrapper" style="padding-top:50px;">
 		<template v-for="item in arr">
 			<div class="ui_box" v-link="{name:'detail',params:{pid:item.id}}">
 				<div class="img"> <!--  v-lazy:background-image="item.src" -->
@@ -131,6 +131,8 @@
 		},
 		ready() {
 			this.keyCodefun();
+			sessionStorage.setItem("arr",this.arr);
+			console.log(sessionStorage.getItem("arr"));
 			console.log(this.listArr);
 		},
 		computed: {

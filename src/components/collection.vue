@@ -40,7 +40,7 @@
 	.col-wrapper .image{
 		width:45%;
 		padding-top:45%;
-		margin:10% auto;
+		margin:15% auto 5%;
 		background-image:url('../images/collection.png');
 		background-position:center;
 		background-size:contain;
@@ -76,7 +76,7 @@
 </style>
 
 <template>
-	<div class="col-wrapper" v-if="collections.length>0">
+	<div class="col-wrapper" v-if="collections.length > 0">
 		<div class="notify-box">
 			<div class="ntips" v-show="editMode === 1">请选择删除商品</div>
 			<div class="ntips" v-else>当前共有{{ collections.length }}个收藏</div>
@@ -88,13 +88,26 @@
 		<separator :set-height="40" unit="px"></separator>
 
 		<div class="card-wrapper">
-			<collection-list v-for="item in collections" :mode="editMode" :cid="item.id" :pid="item.pid" :img="item.shotcut" :pname="item.name" :pprice="item.price" :pstore="item.store" :chosen.sync="choseArr"></collection-list>
-			
+			<collection-list
+					v-for="item in collections"
+					:mode="editMode"
+					:cid="item.id"
+					:pid="item.pid"
+					:img="item.shotcut"
+					:pname="item.name"
+					:pprice="item.price"
+					:pstore="item.store"
+					:chosen.sync="choseArr">
+			</collection-list>
+
 			<x-button :text="btnText" :disabled="btnDis" style="width:80%;margin:2rem auto;" @click="setMulitpleDel" v-if="editMode === 1"></x-button>
 		</div>
 	</div>
 
 	<div class="col-wrapper" v-else>
+		<div class="notify-box">
+			<div class="ntips">当前没有收藏商品</div>
+		</div>
 		<div class="image"></div>
 		<p class="tips">亲，您的收藏夹空空如也~</p>
 		<x-button text="逛一逛" style="width:40%;margin:2rem auto;" v-link="{name:'index'}"></x-button>

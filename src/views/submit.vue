@@ -11,7 +11,7 @@
 	}
 
 	.zero-font{
-		font-size:0;
+		font-size:0px;
 	}
 
 	.l-icon,.l-tit,.l-desc,.l-arr{
@@ -215,14 +215,14 @@
 		display:-webkit-box;
 		-webkit-line-clamp:2;
 		-webkit-box-orient:vertical;
-		font-size:1.2rem;
+		font-size:1.4rem;
 		max-height:3.2rem;
 		overflow:hidden;
 		text-overflow:ellipsis;
 	}
 
 	.address-box .add-con>div.words .add.noTips>a{
-		color:#00c800;
+		color:#c40000;
 	}
 
 	.address-box .add-con>div.arrow{
@@ -338,8 +338,8 @@
 		text-indent:0.5em;
 		line-height:2.5rem;
 		background: url("../images/xia.png") no-repeat right;
-		background-size: 12%;
-		background-position-x: 80px;
+		background-size: 9%;
+		background-position-x: 84px;
 	}
 
 	.getShop .getShopTime {
@@ -413,7 +413,7 @@
 </style>
 
 <template>
-	<div class="bal-wrapper">
+	<div class="bal-wrapper" style="margin-top:47px;">
 		<!-- 发货方式 -->
 		<my-cell title="到店自提" @click="showAction" :class="deliverType">
 			<div class="l-arr cell-arr">
@@ -540,12 +540,18 @@
 					</div>
 				</div>
 			</my-cell-item>
-			<my-cell-item style="margin:0px;">
+
+			<my-cell-item style="margin:0px;" v-if="score == 0">
+				<div class="line-con zero-font" style="font-size:14px;">没有可用积分</div>
+			</my-cell-item>
+
+			<my-cell-item style="margin:0px;" v-else>
+
 				<div class="line-con zero-font">
 					<div class="l-icon score"></div>
 					<div class="l-tit score">{{ score }}积分(可抵扣{{ scoreMoney.showText }}元)</div>
 					<div class="l-desc score">
-						<my-switch :value.sync="scoreSwitch"></my-switch>
+						<my-switch style="background: #04BE02" :value.sync="scoreSwitch"></my-switch>
 					</div>
 					<div class="l-icon doubt" style="margin-right:0%;" @click="showAlert"></div>
 				</div>
@@ -792,18 +798,18 @@
                 document.getElementsByClassName("addCar")[0].style.background = '#81c429';
                 //清除禁用按钮
                 document.getElementsByClassName("addCar")[0].disabled = "";
-            },
+            },//首单赠品
             oneGift: function (id,money) {
                 let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
                 ustore = JSON.parse(ustore);
                 let pids = '';
                 this.$http.get(localStorage.apiDomain + 'public/index/user/manjiusong/uid/' + ustore.id +'/token/'+ustore.token +'/sinceid/' + id + '/money/' + money).then((response)=>{
-                    console.log(response.data);
                     if(response.data.status === 1) {
                         $("#give-list").css({
                             display:"block"
                         });
                         this.listGift = response.data.maxmoney;
+                        console.log(this.listGift);
                     }else if(response.data.status=== -1) {
                         this.toastMessage = response.data.info;
                         this.toastShow = true;
@@ -951,10 +957,11 @@
                         score:this.scoreSwitch,
                         paysum:this.lastPaySum,
                         tips:this.memo,
-						openid: sessionStorage.getItem("openid"),
+						openid: 123,
                         pshonse:this.shonse,
                     };
-					console.log(pdata.products);
+                    console.log(pdata);
+                    return;
                     this.$http.post(localStorage.apiDomain + 'public/index/user/getSubmitOrder',pdata).then((response)=>{
                         if(response.data.status===1){
                             console.log(response.data);

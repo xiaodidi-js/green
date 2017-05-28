@@ -77,6 +77,12 @@
 .dots-my>a>.vux-icon-dot.active{
 	background:#333 !important;
 }
+
+	.weui_toast_text .weui_toast_content {
+		font-size:14px;
+	}
+
+
 </style>
 
 <template>

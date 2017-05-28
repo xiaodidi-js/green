@@ -225,7 +225,7 @@
     <div class="panel" :class="{'show':show}" @touchmove.stop.prevent @touchend.stop @touchstart.stop>
         <div class="search_panel">
             <form class="search_form">
-                <input type="text" class="search_txt" placeholder="搜索自提点"/>
+                <input type="text" class="search_txt" placeholder="搜索自提点" v-model="searchtxt" @input="eventText()" />
                 <input type="button" class="search_btn"/>
             </form>
             <div class="alladdress">
@@ -248,13 +248,6 @@
                         </li>
                     </ul>
                 </div>
-
-                <!--<select class="sel-bg">-->
-                    <!--<option @click="onChonse()">全部</option>-->
-                    <!--<optgroup label="{{ item.name }}" v-for="item in options">-->
-                        <!--<option v-for="items in item.sub" @click="onOnlyAddress(items.id)">{{ items.name }}</option>-->
-                    <!--</optgroup>-->
-                <!--</select>-->
             </div>
         </div>
         <div class="con-box" id="content-box" v-on:touchmove="conMove">
@@ -321,13 +314,23 @@
                 toastShow: false,
                 isChonse: false,
                 options: [],
-                tmp_address: []
+                tmp_address: [],
+                searchtxt: '',
             }
         },
         ready() {
             this.selList();
         },
         methods: {
+            eventText: function () {
+                console.log(1);
+            },
+            eventKeyDown: function (event) {
+                let e = window.event || event;
+                if(e && e.keyCode == 13) {
+                    console.log(1);
+                }
+            },
             touchout: function () {
                 if (this.isChonse) {
                     this.tansform('icon-sanjiao', 'rotate(0deg)');

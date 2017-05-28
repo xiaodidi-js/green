@@ -24,7 +24,6 @@
 		display:inline-block;
 		vertical-align:middle;
 		width:30%;
-		padding-top:30%;
 		margin-right:2%;
 		background-color:#eee;
 		background-repeat:no-repeat;
@@ -107,7 +106,9 @@
 
 <template>
 	<div class="card-box" @click="changeActive" :class="className" v-link="{name:'detail',params:{pid:pid}}">
-		<div class="img" v-lazy:background-image="img"></div>
+		<div class="img">
+			<img :src="img" alt="" style="width:100%;height: 100%;" />
+		</div>
 		<div class="mes">
 			<div class="name">{{ pname }}</div>
 			<div class="money">

@@ -1,16 +1,30 @@
 <style scoped>
+
 	.fixed-tab{
 		position:fixed;
-		top:46px;
+		top:210px;
 		left:0;
 		width:100%;
 		z-index:100;
 	}
+
+	.sub-content .imgs {
+		width: 100%;
+		height: 164px;
+		margin-top: 46px;
+		position: fixed;
+		top: 0px;
+		left: 0px;
+	}
+
 </style>
 <template>
-	<div class="sub-content">
+	<div class="sub-content"> <!--:style="background:data.background"-->
 		<!-- 头部 -->
 		<header-search :fixed="true"></header-search>
+		<div class="imgs">
+			<img :src="data.img" style="width:100%;height:100%;" />
+		</div>
 		<!-- tab导航栏 -->
 		<tab default-color="#333" active-color="#81c429" :line-width="2" class="fixed-tab">
 			<tab-item :selected="column === 'hot'" @click="changeColumn('hot')">热卖</tab-item>
@@ -19,7 +33,7 @@
 		</tab>
 		<separator :set-height="90" unit="px"></separator>
 		<!-- 分类列表 -->
-		<card-square :info="data" :no-padding="true"></card-square>
+		<card-square style="padding-bottom: 100px;" :info="data" :no-padding="true"></card-square>
 		<!-- toast提示框 -->
 		<toast :show.sync="toastShow" type="text">{{ toastMessage }}</toast>
 	</div>
@@ -40,7 +54,9 @@
                 column:'hot',
                 data:{
                     title: '',
-                    list: []
+                    list: [],
+					img: '',
+					background: ''
                 },
 				tuijian: 1
             }
@@ -72,7 +88,15 @@
                     url += '/search/' + sk;
                 }
                 this.$http.get(url).then((response)=>{
-                    this.data.list = response.data.list;
+				    if(response.data.info.list == "") {
+						alert("商品为空！");
+						this.$router.go({name:'index'});
+						return false;
+				    } else {
+                        this.data.list = response.data.info.list;
+                        this.data.img = response.data.info.img;
+                        this.data.background = response.data.info.background;
+					}
                 },(response)=>{
                     this.toastMessage = "网络开小差啦~";
                     this.toastShow = true;

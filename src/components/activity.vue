@@ -52,7 +52,7 @@
         <div class="activity-body" id="activity">
             <template v-for="item in data">
                 <div style="margin:0px 10px 10px;">
-                    <a href="javascript:void(0);" class="activity-text" v-link="{name:'activity-event',params:{pid:item.id}}">
+                    <a href="javascript:void(0);" class="activity-text" @click="goActivity()"> <!-- v-link="{name:'activity-event',params:{pid:item.id}}" -->
                         <div class="activity-img">
                             <img :src="item.img" alt="" style="width:100%;height:185px;" />
                         </div>
@@ -70,9 +70,15 @@
 
 <script type="text/javascript">
 
+    import { myVipMessage } from 'vxpath/actions'
+    import axios from 'axios'
+    import qs from 'qs'
+
     export default {
         vuex: {
-
+            actions: {
+                myVipMessage
+            }
         },
         data() {
             return {
@@ -88,23 +94,28 @@
                 data: []
             }
         },
-        ready () {
-            this.$http.get(localStorage.apiDomain + 'public/index/index/productinfo').then((response)=>{
-                this.data = response.data.articles.list;
-                console.log(response.data.articles);
-            },(response)=>{
-                this.toastMessage = '网络开小差了~';
-                this.toastShow = true;
-            })
+        ready() {
+            this.vipMessage();
         },
-        method: {
-            cancelOrder: function() {
-                if(this.disabled){
-                    return true;
-                }
-                this.$dispatch('orderCancel');
-                console.log(1);
+        methods: {
+            goActivity:function () {
+                this.$router.go({
+                    name:'activity-event',
+                    params:{
+                        arr:this.myVipMessage(response.data.articles.list)
+                    }
+                });
             },
+            vipMessage:function() {
+                this.$http.get(localStorage.apiDomain + 'public/index/index/productinfo').then((response)=>{
+                    this.data = response.data.articles.list;
+                    console.log(this.data);
+
+                },(response)=>{
+                    this.toastMessage = '网络开小差了~';
+                    this.toastShow = true;
+                });
+            }
         }
     }
 </script>

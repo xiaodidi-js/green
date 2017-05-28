@@ -3,7 +3,7 @@
         width: 100%;
         height: auto;
         box-sizing:border-box;
-        padding:0px 2%;
+        padding:0px 1%;
         padding-bottom: 60px;
     }
     .youlike_title{
@@ -14,21 +14,32 @@
         color: #4D4D4D;
         margin-bottom: 0.9rem;
     }
-    .youlike_list{
+
+    .youlike_title .list-icon {
+        display:block;
+        width: 0.5rem;
+        height:2.3rem;
+        margin-top:8px;
+        float:left;
+        margin-right:10px;
+        background: #81c429;
+    }
+
+    .youlike_list {
         width: 100%;
     }
-    .youlike_list ul{
-        width: 100%;
-        display: flex;
-    }
+
     .youlike_list ul li{
-        width: 33.333%;
-        height:100%;
-        background-color:#fff;
+        display: block;
+        width: 32.5%;
+        float: left;
+        height: 100%;
+        background-color: #fff;
+        margin-bottom: 0.7rem;
     }
     .youlike_list ul li:nth-of-type(1),
     .youlike_list ul li:nth-of-type(2){
-        margin-right:2%;
+        margin-right:0.39rem;
     }
     .list_pirture img{
         width: 100%;
@@ -50,16 +61,16 @@
         -webkit-box-orient: vertical;
         text-align:left;
     }
-    .list_footer{
+    .list_footer {
         width: 100%;
         height:2.806rem;
         box-sizing:border-box;
-        padding:0px 8px;
+        padding:0px 5px;
     }
-    .footer_money{
+    .footer_money {
         width: 50%;
         height: 2.806rem;
-        font-size: 12px;
+        font-size: 16px;
         color: #F9B21C;
         line-height: 3.22rem;
         float: left;
@@ -75,8 +86,8 @@
         margin-top: 5px;
     }
     .footer_shopcar img{
-        width: 2.8rem;
-        height: 2.3rem;
+        width: 2.3rem;
+        height: 1.7rem;
     }
     @media screen and (max-width: 320px){
         .list_value{margin-top:0.1rem;}
@@ -87,29 +98,27 @@
 <template>
     <!-- <猜你喜欢> -->
     <div class="shopcar_youlike">
-        <div class="youlike_title">猜你喜欢</div>
-        <scroller v-ref:scroller lock-y :scrollbar-x="false">
-            <div class="youlike_list">
-                <ul>
-                    <li v-for="item in likedate" v-link="{name:'detail',params:{pid:item.id}}" >
-                        <div class="list_pirture">
-                            <img :src="item.shotcut"/>
+        <div class="youlike_title">
+            <i class="list-icon"></i>
+            <span>猜你喜欢</span>
+        </div>
+        <div class="youlike_list">
+            <ul>
+                <li v-for="item in likedate" v-link="{name:'detail',params:{pid:item.id}}">
+                    <div class="list_pirture">
+                        <img :src="item.shotcut"/>
+                    </div>
+                    <div class="list_value">{{ item.name }}</div>
+                    <div class="list_footer">
+                        <div class="footer_money">￥{{ item.price }}</div>
+                        <div class="footer_shopcar">
+                            <img src="../images/shopcar_youlike.png"/>
                         </div>
-                        <div class="list_value">
-                            {{ item.name }}
-                      </div>
-                        <div class="list_footer">
-                            <div class="footer_money">￥{{ item.price }}</div>
-                            <div class="footer_shopcar">
-                                <img src="../images/shopcar_youlike.png"/>
-                            </div>
-                        </div>
-                    </li>
-                    <div style="clear:both;"></div>
-                </ul>
-            </div>
-        </scroller>
-
+                    </div>
+                </li>
+                <div style="clear:both;"></div>
+            </ul>
+        </div>
     </div>
     <!-- <猜你喜欢> -->
 </template>
@@ -144,6 +153,7 @@
             var _this = this;
             this.$http.get(localStorage.apiDomain+'public/index/user/cainixihuan').then((response)=>{
                 _this.likedate = response.data.tuijian_shop;
+
             },(response)=>{
                 this.toastMessage = '网络开小差了~';
                 this.toastShow = true;

@@ -48,7 +48,12 @@ export const myActive = function ({dispatch}, index) {
     dispatch('myActive', index);
 }
 
-//客服
+//搜索商品
 export const mySearch = function ({dispatch}, shopname) {
     dispatch('mySearch', shopname);
+}
+
+//搜索商品
+export const myVipMessage = function ({dispatch}, message) {
+    dispatch('myVipMessage', message);
 }
