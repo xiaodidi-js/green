@@ -7,11 +7,15 @@ Vue.use(Vuex);
 const state = {
 	cart: sessionStorage.getItem('myCart') ? JSON.parse(sessionStorage.getItem('myCart')) : [],
 	selCart: JSON.parse(sessionStorage.getItem('mySelCart')) || [],
-    dtype:1,
+    dtype: 1,
+	shopname: {}
 }
 
 //应用状态操作
 const mutations = {
+	mySearch (state,shopName) {
+       state.shopname = shopName;
+	},
 	myActive (state, index) {
        state.dtype = index
     },
@@ -41,7 +45,7 @@ const mutations = {
         sessionStorage.setItem('myCart',JSON.stringify(state.cart));
 	},
 	INCRECARTNUMS (state,id,format) {
-		for(let plist=0;plist<state.cart.length;plist++){
+		for(let plist = 0; plist < state.cart.length; plist++) {
 			if(typeof state.cart[plist]==='object'&&state.cart[plist].id==id&&state.cart[plist].format==format){
 				state.cart[plist].nums += 1;
 				break;

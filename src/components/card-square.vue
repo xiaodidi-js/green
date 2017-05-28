@@ -49,11 +49,9 @@
 
 	.img{
 		width:100%;
-		padding-top:100%;
 		background-position:center;
 		background-size:cover;
 		background-repeat:no-repeat;
-		background-color:#e4e4e4;
 	}
 
 	.wrapper .ui_box .mes{
@@ -90,7 +88,9 @@
 		<label class="title">{{ info.title }}</label>
 		<div class="parent">
 			<div class="ui-box" v-link="{name:'detail',params:{pid:item.id}}" v-for="item in info.list">
-				<div class="img" v-lazy:background-image="item.src"></div>
+				<div class="img"> <!--  v-lazy:background-image="item.src" -->
+					<img :src="item.src" alt="" style="width:100%;height:100%;" />
+				</div>
 				<div class="mes">
 					<div class="name">
 						{{ item.title }}
@@ -104,7 +104,9 @@
 	</div>
 	<div class="wrapper" :class="{'nopadding':noPadding}" v-else>
 		<div class="ui_box" v-link="{name:'detail',params:{pid:item.id}}" v-for="item in info.list">
-			<div class="img" v-lazy:background-image="item.src"></div>
+			<div class="img">
+				<img :src="item.src" alt="" style="width:100%;height:100%;" />
+			</div>
 			<div class="mes">
 				<div class="name">
 					{{ item.title }}

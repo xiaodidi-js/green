@@ -130,7 +130,7 @@
 	import CardImage from 'components/card-image'
 	import Toast from 'vux/src/components/toast'
     import Swiper from 'vux/src/components/swiper'
-    import { myActive } from 'vxpath/actions'
+    import { myActive,mySearch } from 'vxpath/actions'
     import axios from 'axios'
     import qs from 'qs'
 
@@ -145,7 +145,8 @@
 		},
         vuex: {
             actions: {
-                myActive
+                myActive,
+                mySearch
             }
         },
 		data() {
@@ -158,7 +159,9 @@
 					maincolumns: []
 				},
                 maincolumns:[],
-                searchKey: ''
+                searchKey: '',
+				arr: [],
+				tuijian: 1
 			}
 		},
 		route: {
@@ -174,9 +177,6 @@
             }
         },
 		ready() {
-
-
-
 			this.indexMessage();
             this.timeline();
             // 按钮淡入淡出
@@ -187,7 +187,6 @@
                     $(".goto_top").stop(true,true).fadeOut(500);
                 }
             });
-
             $(".goto_top").click(function(){
                 $("html,body").animate({
                     scrollTop:0
@@ -196,20 +195,43 @@
 		},
         methods: {
             goSearch: function() {
-                axios({
-                    method: 'get',
-                    url: localStorage.apiDomain + '/public/index/index/searchshop?shopname=' + this.searchKey,
-                }).then((response) => {
-                    console.log(response);
+                var _self = this;
+                this.$http.get(localStorage.apiDomain + '/public/index/index/searchshop?shopname=' + this.searchKey).then((response)=>{
+                    console.log(response.data.info.data);
+                    let arr = [];
+                    arr = response.data.info;
+                    this.$router.go({
+                        name:'search',
+                        params:{
+                            arr:this.mySearch(response.data.info.data)
+						}
+                    });
+                },(response)=>{
+                    this.toastMessage = '网络开小差了~';
+                    this.toastShow = true;
                 });
-                this.$router.go({name:"search",data:this.searchKey});
+//                axios({
+//                    method: 'get',
+//                    url: localStorage.apiDomain + '/public/index/index/searchshop?shopname=' + this.searchKey,
+//                }).then((response) => {
+//                    console.log(response);
+//                });
+//				this.$router.go({
+//					name:"search",
+//					data:this.searchKey
+//				});
 			},
 		    indexMessage: function() {
-                this.$http.get(localStorage.apiDomain+'public/index/index').then((response)=>{
+                /*let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
+                ustore = JSON.parse(ustore);
+                console.log(ustore);*/
+                let url = '';
+                url = localStorage.apiDomain + 'public/index/index';
+                this.$http.get(url).then((response)=>{
                     this.data = response.data;
                     var data = this.data;
                     for (var i = 0; i < data.index_data.length; i++) {
-                        if(data.index_data[i].type == 4){
+                        if(data.index_data[i].type == 4) {
                             var l = data.index_data[i].arr.length;
                             for (var k = 0; k < l; k++) {
                                 data.index_data[i].arr[k].img = data.index_data[i].arr[k].url;
@@ -229,6 +251,7 @@
                 this.$http.get(localStorage.apiDomain+'public/index/sale/SaleTimeSolt/uid').then((response) => {
                     if(response.data.status===1) {
                         this.maincolumns = response.data.SaleTimeSolt;
+                        console.log(this.maincolumns);
                     } else if(response.data.status===-1) {
                         this.toastMessage = response.data.info;
                         this.toastShow = true;
@@ -249,6 +272,7 @@
                 });
             },
             goPage () {
+                console.log(1);
                 this.myActive(5);
                 this.$router.go({name: 'per-orders'})
             }

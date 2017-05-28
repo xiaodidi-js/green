@@ -267,7 +267,6 @@
 			}
         },
         ready() {
-//			this.seckill();
 			this.timeline();
         },
         watch: {

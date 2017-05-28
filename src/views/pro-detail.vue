@@ -1315,6 +1315,7 @@
                     alert("抱歉，菜品已截单，请到首页选购菜品，谢谢合作！");
                     _self.toastMessage = "";
                     _self.toastShow = false;
+                    this.$router.go({name: 'index'});
                     return false;
                 }
                 if(shoping != null) {
@@ -1322,9 +1323,11 @@
                         if (shoping[i]["deliverytime"] != this.data.deliverytime) {
                             if (this.data.peisongok == 1 && this.data.deliverytime == 0) {
                                 alert("亲！您选购的菜品为次日配送商品，购物车里存在当日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
+                                this.$router.go({name: 'cart'});
                                 return false;
                             } else if (this.data.peisongok == 1 && this.data.deliverytime == 1) {
                                 alert("亲！您选购的菜品为当日配送商品，购物车里存在次日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！！");
+                                this.$router.go({name: 'cart'});
                                 return false;
                             }
                         }
@@ -1393,6 +1396,7 @@
                     _self.toastMessage = "";
                     _self.toastShow = false;
 					sessionStorage.removeItem("myCart");
+                    this.$router.go({name: 'index'});
                     return false;
                 }
                 if(shoping != null) {
@@ -1400,9 +1404,11 @@
                         if (shoping[i]["deliverytime"] != this.data.deliverytime) {
                             if (this.data.peisongok == 1 && this.data.deliverytime == 0) {
                                 alert("亲！您选购的商品为次日配送商品，购物车里存在当日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
+                                this.$router.go({name: 'index'});
                                 return false;
                             } else if (this.data.peisongok == 1 && this.data.deliverytime == 1) {
                                 alert("亲！您选购的商品为当日配送商品，购物车里存在次日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！！");
+                                this.$router.go({name: 'index'});
                                 return false;
                             }
                         }

@@ -1,9 +1,10 @@
 <style type="text/css">
 
     .activity-body{
-        width:100%;
+        width: 100%;
         height: 100%;
         background: #fff;
+        padding-top: 60px;
     }
 
     .lyt-logo{
@@ -24,7 +25,7 @@
 
 <template>
     <div class="activity-body">
-        <div style="margin:0px 10px;">
+        <div style="margin:0px 10px 10px;">
             <a href="javascript:void(0);" class="activity-text" style="border:none;">
                 <div style="position: relative">
                     <span class="act-title">新人注册好礼，我和绿秧田约惠</span>
@@ -42,3 +43,29 @@
         </div>
     </div>
 </template>
+
+<script type="text/javascript">
+
+    export default {
+        vuex: {
+
+        },
+        data() {
+            return {
+                data: []
+            }
+        },
+        ready () {
+
+        },
+        method: {
+            cancelOrder: function() {
+                if(this.disabled){
+                    return true;
+                }
+                this.$dispatch('orderCancel');
+                console.log(1);
+            },
+        }
+    }
+</script>

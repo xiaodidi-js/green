@@ -21,12 +21,12 @@
 	}
 
 	.wrapper .ui_box {
-		width: 47%;
+		width: 48%;
 		height: auto;
 		background-color: #fff;
 		display: inline-block;
 		font-size: 1.6rem;
-		margin: 4px 5.5px;
+		margin: 4px 2.9px;
 		color: #333;
 		box-shadow: 1px 1px 2px #e2e2e2;
 	}
@@ -48,11 +48,7 @@
 
 	.ui_box .img{
 		width:100%;
-		padding-top:100%;
-		background-position:center;
-		background-size:cover;
-		background-repeat:no-repeat;
-		background-color:#e4e4e4;
+		height:19rem;
 	}
 
 	.wrapper .ui_box .mes{
@@ -87,19 +83,21 @@
 
 <template>
 	<div class="wrapper">
-		<div class="ui_box" v-for="item in 1"> <!--  v-link="{name:'detail',params:{pid:item.id}}" -->
-			<div class="img"> <!--  v-lazy:background-image="item.src" -->
-				<img :src="item.src" style="width:100%;height:100%;" />
-			</div>
-			<div class="mes">
-				<div class="name">
-					123123123123123123123123123123123123123123123123123123123123123123123123123123123123123
+		<template v-for="item in arr">
+			<div class="ui_box" v-link="{name:'detail',params:{pid:item.id}}">
+				<div class="img"> <!--  v-lazy:background-image="item.src" -->
+					<img :src="item.shotcut" style="width:100%;height:100%;" />
 				</div>
-				<div class="money">
-					<label class="unit">¥</label>999
+				<div class="mes">
+					<div class="name">
+						{{ item.name }}
+					</div>
+					<div class="money">
+						<label class="unit">¥</label>{{ item.price }}
+					</div>
 				</div>
 			</div>
-		</div>
+		</template>
 	</div>
 	<!-- toast提示框 -->
 	<toast :show.sync="toastShow" type="text">{{ toastMessage }}</toast>
@@ -126,19 +124,14 @@
 			return {
                 toastMessage:'',
                 toastShow:false,
-				searchKey: ''
+				searchKey: '',
+				arr:this.$store.state.shopname,
+				listArr: [],
 			}
 		},
 		ready() {
 			this.keyCodefun();
-			console.log(this.$router.params);
-
-            this.$get('/public/index/index/searchshop?shopname=', {name: 111}).then((data) => {
-                console.log(data)
-            }).catch(()=>{
-
-            })
-
+			console.log(this.listArr);
 		},
 		computed: {
 
@@ -161,10 +154,6 @@
 					return false;
 				}
 				this.$dispatch('goSearch',this.searchKey);
-			},
-			goPage () {
-                this.myActive(5);
-                this.$router.go({name: 'per-orders'})
 			}
 		}
 	}

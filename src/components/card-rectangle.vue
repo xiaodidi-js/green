@@ -331,7 +331,7 @@
 								</template>
 								<template v-if="item.arr.length == 4">
 									<div style="width:25%;float:left;">
-										<a class="href-ui" :href="'//'+item1.htmlurl">
+										<a class="href-ui" :href="'//'+item1.htmlurl"> <!-- :href="'//'+item1.htmlurl" -->
 											<img :src="item1.url" alt="" style="width:100%;" />
 										</a>
 									</div>

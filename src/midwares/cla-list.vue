@@ -41,7 +41,8 @@
                 data:{
                     title: '',
                     list: []
-                }
+                },
+				tuijian: 1
             }
         },
         components: {
@@ -60,9 +61,15 @@
         },
         methods: {
             getData: function(sk){
-                let url = localStorage.apiDomain+'public/index/index/classifylist/cid/'+this.$route.params.cid+'/action/'+this.column;
+                let url = '';
+                console.log(this.$route.query.tuijian);
+				if(this.$route.query.tuijian == 0) {
+                    url = localStorage.apiDomain+'public/index/index/classifylist/cid/' + this.$route.params.cid + '/action/' + this.column;
+				}else{
+                    url = localStorage.apiDomain+'public/index/index/tuijianclass?id=' + this.$route.params.cid + '&action=' + this.column;
+				}
                 if(sk.length > 0) {
-                    url += '/search/'+sk;
+                    url += '/search/' + sk;
                 }
                 this.$http.get(url).then((response)=>{
                     this.data.list = response.data.list;

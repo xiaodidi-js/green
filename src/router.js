@@ -8,6 +8,7 @@ const routers = {
     	footer:true,
     	title:'绿秧田商城',
     	position:1,
+        saveScrollPosition: true,
         scrollBehavior (to, from, savedPosition) {
             if (to.hash) {
                 return {
@@ -25,6 +26,7 @@ const routers = {
                 footer:true,
                 title:'',
                 position:1,
+                saveScrollPosition: true,
                 component (resolve) {
                     require(['./midwares/index-main.vue'], resolve);
                 }
@@ -35,6 +37,7 @@ const routers = {
                 footer:true,
                 title:'',
                 position:1,
+                saveScrollPosition: true,
                 component (resolve) {
                     require(['./midwares/index-column.vue'], resolve);
                 }
@@ -47,6 +50,7 @@ const routers = {
         footer:true,
         title:'商品分类',
         position:2,
+        saveScrollPosition: true,
         component (resolve) {
             require(['./views/classify.vue'], resolve);
         },

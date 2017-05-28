@@ -72,9 +72,7 @@
 </style>
 
 <template>
-	<div class="card-box" style="box-shadow: none;"
-		 v-for="item in info"
-		 v-link="{name:'detail',params:{pid:item.id}}">
+	<div class="card-box" style="box-shadow: none;" v-for="item in info" v-link="{name:'detail',params:{pid:item.id}}">
 		<div class="img" v-bind:style="{backgroundImage:'url('+item.src+')'}"></div>
 		<div class="mes">
 			<div class="name">{{ item.title }}</div>

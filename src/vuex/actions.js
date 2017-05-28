@@ -47,3 +47,8 @@ export const clearSel = function ({dispatch}) {
 export const myActive = function ({dispatch}, index) {
     dispatch('myActive', index);
 }
+
+//客服
+export const mySearch = function ({dispatch}, shopname) {
+    dispatch('mySearch', shopname);
+}
