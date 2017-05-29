@@ -957,13 +957,12 @@
                         score:this.scoreSwitch,
                         paysum:this.lastPaySum,
                         tips:this.memo,
-						openid: 123,
-                        pshonse:this.shonse,
+						openid: sessionStorage.getItem("openid"),
+                        pshonse:this.shonse
                     };
-                    console.log(pdata);
-                    return;
+
                     this.$http.post(localStorage.apiDomain + 'public/index/user/getSubmitOrder',pdata).then((response)=>{
-                        if(response.data.status===1){
+                        if(response.data.status===1) {
                             console.log(response.data);
                             this.clearSel();
                             this.$router.replace('order/detail/'+response.data.oid);
