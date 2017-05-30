@@ -13,6 +13,8 @@
         position:absolute;
         top:0px;
         left:0px;
+        text-align:center;
+        font-size:26px;
     }
 </style>
 
@@ -20,6 +22,7 @@
     <div class="saobg">
         <div class="sao" id="saosao">
             <img src="http://green-f.cn/public/static/lvyangtian/logo.jpg" alt="" style="width:100%;height:100%;" />
+            <span>长按关注我们！</span>
         </div>
     </div>
 </template>
