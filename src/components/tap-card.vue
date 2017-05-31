@@ -153,7 +153,7 @@
 				<div class="words">
 					<label class="title">限时限量 疯狂抢购</label>
 					<label class="timer">
-						<timer-countdown :time="item.etime - item.servertime" desc="下场开始还有" end="" keep-alive></timer-countdown>
+						<!--<timer-countdown :time="item.etime - item.servertime" desc="下场开始还有" end="" keep-alive></timer-countdown>-->
 					</label>
 				</div>
 				<!-- 外层scroller -->

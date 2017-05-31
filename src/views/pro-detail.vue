@@ -383,10 +383,11 @@
 		display:inline-block;
 		font-size:1.2rem;
 		vertical-align:middle;
-		width:33%;
+		width:25%;
 		white-space:nowrap;
 		text-overflow:ellipsis;
 		overflow:hidden;
+		text-align:center;
 	}
 
 	.pro-mes .deliver .son:nth-child(1){
@@ -397,9 +398,9 @@
 		text-align:center;
 	}
 
-	.pro-mes .deliver .son:nth-child(3){
-		text-align:right;
-	}
+	/*.pro-mes .deliver .son:nth-child(3){*/
+		/*text-align:right;*/
+	/*}*/
 
 	.fixed-tab{
 		/*position:fixed;*/
@@ -718,8 +719,9 @@
 					</div>
 					<div class="deliver">
 						<div class="son">快递：{{ makeFreight }}</div>
-                        <div class="son">销量：{{ data.virtual_sale }}</div>
+                        <div class="son">销量：{{ data.store + data.virtual_sale }}</div>
                         <template v-if="data.sale.nowshop.saledata != '' ">
+							<div class="son">限购：<i id="limit">{{ data.sale.nowshop.saledata[0].salepaynub }}</i></div>
                             <div class="son">库存：{{ data.sale.nowshop.saledata[0].salenub }}</div>
                         </template>
                         <template v-else>
@@ -820,11 +822,9 @@
 					</div>
 					<!-- 推荐产品 -->
 					<div class="tuijian-box" style="display:none;" @touchstart.stop @touchend.stop v-show="data.commend">
-						<scroller v-ref:scroller lock-y :scrollbar-x="false">
-							<div id="scbox" class="tj-scroller">
-								<card-recommend :info="data.commend" :card-width="10"></card-recommend>
-							</div>
-						</scroller>
+						<div id="scbox" class="tj-scroller">
+							<card-recommend :info="data.commend" :card-width="10"></card-recommend>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -1239,6 +1239,15 @@
 					return false;
 				}
 				this.buyNums++;
+
+                let limit = $("#limit").text(), count = 0;
+				if(this.buyNums > limit) {
+					alert("超出限制购买的次数！");
+					return this.buyNums = limit;
+				} else {
+				    return true;
+				}
+
 			},
 			reduceNums: function() {
 				if(this.buyNums <= 1) {
@@ -1342,6 +1351,7 @@
                 this.$router.go({name:'cart'});
 			},
 			addCart : function() {
+
                 if(!this.formatPopShow == true) {
                     this.formatPopShow = true;
                     return false;

@@ -102,7 +102,7 @@
                 this.$router.go({
                     name:'activity-event',
                     params:{
-                        arr:this.myVipMessage(response.data.articles.list)
+                        arr:this.myVipMessage(this.data)
                     }
                 });
             },

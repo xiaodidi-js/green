@@ -56,7 +56,7 @@
             }
         },
         ready () {
-
+            console.log(this.myVipMessage(this.data));
         },
         method: {
             cancelOrder: function() {

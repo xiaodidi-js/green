@@ -1,12 +1,9 @@
-
 <style type="text/css">
-
     .saobg {
         width:100%;
         height:100%;
         background: #fff;
     }
-
     .sao {
         width:30rem;
         height:30rem;
@@ -28,7 +25,6 @@
 </template>
 
 <script>
-
     export default{
         props: {
             types: {
@@ -62,7 +58,6 @@
             };
         },
         components: {
-
         },
         methods: {
             $id: function(id) {

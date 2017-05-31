@@ -688,7 +688,7 @@ export default{
 			this.loadingShow = true;
 			let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
 			ustore = JSON.parse(ustore);
-			this.$http.get(localStorage.apiDomain + 'public/index/user/orderoperation/uid/'+ustore.id+'/token/'+ustore.token+'/oid/'+this.$route.params.oid).then((response)=>{
+			this.$http.get(localStorage.apiDomain + 'public/index/user/orderoperation/uid/' + ustore.id + '/token/' + ustore.token + '/oid/' + this.$route.params.oid).then((response)=>{
 				this.loadingShow = false;
 				this.btnStatus = false;
 				if (response.data.status === 1) {

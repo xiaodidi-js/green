@@ -214,10 +214,12 @@
 				upsta:0,
 				uimg:'',
 				uname:'',
-				uscore:0
+				uscore:0,
+				headerIcon: [],
 			}
 		},
 		ready() {
+            this.weixinHeader();
 		    //记录索引
             this.myActive(1);
 			let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
@@ -249,6 +251,19 @@
 			});
 		},
 		methods: {
+		    weixinHeader: function () {
+                let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
+                ustore = JSON.parse(ustore);
+                let openid = sessionStorage.getItem("openid");
+                this.$http.get(localStorage.apiDomain + 'public/index/index/get_weixin/' + openid).then((response)=>{
+					this.headerIcon = response.data;
+                    console.log(this.headerIcon);
+                },(response)=>{
+                    this.toastMessage = "网络开小差啦~";
+                    this.toastShow = true;
+                    this.upsta = 0;
+                });
+            },
 			addShotcut: function(){
 				if(this.upsta){
 					return false;

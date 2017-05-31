@@ -107,7 +107,7 @@
 			</div>
 		</div>
 	</div>
-		<div class="wrapper" style="margin-top: 166px;padding-bottom: 100px;" :class="{'nopadding':noPadding}" v-else>
+		<div class="wrapper" style="margin-top: 166px;padding-bottom: 70px;" :class="{'nopadding':noPadding}" v-else>
 		<div class="ui_box" v-link="{name:'detail',params:{pid:item.id}}" v-for="item in info.list">
 			<div class="img">
 				<img :src="item.src" alt="" style="width:100%;height:100%;" />

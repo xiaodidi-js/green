@@ -381,7 +381,7 @@
 									</p>
 								</div>
 							</div>
-							<span class="icon-card" @click="goCart(item.id)"></span>
+							<div class="icon-card" @click="goCart(item.id)"></div>
 						</div>
 					</template>
 				</div>
@@ -435,8 +435,13 @@
         },
         ready() {
             this.dtype = localStorage.getItem('number');
-            this.chooseSort(this.dtype);
-            this.getChonse(this.dtype);
+            if(this.dtype == null) {
+                this.getChonse(26);
+			} else {
+                this.chooseSort(this.dtype);
+                this.getChonse(this.dtype);
+			}
+
             $(function() {
                 //菜单框架自动获取高度
                 var doc_H = $(document).height();
@@ -528,6 +533,7 @@
                 let url = localStorage.apiDomain + 'public/index/index/classifylist/cid/' + cid;
                 this.$http.get(url).then((response)=>{
                     this.pdata = response.data.info.list;
+                    console.log(this.pdata);
                 },(response)=>{
                     this.toastMessage = "网络开小差啦~";
                     this.toastShow = true;
@@ -536,8 +542,23 @@
             comfirmFun: function (cid) {
 
             },
-            goCart: function() {
-
+            goCart: function(id) {
+                var obj = {};
+                for(let i in this.pdata) {
+                    this.pdata[i].index = i;
+                    if (id == this.pdata[i].id)
+                        obj = {
+                            id:id,
+                            name:this.pdata[i].title,
+                            price:this.pdata[i].price,
+                            shotcut:this.pdata[i].src,
+                            nums:1,
+                        };
+                }
+                console.log(obj);
+                this.setCart(obj);
+                obj = {};
+                this.$router.go({name : "cart"});
 			}
         },
     }

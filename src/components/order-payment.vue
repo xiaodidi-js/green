@@ -9,7 +9,7 @@
     .card-box{
         width:96%;
         height:auto;
-        margin:0% 0% 2% 0%;
+        margin:0% 0% 3% 0%;
         background-color:#fff;
         display:block;
         font-size:0;

@@ -62,10 +62,11 @@
         text-align:left;
     }
     .list_footer {
-        width: 100%;
+        width: 65%;
         height:2.806rem;
         box-sizing:border-box;
         padding:0px 5px;
+        float:left;
     }
     .footer_money {
         width: 50%;
@@ -76,9 +77,8 @@
         float: left;
     }
     .footer_shopcar{
-        width: 50%;
-        height: 2.806rem;
-        line-height:2.806rem;
+        width: 25%;
+        height: 1.806rem;
         float: right;
         text-align:right;
     }
@@ -104,16 +104,18 @@
         </div>
         <div class="youlike_list">
             <ul>
-                <li v-for="item in likedate" v-link="{name:'detail',params:{pid:item.id}}">
-                    <div class="list_pirture">
-                        <img :src="item.shotcut"/>
-                    </div>
-                    <div class="list_value">{{ item.name }}</div>
-                    <div class="list_footer">
-                        <div class="footer_money">￥{{ item.price }}</div>
-                        <div class="footer_shopcar">
-                            <img src="../images/shopcar_youlike.png"/>
+                <li v-for="item in likedata">
+                    <div v-link="{name:'detail',params:{pid:item.id}}">
+                        <div class="list_pirture">
+                            <img :src="item.shotcut"/>
                         </div>
+                        <div class="list_value">{{ item.name }}</div>
+                        <div class="list_footer">
+                            <div class="footer_money">￥{{ item.price }}</div>
+                        </div>
+                    </div>
+                    <div class="footer_shopcar" @click="addCarts(item.id)">
+                        <img src="../images/shopcar_youlike.png"/>
                     </div>
                 </li>
                 <div style="clear:both;"></div>
@@ -126,8 +128,18 @@
 <script>
 
     import Scroller from 'vux/src/components/scroller'
+    import { setCartStorage } from 'vxpath/actions'
+    import { cartNums } from 'vxpath/getters'
 
     export default{
+        vuex: {
+            getters: {
+                cartNums
+            },
+            actions: {
+                setCart: setCartStorage
+            }
+        },
         props: {
             info: {
                 type: Array,
@@ -139,7 +151,7 @@
                 type: Number,
                 default: 0
             },
-            likedate: []
+            likedata: []
         },
         components: {
             Scroller
@@ -150,14 +162,38 @@
             }
         },
         ready() {
-            var _this = this;
-            this.$http.get(localStorage.apiDomain+'public/index/user/cainixihuan').then((response)=>{
-                _this.likedate = response.data.tuijian_shop;
-
-            },(response)=>{
-                this.toastMessage = '网络开小差了~';
-                this.toastShow = true;
-            })
+            this.listShop();
+        },
+        methods: {
+            listShop: function () {
+                var _this = this;
+                let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
+                ustore = JSON.parse(ustore);
+                this.$http.get(localStorage.apiDomain + 'public/index/user/cainixihuan/uid/' + ustore.id + '/token/' + ustore.token).then((response)=>{
+                    _this.likedata = response.data.tuijian_shop;
+                    console.log();
+                },(response)=>{
+                    this.toastMessage = '网络开小差了~';
+                    this.toastShow = true;
+                });
+            },
+            addCarts: function (id) {
+                var obj = {};
+                for(let i in this.likedata) {
+                    this.likedata[i].index = i;
+                    if (id == this.likedata[i].id)
+                    obj = {
+                        id:id,
+                        name:this.likedata[i].name,
+                        price:this.likedata[i].price,
+                        shotcut:this.likedata[i].shotcut,
+                        nums:1,
+                    };
+                }
+                this.setCart(obj);
+                obj = {};
+                this.$router.go({name : "cart"});
+            }
         }
     }
 </script>

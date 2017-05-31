@@ -166,19 +166,19 @@ export default{
 				this.toastMessage = '请填写收货人姓名';
 				this.toastShow = true;
 				return false;
-			}else if(this.atel == '') {
+			} else if (this.atel == '') {
 				this.toastMessage = '请填写收货人电话';
 				this.toastShow = true;
 				return false;
-			}else if(this.acode == '') {
+			} else if (this.acode == '') {
 				this.toastMessage = '请填写邮政编码';
 				this.toastShow = true;
 				return false;
-			}else if(this.provinceName == '') {
+			} else if (this.provinceName == '') {
 				this.toastMessage = '请选择收货省份地区';
 				this.toastShow = true;
 				return false;
-			}else if(this.address == '') {
+			} else if (this.address == '') {
 				this.toastMessage = '请填写详细收货地址';
 				this.toastShow = true;
 				return false;
@@ -222,7 +222,7 @@ export default{
 					this.toastMessage = '网络开小差了~';
 					this.toastShow = true;
 				});
-			}else{
+			} else {
 				let pdata = {
 				    uid:ustore.id,
 					token:ustore.token,
@@ -232,7 +232,7 @@ export default{
 					area:this.provinceName,
 					address:this.address
 				};
-				this.$http.post(localStorage.apiDomain+'public/index/user/addressinfo',pdata).then((response)=>{
+				this.$http.post(localStorage.apiDomain + 'public/index/user/addressinfo',pdata).then((response)=>{
 					if(response.data.status===1){
 						this.toastMessage = response.data.info;
 						this.toastShow = true;

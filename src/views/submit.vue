@@ -458,7 +458,7 @@
 
 		<my-cell-item>
 			<div class="line-con">
-				<textarea placeholder="订单补充说明" class="addition" v-model="memo"></textarea>
+				<textarea placeholder="订单补充说明" maxlength="50" class="addition" v-model="memo"></textarea>
 			</div>
 		</my-cell-item>
 
@@ -771,14 +771,21 @@
         },
         methods: {
             isRadio: function() {
-                var date = new Date() , y = date.getFullYear() , m = date.getMonth() + 1 , d = date.getDate();
+                var date = new Date() , y = date.getFullYear() , m = date.getMonth() + 1 , d = date.getDay();
                 var radA = $(".label-radio").eq(0).text();
                 var radB = $(".label-radio").eq(1).text();
-				for(let i = 0; i < this.cartInfo.length; i++) {
+                var time = null;
+                for(let i = 0; i < this.cartInfo.length; i++) {
 					if (this.cartInfo[i].deliverytime == 0) {
 						this.theDay = "次日";
-                        d = date.getDate() + 1;
-                        $(".my-icon").eq(1).removeAttr("disabled")
+                        var curMonthDays = new Date(date.getFullYear(), (date.getMonth() + 1), 0).getDate();
+                        if(curMonthDays == date.getDate()) {
+                            m = date.getMonth() + 2;
+                            d = date.getUTCDay() - 2;
+						} else {
+                            d = date.getDate() + 1;
+						}
+                        $(".my-icon").eq(1).removeAttr("disabled");
 					} else if (this.cartInfo[i].deliverytime == 1) {
 						$(".my-icon").eq(0).hide();
                         $(".my-icon").eq(1).css("left","0px");
@@ -786,7 +793,7 @@
                         this.theDay = "当日";
 					}
 				}
-                var time = y + "-" + m + "-" + d;
+                time = y + "-" + m + "-" + d;
                 $("#today").find("option:selected").text(time);
 				$(".bor").find(".my-icon").change(function () {
 					$(this).addClass("my-icon-chosen").siblings().removeClass("my-icon-chosen");
@@ -957,12 +964,11 @@
                         score:this.scoreSwitch,
                         paysum:this.lastPaySum,
                         tips:this.memo,
-						openid: sessionStorage.getItem("openid"),
-                        pshonse:this.shonse
+						openid: 123,//sessionStorage.getItem("openid"),
+                        pshonse:this.shonse,
                     };
-
                     this.$http.post(localStorage.apiDomain + 'public/index/user/getSubmitOrder',pdata).then((response)=>{
-                        if(response.data.status===1) {
+                        if(response.data.status===1){
                             console.log(response.data);
                             this.clearSel();
                             this.$router.replace('order/detail/'+response.data.oid);

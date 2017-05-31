@@ -178,7 +178,7 @@
 		font-size: 14px;
 		float: left;
 		color: #f9ad0c;
-		width: 79%;
+		width: 75%;
 		margin-top: 10px;
 	}
 

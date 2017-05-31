@@ -272,22 +272,15 @@
 
 		<div id="customer">
 			<ul class="service-ul" v-for="item in qqservice">
-				<li class="icon-service" v-if="item.class === 0">
-					<a href="tencent://message/?uin={{ item.num	 }}&Site=在线QQ&Menu=yes" style="display: block;padding-top: 7px;">
+				<li class="icon-service" v-if="item.name == 'QQ' ">
+					<a href="tencent://message/?uin={{ item.tel	 }}&Site=在线QQ&Menu=yes" style="display: block;padding-top: 7px;">
 						<i class="little-icon qq-ui-icon"></i>
-						<span class="service-txt">客服QQ1</span>
+						<span class="service-txt">客服QQ</span>
 						<img src="../images/arrow.png" class="service-allow" alt="" />
 					</a>
 				</li>
-				<li class="icon-service" v-if="item.class === 0">
-					<a href="tencent://message/?uin={{ item.num	 }}&Site=在线QQ&Menu=yes" style="display: block;padding-top: 7px;">
-						<i class="little-icon qq-ui-icon"></i>
-						<span class="service-txt">客服QQ1</span>
-						<img src="../images/arrow.png" class="service-allow" alt="" />
-					</a>
-				</li>
-				<li class="icon-service" v-if="item.class === 1">
-					<a href="tel:{{ item.num }}" style="display: block;padding-top: 7px;">
+				<li class="icon-service" v-if="item.name == 'tel' ">
+					<a href="tel:{{ item.tel }}" style="display: block;padding-top: 7px;">
 						<i class="little-icon call-icon"></i>
 						<span class="service-txt">一键拨号</span>
 						<img src="../images/arrow.png" class="service-allow" alt="" />
@@ -344,7 +337,7 @@
 					service: 0
 				},
 				data:[],
-				qqservice: []
+				qqservice: null,
 			}
 		},
 		route: {
@@ -364,8 +357,9 @@
 		methods: {
 		    kefu(){
 		        let _this = this;
-                this.$http.get(/*localStorage.apiDomain +*/ 'http://green-f.cn/public/index/Usercenter/onlie').then((response)=> {
+                this.$http.get(localStorage.apiDomain + 'public/index/Usercenter/onlie').then((response)=> {
 					_this.qqservice = response.data.list;
+					console.log(_this.qqservice)
                 });
             },
 		    $id: function(id){
@@ -390,7 +384,7 @@
 						document.body.scrollTop = 0;
 						this.count = response.data.count;
 						this.data = response.data.list;
-					}else if(response.data.status === -1){
+					}else if(response.data.status === -1) {
 						this.toastMessage = response.data.info;
 						this.toastShow = true;
 						let context = this;

@@ -41,6 +41,7 @@
 		display:inline-block;
 		vertical-align:middle;
 		width:33%;
+		height: 8rem;
 		margin-right:2%;
 		background-color:#eee;
 		background-repeat:no-repeat;
