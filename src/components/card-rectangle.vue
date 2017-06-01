@@ -353,7 +353,7 @@
 										<i style="font-size: 12px;">￥</i>
 										<span style="font-size: 18px;">{{ item1.shopprice }}</span>
 									</p>
-									<p class="add-cart" style="float:right;" @click="addCart(item1.shopid)"></p>
+									<p class="add-cart" style="float:right;"></p>
 								</div>
 							</template>
 						</div>
@@ -363,11 +363,18 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- toast显示框 -->
+	<toast type="text" :show.sync="toastShow">{{ toastMessage }}</toast>
+
 </template>
 
 <script>
 
     import Swiper from 'vux/src/components/swiper'
+    import { setCartStorage } from 'vxpath/actions'
+    import { cartNums } from 'vxpath/getters'
+    import Toast from 'vux/src/components/toast'
 
     export default{
 		props: {
@@ -375,19 +382,27 @@
 		},
 		data() {
 			return {
-
+                toastMessage: '',
+                toastShow: false
 			}
 		},
+        vuex: {
+            getters: {
+                cartNums
+            },
+            actions: {
+                setCart: setCartStorage
+            }
+        },
 		ready() {
 
 		},
         components: {
             Swiper,
+            Toast
         },
 		methods: {
-            addCart: function (id) {
 
-            }
 		}
 	}
 </script>

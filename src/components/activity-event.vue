@@ -48,7 +48,9 @@
 
     export default {
         vuex: {
-
+            actions: {
+                myVipMessage
+            }
         },
         data() {
             return {
@@ -56,7 +58,7 @@
             }
         },
         ready () {
-            console.log(this.myVipMessage(this.data));
+            console.log(this.$store.state.message);
         },
         method: {
             cancelOrder: function() {

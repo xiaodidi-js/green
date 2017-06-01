@@ -82,15 +82,6 @@
         },
         data() {
             return {
-                order_Class: {
-                    cancel_Order: '取消订单',
-                    to_Pay: '去付款',
-                    view_Logistics: '查看物流',
-                    Confirm_receipt: '确认收货',
-                    delete_Order: '删除订单',
-                    customer_Reviews: '客户评价',
-                    buy_Again: '再次购买'
-                },
                 data: []
             }
         },
@@ -99,6 +90,7 @@
         },
         methods: {
             goActivity:function () {
+                var _self = this;
                 this.$router.go({
                     name:'activity-event',
                     params:{
@@ -110,7 +102,6 @@
                 this.$http.get(localStorage.apiDomain + 'public/index/index/productinfo').then((response)=>{
                     this.data = response.data.articles.list;
                     console.log(this.data);
-
                 },(response)=>{
                     this.toastMessage = '网络开小差了~';
                     this.toastShow = true;

@@ -123,6 +123,10 @@
         </div>
     </div>
     <!-- <猜你喜欢> -->
+
+    <!-- toast显示框 -->
+    <toast type="text" :show.sync="toastShow">{{ toastMessage }}</toast>
+
 </template>
 
 <script>
@@ -130,6 +134,7 @@
     import Scroller from 'vux/src/components/scroller'
     import { setCartStorage } from 'vxpath/actions'
     import { cartNums } from 'vxpath/getters'
+    import Toast from 'vux/src/components/toast'
 
     export default{
         vuex: {
@@ -154,11 +159,13 @@
             likedata: []
         },
         components: {
-            Scroller
+            Scroller,
+            Toast,
         },
         data() {
             return {
-
+                toastMessage: '',
+                toastShow: false
             }
         },
         ready() {
@@ -192,6 +199,8 @@
                 }
                 this.setCart(obj);
                 obj = {};
+                this.toastMessage = "成功加入购物车!";
+                this.toastShow = true;
                 this.$router.go({name : "cart"});
             }
         }

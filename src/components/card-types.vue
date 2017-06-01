@@ -364,7 +364,7 @@
 				</div>
 			</div>
 		</div>
-		<menu type="popup" class="cla-message" id="right_Menu">
+		<div type="popup" class="cla-message" id="right_Menu">
 			<div id="scroller2">
 				<div class="ele-fixed">
 					<template v-for="item in pdata">
@@ -386,7 +386,7 @@
 					</template>
 				</div>
 			</div>
-		</menu>
+		</div>
 	</div>
 
 	<!-- toast显示框 -->
@@ -558,6 +558,8 @@
                 console.log(obj);
                 this.setCart(obj);
                 obj = {};
+                this.toastMessage = '加入购物车成功!',
+                this.toastShow = true;
                 this.$router.go({name : "cart"});
 			}
         },

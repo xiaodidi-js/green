@@ -771,20 +771,21 @@
         },
         methods: {
             isRadio: function() {
-                var date = new Date() , y = date.getFullYear() , m = date.getMonth() + 1 , d = date.getDay();
+                var date = new Date() , y = date.getFullYear() , m = date.getMonth() + 1 , d = date.getDate();
                 var radA = $(".label-radio").eq(0).text();
                 var radB = $(".label-radio").eq(1).text();
                 var time = null;
                 for(let i = 0; i < this.cartInfo.length; i++) {
 					if (this.cartInfo[i].deliverytime == 0) {
 						this.theDay = "次日";
-                        var curMonthDays = new Date(date.getFullYear(), (date.getMonth() + 1), 0).getDate();
-                        if(curMonthDays == date.getDate()) {
-                            m = date.getMonth() + 2;
-                            d = date.getUTCDay() - 2;
-						} else {
-                            d = date.getDate() + 1;
-						}
+//                        var curMonthDays = new Date(date.getFullYear(), (date.getMonth() + 1), 0).getDate();
+//                        if(curMonthDays == date.getDate()) {
+//                            m = date.getMonth() + 2;
+//                            d = date.getUTCDay() - 2;
+//						} else {
+//                            d = date.getDate() + 1;
+//						}
+                        d = date.getDate() + 1;
                         $(".my-icon").eq(1).removeAttr("disabled");
 					} else if (this.cartInfo[i].deliverytime == 1) {
 						$(".my-icon").eq(0).hide();
@@ -964,7 +965,7 @@
                         score:this.scoreSwitch,
                         paysum:this.lastPaySum,
                         tips:this.memo,
-						openid: 123,//sessionStorage.getItem("openid"),
+						openid: sessionStorage.getItem("openid"),//sessionStorage.getItem("openid"),
                         pshonse:this.shonse,
                     };
                     this.$http.post(localStorage.apiDomain + 'public/index/user/getSubmitOrder',pdata).then((response)=>{
