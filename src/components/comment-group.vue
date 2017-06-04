@@ -8,12 +8,11 @@
 	.card-box{
 		width:97%;
 		height:auto;
-		padding:0% 0% 0% 3%;
 		border-bottom:#E6E6E6 dashed 1px;
 	}
 	.card-box .pro-mes{
 		width:100%;
-		padding:3% 3% 3% 0%;
+		padding: 5% 0% 5% 0%;
 		border-bottom:#F2F2F2 1px solid;
 		font-size:0;
 	}
@@ -30,8 +29,8 @@
 	}
 	.card-box .pro-mes .shotcut{
 		width:22%;
-		padding-top:22%;
 		margin-right:3%;
+		height: 54px;
 		background-color:#DDD;
 		background-size:cover;
 		background-position:center;
@@ -82,16 +81,18 @@
 </style>
 <template>
 	<div class="com-wrapper">
-		<div class="card-box" v-for="item in products" style="width:96%;padding:0px;box-shadow: none;">
+		<div class="card-box" v-for="item in products" style="width:95%;box-shadow: none;margin: 0px auto;">
 			<div class="pro-mes">
-				<div class="shotcut" v-lazy:background-image="item.shotcut"></div>
+				<div class="shotcut">
+					<img :src="item.shotcut" style="width:100%;height:100%;" />
+				</div>
 				<div class="words">
 					<div class="name">{{ item.name }}</div>
 					<div class="format">{{ item.fname }}</div>
-					<!--<div class="money">-->
-						<!--<label class="unit">¥</label>-->
-						<!--{{ item.price }}-->
-                    <!--</div>-->
+					<div class="money">
+						<label class="unit">¥</label>
+						{{ item.price }}
+                    </div>
 				</div>
 			</div>
 			<div class="pro-mes">

@@ -177,7 +177,7 @@
 			</div>
 		</div>
 		<div class="card-wrapper">
-			<cart-list :chosen.sync="choseArr" :pid="item.id" v-for="item in cartList"
+			<cart-list :chosen.sync="choseArr" v-for="item in cartList" :pid="item.id"
 					:img="item.shotcut" :pname="item.name"
 					:pprice="item.price" :pnums="item.nums"
 					:pstore="item.store" :mode="editMode"
@@ -288,7 +288,8 @@
 
         },
         ready() {
-			console.log(this.cartList);
+            console.log(this.cartList);
+            this.$router.go({name: 'cart'});
         },
         methods: {
             setDel: function(it){
@@ -327,7 +328,6 @@
                     return false;
                 }
                 var shoping = JSON.parse(sessionStorage.getItem("myCart"));
-                var cartData = sessionStorage.getItem("myCart");
 				axios({
 					method: 'post',
 					url: localStorage.apiDomain + 'public/index/usercenter/shopingclick',

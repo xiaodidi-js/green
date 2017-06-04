@@ -37,10 +37,7 @@ let router = new VueRouter({
         } else {
             return { x: 0, y: 0 }
         }
-    },
-    routes: [
-        { path: '/foo', component: Foo }
-    ]
+    }
 });
 
 router.map(fetchPost);
@@ -53,24 +50,24 @@ router.beforeEach((transition) => {
 		//微信openid检测
 		if(!sessionStorage.getItem('openid')){
 			let query = transition.to.query;
-			if(typeof query.opid!=='undefined'&&query.opid!='') {
+			if(typeof query.opid !== 'undefined' && query.opid != '') {
                 sessionStorage.setItem('openid',query.opid);
-			}else{
-				location.href = localStorage.getItem('apiDomain')+'public/index/home/index?back='+encodeURI(transition.to.path);
+			} else {
+				location.href = localStorage.getItem('apiDomain')+'public/index/home/index?back=' + encodeURI(transition.to.path);
 				return true;
 			}
 		}
 	// }
 
 	//登录检测
-	if(typeof(transition.to.login)!=='undefined'&&transition.to.login===true){
+	if(typeof(transition.to.login) !== 'undefined' && transition.to.login === true) {
 		let ustore = localStorage.getItem('userInfo') || sessionStorage.getItem('userInfo');
-		if(ustore===null){
+		if(ustore===null) {
 			transition.redirect({name:'login'});
-		}else{
+		} else {
 			transition.next();
 		}
-	}else if(['login','register','find'].indexOf(transition.to.name)>=0){
+	}else if(['login','register','find'].indexOf(transition.to.name)>=0) {
 		let ustore = localStorage.getItem('userInfo') || sessionStorage.getItem('userInfo');
 		if(ustore !== null) {
 			transition.abort();
@@ -91,7 +88,7 @@ router.afterEach((transition) => {
 			let shareData = {
 					title:getSession.title,
 					desc:getSession.desc,
-					link:'http://'+window.location.host+'/vue/index_prod.html',
+					link:'http://'+window.location.host+'/index_prod.html',
 					imgUrl:getSession.imgurl
 				};
 			WxJssdk.config({

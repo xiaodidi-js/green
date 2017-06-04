@@ -96,7 +96,10 @@
 
 <template>
 	<div class="img-area">
-		<div class="image" @click="addPic($index)" :class="{'unupload':img.state===0,'loading':img.state===1,'uploaded':img.state===2,'active':img.active===1}" :style="{backgroundImage:img.url.length>0 ? 'url('+img.url+')' : ''}" v-for="img in imgs">
+		<div class="image" @click="addPic($index)"
+			 :class="{'unupload':img.state===0,'loading':img.state===1,'uploaded':img.state===2,'active':img.active===1}"
+			 :style="{backgroundImage:img.url.length>0 ? 'url('+img.url+')' : ''}"
+			 v-for="img in imgs">
 			<spinner type="bubbles" class="white-spinner"></spinner>
 			<input type="file" id="img{{ pid }}{{ $index }}" name="imgs[]" @click="fileClick($index)" @change="getImage($index)" accept="image/jpeg,image/png,image/gif" />
 			<div class="cross" @click="delPic($index)">×</div>
@@ -225,7 +228,8 @@
 				formData.append('x-gmkerl-thumb',thumb);
 				let context = this;
 				this.$http.post(url,formData).then((response)=>{
-					let gdata = JSON.parse(response.data);
+				    console.log(response.data);
+					let gdata = response.data;
 					let upurl = domain + gdata.url;
 					context.imgs[index].state = 2;
 					context.imgs[index].url = upurl;
@@ -242,7 +246,7 @@
 			},
 			uploadFailed: function(index){
 				this.imgs[index].state = 0;
-				document.getElementById('img'+this.pid+index).value = '';
+				document.getElementById('img' + this.pid + index).value = '';
 			}
 		}
 	}

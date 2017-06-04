@@ -89,17 +89,16 @@
 
 <template>
 
-	<div class="wrapper" style="margin-top: 166px;padding-bottom: 100px;" :class="{'nopadding':noPadding}" v-if="info.title">
+	<div class="wrapper" style="padding-bottom: 100px;" :class="{'nopadding':noPadding}" v-if="info.title">
 		<label class="title">{{ info.title }}</label>
 		<div class="parent">
 			<div class="ui-box" v-link="{name:'detail',params:{pid:item.id}}" v-for="item in info.list">
-				<div class="img"> <!--  v-lazy:background-image="item.src" -->
+				<div class="img" v-if="item.src == ''"></div>
+				<div class="img" v-else>
 					<img :src="item.src" alt="" style="width:100%;height:100%;" />
 				</div>
 				<div class="mes">
-					<div class="name">
-						{{ item.title }}
-					</div>
+					<div class="name">{{ item.title }}</div>
 					<div class="money">
 						<label class="unit">¥</label>{{ item.price }}
 					</div>
@@ -107,9 +106,10 @@
 			</div>
 		</div>
 	</div>
-		<div class="wrapper" style="margin-top: 166px;padding-bottom: 100px;" :class="{'nopadding':noPadding}" v-else>
+		<div class="wrapper" style="padding-bottom: 70px;" :class="{'nopadding':noPadding}" v-else>
 		<div class="ui_box" v-link="{name:'detail',params:{pid:item.id}}" v-for="item in info.list">
-			<div class="img">
+			<div class="img" v-if="item.src == ''"></div>
+			<div class="img" v-else>
 				<img :src="item.src" alt="" style="width:100%;height:100%;" />
 			</div>
 			<div class="mes">

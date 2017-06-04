@@ -9,13 +9,17 @@ const state = {
 	selCart: JSON.parse(sessionStorage.getItem('mySelCart')) || [],
     dtype: 1,
 	shopname: {},
-	vipmessage: {},
+    message: {},
+	text: ""
 }
 
 //应用状态操作
 const mutations = {
+    myActiveTwo (state,text) {
+        state.text = text;
+    },
     myVipMessage (state,message) {
-        state.vipmessage = message;
+        state.message = message;
     },
 	mySearch (state,shopName) {
        state.shopname = shopName;

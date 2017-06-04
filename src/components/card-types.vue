@@ -364,7 +364,7 @@
 				</div>
 			</div>
 		</div>
-		<menu type="popup" class="cla-message" id="right_Menu">
+		<div type="popup" class="cla-message" id="right_Menu">
 			<div id="scroller2">
 				<div class="ele-fixed">
 					<template v-for="item in pdata">
@@ -375,18 +375,18 @@
 								</div>
 								<div class="shotcut-txt">
 									<p style="height:35px;width:100%;overflow: hidden;text-overflow: ellipsis;">{{ item.title }}</p>
-									<p class="relative" style="">
+									<p class="relative">
 										<i>￥</i>
 										<span class="money">{{item.price}}</span>
 									</p>
 								</div>
 							</div>
-							<span class="icon-card" @click="goCart(item.id)"></span>
+							<div class="icon-card" @click="goCart(item.id)"></div>
 						</div>
 					</template>
 				</div>
 			</div>
-		</menu>
+		</div>
 	</div>
 
 	<!-- toast显示框 -->
@@ -425,18 +425,25 @@
                 item: [],
                 myScroll: '',
                 dtype: null,
-                guige:[],
-                popShow:false,
-                proNums:1,
-                buyNums:1,
+                guige: [],
+                popShow: false,
+                proNums: 1,
+                buyNums: 1,
                 toastMessage: '',
-                toastShow: false
+                toastShow: false,
+                activestu:0
             }
         },
         ready() {
             this.dtype = localStorage.getItem('number');
-            this.chooseSort(this.dtype);
-            this.getChonse(this.dtype);
+
+            if(this.dtype == null) {
+                this.getChonse(26);
+			} else {
+                this.chooseSort(this.dtype);
+                this.getChonse(this.dtype);
+			}
+
             $(function() {
                 //菜单框架自动获取高度
                 var doc_H = $(document).height();
@@ -528,6 +535,7 @@
                 let url = localStorage.apiDomain + 'public/index/index/classifylist/cid/' + cid;
                 this.$http.get(url).then((response)=>{
                     this.pdata = response.data.info.list;
+                    console.log(this.pdata);
                 },(response)=>{
                     this.toastMessage = "网络开小差啦~";
                     this.toastShow = true;
@@ -536,8 +544,61 @@
             comfirmFun: function (cid) {
 
             },
-            goCart: function() {
+            goCart: function(id) {
+                var obj = {};
+                var _self = this;
+                for(let i in this.pdata) {
+                    this.pdata[i].index = i;
+                    if (id == this.pdata[i].id) {
+                        obj = {
+                            id:id,
+                            name:this.pdata[i].title,
+                            price:this.pdata[i].price,
+                            shotcut:this.pdata[i].src,
+                            deliverytime:this.pdata[i].deliverytime,
+                            nums:this.buyNums,
+                            store:this.proNums,
+                            format:'',
+                            formatName:'',
+                            activestu:this.activestu
+                        };
+					}
+                    if(this.pdata[i].share == null) {
+                        _self.activestu == 0;
+                    } else {
+                        _self.activestu == 2;
+                    }
+                    if(this.pdata[i].sale == null) {
+                        _self.activestu == 0;
+					} else {
+                        _self.activestu == 1;
+					}
+					var toDate = new Date() , h = toDate.getHours(), m = toDate.getMinutes();
+//                    console.log(h + "-" + m + "-" + s);
 
+					var cart = JSON.parse(sessionStorage.getItem("myCart"));
+                    if(peisongok == 0) {
+                        alert("抱歉，当日配送商品已截单。请到次日配送专区选购，谢谢合作！");
+                        return false;
+                    }
+                    if(sessionStorage.getItem("myCart") != '') {
+                        for(var y in cart) {
+                            if (cart[y]["deliverytime"] != _self.pdata[i].deliverytime) {
+                                if (_self.pdata[i].deliverytime == 0) {
+                                    alert("亲！您选购的商品为次日配送商品，购物车里存在当日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
+                                    return false;
+                                } else if (_self.pdata[i].deliverytime == 1) {
+                                    alert("亲！您选购的商品为当日配送商品，购物车里存在次日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
+                                    return false;
+                                }
+                            }
+                        }
+					}
+                }
+                this.setCart(obj);
+                obj = {};
+                this.toastMessage = '加入购物车成功!',
+                this.toastShow = true;
 			}
         },
     }

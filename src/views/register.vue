@@ -70,6 +70,19 @@
 	font-size:14px;
 }
 
+	.wbox label {padding-left: 10px;
+		line-height: 2.1rem;}
+
+	.xieyi {
+		float: right;
+		display: block;
+		line-height: 4rem;
+		font-size: 15px;
+		margin-top: 5px;
+		color: #81c429;
+		margin-right:10px;
+	}
+
 </style>
 
 <template>
@@ -83,13 +96,18 @@
 		<x-input :show-clear="true" placeholder="请再次输入密码" type="password" :value.sync="data.cpwd"></x-input>
 	</group>
 	<!-- 底部选择 -->
-	<bottom-check title="我已阅读并同意" desc="《我够乐网使用协议》" :status.sync="data.check"></bottom-check>
+	<!--<div>-->
+		<!--<icon type="success" class="my-icon-chosen" v-show="item.is_default === 1"></icon>-->
+		<!--<icon type="circle" class="my-icon" v-show="item.is_default !== 1"></icon>-->
+	<!--</div>-->
+
+	<bottom-check style="width:43%;float:left;" title="我已阅读并同意" :status.sync="data.check"></bottom-check>
+	<a href="javascript:void(0);" class="xieyi">{{ data.xieyi }}商城使用协议</a>
 	<!-- 底部按钮 -->
 	<div class="btn-wrapper">
 		<x-button :text="btnText" :disabled="btnDis" @click="postData"></x-button>
 	</div>
 	<!-- 输入内容 -->
-
 	<!-- toast提示框 -->
 	<toast :show.sync="toastShow" type="text">{{ toastMessage }}</toast>
 </template>
@@ -115,8 +133,9 @@ export default{
 				ucode:'',
 				npwd:'',
 				cpwd:'',
-				check:false
-			}
+				check:true,
+                xieyi: '',
+			},
 		}
 	},
 	components: {
@@ -130,7 +149,14 @@ export default{
 		
 	},
 	ready() {
-		
+        this.$http.get(localStorage.apiDomain + 'public/index/index/xieyi').then((response)=>{
+            this.data.xieyi = response.data;
+            console.log(this.data.xieyi);
+        },(response)=>{
+            this.toastMessage = '网络开小差了~';
+            this.toastShow = true;
+            this.codeDis = false;
+        });
 	},
 	methods: {
 		getCode: function(){

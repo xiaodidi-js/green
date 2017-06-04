@@ -383,10 +383,11 @@
 		display:inline-block;
 		font-size:1.2rem;
 		vertical-align:middle;
-		width:33%;
+		width:25%;
 		white-space:nowrap;
 		text-overflow:ellipsis;
 		overflow:hidden;
+		text-align:center;
 	}
 
 	.pro-mes .deliver .son:nth-child(1){
@@ -397,9 +398,9 @@
 		text-align:center;
 	}
 
-	.pro-mes .deliver .son:nth-child(3){
-		text-align:right;
-	}
+	/*.pro-mes .deliver .son:nth-child(3){*/
+		/*text-align:right;*/
+	/*}*/
 
 	.fixed-tab{
 		/*position:fixed;*/
@@ -573,7 +574,7 @@
 		box-sizing: border-box;
 		padding-left: 14%;
 		margin-top: 15px;
-		display:none;
+		display:block;
 	}
 	.product_share_button{
 		width: 83%;
@@ -670,6 +671,10 @@
 		color:#333;
 	}
 
+	img {
+		display:block;
+	}
+
 </style>
 
 <style>
@@ -688,7 +693,6 @@
 	<!-- 顶部选项 -->
 
 	<!--<separator :set-height="44" unit="px"></separator>-->
-
 	<div class="my-swiper"> <!-- @touchstart="tslistener($event)" @touchend="telistener($event)" -->
 		<div id="scroller" class="ms-scroller" style="transform:translate3d(0px,0px,0px)">
 			<div class="ms-item">
@@ -701,31 +705,19 @@
 					<div class="title">{{ data.name }}</div>
 					<div class="desc">{{ data.description }}</div>
 					<div class="price nowrap" >
-						<template v-if="data.sale.nowshop.saledata != '' ">
+						<div class="price nowrap" v-if="data.is_promote || !data.sale">
 							<label class="unit">¥</label>
-							<span style="font-size:32px;">{{ data.sale.nowshop.saledata[0].saleprice }}</span>
-						</template>
-						<template v-else>
-							<div class="price nowrap" v-if="data.is_promote || !data.sale.nowshop">
-								<label class="unit">¥</label>
-								<span style="font-size:40px;">{{ data.price }}</span>
-								<div class="old">原价:¥ {{ data.starprice }}</div>
-							</div>
-							<div class="price nowrap" v-else>
-								<label class="unit">¥</label> {{ data.price }}
-							</div>
-						</template>
+							<span style="font-size:40px;">{{ data.price }}</span>
+							<div class="old">原价:¥ {{ data.starprice }}</div>
+						</div>
+						<div class="price nowrap" v-else>
+							<label class="unit">¥</label> {{ data.price }}
+						</div>
 					</div>
 					<div class="deliver">
 						<div class="son">快递：{{ makeFreight }}</div>
                         <div class="son">销量：{{ data.virtual_sale }}</div>
-                        <template v-if="data.sale.nowshop.saledata != '' ">
-                            <div class="son">库存：{{ data.sale.nowshop.saledata[0].salenub }}</div>
-                        </template>
-                        <template v-else>
-                            <div class="son">库存：{{ data.store }}</div>
-                        </template>
-
+                        <div class="son">库存：{{ data.store }}</div>
 					</div>
 
 					<!-- 分割线 -->
@@ -794,7 +786,7 @@
 							<div class="com-title">最新评价</div>
 							<div class="com-arrow"></div>
 						</div>
-						<div v-if="data.comments&&data.comments.length > 0">
+						<div v-if="data.comments && data.comments.length > 0">
 							<div class="com-line" v-for="cms in data.comments">
 								<div class="cname">{{ cms.uname }}</div>
 								<div class="cdate">{{ cms.createtime }}</div>
@@ -820,11 +812,9 @@
 					</div>
 					<!-- 推荐产品 -->
 					<div class="tuijian-box" style="display:none;" @touchstart.stop @touchend.stop v-show="data.commend">
-						<scroller v-ref:scroller lock-y :scrollbar-x="false">
-							<div id="scbox" class="tj-scroller">
-								<card-recommend :info="data.commend" :card-width="10"></card-recommend>
-							</div>
-						</scroller>
+						<div id="scbox" class="tj-scroller">
+							<card-recommend :info="data.commend" :card-width="10"></card-recommend>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -850,12 +840,7 @@
 				<img :src="data.shotcut" style="width:100%;height:100%;" alt="">
 			</div>
 			<div class="pmes">
-				<div v-if="data.is_promote || !data.sale.nowshop">
-					<div class="price">¥{{data.price}}</div>
-				</div>
-				<div v-else>
-					<div class="price">¥{{ data.sale.nowshop.saledata[0].saleprice }}</div>
-				</div>
+				<div class="price">¥{{data.price}}</div>
 				<div>库存{{proNums}}件</div>
 				<div class="dialog">{{ getGuigeName }}</div>
 			</div>
@@ -880,6 +865,7 @@
 			</div>
 		</div>
 	</div>
+
 </template>
 
 <script>
@@ -902,6 +888,9 @@
 	import Spinner from'components/spinner'
 	import WxJssdk from 'weixin-js-sdk'
 	import SeckillFloor from 'components/seckill-floor'
+    import axios from 'axios'
+    import qs from 'qs'
+
 
 	export default{
 		vuex: {
@@ -929,10 +918,11 @@
 				toastShow:false,
 				stoastMessage:'',
 				stoastShow:false,
-				data:{},
+				data:[],
                 toggle: true,
                 gotimeline: [],
-                seckillShow: false
+                seckillShow: false,
+				local:localStorage.apiDomain,
 			}
 		},
 		components: {
@@ -972,26 +962,23 @@
 			}else{
 				getUrl = localStorage.apiDomain+'public/index/index/productdetail/uid/0/pid/'+this.$route.params.pid;
 			}
-			var gg = null;
+            var _self = this;
 			this.$http.get(getUrl).then((response)=>{
 				this.data = response.data;
-				console.log(this.data);
-				var _self = this;
-				if(this.data.sale.nowshop == null) {
-					this.seckillShow = false;
-				} else {
-                    this.seckillShow = true;
-				}
                 if(!this.data.format){
 					this.proNums = this.data.store;
 				}
-				//微信分享
+                //判断是否活动商品
+//                this.data.sale == null ? this.seckillShow = false : this.seckillShow = true;
+                //判断是否分享商品
+//                this.data.share != null ? _self.activestu = 2 : _self.activestu = 0;
+                //微信分享
 				this.$http.get(localStorage.apiDomain+'public/index/index/wxshare').then((response)=>{
 					let getSession = response.data;
 					let shareData = {
 							title:this.data.name,
 							desc:this.data.description,
-							link:'http://'+window.location.host+'/vue/index_prod.html#!/detail/'+this.data.id,
+							link:'http://'+window.location.host+'/index_prod.html#!/detail/' + this.data.id,
 							imgUrl:this.data.shotcut
 						};
 					WxJssdk.config({
@@ -1015,8 +1002,62 @@
 						WxJssdk.onMenuShareQZone(shareData);
 						WxJssdk.onMenuShareQQ(shareData);
 					});
+
+					// 分享朋友圈
+					WxJssdk.onMenuShareTimeline({
+                        title: this.data.name, // 分享标题
+                        link:'http://'+window.location.host+'/index_prod.html#!/detail/'+this.data.id,
+                        imgUrl: this.data.shotcut, // 分享图标
+                        success: function () {
+                            alert("成功!");
+                            _self.$http.get(localStorage.apiDomain + 'public/index/index/addshare?uid=' + ustore.id + '&pid=' + _self.data.id + '&activeid=' + _self.data.activeid).then((response)=>{
+                                console.log(response.data.msg);
+                                console.log(response.data.msg);
+                                $(".addCar").attr("disabled",true);
+                            },(response)=>{
+                                this.toastMessage = '网络开小差了~';
+                                this.toastShow = true;
+                            });
+                        },
+					});
+
+					// 分享好友
+					WxJssdk.onMenuShareAppMessage({
+                        title: this.data.name, // 分享标题
+                        link:'http://'+window.location.host+'/index_prod.html#!/detail/'+this.data.id,
+                        imgUrl: this.data.shotcut, // 分享图标
+                        success: function () {
+                            alert("成功!");
+                            _self.$http.get(localStorage.apiDomain + 'public/index/index/addshare?uid=' + ustore.id + '&pid=' + _self.data.id + '&activeid=' + _self.data.activeid).then((response)=>{
+                                console.log(response.data.msg);
+                                console.log(response.data.msg);
+                                $(".addCar").attr("disabled",true);
+                            },(response)=>{
+                                this.toastMessage = '网络开小差了~';
+                                this.toastShow = true;
+                            });
+                        },
+					});
+
+                    // 分享QQ
+					WxJssdk.onMenuShareQQ({
+                        title: this.data.name, // 分享标题
+                        link:'http://'+window.location.host+'/index_prod.html#!/detail/'+this.data.id,
+                        imgUrl: this.data.shotcut, // 分享图标
+                        success: function () {
+                            alert("成功!");
+                            _self.$http.get(localStorage.apiDomain + 'public/index/index/addshare?uid=' + ustore.id + '&pid=' + _self.data.id + '&activeid=' + _self.data.activeid).then((response)=>{
+                                console.log(response.data.msg);
+                                console.log(response.data.msg);
+                                $(".addCar").css("background","#eee").attr("disabled",true);
+                            },(response)=>{
+                                this.toastMessage = '网络开小差了~';
+                                this.toastShow = true;
+                            });
+                        },
+					});
 					WxJssdk.error(function(res){
-						console.log(res.errMsg);
+                        console.log(res.errMsg);
 					});
 				},(response)=>{
 					console.log('get wx share failed.');
@@ -1044,6 +1085,11 @@
                         itemEle.style.lineHeight = "150px";
 					} else {
                         itemEle.innerHTML = scaleBox;
+                        var chil = itemEle.children;
+                        console.log(chil);
+                        for(var i in chil) {
+                            chil[i].style.display = "block";
+						}
 					}
 //                    document.getElementsByClassName('ms-item')[2].innerHTML = this.data.detail;
 				});
@@ -1121,6 +1167,7 @@
                 this.$http.get(localStorage.apiDomain+'public/index/sale/SaleTimeSolt/uid').then((response) => {
                     if(response.data.status===1) {
                         this.gotimeline = response.data.SaleTimeSolt;
+                        console.log(this.gotimeline);
                     } else if(response.data.status===-1) {
                         this.toastMessage = response.data.info;
                         this.toastShow = true;
@@ -1282,37 +1329,23 @@
                 let cartObj = {};
                 let cartFormat = this.guige.length > 0 ? this.guige.join(',') : '';
                 let cartFormatName = this.guige.length > 0 ? this.guigeName.join('-') : '';
-                if(this.data.sale.nowshop == null) {
-                    cartObj = {
-                        id:this.$route.params.pid,
-                        shotcut:this.data.shotcut,
-                        name:this.data.name,
-                        price:this.data.price,
-                        deliverytime:this.data.deliverytime,
-                        peisongok:this.data.peisongok,
-                        format:cartFormat,
-                        formatName:cartFormatName,
-                        nums:this.buyNums,
-                        store:this.proNums
-                    };
-                } else {
-                    cartObj = {
-                        id:this.$route.params.pid,
-                        shotcut:this.data.shotcut,
-                        name:this.data.name,
-                        price:this.data.sale.nowshop.saledata[0].saleprice,
-                        deliverytime:this.data.deliverytime,
-                        peisongok:this.data.peisongok,
-                        format:cartFormat,
-                        formatName:cartFormatName,
-                        nums:this.buyNums,
-                        store:this.proNums
-                    };
-                }
+                cartObj = {
+                    id:this.$route.params.pid,
+                    shotcut:this.data.shotcut,
+                    name:this.data.name,
+                    price:this.data.price,
+                    deliverytime:this.data.deliverytime,
+                    peisongok:this.data.peisongok,
+                    format:cartFormat,
+                    formatName:cartFormatName,
+                    nums:this.buyNums,
+                    store:this.proNums,
+                    activestu:this.data.activestu
+                };
                 var _self = this;
                 var shoping = JSON.parse(sessionStorage.getItem("myCart"));
                 if(this.data.peisongok == 0) {
-                    alert("抱歉，菜品已截单，请到首页选购菜品，谢谢合作！");
+                    alert("抱歉，当日配送商品已截单。请到次日配送专区选购，谢谢合作！");
                     _self.toastMessage = "";
                     _self.toastShow = false;
                     this.$router.go({name: 'index'});
@@ -1362,37 +1395,23 @@
                 let cartObj = {};
                 let cartFormat = this.guige.length > 0 ? this.guige.join(',') : '';
                 let cartFormatName = this.guige.length > 0 ? this.guigeName.join('-') : '';
-                if(this.data.sale.nowshop == null) {
-                    cartObj = {
-                        id:this.$route.params.pid,
-						shotcut:this.data.shotcut,
-						name:this.data.name,
-						price:this.data.price,
-                        deliverytime:this.data.deliverytime,
-                        peisongok:this.data.peisongok,
-						format:cartFormat,
-						formatName:cartFormatName,
-						nums:this.buyNums,
-						store:this.proNums
-                    };
-                } else {
-                    cartObj = {
-                        id:this.$route.params.pid,
-						shotcut:this.data.shotcut,
-						name:this.data.name,
-						price:this.data.sale.nowshop.saledata[0].saleprice,
-                        deliverytime:this.data.deliverytime,
-                        peisongok:this.data.peisongok,
-						format:cartFormat,
-						formatName:cartFormatName,
-						nums:this.buyNums,
-						store:this.proNums
-                    };
-                }
+                cartObj = {
+                    id:this.$route.params.pid,
+                    shotcut:this.data.shotcut,
+                    name:this.data.name,
+                    price:this.data.price,
+                    deliverytime:this.data.deliverytime,
+                    peisongok:this.data.peisongok,
+                    format:cartFormat,
+                    formatName:cartFormatName,
+                    nums:this.buyNums,
+                    store:this.proNums,
+                    activestu:this.data.activestu,
+                };
                 var _self = this;
                 var shoping = JSON.parse(sessionStorage.getItem("myCart"));
                 if(this.data.peisongok == 0) {
-                    alert("抱歉，菜品已截单，请到首页选购菜品，谢谢合作！");
+                    alert("抱歉，当日配送商品已截单。请到次日配送专区选购，谢谢合作！");
                     _self.toastMessage = "";
                     _self.toastShow = false;
 					sessionStorage.removeItem("myCart");
@@ -1401,12 +1420,12 @@
                 }
                 if(shoping != null) {
                     for(let i = 0; i < shoping.length; i++) {
-                        if (shoping[i]["deliverytime"] != this.data.deliverytime) {
-                            if (this.data.peisongok == 1 && this.data.deliverytime == 0) {
+                        if (shoping[i]["deliverytime"] != _self.data.deliverytime) {
+                            if (_self.data.peisongok == 1 && _self.data.deliverytime == 0) {
                                 alert("亲！您选购的商品为次日配送商品，购物车里存在当日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
                                 this.$router.go({name: 'cart'});
                                 return false;
-                            } else if (this.data.peisongok == 1 && this.data.deliverytime == 1) {
+                            } else if (_self.data.peisongok == 1 && _self.data.deliverytime == 1) {
                                 alert("亲！您选购的商品为当日配送商品，购物车里存在次日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！！");
                                 this.$router.go({name: 'cart'});
                                 return false;
@@ -1419,14 +1438,11 @@
                 cartFormat = null;
                 this.formatPopShow = false;
                 this.stoastMessage = '加入购物车成功';
-                this.stoastShow = false;
+                this.stoastShow = true;
             },
             filters: {
                 time: function (value) {
                     let d = new Date(parseInt(value) * 1000);
-                    var years = d.getFullYear();
-                    var moneths = d.getMonth();
-                    var dates = d.getDate();
                     var hours = d.getHours();
                     var minutes = d.getMinutes();
                     var seconds = d.getSeconds();

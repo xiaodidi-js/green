@@ -62,10 +62,11 @@
         text-align:left;
     }
     .list_footer {
-        width: 100%;
+        width: 65%;
         height:2.806rem;
         box-sizing:border-box;
         padding:0px 5px;
+        float:left;
     }
     .footer_money {
         width: 50%;
@@ -76,9 +77,8 @@
         float: left;
     }
     .footer_shopcar{
-        width: 50%;
-        height: 2.806rem;
-        line-height:2.806rem;
+        width: 25%;
+        height: 1.806rem;
         float: right;
         text-align:right;
     }
@@ -104,16 +104,18 @@
         </div>
         <div class="youlike_list">
             <ul>
-                <li v-for="item in likedate" v-link="{name:'detail',params:{pid:item.id}}">
-                    <div class="list_pirture">
-                        <img :src="item.shotcut"/>
-                    </div>
-                    <div class="list_value">{{ item.name }}</div>
-                    <div class="list_footer">
-                        <div class="footer_money">￥{{ item.price }}</div>
-                        <div class="footer_shopcar">
-                            <img src="../images/shopcar_youlike.png"/>
+                <li v-for="item in likedata">
+                    <div v-link="{name:'detail',params:{pid:item.id}}">
+                        <div class="list_pirture">
+                            <img :src="item.shotcut"/>
                         </div>
+                        <div class="list_value">{{ item.name }}</div>
+                        <div class="list_footer">
+                            <div class="footer_money">￥{{ item.price }}</div>
+                        </div>
+                    </div>
+                    <div class="footer_shopcar" @click="addCarts(item.id)">
+                        <img src="../images/shopcar_youlike.png"/>
                     </div>
                 </li>
                 <div style="clear:both;"></div>
@@ -121,13 +123,28 @@
         </div>
     </div>
     <!-- <猜你喜欢> -->
+
+    <!-- toast显示框 -->
+    <toast type="text" :show.sync="toastShow">{{ toastMessage }}</toast>
+
 </template>
 
 <script>
 
     import Scroller from 'vux/src/components/scroller'
+    import { setCartStorage } from 'vxpath/actions'
+    import { cartNums } from 'vxpath/getters'
+    import Toast from 'vux/src/components/toast'
 
     export default{
+        vuex: {
+            getters: {
+                cartNums
+            },
+            actions: {
+                setCart: setCartStorage
+            }
+        },
         props: {
             info: {
                 type: Array,
@@ -139,25 +156,95 @@
                 type: Number,
                 default: 0
             },
-            likedate: []
+            likedata: []
         },
         components: {
-            Scroller
+            Scroller,
+            Toast,
         },
         data() {
             return {
-
+                toastMessage: '',
+                toastShow: false,
+                proNums:1,
+                buyNums:1,
+                activestu:0
             }
         },
         ready() {
-            var _this = this;
-            this.$http.get(localStorage.apiDomain+'public/index/user/cainixihuan').then((response)=>{
-                _this.likedate = response.data.tuijian_shop;
-
-            },(response)=>{
-                this.toastMessage = '网络开小差了~';
+            this.listShop();
+        },
+        methods: {
+            listShop: function () {
+                var _this = this;
+                let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
+                ustore = JSON.parse(ustore);
+                this.$http.get(localStorage.apiDomain + 'public/index/user/cainixihuan/uid/' + ustore.id + '/token/' + ustore.token).then((response)=>{
+                    _this.likedata = response.data.tuijian_shop;
+                    console.log(_this.likedata);
+                },(response)=>{
+                    this.toastMessage = '网络开小差了~';
+                    this.toastShow = true;
+                });
+            },
+            addCarts: function (id) {
+                var obj = {};
+                var _self = this;
+                if(this.proNums <= 0) {
+                    this.toastMessage = '商品暂时缺货';
+                    this.toastShow = true;
+                    return false;
+                }else if(this.buyNums < 1) {
+                    this.toastMessage = '购买数量不能小于1';
+                    this.toastShow = true;
+                    return false;
+                }else if(this.buyNums > this.proNums) {
+                    this.toastMessage = '购买数量超过库存数量';
+                    this.toastShow = true;
+                    return false;
+                }
+                for(let i in this.likedata) {
+                    this.likedata[i].index = i;
+                    if (id == this.likedata[i].id) {
+                        obj = {
+                            id:id,
+                            name:this.likedata[i].name,
+                            price:this.likedata[i].price,
+                            shotcut:this.likedata[i].shotcut,
+                            deliverytime:this.likedata[i].deliverytime,
+                            store:this.proNums,
+                            nums:this.buyNums,
+                            format:'',
+                            formatName:'',
+                        };
+                    }
+                    var cart = JSON.parse(sessionStorage.getItem("myCart"));
+                    if(this.likedata[i].peisongok == 0) {
+                        alert("抱歉，菜品已截单，请到首页选购菜品，谢谢合作！");
+                        _self.toastMessage = "";
+                        _self.toastShow = false;
+                        return false;
+                    }
+                    if(sessionStorage.getItem("myCart") != '') {
+                        for(var y = 0; y < cart.length;y++) {
+                            if (cart[y]["deliverytime"] != this.likedata[i].deliverytime) {
+                                if (this.likedata[i].deliverytime == 0) {
+                                    alert("亲！您选购的商品为次日配送商品，购物车里存在当日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
+                                    return false;
+                                } else if (this.likedata[i].deliverytime == 1) {
+                                    alert("亲！您选购的商品为当日配送商品，购物车里存在次日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！！");
+                                    return false;
+                                }
+                            }
+                        }
+                    }
+                }
+                this.setCart(obj);
+                obj = {};
+                this.toastMessage = "成功加入购物车!";
                 this.toastShow = true;
-            })
+                this.$router.go({name : "cart"});
+            }
         }
     }
 </script>

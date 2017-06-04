@@ -1,27 +1,30 @@
 <style scoped>
 
 	.card-box{
-		width:32%;
+		width:31.1%;
 		height:auto;
-		margin:0% 1% 0% 0%;
+		margin:0rem 0rem 1rem 0.5rem;
 		background-color:#fff;
 		display:inline-block;
 		font-size:1.6rem;
 		color:#333;
+		float:left;
 		/*box-shadow:1px 1px 2px #e2e2e2;*/
+	}
+
+	.card-box:nth-of-type(1) {
+		margin-right:0.39rem;
 	}
 
 	.card-box:last-child{
 		margin-right:0%;
 	}
 
-	.img{
+	.card-box .img{
 		width:99%;
 		padding-top:90%;
-		/*margin:5%;*/
 		background-position:center;
 		background-size:cover;
-		background-repeat:none;
 		background-color:#e4e4e4;
 	}
 

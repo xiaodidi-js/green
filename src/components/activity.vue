@@ -54,11 +54,11 @@
                 <div style="margin:0px 10px 10px;">
                     <a href="javascript:void(0);" class="activity-text" @click="goActivity()"> <!-- v-link="{name:'activity-event',params:{pid:item.id}}" -->
                         <div class="activity-img">
-                            <img :src="item.img" alt="" style="width:100%;height:185px;" />
+                            <img :src="item.img" alt="" style="width:100%;height:100%;" />
                         </div>
                         <div style="position: relative">
                             <span class="act-title">{{ item.title }}</span>
-                            <span class="activity-data">2017-1-1</span>
+                            <span class="activity-data">{{ item.createtime | time }}</span>
                             <div class="arrow"></div>
                         </div>
                     </a>
@@ -82,16 +82,19 @@
         },
         data() {
             return {
-                order_Class: {
-                    cancel_Order: '取消订单',
-                    to_Pay: '去付款',
-                    view_Logistics: '查看物流',
-                    Confirm_receipt: '确认收货',
-                    delete_Order: '删除订单',
-                    customer_Reviews: '客户评价',
-                    buy_Again: '再次购买'
-                },
                 data: []
+            }
+        },
+        filters: {
+            time: function (value) {
+                let d = new Date(parseInt(value) * 1000);
+                var years = d.getFullYear();
+                var month = d.getMonth() + 1;
+                var days = d.getDate();
+                var hours = d.getHours();
+                var minutes = d.getMinutes();
+                var seconds = d.getSeconds();
+                return years + "-" + month + "-" + days;
             }
         },
         ready() {
@@ -99,10 +102,11 @@
         },
         methods: {
             goActivity:function () {
+                var _self = this;
                 this.$router.go({
                     name:'activity-event',
                     params:{
-                        arr:this.myVipMessage(response.data.articles.list)
+                        arr:this.myVipMessage(this.data)
                     }
                 });
             },
@@ -110,7 +114,6 @@
                 this.$http.get(localStorage.apiDomain + 'public/index/index/productinfo').then((response)=>{
                     this.data = response.data.articles.list;
                     console.log(this.data);
-
                 },(response)=>{
                     this.toastMessage = '网络开小差了~';
                     this.toastShow = true;

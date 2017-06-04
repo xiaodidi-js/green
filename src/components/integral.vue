@@ -32,6 +32,18 @@
         margin:0px 10px;
         font-size: 14px;
     }
+
+    .integral-head .sign {
+        margin:10px auto;
+        display: block;
+        width: 10rem;
+        height: 3rem;
+        border:1px solid #81c429;
+        background: #81c429;
+        color:#fff;
+        border-radius:5px;
+    }
+
     /* integral-head end */
 
     /* integral-tab start */
@@ -132,6 +144,7 @@
             </p>
             <i class="integral-number">{{ integral.amount }}</i>
         </div>
+        <button class="sign" @click="singclick()">签到积分</button>
         <p class="integral-h5">小积分大用途，通过每日签到和订单评价获取更多积分</p>
     </div>
     <div class="integral-tab">
@@ -147,14 +160,18 @@
         <div id="all" class="body-list">
             <ul>
                 <li  v-for="item in integral">
-                    <div class="all-date">
-                        <p>签到</p>
-                        <p>{{ item.createtime | time }}</p>
+                    <div v-if="item.status == 1">
+                        <div class="all-date">
+                            <p>签到</p>
+                            <p>{{ item.createtime | time }}</p>
+                        </div>
+                        <div class="add-number">{{ item.amount }}</div>
                     </div>
-                    <div class="add-number">{{ item.amount }}</div>
                 </li>
             </ul>
+
         </div>
+
         <!-- 签到积分 -->
         <template v-for="item in integral">
             <div id="sign" class="body-list">
@@ -226,10 +243,12 @@
             }
         },
         methods: {
+            singclick: function() {
+                alert("敬请期待~~");
+            },
             personalfun: function() {
                 let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
                 ustore = JSON.parse(ustore);
-                console.log(ustore);
                 let _this = this;
                 this.$http.get(localStorage.apiDomain+'public/index/Usercenter/integral/uid/' + ustore.id + '/token/' + ustore.token).then((response)=>{
                     _this.integral = response.data.list;
@@ -269,13 +288,6 @@
                         //同辈元素互斥
                         _this.siblings(this,function(){
                             this.className = "";
-                        });
-                        //把对应的选项卡的内容显示出来
-                        var tabDom = document.getElementById("content").children[this.index];
-                        tabDom.style.display = "block";
-                        //拿它的父亲对象
-                        _this.siblings(tabDom,function(){
-                            this.style.display = "none";
                         });
                     };
                 }

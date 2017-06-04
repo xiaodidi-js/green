@@ -157,11 +157,11 @@
 <template>
 	<div class="container">
 		<div class="top-message white-bg">
-			<div class="shotcut" :style="{backgroundImage:'url('+uimg+')'}" @click="addShotcut">
+			<div class="shotcut" :style="{backgroundImage:'url('+ headerIcon.headimgurl +')'}">
 				<span v-show="upsta"></span>
 				<img src="../images/loading.svg" v-show="upsta">
 			</div>
-			<div class="nickname">{{ uname }}</div>
+			<div class="nickname">{{ headerIcon.nickname }}</div>
 			<div class="score" v-link="{name:'integral'}">
 				<span>签到积分:</span>
 				<span>{{ uscore }}</span>
@@ -214,10 +214,12 @@
 				upsta:0,
 				uimg:'',
 				uname:'',
-				uscore:0
+				uscore:0,
+				headerIcon: '',
 			}
 		},
 		ready() {
+            this.weixinHeader();
 		    //记录索引
             this.myActive(1);
 			let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
@@ -249,6 +251,21 @@
 			});
 		},
 		methods: {
+		    weixinHeader: function () {
+                let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
+                ustore = JSON.parse(ustore);
+                let openid = sessionStorage.getItem("openid");
+                this.$http.get(localStorage.apiDomain + 'public/index/index/get_weixin?openid=' + openid).then((response)=>{  /* 'os0CqxBBANhLuBLTsViL3C0zDlNs' */
+					this.headerIcon = response.data.msg.weixindata;
+                    console.log(this.headerIcon);
+                    var header = JSON.stringify(this.headerIcon);
+                    localStorage.setItem("userHeader",header);
+                },(response)=>{
+                    this.toastMessage = "网络开小差啦~";
+                    this.toastShow = true;
+                    this.upsta = 0;
+                });
+            },
 			addShotcut: function(){
 				if(this.upsta){
 					return false;

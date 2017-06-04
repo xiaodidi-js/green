@@ -17,17 +17,17 @@
 	}
 
 	.bl-wrapper .line-bottom{
-		border-bottom:none;
-		font-size:1.4rem;
-		color:#808080;
-		text-align:right;
-		letter-spacing:0.1rem;
-		white-space:nowrap;
-		text-overflow:ellipsis;
-		overflow:hidden;
+		border-bottom: none;
+		font-size: 1.4rem;
+		color: #808080;
+		text-align: right;
+		letter-spacing: 0.1rem;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
 		background: #fff;
-		padding: 4% 4% 4% 0%;
-		line-height:3rem;
+		padding: 2% 4% 2% 0%;
+		line-height: 3rem;
 	}
 
 	.bl-wrapper .line-bottom .todaybtn {

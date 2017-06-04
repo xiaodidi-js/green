@@ -41,6 +41,7 @@
 		display:inline-block;
 		vertical-align:middle;
 		width:33%;
+		height: 8.4rem;
 		margin-right:2%;
 		background-color:#eee;
 		background-repeat:no-repeat;
@@ -179,7 +180,7 @@
 				<img :src="img" style="width:100%;height:100%;" alt="" />
 			</div>
 			<div class="mes">
-				<div class="name">{{ pname }} {{ pdelivery }} </div>
+				<div class="name">{{ pname }}</div>
 				<div class="format" v-if="pfname == ''">&nbsp;</div>
 				<div class="format" v-else>{{ pfname }}</div>
 				<div class="money">
@@ -288,7 +289,6 @@
 				if(this.chosen.length > 0) {
 					for(let ch = 0;ch < this.chosen.length; ch++) {
 						if(this.chosen[ch].id == this.pid && this.chosen[ch].format == this.pformat) {
-
 							obj['active'] = true;
 							break;
 						} else {
@@ -352,6 +352,7 @@
 				}
 			},
 			confirmDel: function(){
+			    console.log(this.pid,this.pformat);
 				this.delSingle(this.pid,this.pformat);
 			}
 		}

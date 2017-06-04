@@ -287,7 +287,9 @@
 					支付方式：<label v-if="data.order.paytype == 1">微信支付</label><label v-else>支付宝支付</label>
 				</div>
 				<div class="sta-line">
-					订单总计：<label>￥{{ data.order.money }} （含运费 ￥{{ data.order.freight }}）</label>
+					<span>订单总计：</span>
+					<label>￥{{ data.order.money }} （含运费 ￥{{ data.order.freight }}）</label>
+
 				</div>
 				<div class="sta-line" style="color:#c40000">
 					配送时间：<label class="peisongdate">{{ stime | time}}</label>
@@ -317,9 +319,7 @@
 				<div class="icon"></div>
 				<div class="content address">
 					<div class="aname">{{ data.order.person }} {{ data.order.tel }}</div>
-					<div class="astr">
-						{{ data.order.address }}
-					</div>
+					<div class="astr">{{ data.order.address }}</div>
 				</div>
 			</div>
 		</div>
@@ -327,7 +327,7 @@
 		<!-- 商品列表 -->
 		<balance-list :list="data.products" :show-top="true" :show-btm="false"></balance-list>
 
-		<div class="comment" v-if="data.order.pay==1&&data.order.receive==1">
+		<div class="comment" v-if="data.order.pay == 1 && data.order.receive == 1">
 			<a v-if="data.order.comment==1" v-link="{name:'comment-detail',params:{oid:this.$route.params.oid}}">查看评价</a>
 			<a v-else v-link="{name:'comment-submit',params:{oid:this.$route.params.oid}}">我要评价</a>
 		</div>
@@ -421,12 +421,13 @@ export default{
 	ready() {
 		let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
 		ustore = JSON.parse(ustore);
-		this.$http.get(localStorage.apiDomain+'public/index/user/getsubmitorder/uid/'+ustore.id+'/token/'+ustore.token+'/oid/'+this.$route.params.oid).then((response)=>{
-			if(response.data.status===1) {
+		this.$http.get(localStorage.apiDomain+'public/index/user/getsubmitorder/uid/' + ustore.id + '/token/' + ustore.token + '/oid/' + this.$route.params.oid).then((response)=>{
+			if(response.data.status === 1) {
 				this.data.pindex = response.data.pindex;
 				this.data.process = response.data.process;
 				this.data.order = response.data.order;
 				this.data.products = response.data.products;
+                console.log(this.data.products);
 				for(let i in this.data.products) {
                     this.stime = this.data.products[i].stime;
 				}
@@ -604,6 +605,7 @@ export default{
     },
 	events: {
 		payOrder: function(){
+            this.$router.go({name: 'order-detail'});
 			this.btnStatus = true;
 			switch(this.data.order.paytype){
 				case 1:
@@ -688,7 +690,7 @@ export default{
 			this.loadingShow = true;
 			let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
 			ustore = JSON.parse(ustore);
-			this.$http.get(localStorage.apiDomain + 'public/index/user/orderoperation/uid/'+ustore.id+'/token/'+ustore.token+'/oid/'+this.$route.params.oid).then((response)=>{
+			this.$http.get(localStorage.apiDomain + 'public/index/user/orderoperation/uid/' + ustore.id + '/token/' + ustore.token + '/oid/' + this.$route.params.oid).then((response)=>{
 				this.loadingShow = false;
 				this.btnStatus = false;
 				if (response.data.status === 1) {

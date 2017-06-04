@@ -48,7 +48,7 @@
 
 	.ui_box .img{
 		width:100%;
-		height:15rem;
+		height:16rem;
 	}
 
 	.wrapper .ui_box .mes{
@@ -82,7 +82,7 @@
 </style>
 
 <template>
-	<div class="wrapper" style="padding-top:50px;">
+	<div class="wrapper" style="padding:50px 0px 20px;">
 		<template v-for="item in arr">
 			<div class="ui_box" v-link="{name:'detail',params:{pid:item.id}}">
 				<div class="img"> <!--  v-lazy:background-image="item.src" -->

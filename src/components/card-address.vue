@@ -31,8 +31,8 @@
 	.card-box .half-div .icon{
 		display:inline-block;
 		vertical-align:middle;
-		width:1.6rem;
-		height:1.6rem;
+		width: 1.8rem;
+		height: 1.8rem;
 	}
 
 	.card-box .half-div .icon.img{
@@ -176,10 +176,24 @@
 		top:50px;
 	}
 
-	#ziti .main_ziti .address{width:98%;height:auto;background:#FEFEFE;overflow:hidden;position:relative;margin:0 auto;margin-bottom:1.16rem;}
+	#ziti .main_ziti .address{
+		width:98%;
+		height:auto;
+		background:#FEFEFE;
+		overflow:hidden;
+		position:relative;
+		margin:0 auto;
+		margin-bottom:1.16rem;
+	}
 
 	#ziti .main_ziti .isActive {
-		width:98%;height:auto;background:#81c429;overflow:hidden;position:relative;margin:0 auto;margin-bottom:1.16rem;
+		width:98%;
+		height:auto;
+		background:#81c429;
+		overflow:hidden;
+		position:relative;
+		margin:0 auto;
+		margin-bottom:1.16rem;
 	}
 
 	.isActive .address_list li {
@@ -201,13 +215,11 @@
 	.address_list li .left-title {
 		/*width:23%;*/
 		/*float:left;*/
-
 	}
 
 	.address_list li .right-title {
 		/*width:58%;*/
 		/*float:left;*/
-
 	}
 
 	.yuan {
@@ -271,10 +283,10 @@
 		<!-- 快递地址 -->
 		<div id="cardbox" style="display:none;position: relative;top: 60px;">
 			<div class="card-box" v-for="item in addresses" style="background: #f2f2f2;box-shadow: none;border:none;">
-				<div class="half-div">{{ item.name }}</div>
+				<div class="half-div" style="float: left;">{{ item.name }}</div>
 				<div class="half-div text-right">{{ item.tel }}</div>
 				<div class="address" style="background:none">{{ item.address }}</div>
-				<div class="half-div" @click="setDefault($index,item.id)">
+				<div class="half-div" @click="setDefault($index,item.id)" style="float: left;">
 					<icon type="success" class="my-icon-chosen" v-show="item.is_default === 1"></icon>
 					<icon type="circle" class="my-icon" v-show="item.is_default !== 1"></icon>
 					<i>默认地址</i>
@@ -343,6 +355,14 @@
 		ready() {
 			this.siblingsDom();
 			this.chosenfun();
+//			var act = $("#card").find("li").eq(0).attr('class');
+//			if(act == 'active') {
+//				$("#card").find("li").eq(0).removeClass("active");
+//			} else {
+//                $("#card").find("li").eq(1).addClass(this.$store.state.text);
+//			}
+//			console.log(act);
+//			console.log(this.$store.state.text);
 		},
 		methods: {
 			isActiveFun: function() {

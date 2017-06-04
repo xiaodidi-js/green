@@ -1,20 +1,20 @@
 <style scoped>
 
 	.fixed-tab{
-		position:fixed;
-		top:210px;
-		left:0;
+		/*position:fixed;*/
+		/*top:210px;*/
+		/*left:0;*/
 		width:100%;
-		z-index:100;
+		/*z-index:100;*/
 	}
 
 	.sub-content .imgs {
 		width: 100%;
 		height: 164px;
 		margin-top: 46px;
-		position: fixed;
-		top: 0px;
-		left: 0px;
+		/*position: fixed;*/
+		/*top: 0px;*/
+		/*left: 0px;*/
 	}
 
 </style>
@@ -31,7 +31,7 @@
 			<tab-item :selected="column === 'new'" @click="changeColumn('new')">新品</tab-item>
 			<tab-item :selected="column === 'price'" @click="changeColumn('price')">价格</tab-item>
 		</tab>
-		<separator :set-height="90" unit="px"></separator>
+		<!--<separator :set-height="90" unit="px"></separator>-->
 		<!-- 分类列表 -->
 		<card-square style="padding-bottom: 100px;" :info="data" :no-padding="true"></card-square>
 		<!-- toast提示框 -->
@@ -46,6 +46,7 @@
     import CardSquare from 'components/card-square'
     import Toast from 'vux/src/components/toast'
     import Separator from 'components/separator'
+
     export default {
         data() {
             return {

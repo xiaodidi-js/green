@@ -130,11 +130,11 @@
 		line-height:3.64rem;
 	}
 	.watch_more {
-		position:absolute;
-		right:1.5rem;
-		top:3.2rem;
-		color:#b3b3b3;
-		font-size:13px;
+		position: absolute;
+		right: 1.5rem;
+		top: 2.6rem;
+		color: #b3b3b3;
+		font-size: 13px;
 	}
 
 	.buy {
@@ -143,7 +143,7 @@
 		position: relative;
 		font-size: 14px;
 		background: #fff;
-		padding: 10px 0px;
+		padding: 5px 0px;
 	}
 
 	.content {
@@ -158,7 +158,7 @@
 		background: #fff;
 		float: left;
 		text-align: center;
-		margin: 5px 2.4px;
+		margin: 5px 2.1px;
 	}
 	.content .box-list .main-title {
 		color:#ff1d25;

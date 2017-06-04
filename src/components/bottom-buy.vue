@@ -109,6 +109,7 @@
 
 	.bottom-buy>div.btn.doBuy{
 		background-color:#81c429;
+
 	}
 
 	.bottom-buy>div.btn.doBuy:active{
@@ -135,6 +136,19 @@
 		left:0;
 		z-index:100;
 	}
+
+	.doBuyButton {
+		display:block;
+		width:35%;
+		height:4.5rem;
+		line-height: 4.5rem;
+		float:right;
+		background: #F9AD0C;
+		border:1px solid #f9ad0c;
+		color:#fff;
+		font-size:14px;
+	}
+
 </style>
 
 <template>
@@ -149,7 +163,7 @@
 			<div class="bage" v-show="bage > 0">{{ bage }}</div>
 		</div>
 		<div class="btn doBuy" @click="clickBuy" v-show="store > 0">立即购买</div>
-		<div class="btn addCar" @click="clickCart" v-show="store > 0">加入购物车</div>
+		<button class="btn addCar doBuyButton" @click="clickCart" v-show="store > 0">加入购物车</button>
 		<div class="btn noBuy" v-show="store <= 0">暂时缺货</div>
 	</div>
 </template>

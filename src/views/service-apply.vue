@@ -110,7 +110,7 @@
 </style>
 
 <template>
-	<div class="com-wrapper">
+	<div class="com-wrapper" style="margin-top: 46px;">
 		<!-- 头部时间 -->
 		<div class="htimer nowrap">成交时间:{{ data.createtime }}</div>
 		<!-- 评价详情 -->

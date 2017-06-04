@@ -26,6 +26,10 @@
 	.card-box .top-line,.card-box .btm-line{
 		height:auto;
 		line-height:2.5rem;
+
+		/* height:3.5rem;
+		line-height:3.2rem; */
+
 	}
 
 	.card-box .top-line,.card-box .mid-line,.card-box .btm-line{
@@ -136,14 +140,14 @@
 		<div class="card-box" v-for="item in orders">
 			<div class="top-line">
 				<div class="date">{{ item.createtime }}</div>
-				<div class="status" v-if="item.pay==0&&item.send==0&&item.receive==0&&item.status==0">待付款</div>
-				<div class="status" v-if="item.pay==1&&item.send==0&&item.receive==0&&item.status==0">待发货</div>
-				<div class="status" v-if="item.pay==1&&item.send==1&&item.receive==0&&item.status==0">待收货</div>
-				<div class="status" v-if="item.reject==0&&item.status==1">交易完成</div>
-				<div class="status" v-if="item.reject==0&&item.status==-1">已取消</div>
-				<div class="status" v-if="item.reject==0&&item.status==-2">申请售后</div>
-				<div class="status" v-if="item.reject==0&&item.status==-3">已关闭</div>
-				<div class="status" v-if="item.reject==1">已退货</div>
+				<div class="status" v-if="item.pay ==0 && item.send == 0 && item.receive == 0 && item.status == 0">待付款</div>
+				<div class="status" v-if="item.pay ==1 && item.send == 0 && item.receive == 0 && item.status == 0">待发货</div>
+				<div class="status" v-if="item.pay ==1 && item.send == 1 && item.receive == 0 && item.status == 0">待收货</div>
+				<div class="status" v-if="item.reject == 0 && item.status == 1">交易完成</div>
+				<div class="status" v-if="item.reject == 0 && item.status == -1">已取消</div>
+				<div class="status" v-if="item.reject == 0 && item.status == -2">申请售后</div>
+				<div class="status" v-if="item.reject == 0 && item.status == -3">已关闭</div>
+				<div class="status" v-if="item.reject == 1">已退货</div>
 			</div>
 			<div class="mid-line" v-link="{name:'order-detail',params:{oid:item.id}}">
 				<div class="imgs" v-for="img in item.imgs"> <!--  v-lazy:background-image="img" -->
@@ -168,6 +172,9 @@
 					<a class="manage-btn"
 					   v-if="item.pay==1&&(item.send==1||item.send==0)&&item.reject==0 || item.status==1"
 					   @click="buyAgain(item.id)">再次购买</a>
+
+					<a class="manage-btn" v-if="item.reject == 0 && item.status == 1"
+					   v-link="{name:'comment-submit',params:{oid:item.id}}">客户评价</a>
 
 				</div>
 			</div>

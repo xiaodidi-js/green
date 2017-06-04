@@ -57,3 +57,8 @@ export const mySearch = function ({dispatch}, shopname) {
 export const myVipMessage = function ({dispatch}, message) {
     dispatch('myVipMessage', message);
 }
+
+//搜索商品
+export const myActiveTwo = function ({dispatch}, text) {
+    dispatch('myActiveTwo', text);
+}

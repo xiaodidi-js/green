@@ -103,7 +103,7 @@
 			<img src="../images/logo_lv.png" alt="" style="width:40px;height:40px;margin: 5px 15px;" />
 		</div>
 		<div class="search" style="width:65%;position:relative;left:12px;">
-			<input type="text" placeholder="请输入您要搜索的商品" v-model="searchKey" />
+			<input type="text" placeholder="请输入您要搜索的商品" v-model="searchKey" @keydown="breakSearch()" />
 			<input type="button" class="order-search-btn" @click="goSearch()" value="搜索" />
 		</div>
 		<div class="customer">
@@ -179,7 +179,6 @@
 		ready() {
 			this.indexMessage();
             this.timeline();
-            // 按钮淡入淡出
             $(window).scroll(function(){
                 if($(window).scrollTop() >= 350){
                     $(".goto_top").fadeIn(500);
@@ -192,11 +191,20 @@
                     scrollTop:0
                 },200);
             });
+            this.breakSearch();
 		},
         methods: {
+		    //按钮回车事件
+            breakSearch: function (event) {
+				var e = window.event || event;
+				if(e && e.keyCode == 13) {
+					console.log(1);
+					this.goSearch();
+				}
+            },
             goSearch: function() {
                 var _self = this;
-                this.$http.get(localStorage.apiDomain + '/public/index/index/searchshop?shopname=' + this.searchKey).then((response)=>{
+                this.$http.get(localStorage.apiDomain + 'public/index/index/searchshop?shopname=' + this.searchKey).then((response)=>{
                     console.log(response.data.info.data);
                     let arr = [];
                     arr = response.data.info;
@@ -248,9 +256,10 @@
                 let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
                 ustore = JSON.parse(ustore);
                 var _this = this;
-                this.$http.get(localStorage.apiDomain+'public/index/sale/SaleTimeSolt/uid').then((response) => {
+                this.$http.get(localStorage.apiDomain + 'public/index/sale/SaleTimeSolt/uid').then((response) => {
                     if(response.data.status===1) {
                         this.maincolumns = response.data.SaleTimeSolt;
+                        console.log(this.maincolumns);
                     } else if(response.data.status===-1) {
                         this.toastMessage = response.data.info;
                         this.toastShow = true;

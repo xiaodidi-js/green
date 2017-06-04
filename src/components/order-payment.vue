@@ -3,13 +3,13 @@
         width:100%;
         padding:0;
         font-size:0;
-        margin-top: 27px;
+        /*margin-top: 27px;*/
     }
 
     .card-box{
         width:96%;
         height:auto;
-        margin:0% 0% 2% 0%;
+        margin:0% 0% 3% 0%;
         background-color:#fff;
         display:block;
         font-size:0;
@@ -131,7 +131,7 @@
 </style>
 
 <template>
-    <div class="wrapper" id="cardOrder" style="margin: 93px auto 0px;width: 97%;">
+    <div class="wrapper" id="cardOrder" style="margin: 5px auto 0px;width: 97%;">
         <div class="card-box" v-for="item in orders">
             <div class="top-line">
                 <div class="date">{{ item.createtime }}</div>
@@ -157,16 +157,26 @@
                 <div class="button">
 
                     <a class="manage-btn"
-                       v-if="item.pay==0&&item.send==0&&item.receive==0&&item.status==0"
+                       v-if="item.pay == 0 && item.send == 0 && item.receive == 0 && item.status == 0"
                        v-link="{name:'order-detail',params:{oid:item.id}}">去付款</a>
 
                     <a class="manage-btn"
-                       v-if="item.pay==1&&item.send==1&&item.receive==0&&item.status==0"
+                       v-if="item.pay == 1 && item.send == 1 && item.receive == 0 && item.status == 0"
                        @click="clickExpress(item.scid,item.snum)">查看快递</a>
 
                     <a class="manage-btn"
-                       v-if="item.pay==1&&(item.send==1||item.send==0)&&item.reject==0 || item.status==1"
+                       v-if="item.pay == 1 && item.send == 1 && item.receive == 0 && item.status == 0"
+                       @click="clickConfirm()">确认收货</a>
+
+                    <a class="manage-btn"
+                       v-if="item.pay == 1 && (item.send == 1 || item.send == 0) && item.reject == 0 || item.status == 1"
                        @click="buyAgain(item.id)">再次购买</a>
+
+                    <a class="manage-btn" v-if="item.reject == 0 && item.status == 1"
+                       v-link="{name:'service-apply',params:{oid:item.id}}">申请售后</a>
+
+                    <a class="manage-btn" v-if="item.reject == 0 && item.status == 1"
+                       v-link="{name:'comment-submit',params:{oid:item.id}}">客户评价</a>
 
                 </div>
             </div>
@@ -234,9 +244,29 @@
             myConfirmClcik: function(id) {
                 let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
                 ustore = JSON.parse(ustore);
-                console.log(1);
                 switch(this.clickType) {
                     case 1:
+                        let pdata = {uid:ustore.id,token:ustore.token,oid:id};
+                        this.$http.put(localStorage.apiDomain + 'public/index/user/orderoperation',pdata).then((response)=>{
+                            this.$router.go({name:'order-type'});
+                            if(response.data.status === 1) {
+                                console.log(response.data);
+                            }else if(response.data.status===-1) {
+                                let context = this;
+                                setTimeout(function(){
+                                    context.clearAll();
+                                    sessionStorage.removeItem('userInfo');
+                                    localStorage.removeItem('userInfo');
+                                    context.$router.go({name:'login'});
+                                },800);
+                            }
+                        },(response)=>{
+                            this.loadingShow = false;
+                            this.btnStatus = false;
+                            this.toastMessage = '网络开小差了~';
+                            this.toastShow = true;
+                        });
+                    case 2:
                         let d = {uid:ustore.id,token:ustore.token,oid:id};
                         this.$http.delete(localStorage.apiDomain + 'public/index/user/getsubmitorder/uid/' + ustore.id + '/token/' + ustore.token + '/oid/' + id).then((response)=>{
                             if(response.data.status === 1) {
@@ -304,12 +334,25 @@
                 location.href='http://www.kuaidi100.com/chaxun?com='+scid+'&nu='+snum;
             },
             clickCancel: function(){
-                this.clickType = 1;
+                this.clickType = 2;
                 this.confirmTitle = '取消订单';
                 this.confirmText = '确定取消该订单吗,确认?';
                 this.btnStatus = true;
                 this.confirmShow = true;
-            }
+            },
+            clickConfirm: function () {
+                this.clickType = 1;
+                this.confirmTitle = '确认收货';
+                this.confirmText = '请在收到货物后才确认收货,确认?';
+                this.btnStatus = true;
+                this.confirmShow = true;
+            },
+            cancelClick: function() {
+                this.btnStatus = false;
+                this.clickType = 0;
+                this.confirmTitle = '';
+                this.confirmText = '';
+            },
         }
     }
 </script>

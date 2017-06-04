@@ -133,15 +133,19 @@ export default{
 			return true;
 		},
 		postData: function(){
-			if(this.checkBefore()===false){
+		    var self = this;
+			if(this.checkBefore() === false){
 				this.toastMessage = '请填写登录账号和密码';
 				this.toastShow = true;
 				return false;
 			} else {
 			    if(this.data.auto === false) {
-                    this.toastMessage = '请选择是否下次自动登录';
-                    this.toastShow = true;
-                    return false;
+			        setInterval(function(){
+                        self.btnText = '请选择是否下次自动登录';
+                        self.toastShow = true;
+					},1000);
+				} else if(this.data.auto === true) {
+                    self.toastShow = false;
 				}
 				this.btnText = '正在登录...';
 				this.btnDis = true;

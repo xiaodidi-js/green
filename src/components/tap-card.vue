@@ -147,20 +147,18 @@
 			</div>
 		</div>
 		<!-- 底部切换swiper -->
-		<swiper :index.sync="index" :show-dots="false" class="my-vux-swiper" style="z-index: 1;">
-			<swiper-item v-for="item in gotimeline">
-				<!-- 顶部标题 -->
-				<div class="words">
-					<label class="title">限时限量 疯狂抢购</label>
-					<label class="timer">
-						<timer-countdown :time="item.etime - item.servertime" desc="下场开始还有" end="" keep-alive></timer-countdown>
-					</label>
-				</div>
-				<!-- 外层scroller -->
-				<!-- 产品列表 -->
-				<card-rush :rushproducts="gotimeline" v-if="item.nowsale == 0 || item.nowsale == 1 || item.nowsale == 2"></card-rush>
-			</swiper-item>
-		</swiper>
+		<template v-for="item in gotimeline">
+			<!-- 顶部标题 -->
+			<div class="words">
+				<label class="title">限时限量 疯狂抢购</label>
+				<label class="timer">
+					<!--<timer-countdown :time="item.etime - item.servertime" desc="下场开始还有" end="" keep-alive></timer-countdown>-->
+				</label>
+			</div>
+			<!-- 外层scroller -->
+			<!-- 产品列表 -->
+			<card-rush :rushproducts="gotimeline" v-if="item.nowsale == 0 || item.nowsale == 1 || item.nowsale == 2"></card-rush>
+		</template>
 	</div>
 </template>
 <script>
@@ -225,18 +223,18 @@
                 this.index = num;
             },
             changeTapCard: function() {
-                let tapper = document.getElementById("tapper");
-                let card = document.getElementsByClassName("tc-tap-card");
-                card = card[0].offsetWidth;
-                let hwidth = document.getElementById("header").offsetWidth;
-                hwidth = hwidth / 2;
-                let distance = this.index * card + card / 2;
-                tapper.style.transition = "-webkit-transform 300ms ease-out";
-                if(distance > hwidth) {
-                    tapper.style.webkitTransform = "translate3d(-" + (distance-hwidth) + "px,0px,0px)";
-                }else{
-                    tapper.style.webkitTransform = "translate3d(" + (hwidth-distance) + "px,0px,0px)";
-                }
+//                let tapper = document.getElementById("tapper");
+//                let card = document.getElementsByClassName("tc-tap-card");
+//                card = card[0].offsetWidth;
+//                let hwidth = document.getElementById("header").offsetWidth;
+//                hwidth = hwidth / 2;
+//                let distance = this.index * card + card / 2;
+//                tapper.style.transition = "-webkit-transform 300ms ease-out";
+//                if(distance > hwidth) {
+//                    tapper.style.webkitTransform = "translate3d(-" + (distance-hwidth) + "px,0px,0px)";
+//                }else{
+//                    tapper.style.webkitTransform = "translate3d(" + (hwidth-distance) + "px,0px,0px)";
+//                }
             },
             timeline: function() {
                 let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');

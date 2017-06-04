@@ -147,6 +147,9 @@
 			choseId: {
 				type: Number,
 				default: 0
+			},
+			money: {
+			    type: String,
 			}
 		},
 		data() {
@@ -183,6 +186,41 @@
 			    this.ischonse = true;
 				evt.preventDefault();
 				evt.stopPropagation();
+
+                let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
+                ustore = JSON.parse(ustore);
+                let pids = '';
+                this.$http.get(localStorage.apiDomain + 'public/index/user/manjiusong/uid/' + ustore.id + '/token/' + ustore.token +'/sinceid/' + this.obj.id + '/money/' + this.money).then((response)=>{
+                    console.log(1);
+                    if(response.data.status === 1) {
+                        console.log(2);
+                        $("#give-list").css({
+                            display:"block"
+                        });
+                        this.listGift = response.data.maxmoney;
+                        console.log(this.listGift);
+                    }else if(response.data.status=== -1) {
+                        console.log(3);
+                        this.toastMessage = response.data.info;
+                        this.toastShow = true;
+                        let context = this;
+                        setTimeout(function(){
+                            context.clearAll();
+                            sessionStorage.removeItem('userInfo');
+                            localStorage.removeItem('userInfo');
+                            context.$router.go({name:'login'});
+                        },800);
+                    } else if(response.data.status === 0) {
+                        console.log(4);
+                        $("#give-list").css({
+                            display:""
+                        });
+                    }
+                },(response)=>{
+                    this.toastMessage = '网络开小差了~';
+                    this.toastShow = true;
+                });
+
 				this.$dispatch('setChosen',this.obj);
 			}
 		}

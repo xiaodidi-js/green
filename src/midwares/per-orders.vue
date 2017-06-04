@@ -229,6 +229,44 @@
 		margin: 10px 0px;
 	}
 	/* servier end */
+
+	/* prop-img start*/
+
+	.prop-bg {
+		width:100%;
+		height:100%;
+		position: fixed;
+		top:0px;
+		left:0px;
+		z-index: 100;
+		background: rgba(0,0,0,0.5);
+	}
+
+	.prop-img {
+		width: 80%;
+		height: 380px;
+		position: fixed;
+		top: 39px;
+		left: 0px;
+		z-index: 100;
+		right: 0px;
+		margin: 0px auto;
+	}
+
+	.prop-img .towcode {
+		width: 100%;
+		height: 100%;
+	}
+
+	.prop-img .clear-style {
+		width: 45px;
+		height: 45px;
+		background: url('../images/gou3.png') no-repeat;
+		border-radius: 100px;
+		margin:30px auto 0px;
+	}
+	/* prop-img end*/
+
 </style>
 <template>
 	<div class="sub-content">
@@ -272,22 +310,20 @@
 
 		<div id="customer">
 			<ul class="service-ul" v-for="item in qqservice">
-				<li class="icon-service" v-if="item.class === 0">
-					<a href="tencent://message/?uin={{ item.num	 }}&Site=在线QQ&Menu=yes" style="display: block;padding-top: 7px;">
+				<li class="icon-service" v-if="item.name == 'QQ' ">
+					<!--<a href="http://wpa.qq.com/msgrd?V=1&Uin=item.tel&Site=wx.quguoent.com&Menu=yes" style="display: block;padding-top: 7px;">-->
+						<!--<i class="little-icon qq-ui-icon"></i>-->
+						<!--<span class="service-txt">客服QQ</span>-->
+						<!--<img src="../images/arrow.png" class="service-allow" alt="" />-->
+					<!--</a>-->
+					<a href="javascript:void(0);" style="display: block;padding-top: 7px;"  @click="visiblepro()">
 						<i class="little-icon qq-ui-icon"></i>
-						<span class="service-txt">客服QQ1</span>
+						<span class="service-txt">客服QQ</span>
 						<img src="../images/arrow.png" class="service-allow" alt="" />
 					</a>
 				</li>
-				<li class="icon-service" v-if="item.class === 0">
-					<a href="tencent://message/?uin={{ item.num	 }}&Site=在线QQ&Menu=yes" style="display: block;padding-top: 7px;">
-						<i class="little-icon qq-ui-icon"></i>
-						<span class="service-txt">客服QQ1</span>
-						<img src="../images/arrow.png" class="service-allow" alt="" />
-					</a>
-				</li>
-				<li class="icon-service" v-if="item.class === 1">
-					<a href="tel:{{ item.num }}" style="display: block;padding-top: 7px;">
+				<li class="icon-service" v-if="item.name == 'tel' ">
+					<a href="tel:{{ item.tel }}" style="display: block;padding-top: 7px;">
 						<i class="little-icon call-icon"></i>
 						<span class="service-txt">一键拨号</span>
 						<img src="../images/arrow.png" class="service-allow" alt="" />
@@ -302,6 +338,12 @@
 			<card-orders :orders="data"></card-orders>
 		</div>
 
+	</div>
+
+	<div class="prop-bg" @click="clearpro()" v-show="showpro"></div>
+	<div class="prop-img" id="propimg" v-show="showpro">
+		<div class="towcode"><img src="../images/qq-img.jpg" style="width:100%;height:100%;" /></div>
+		<div class="clear-style" @click="clearpro()"></div>
 	</div>
 
 	<!-- toast提示框 -->
@@ -344,13 +386,16 @@
 					service: 0
 				},
 				data:[],
-				qqservice: []
+				qqservice: null,
+                showpro: false
 			}
 		},
 		route: {
 
 		},
 		ready() {
+
+
             this.getData(1);
             this.kefu();
 		    if(this.$store.state.dtype == 5) {
@@ -362,10 +407,17 @@
 			}
 		},
 		methods: {
+            visiblepro: function () {
+				this.showpro = true;
+            },
+            clearpro: function () {
+                this.showpro = false;
+            },
 		    kefu(){
 		        let _this = this;
-                this.$http.get(/*localStorage.apiDomain +*/ 'http://green-f.cn/public/index/Usercenter/onlie').then((response)=> {
+                this.$http.get(localStorage.apiDomain + 'public/index/Usercenter/onlie').then((response)=> {
 					_this.qqservice = response.data.list;
+					console.log(_this.qqservice)
                 });
             },
 		    $id: function(id){
@@ -390,7 +442,8 @@
 						document.body.scrollTop = 0;
 						this.count = response.data.count;
 						this.data = response.data.list;
-					}else if(response.data.status === -1){
+						console.log(this.data);
+					}else if(response.data.status === -1) {
 						this.toastMessage = response.data.info;
 						this.toastShow = true;
 						let context = this;

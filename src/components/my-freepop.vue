@@ -16,7 +16,7 @@
         text-indent: 1em;
         position: relative;
         top: 10px;
-
+        z-index: 100;
     }
 
     .search_panel .search_form .search_txt {
@@ -225,7 +225,7 @@
     <div class="panel" :class="{'show':show}" @touchmove.stop.prevent @touchend.stop @touchstart.stop>
         <div class="search_panel">
             <form class="search_form">
-                <input type="text" class="search_txt" placeholder="搜索自提点" v-model="searchtxt" @input="eventText()" />
+                <input type="text" class="search_txt" placeholder="搜索自提点" v-model="search" />
                 <input type="button" class="search_btn"/>
             </form>
             <div class="alladdress">
@@ -240,19 +240,27 @@
                             <i class="list" style="display:block;width:15rem;height:1px;background: #f2f2f2;"></i>
                             <div class="double-list">
                                 <ul>
-                                    <li class="select-li" v-for="items in item.sub" @click="onOnlyAddress(items.id)">
+                                    <li class="select-li"
+                                        v-for="items in item.sub"
+                                        @click="onOnlyAddress(items.id)">
                                         {{ items.name }}
                                     </li>
                                 </ul>
                             </div>
                         </li>
                     </ul>
+                    <!--<select class="sel-bg">-->
+                        <!--<option @click="onChonse()">全部</option>-->
+                        <!--<optgroup label="{{ item.name }}" v-for="item in options">-->
+                            <!--<option v-for="items in item.sub" @click="onOnlyAddress(items.id)">{{ items.name }}</option>-->
+                        <!--</optgroup>-->
+                    <!--</select>-->
                 </div>
             </div>
         </div>
         <div class="con-box" id="content-box" v-on:touchmove="conMove">
             <div class="emline" v-show="showStatus">{{ showTips }}</div>
-            <freepop-list v-for="item in tmp_address" :obj="item" :chose-id="chosen"></freepop-list>
+            <freepop-list :money="money" v-for="item in tmp_address" :obj="item" :chose-id="chosen"></freepop-list>
         </div>
         <div class="btn" v-if="showConfirm" @click="hidePanel">{{ confirmText }}</div>
     </div>
@@ -302,6 +310,10 @@
                 required: true,
                 default: 0,
                 twoWay: true
+            },
+            money: {
+                type: String,
+                default: ''
             }
         },
         data() {
@@ -314,22 +326,21 @@
                 toastShow: false,
                 isChonse: false,
                 options: [],
+                search: '',
                 tmp_address: [],
-                searchtxt: '',
+                data: [],
             }
         },
         ready() {
             this.selList();
         },
         methods: {
-            eventText: function () {
-                console.log(1);
-            },
-            eventKeyDown: function (event) {
-                let e = window.event || event;
-                if(e && e.keyCode == 13) {
-                    console.log(1);
-                }
+            fun: function () {
+                var self = this;
+                var data = self.tmp_address.filter(function (item) {
+                    return item.address.indexOf(self.search) !== -1
+                });
+                this.tmp_address = data;
             },
             touchout: function () {
                 if (this.isChonse) {
@@ -347,8 +358,8 @@
                             return item.pid == id;
                         });
                         this.tmp_address = tmp;
+                        this.data = tmp;
                         $(".double-list ul li").click(function() {
-                            console.log(1);
                             var values = $(this).text();
                             $(".select-add").text(values);
                         });
@@ -390,7 +401,7 @@
                 this.tmp_address = this.address;
                 var values = $(".everaddress").text();
                 $(".select-add").text(values);
-                this.isChonse = false;x
+                this.isChonse = false;
             },
             onChonse: function () {
                 if (!this.isChonse) {
@@ -423,7 +434,6 @@
                         this.showTips = '加载中...';
                         this.options = response.data.list;
                     } else if (response.data.status === -1) {
-                        console.log(3);
                         this.$dispatch('showMes', response.data.info);
                         let context = this;
                         setTimeout(function () {
@@ -433,7 +443,6 @@
                             context.$router.go({name: 'login'});
                         }, 800);
                     } else {
-                        console.log(4);
                         this.$dispatch('showMes', response.data.info);
                     }
                 }, (response) => {
@@ -463,6 +472,7 @@
                             this.chosen = obj.id;
                             this.$parent.data.address = obj;
                             this.$parent.data.tmp_address = obj;
+//                            this.$parent.data.data = obj;
                             this.$parent.freight = response.data.freight;
                         } else if (response.data.status === -1) {
                             this.$parent.toastMessage = response.data.info;
@@ -486,6 +496,9 @@
             }
         },
         watch: {
+            search () {
+                this.fun()
+            },
             show: function (nval, oval) {
                 if ((nval === true && this.address.length <= 0) || (nval === true && this.$parent.deliverType != '' && this.$parent.deliverType != this.getType)) {
                     let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
@@ -498,6 +511,7 @@
                             this.showTips = '加载中...';
                             this.address = response.data.list;
                             this.tmp_address = response.data.list;
+//                            this.data = response.data.list;
                         } else if (response.data.status === -1) {
                             this.$parent.toastMessage = response.data.info;
                             this.$parent.toastShow = true;
@@ -519,6 +533,28 @@
                         this.$parent.toastShow = true;
                     });
                 }
+            }
+        },
+        computed: {
+            data:function(){
+//                console.log(1);
+//                var self = this;
+//                if (this.searchKey) {
+//                    var arr = []
+//                    for (var i in this.address) {
+//                        var obj = this.address[i]
+//                        if (obj['key'].indexOf(this.searchKey) !== -1) {
+//                            arr.push(obj)
+//                        }
+//                    }
+//                    this.tmp_address = this.address;
+//                    this.data = arr
+//                    console.log(this.address);
+//                } else {
+//                    this.data = this.address
+//                }
+
+
             }
         }
     }

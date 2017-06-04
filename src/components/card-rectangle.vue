@@ -178,7 +178,7 @@
 		font-size: 14px;
 		float: left;
 		color: #f9ad0c;
-		width: 79%;
+		width: 75%;
 		margin-top: 10px;
 	}
 
@@ -353,7 +353,15 @@
 										<i style="font-size: 12px;">￥</i>
 										<span style="font-size: 18px;">{{ item1.shopprice }}</span>
 									</p>
-									<p class="add-cart" style="float:right;" @click="addCart(item1.shopid)"></p>
+									<p class="add-cart"
+									   @click="gocart(
+									       item1.shopid,
+									       item1.shopname,
+									       item1.shopprice,
+									       item1.shopshotcut,
+									       item1.deliverytime,
+									       item1.peisongok,
+									       item1.activestu)" style="float:right;"></p>
 								</div>
 							</template>
 						</div>
@@ -363,30 +371,88 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- toast显示框 -->
+	<toast type="text" :show.sync="toastShow">{{ toastMessage }}</toast>
+
 </template>
 
 <script>
 
     import Swiper from 'vux/src/components/swiper'
+    import { setCartStorage } from 'vxpath/actions'
+    import { cartNums } from 'vxpath/getters'
+    import Toast from 'vux/src/components/toast'
 
     export default{
+        vuex: {
+            getters: {
+                cartNums
+            },
+            actions: {
+                setCart: setCartStorage
+            }
+        },
 		props: {
 			testarr:[]
 		},
 		data() {
 			return {
-
+                toastMessage: '',
+                toastShow: false
 			}
 		},
+        vuex: {
+            getters: {
+                cartNums
+            },
+            actions: {
+                setCart: setCartStorage
+            }
+        },
 		ready() {
 
 		},
         components: {
             Swiper,
+            Toast
         },
-		methods: {
-            addCart: function (id) {
-
+        methods: {
+            gocart: function (id,name,price,img,deliverytime,peisongok,activestu) {
+                var obj = {};
+                var cart = JSON.parse(sessionStorage.getItem("myCart"));
+                obj = {
+                    id: id,
+                    name: name,
+                    price: price,
+                    shotcut: img,
+                    deliverytime:deliverytime,
+                    nums: 1,
+                    store: 1,
+                    format: '',
+                    formatName: '',
+                    activestu: activestu,
+                    peisongok:peisongok
+                }
+                if(peisongok == 0) {
+                    alert("抱歉，当日配送商品已截单。请到次日配送专区选购，谢谢合作！");
+                    return false;
+                }
+                if(sessionStorage.getItem("myCart") != '') {
+                    for(var y in cart) {
+                        if (cart[y]["deliverytime"] != deliverytime) {
+                            if (deliverytime == 0) {
+                                alert("亲！您选购的商品为次日配送商品，购物车里存在当日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
+                                return false;
+                            } else if (deliverytime == 1) {
+                                alert("亲！您选购的商品为当日配送商品，购物车里存在次日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
+                                return false;
+                            }
+                        }
+                    }
+                }
+                this.setCart(obj);
+                alert("加入购物车成功！");
             }
 		}
 	}

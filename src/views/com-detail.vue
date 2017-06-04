@@ -161,13 +161,15 @@
 </style>
 
 <template>
-	<div class="com-wrapper">
+	<div class="com-wrapper" style="margin-top:46px;">
 		<!-- 头部时间 -->
 		<div class="htimer nowrap">成交时间:{{ data.createtime }}</div>
 		<!-- 评价详情 -->
 		<div class="card-box" v-for="item in data.list">
 			<div class="pro-mes">
-				<div class="shotcut" v-lazy:background-image="item.shotcut"></div>
+				<div class="shotcut"> <!--  v-lazy:background-image="item.shotcut" -->
+					<img :src="item.shotcut" style="width:100%;height:100%" />
+				</div>
 				<div class="words">
 					<div class="name">{{ item.name }}</div>
 					<div class="format">{{ item.fname }}</div>
@@ -243,6 +245,8 @@ export default{
 			if(response.data.status===1){
 				this.data.createtime = response.data.createtime;
 				this.data.list = response.data.list;
+				console.log(this.data.createtime);
+                console.log(response.data);
 			}else if(response.data.status===-1){
 				this.toastMessage = response.data.info;
 				this.toastShow = true;
