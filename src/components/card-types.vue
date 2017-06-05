@@ -438,7 +438,9 @@
             this.dtype = localStorage.getItem('number');
 
             if(this.dtype == null) {
+                this.chooseSort(26);
                 this.getChonse(26);
+                this.$router.go({name:'classify'});
 			} else {
                 this.chooseSort(this.dtype);
                 this.getChonse(this.dtype);
@@ -577,7 +579,7 @@
 //                    console.log(h + "-" + m + "-" + s);
 
 					var cart = JSON.parse(sessionStorage.getItem("myCart"));
-                    if(peisongok == 0) {
+                    if(this.pdata[i].peisongok == 0) {
                         alert("抱歉，当日配送商品已截单。请到次日配送专区选购，谢谢合作！");
                         return false;
                     }
@@ -597,8 +599,9 @@
                 }
                 this.setCart(obj);
                 obj = {};
-                this.toastMessage = '加入购物车成功!',
-                this.toastShow = true;
+                alert("加入购物车成功");
+//                this.toastMessage = '加入购物车成功!',
+//                this.toastShow = true;
 			}
         },
     }

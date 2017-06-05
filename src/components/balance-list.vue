@@ -1,8 +1,6 @@
 <style scoped>
 	.bl-wrapper{
 		width:100%;
-		/*padding-left:3%;*/
-		/*margin-bottom:3%;*/
 		background-color:#fff;
 	}
 
@@ -186,9 +184,11 @@
 
 	/* getShop end */
 
+
 </style>
 
 <template>
+
 	<div class="bl-wrapper">
 		<div class="line top" v-if="showTop">
 			<div class="icon">
@@ -218,6 +218,8 @@
 			<div style="display:block;float:right;">共{{ amount }}件商品合计：<label style="color:#f9ad0c;">¥{{ sum }}</label></div>
 		</div>
 	</div>
+
+
 </template>
 
 <script>
@@ -233,6 +235,12 @@
 					return []
 				}
 			},
+            gift: {
+			    type: Array,
+				default() {
+			        return []
+				}
+			},
 			showTop: {
 				type: Boolean,
 				default: false
@@ -240,6 +248,10 @@
 			showBtm: {
 				type: Boolean,
 				default: true
+			},
+            dispaly: {
+			    type: Boolean,
+                default: false,
 			}
 		},
 		data() {
@@ -248,9 +260,25 @@
                 showValA: false,
                 showValB: false,
 				shonse:0,
+                listGift: [],
+				vieible: false,
 			}
 		},
 		ready() {
+
+		    for(let i in this.list) {
+				if(this.list[i].activity != -1 && this.list[i].activity != 0) {
+					this.vieible = true;
+				}
+
+                if(this.list[i].activity == 0) {
+                    this.vieible = true;
+                } else {
+				    this.vieible = false;
+				}
+
+			}
+
 			$(function() {
 			    $(".todaybtn").mouseover(function() {
 			        $(this).css({

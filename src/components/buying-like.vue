@@ -4,7 +4,7 @@
         height: auto;
         box-sizing:border-box;
         padding:0px 1%;
-        padding-bottom: 60px;
+        padding-bottom: 25px;
     }
     .youlike_title{
         width: 100%;
@@ -212,8 +212,8 @@
                             price:this.likedata[i].price,
                             shotcut:this.likedata[i].shotcut,
                             deliverytime:this.likedata[i].deliverytime,
-                            store:this.proNums,
                             nums:this.buyNums,
+                            store:this.proNums,
                             format:'',
                             formatName:'',
                         };
@@ -225,8 +225,8 @@
                         _self.toastShow = false;
                         return false;
                     }
-                    if(sessionStorage.getItem("myCart") != '') {
-                        for(var y = 0; y < cart.length;y++) {
+                    if(cart != '') {
+                        for(var y in cart) {
                             if (cart[y]["deliverytime"] != this.likedata[i].deliverytime) {
                                 if (this.likedata[i].deliverytime == 0) {
                                     alert("亲！您选购的商品为次日配送商品，购物车里存在当日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
@@ -241,8 +241,7 @@
                 }
                 this.setCart(obj);
                 obj = {};
-                this.toastMessage = "成功加入购物车!";
-                this.toastShow = true;
+                alert("成功加入购物车!");
                 this.$router.go({name : "cart"});
             }
         }

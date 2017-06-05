@@ -187,7 +187,9 @@
         <p class="closing-time">成交时间 2016-06-26 09:25:54</p>
         <div class="card-box" style="margin:0px;">
             <div class="pro-mes">
-                <div class="shotcut"></div><!-- v-lazy:background-image="item.shotcut" -->
+                <div class="shotcut">
+                    <img :src="item.shotcut" style="width:100%;height:100%;" />
+                </div><!-- v-lazy:background-image="item.shotcut" -->
                 <div class="words">
                     <div class="name">车厘子水果色泽红艳光洁 玲珑珑如玛瑙宝....</div>
                 </div>
