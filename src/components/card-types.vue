@@ -149,8 +149,8 @@
 	.main .icon-card {
 		display:block;
 		float:right;
-		width:2rem;
-		height:2rem;
+		width: 2.5rem;
+		height: 2.2rem;
 		background: url(../images/gouwuche.png) no-repeat;
 		background-size: 100%;
 		position: absolute;
@@ -435,7 +435,7 @@
             }
         },
         ready() {
-            this.dtype = localStorage.getItem('number');
+            this.dtype = sessionStorage.getItem('number');
 
             if(this.dtype == null) {
                 this.chooseSort(26);
@@ -527,7 +527,7 @@
                     return true;
                 }
                 this.dtype = type;
-                localStorage.setItem('number',this.dtype);
+                sessionStorage.setItem('number',this.dtype);
                 this.menuIndex = type;
             },
             filters: {
@@ -558,11 +558,12 @@
                             price:this.pdata[i].price,
                             shotcut:this.pdata[i].src,
                             deliverytime:this.pdata[i].deliverytime,
+                            activestu:this.pdata[i].activestu,
+                            peisongok:this.pdata[i].peisongok,
                             nums:this.buyNums,
                             store:this.proNums,
                             format:'',
                             formatName:'',
-                            activestu:this.activestu
                         };
 					}
                     if(this.pdata[i].share == null) {
@@ -576,21 +577,22 @@
                         _self.activestu == 1;
 					}
 					var toDate = new Date() , h = toDate.getHours(), m = toDate.getMinutes();
-//                    console.log(h + "-" + m + "-" + s);
-
 					var cart = JSON.parse(sessionStorage.getItem("myCart"));
-                    if(this.pdata[i].peisongok == 0) {
-                        alert("抱歉，当日配送商品已截单。请到次日配送专区选购，谢谢合作！");
+                    if(_self.pdata[i].peisongok == 0 && _self.pdata[i].deliverytime == 0) {
+                        console.log("抱歉，当日配送商品已截单。请到次日配送专区选购，谢谢合作！");
+                        return false;
+                    } else if(_self.pdata[i].peisongok == 0 && _self.pdata[i].deliverytime == 1) {
+                        console.log("抱歉，次日配送商品已截单。请到当日配送专区选购，谢谢合作！");
                         return false;
                     }
                     if(sessionStorage.getItem("myCart") != '') {
                         for(var y in cart) {
                             if (cart[y]["deliverytime"] != _self.pdata[i].deliverytime) {
                                 if (_self.pdata[i].deliverytime == 0) {
-                                    alert("亲！您选购的商品为次日配送商品，购物车里存在当日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
+                                    console.log("亲！您选购的商品为次日配送商品，购物车里存在当日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
                                     return false;
                                 } else if (_self.pdata[i].deliverytime == 1) {
-                                    alert("亲！您选购的商品为当日配送商品，购物车里存在次日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
+                                    console.log("亲！您选购的商品为当日配送商品，购物车里存在次日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
                                     return false;
                                 }
                             }
@@ -600,8 +602,6 @@
                 this.setCart(obj);
                 obj = {};
                 alert("加入购物车成功");
-//                this.toastMessage = '加入购物车成功!',
-//                this.toastShow = true;
 			}
         },
     }

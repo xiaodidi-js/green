@@ -12,6 +12,8 @@ import WxJssdk from 'weixin-js-sdk'
 import fetchGet from './libs/util.js'
 import fetchPost from './libs/util.js'
 
+
+
 // Vue.use(VueLazy,{
 // 	preLoad:1.2,
 // 	error:'dist/assets/error.png',

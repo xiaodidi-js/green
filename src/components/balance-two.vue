@@ -244,12 +244,12 @@
 		</div>
 	</div>
 
-	<div class="bl-wrapper">
+	<div class="bl-wrapper" v-show="visi">
 		<div style="margin:10px 0px;border-bottom: 1px solid #eee;height:46px;width:100%;">
 			<div style="margin:0px 10px;">
 				<p class="give-title">
 					<i class="icon-img1"></i>
-					<span>首单用户,就送如下商品,请选择赠品</span>
+					<span>请选择<i style="color:#c40000;">首单赠品</i></span>
 				</p>
 			</div>
 		</div>
@@ -302,9 +302,9 @@
 				type: Boolean,
 				default: true
 			},
-            dispaly: {
+            visi: {
 			    type: Boolean,
-                default: false,
+				default: false
 			}
 		},
 		data() {
@@ -314,7 +314,6 @@
                 showValB: false,
 				shonse:0,
                 listGift: [],
-				vieible: false,
 			}
 		},
 		ready() {
@@ -356,9 +355,7 @@
 			}
 		},
 		methods: {
-		    ids: function() {
 
-			},
 		}
 	}
 </script>

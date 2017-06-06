@@ -3,172 +3,29 @@
   <component name="ChangeListManager">
     <list default="true" id="be170c02-b6f5-4fd0-92ff-d35e5b042e56" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.project" afterPath="$PROJECT_DIR$/.project" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ErrorFiles/400.html" afterPath="$PROJECT_DIR$/ErrorFiles/400.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ErrorFiles/401.html" afterPath="$PROJECT_DIR$/ErrorFiles/401.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ErrorFiles/403.html" afterPath="$PROJECT_DIR$/ErrorFiles/403.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ErrorFiles/404.html" afterPath="$PROJECT_DIR$/ErrorFiles/404.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ErrorFiles/500.html" afterPath="$PROJECT_DIR$/ErrorFiles/500.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ErrorFiles/502.html" afterPath="$PROJECT_DIR$/ErrorFiles/502.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ErrorFiles/504.html" afterPath="$PROJECT_DIR$/ErrorFiles/504.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LICENSE" afterPath="$PROJECT_DIR$/LICENSE" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index_prod.html" afterPath="$PROJECT_DIR$/index_prod.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/activity-event.vue" afterPath="$PROJECT_DIR$/src/components/activity-event.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/activity.vue" afterPath="$PROJECT_DIR$/src/components/activity.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/address.vue" afterPath="$PROJECT_DIR$/src/components/address.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/app.vue" afterPath="$PROJECT_DIR$/src/components/app.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/balance-list.vue" afterPath="$PROJECT_DIR$/src/components/balance-list.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/balance-price.vue" afterPath="$PROJECT_DIR$/src/components/balance-price.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/balance-two.vue" afterPath="$PROJECT_DIR$/src/components/balance-two.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/banners.vue" afterPath="$PROJECT_DIR$/src/components/banners.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/bottom-buy.vue" afterPath="$PROJECT_DIR$/src/components/bottom-buy.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/bottom-check.vue" afterPath="$PROJECT_DIR$/src/components/bottom-check.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/bottom-confirm.vue" afterPath="$PROJECT_DIR$/src/components/bottom-confirm.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/bottom-pay.vue" afterPath="$PROJECT_DIR$/src/components/bottom-pay.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/bottom-send.vue" afterPath="$PROJECT_DIR$/src/components/bottom-send.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/bottom.vue" afterPath="$PROJECT_DIR$/src/components/bottom.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/buying-like.vue" afterPath="$PROJECT_DIR$/src/components/buying-like.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-address.vue" afterPath="$PROJECT_DIR$/src/components/card-address.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-column.vue" afterPath="$PROJECT_DIR$/src/components/card-column.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-coupon.vue" afterPath="$PROJECT_DIR$/src/components/card-coupon.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-image.vue" afterPath="$PROJECT_DIR$/src/components/card-image.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-list.vue" afterPath="$PROJECT_DIR$/src/components/card-list.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-orders.vue" afterPath="$PROJECT_DIR$/src/components/card-orders.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-recommend.vue" afterPath="$PROJECT_DIR$/src/components/card-recommend.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-rectangle.vue" afterPath="$PROJECT_DIR$/src/components/card-rectangle.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-rush.vue" afterPath="$PROJECT_DIR$/src/components/card-rush.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-square.vue" afterPath="$PROJECT_DIR$/src/components/card-square.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-types.vue" afterPath="$PROJECT_DIR$/src/components/card-types.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/cart-list.vue" afterPath="$PROJECT_DIR$/src/components/cart-list.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/cart.vue" afterPath="$PROJECT_DIR$/src/components/cart.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/col-image.vue" afterPath="$PROJECT_DIR$/src/components/col-image.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/collection-list.vue" afterPath="$PROJECT_DIR$/src/components/collection-list.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/collection.vue" afterPath="$PROJECT_DIR$/src/components/collection.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/comment-group-xx.vue" afterPath="$PROJECT_DIR$/src/components/comment-group-xx.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/comment-group.vue" afterPath="$PROJECT_DIR$/src/components/comment-group.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/coupon-list.vue" afterPath="$PROJECT_DIR$/src/components/coupon-list.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/coupop-list.vue" afterPath="$PROJECT_DIR$/src/components/coupop-list.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/flash-shop.vue" afterPath="$PROJECT_DIR$/src/components/flash-shop.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/format-pop.vue" afterPath="$PROJECT_DIR$/src/components/format-pop.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/freepop-list.vue" afterPath="$PROJECT_DIR$/src/components/freepop-list.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/guige.vue" afterPath="$PROJECT_DIR$/src/components/guige.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/header-search.vue" afterPath="$PROJECT_DIR$/src/components/header-search.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/index-search.vue" afterPath="$PROJECT_DIR$/src/components/index-search.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/integral.vue" afterPath="$PROJECT_DIR$/src/components/integral.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/my-cell-item.vue" afterPath="$PROJECT_DIR$/src/components/my-cell-item.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/my-cell.vue" afterPath="$PROJECT_DIR$/src/components/my-cell.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/my-coupop.vue" afterPath="$PROJECT_DIR$/src/components/my-coupop.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/my-freepop.vue" afterPath="$PROJECT_DIR$/src/components/my-freepop.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/my-pop.vue" afterPath="$PROJECT_DIR$/src/components/my-pop.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/my-switch.vue" afterPath="$PROJECT_DIR$/src/components/my-switch.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/order-all.vue" afterPath="$PROJECT_DIR$/src/components/order-all.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/order-deliver.vue" afterPath="$PROJECT_DIR$/src/components/order-deliver.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/order-evaluate.vue" afterPath="$PROJECT_DIR$/src/components/order-evaluate.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/order-fail.vue" afterPath="$PROJECT_DIR$/src/components/order-fail.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/order-give.vue" afterPath="$PROJECT_DIR$/src/components/order-give.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/order-payment.vue" afterPath="$PROJECT_DIR$/src/components/order-payment.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/order-receipt.vue" afterPath="$PROJECT_DIR$/src/components/order-receipt.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/order-success.vue" afterPath="$PROJECT_DIR$/src/components/order-success.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pic-shower.vue" afterPath="$PROJECT_DIR$/src/components/pic-shower.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pic-uploader.vue" afterPath="$PROJECT_DIR$/src/components/pic-uploader.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/place-holdorder.vue" afterPath="$PROJECT_DIR$/src/components/place-holdorder.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/place-neworder.vue" afterPath="$PROJECT_DIR$/src/components/place-neworder.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/place-price.vue" afterPath="$PROJECT_DIR$/src/components/place-price.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/place-xx-shop.vue" afterPath="$PROJECT_DIR$/src/components/place-xx-shop.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/qq-service.vue" afterPath="$PROJECT_DIR$/src/components/qq-service.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/sao.vue" afterPath="$PROJECT_DIR$/src/components/sao.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/search.vue" afterPath="$PROJECT_DIR$/src/components/search.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/seckill-floor.vue" afterPath="$PROJECT_DIR$/src/components/seckill-floor.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/separator.vue" afterPath="$PROJECT_DIR$/src/components/separator.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/settings.vue" afterPath="$PROJECT_DIR$/src/components/settings.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/shop-list.vue" afterPath="$PROJECT_DIR$/src/components/shop-list.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/spinner.vue" afterPath="$PROJECT_DIR$/src/components/spinner.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/tap-card.vue" afterPath="$PROJECT_DIR$/src/components/tap-card.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/testSwiper.vue" afterPath="$PROJECT_DIR$/src/components/testSwiper.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/timer-countdown.vue" afterPath="$PROJECT_DIR$/src/components/timer-countdown.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/tmpl.vue" afterPath="$PROJECT_DIR$/src/components/tmpl.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/type-right.vue" afterPath="$PROJECT_DIR$/src/components/type-right.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/config.js" afterPath="$PROJECT_DIR$/src/config/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/env.js" afterPath="$PROJECT_DIR$/src/config/env.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/cart.json" afterPath="$PROJECT_DIR$/src/data/cart.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/classify.json" afterPath="$PROJECT_DIR$/src/data/classify.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/detail.json" afterPath="$PROJECT_DIR$/src/data/detail.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/index.json" afterPath="$PROJECT_DIR$/src/data/index.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/main-index.json" afterPath="$PROJECT_DIR$/src/data/main-index.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/personal.json" afterPath="$PROJECT_DIR$/src/data/personal.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/since.json" afterPath="$PROJECT_DIR$/src/data/since.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/type-index.json" afterPath="$PROJECT_DIR$/src/data/type-index.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/directives/time.js" afterPath="$PROJECT_DIR$/src/directives/time.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/filters/array2String.js" afterPath="$PROJECT_DIR$/src/filters/array2String.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/filters/date.js" afterPath="$PROJECT_DIR$/src/filters/date.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/filters/friendly-time.js" afterPath="$PROJECT_DIR$/src/filters/friendly-time.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/filters/name2value.js" afterPath="$PROJECT_DIR$/src/filters/name2value.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/filters/number-separator.js" afterPath="$PROJECT_DIR$/src/filters/number-separator.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/filters/value2name.js" afterPath="$PROJECT_DIR$/src/filters/value2name.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fonts/demo.css" afterPath="$PROJECT_DIR$/src/fonts/demo.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fonts/demo_fontclass.html" afterPath="$PROJECT_DIR$/src/fonts/demo_fontclass.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fonts/demo_symbol.html" afterPath="$PROJECT_DIR$/src/fonts/demo_symbol.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fonts/demo_unicode.html" afterPath="$PROJECT_DIR$/src/fonts/demo_unicode.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fonts/iconfont.css" afterPath="$PROJECT_DIR$/src/fonts/iconfont.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fonts/iconfont.js" afterPath="$PROJECT_DIR$/src/fonts/iconfont.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fonts/iconfont.svg" afterPath="$PROJECT_DIR$/src/fonts/iconfont.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/images/loading.svg" afterPath="$PROJECT_DIR$/src/images/loading.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/libs/iscroll.js" afterPath="$PROJECT_DIR$/src/libs/iscroll.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/libs/jquery.event.drag.js" afterPath="$PROJECT_DIR$/src/libs/jquery.event.drag.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/libs/jquery.min.js" afterPath="$PROJECT_DIR$/src/libs/jquery.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/libs/jquery.touchSlider.js" afterPath="$PROJECT_DIR$/src/libs/jquery.touchSlider.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/libs/util.js" afterPath="$PROJECT_DIR$/src/libs/util.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.js" afterPath="$PROJECT_DIR$/src/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/midwares/buying.vue" afterPath="$PROJECT_DIR$/src/midwares/buying.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/midwares/cla-list.vue" afterPath="$PROJECT_DIR$/src/midwares/cla-list.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/midwares/cla-main.vue" afterPath="$PROJECT_DIR$/src/midwares/cla-main.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/midwares/classification.vue" afterPath="$PROJECT_DIR$/src/midwares/classification.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/midwares/index-column.vue" afterPath="$PROJECT_DIR$/src/midwares/index-column.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/midwares/index-main.vue" afterPath="$PROJECT_DIR$/src/midwares/index-main.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/midwares/order-type.vue" afterPath="$PROJECT_DIR$/src/midwares/order-type.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/midwares/per-addresses.vue" afterPath="$PROJECT_DIR$/src/midwares/per-addresses.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/midwares/per-collections.vue" afterPath="$PROJECT_DIR$/src/midwares/per-collections.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/midwares/per-coupons.vue" afterPath="$PROJECT_DIR$/src/midwares/per-coupons.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/midwares/per-orders.vue" afterPath="$PROJECT_DIR$/src/midwares/per-orders.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/midwares/per-settings.vue" afterPath="$PROJECT_DIR$/src/midwares/per-settings.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/midwares/place-order.vue" afterPath="$PROJECT_DIR$/src/midwares/place-order.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router.js" afterPath="$PROJECT_DIR$/src/router.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/styles/reset.css" afterPath="$PROJECT_DIR$/src/styles/reset.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/template/index.ejs" afterPath="$PROJECT_DIR$/src/template/index.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/temptpls/index.vue" afterPath="$PROJECT_DIR$/src/temptpls/index.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/temptpls/rush.vue" afterPath="$PROJECT_DIR$/src/temptpls/rush.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/temptpls/type-index.vue" afterPath="$PROJECT_DIR$/src/temptpls/type-index.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/address.vue" afterPath="$PROJECT_DIR$/src/views/address.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/article.vue" afterPath="$PROJECT_DIR$/src/views/article.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/cart.vue" afterPath="$PROJECT_DIR$/src/views/cart.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/classify.vue" afterPath="$PROJECT_DIR$/src/views/classify.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/com-detail.vue" afterPath="$PROJECT_DIR$/src/views/com-detail.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/com-list.vue" afterPath="$PROJECT_DIR$/src/views/com-list.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/com-submit.vue" afterPath="$PROJECT_DIR$/src/views/com-submit.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/express.vue" afterPath="$PROJECT_DIR$/src/views/express.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/find.vue" afterPath="$PROJECT_DIR$/src/views/find.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/index.vue" afterPath="$PROJECT_DIR$/src/views/index.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/login.vue" afterPath="$PROJECT_DIR$/src/views/login.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/new-index.vue" afterPath="$PROJECT_DIR$/src/views/new-index.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/ord-detail.vue" afterPath="$PROJECT_DIR$/src/views/ord-detail.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/personal.vue" afterPath="$PROJECT_DIR$/src/views/personal.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/pro-detail.vue" afterPath="$PROJECT_DIR$/src/views/pro-detail.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/register.vue" afterPath="$PROJECT_DIR$/src/views/register.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/rush.vue" afterPath="$PROJECT_DIR$/src/views/rush.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/service-apply.vue" afterPath="$PROJECT_DIR$/src/views/service-apply.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/service.vue" afterPath="$PROJECT_DIR$/src/views/service.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/submit.vue" afterPath="$PROJECT_DIR$/src/views/submit.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/yap-index.vue" afterPath="$PROJECT_DIR$/src/views/yap-index.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vuex/actions.js" afterPath="$PROJECT_DIR$/src/vuex/actions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vuex/getters.js" afterPath="$PROJECT_DIR$/src/vuex/getters.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vuex/store.js" afterPath="$PROJECT_DIR$/src/vuex/store.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vuex/vconsole.js" afterPath="$PROJECT_DIR$/src/vuex/vconsole.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/u.php" afterPath="$PROJECT_DIR$/u.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack.base.config.js" afterPath="$PROJECT_DIR$/webpack.base.config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack.dev.config.js" afterPath="$PROJECT_DIR$/webpack.dev.config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack.prod.config.js" afterPath="$PROJECT_DIR$/webpack.prod.config.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -185,12 +42,12 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="card-types.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/card-types.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="437" column="26" lean-forward="false" selection-start-line="437" selection-start-column="26" selection-end-line="437" selection-end-column="26" />
+            <state relative-caret-position="171">
+              <caret line="580" column="20" lean-forward="false" selection-start-line="580" selection-start-column="20" selection-end-line="586" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -214,6 +71,7 @@
         <option value="$PROJECT_DIR$/src/components/sao.vue" />
         <option value="$PROJECT_DIR$/src/main.js" />
         <option value="$PROJECT_DIR$/src/components/card-types.vue" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
@@ -249,8 +107,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -458,34 +316,55 @@
       <workItem from="1496237870419" duration="731000" />
       <workItem from="1496321708028" duration="2533000" />
       <workItem from="1496325942347" duration="1047000" />
+      <workItem from="1496672186589" duration="964000" />
+      <workItem from="1496754254767" duration="1285000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19525000" />
+    <option name="totallyTimeSpent" value="21774000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18887262" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19196428" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19196428" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
@@ -498,6 +377,22 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/components/card-types.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/card-types.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/buying-like.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -689,13 +584,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/submit.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17898">
-          <caret line="959" column="64" lean-forward="false" selection-start-line="959" selection-start-column="64" selection-end-line="959" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="327">
@@ -717,10 +605,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-114">
+          <caret line="16" column="19" lean-forward="true" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/submit.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-36">
+          <caret line="958" column="51" lean-forward="false" selection-start-line="958" selection-start-column="51" selection-end-line="958" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/card-types.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="437" column="26" lean-forward="false" selection-start-line="437" selection-start-column="26" selection-end-line="437" selection-end-column="26" />
+        <state relative-caret-position="171">
+          <caret line="580" column="20" lean-forward="false" selection-start-line="580" selection-start-column="20" selection-end-line="586" selection-end-column="21" />
           <folding />
         </state>
       </provider>

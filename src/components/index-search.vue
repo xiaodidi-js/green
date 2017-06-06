@@ -86,6 +86,7 @@
 </style>
 
 <template>
+
 	<div class="order-search" :class="{'fixed':fixed}"  style="background: #81c429;">
 		<div class="logo" style="background: none;width:50px;float:left;">
 			<img src="../images/logo_lv.png" alt="" style="width:40px;height:40px;margin: 5px 15px;" />
@@ -98,8 +99,10 @@
 			<a href="javascript:void(0)" class="txt-service" @click="goPage"></a>
 		</div>
 	</div>
+
 	<!-- toast提示框 -->
 	<toast :show.sync="toastShow" type="text">{{ toastMessage }}</toast>
+
 </template>
 
 <script>
