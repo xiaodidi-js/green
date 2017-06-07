@@ -111,7 +111,7 @@
 		</div>
 	</div>
 	<!-- 轮播图 -->
-	<banners></banners> <!--  :testarr="data.index_data" -->
+	<banners></banners> <!-- :testarr="data.index_data" -->
 	<div class="sub-content">
 		<!-- 显示抢购 -->
 		<card-column :columns="maincolumns" keep-alive></card-column>
@@ -130,7 +130,7 @@
 	import CardImage from 'components/card-image'
 	import Toast from 'vux/src/components/toast'
     import Swiper from 'vux/src/components/swiper'
-    import { myActive,mySearch } from 'vxpath/actions'
+    import { myActive,mySearch,myScrollTop } from 'vxpath/actions'
     import axios from 'axios'
     import qs from 'qs'
 
@@ -146,7 +146,8 @@
         vuex: {
             actions: {
                 myActive,
-                mySearch
+                mySearch,
+                myScrollTop,
             }
         },
 		data() {
@@ -179,6 +180,7 @@
 		ready() {
 			this.indexMessage();
             this.timeline();
+
             $(window).scroll(function(){
                 if($(window).scrollTop() >= 350){
                     $(".goto_top").fadeIn(500);
@@ -198,46 +200,38 @@
             breakSearch: function (event) {
 				var e = window.event || event;
 				if(e && e.keyCode == 13) {
-					console.log(1);
 					this.goSearch();
 				}
             },
             goSearch: function() {
                 var _self = this;
                 this.$http.get(localStorage.apiDomain + 'public/index/index/searchshop?shopname=' + this.searchKey).then((response)=>{
-                    console.log(response.data.info.data);
-                    let arr = [];
-                    arr = response.data.info;
-                    this.$router.go({
-                        name:'search',
-                        params:{
-                            arr:this.mySearch(response.data.info.data)
-						}
-                    });
+                    if(response.data.status == 1) {
+                        let arr = [];
+                        arr = response.data.info;
+                        this.$router.go({
+                            name:'search',
+                            params:{
+                                arr:this.mySearch(response.data.info.data)
+                            }
+                        });
+					} else if(response.data.status == 0) {
+						alert(response.data.info);
+                        this.searchKey = '';
+					}
+
                 },(response)=>{
                     this.toastMessage = '网络开小差了~';
                     this.toastShow = true;
                 });
-//                axios({
-//                    method: 'get',
-//                    url: localStorage.apiDomain + '/public/index/index/searchshop?shopname=' + this.searchKey,
-//                }).then((response) => {
-//                    console.log(response);
-//                });
-//				this.$router.go({
-//					name:"search",
-//					data:this.searchKey
-//				});
 			},
 		    indexMessage: function() {
-                /*let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
-				 ustore = JSON.parse(ustore);
-				 console.log(ustore);*/
                 let url = '';
                 url = localStorage.apiDomain + 'public/index/index';
                 this.$http.get(url).then((response)=>{
                     this.data = response.data;
                     var data = this.data;
+                    sessionStorage.setItem("arr",JSON.stringify(this.data));
                     for (var i = 0; i < data.index_data.length; i++) {
                         if(data.index_data[i].type == 4) {
                             var l = data.index_data[i].arr.length;

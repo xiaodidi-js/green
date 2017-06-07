@@ -358,10 +358,13 @@
 			</div>
 		</div>
 
-		<div class="changePay" v-show="showTime">
-			<div class="prompt">请在15分钟内完成付款,晚了就给人抢了</div>
-			<div class="countdown">剩余支付时间{{ minute }} : {{ second }} </div>
-		</div>
+		<!--倒计时-->
+		<surplus :showele="showTime" :time="data.process[0].endtime - data.process[0].stime" :clickType="clickType"></surplus>
+
+		<!--<div class="changePay" v-show="showTime">-->
+			<!--<div class="prompt">请在15分钟内完成付款,晚了就给人抢了</div>-->
+			<!--<div class="countdown">剩余支付时间{{ minute }} : {{ second }} </div>-->
+		<!--</div>-->
 
 		<!-- 订单状态 -->
 		<div class="bl-info-box status">
@@ -423,10 +426,7 @@
 		</div>
 
 		<!-- 价格详情 -->
-		<balance-price
-				:sum="data.order.sum"
-				:coupon="data.order.coupon"
-				:score="data.order.score"
+		<balance-price :sum="data.order.sum" :coupon="data.order.coupon" :score="data.order.score"
 				:freight="data.order.freight"
 				:show-sum="true"></balance-price>
 	</div>
@@ -434,11 +434,8 @@
 	<separator :set-height="4.5" v-show="data.order.status!=-1"></separator>
 
 	<!-- 底部确认按钮 -->
-	<bottom-confirm :fixed="true" :disabled="btnStatus"
-					:pay="data.order.pay"
-					:send="data.order.send"
-					:receive="data.order.receive"
-					v-show="data.order.status!=-1"></bottom-confirm>
+	<bottom-confirm :fixed="true" :disabled="btnStatus" :pay="data.order.pay" :send="data.order.send"
+					:receive="data.order.receive" v-show="data.order.status!=-1"></bottom-confirm>
 
 	<!-- toast显示框 -->
 	<toast type="text" :show.sync="toastShow">{{ toastMessage }}</toast>
@@ -466,6 +463,8 @@ import Loading from 'vux/src/components/loading'
 import Confirm from 'vux/src/components/confirm'
 import Scroller from 'vux/src/components/scroller'
 import { setCartAgain,clearAll } from 'vxpath/actions'
+import Surplus from 'components/surplus'
+
 
 export default{
 	vuex: {
@@ -497,8 +496,7 @@ export default{
             listGift: [],
             minute: 0,
             second: 0,
-            sTime: '',
-            eTime: '',
+            TimeText: '',
             vieible: false,
             stop: false,
             interval: '',
@@ -513,7 +511,8 @@ export default{
 		Toast,
 		Loading,
 		Confirm,
-        Scroller
+        Scroller,
+        Surplus
 	},
 	route: {
 		data(transition) {
@@ -535,11 +534,21 @@ export default{
 				this.data.order = response.data.order;
 				this.data.products = response.data.products;
 
-				//获取创建订单时间
-                this.sTime = this.data.process[0].time;
-                this.eTime = this.data.process[0].endtime;
-                this.minute = this.eTime.substring(10,13);
-                this.second = this.eTime.substring(14,16);
+                this.TimeText = this.data.process[0].endtime - this.data.process[0].stime;
+                console.log(this.TimeText);
+
+                if(this.data.order.statext == '用户取消'){
+                    this.showTime = false;
+                } else if(this.data.order.statext == '待支付') {
+                    this.showTime = true;
+                } else if(this.data.order.statext == '确认收货') {
+                    this.showTime = false;
+				} else if (this.minute == '0' && this.second == "0") {
+                    //取消订单
+                    this.clickType = 1;
+                    this.$router({name: 'ord-detail'});
+                    this.showTime = false;
+                }
 
                 //判断是否有赠品
 				for(var i in this.data.products) {
@@ -577,7 +586,15 @@ export default{
 		this.startTimer();
 
 	},
+    watch: {
+        payment: function () {
+            this.startTimer();
+        }
+    },
 	methods: {
+	    runTime() {
+
+        },
 		update_timer () {
 			if (this.second === 0) {
 				if (this.minute < 0) {
@@ -779,7 +796,7 @@ export default{
                 this.toastMessage = '网络开小差了~';
                 this.toastShow = true;
             });
-        },
+        }
 	},
     filters: {
         time: function (value) {
@@ -793,11 +810,6 @@ export default{
             return years + "-" + month + "-" + days + " " + (hours > 9 ? hours : '0' + hours) + ':' + (minutes > 9 ? minutes : '0' + minutes);
         }
     },
-	watch: {
-        payment: function () {
-            this.startTimer();
-        }  
-	},
 	events: {
 		payOrder: function(){
             this.$router.go({name: 'order-detail'});
@@ -847,6 +859,39 @@ export default{
 					break;
 			}
 		},
+        overtime () {
+            let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
+            ustore = JSON.parse(ustore);
+            //取消订单
+            this.$http.delete(localStorage.apiDomain+'public/index/user/getsubmitorder/uid/'+ustore.id+'/token/'+ustore.token+'/oid/'+this.$route.params.oid).then((response)=>{
+                if(response.data.status===1){
+                    console.log(response.data + '1');
+                    this.data.order.statext = '用户取消';
+                    this.data.order.status = -1;
+                    this.btnStatus = false;
+                    document.location.reload();
+                }else if(response.data.status === -1) {
+                    this.btnStatus = false;
+                    this.toastMessage = response.data.info;
+                    this.toastShow = true;
+                    let context = this;
+                    setTimeout(function(){
+                        context.clearAll();
+                        sessionStorage.removeItem('userInfo');
+                        localStorage.removeItem('userInfo');
+                        context.$router.go({name:'login'});
+                    },800);
+                }else{
+                    this.btnStatus = false;
+                    this.toastMessage = response.data.info;
+                    this.toastShow = true;
+                }
+            },(response) => {
+                this.btnStatus = false;
+                this.toastMessage = '网络开小差了~';
+                this.toastShow = true;
+            });
+        },
 		orderCancel: function(){
 			if(this.data.order.pay==1 || this.data.order.send == 1 || this.data.order.receive == 1){
 				this.toastMessage = '订单已支付';

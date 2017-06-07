@@ -1,32 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="be170c02-b6f5-4fd0-92ff-d35e5b042e56" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index_prod.html" afterPath="$PROJECT_DIR$/index_prod.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/activity-event.vue" afterPath="$PROJECT_DIR$/src/components/activity-event.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/balance-price.vue" afterPath="$PROJECT_DIR$/src/components/balance-price.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/balance-two.vue" afterPath="$PROJECT_DIR$/src/components/balance-two.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/banners.vue" afterPath="$PROJECT_DIR$/src/components/banners.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/buying-like.vue" afterPath="$PROJECT_DIR$/src/components/buying-like.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-rectangle.vue" afterPath="$PROJECT_DIR$/src/components/card-rectangle.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-square.vue" afterPath="$PROJECT_DIR$/src/components/card-square.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-types.vue" afterPath="$PROJECT_DIR$/src/components/card-types.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/index-search.vue" afterPath="$PROJECT_DIR$/src/components/index-search.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/integral.vue" afterPath="$PROJECT_DIR$/src/components/integral.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pic-shower.vue" afterPath="$PROJECT_DIR$/src/components/pic-shower.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/search.vue" afterPath="$PROJECT_DIR$/src/components/search.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.js" afterPath="$PROJECT_DIR$/src/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/midwares/classification.vue" afterPath="$PROJECT_DIR$/src/midwares/classification.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/midwares/per-orders.vue" afterPath="$PROJECT_DIR$/src/midwares/per-orders.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/com-detail.vue" afterPath="$PROJECT_DIR$/src/views/com-detail.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/com-list.vue" afterPath="$PROJECT_DIR$/src/views/com-list.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/ord-detail.vue" afterPath="$PROJECT_DIR$/src/views/ord-detail.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/personal.vue" afterPath="$PROJECT_DIR$/src/views/personal.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/submit.vue" afterPath="$PROJECT_DIR$/src/views/submit.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vuex/store.js" afterPath="$PROJECT_DIR$/src/vuex/store.js" />
-    </list>
+    <list default="true" id="be170c02-b6f5-4fd0-92ff-d35e5b042e56" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -47,7 +22,7 @@
         <entry file="file://$PROJECT_DIR$/src/components/card-types.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="171">
-              <caret line="580" column="20" lean-forward="false" selection-start-line="580" selection-start-column="20" selection-end-line="586" selection-end-column="21" />
+              <caret line="580" column="43" lean-forward="false" selection-start-line="580" selection-start-column="43" selection-end-line="580" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -318,11 +293,12 @@
       <workItem from="1496325942347" duration="1047000" />
       <workItem from="1496672186589" duration="964000" />
       <workItem from="1496754254767" duration="1285000" />
+      <workItem from="1496841484957" duration="8000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21774000" />
+    <option name="totallyTimeSpent" value="21782000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -609,7 +585,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-114">
           <caret line="16" column="19" lean-forward="true" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -617,14 +592,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-36">
           <caret line="958" column="51" lean-forward="false" selection-start-line="958" selection-start-column="51" selection-end-line="958" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/card-types.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
-          <caret line="580" column="20" lean-forward="false" selection-start-line="580" selection-start-column="20" selection-end-line="586" selection-end-column="21" />
+          <caret line="580" column="43" lean-forward="false" selection-start-line="580" selection-start-column="43" selection-end-line="580" selection-end-column="43" />
           <folding />
         </state>
       </provider>
