@@ -114,13 +114,27 @@
 		position: relative;
 	}
 
-	.cla-message .main .shotcut{
+	.cla-message .main .shotcut {
 		width: 33%;
 		height: 76px;
 		background-color: #EFEFEF;
 		background-size: cover;
 		overflow: hidden;
+		position: relative;
 		float: left;
+	}
+
+	.cla-message .main .shotcut .qing {
+		text-align:center;
+		width:100%;
+		height:100%;
+		line-height: 76px;
+		color:#fff;
+		font-size:16px;
+		position: absolute;
+		top:0px;
+		left:0px;
+		background: rgba(0,0,0,0.5);
 	}
 
 	.cla-message .main .shotcut .shotcut-img {
@@ -370,9 +384,16 @@
 					<template v-for="item in pdata">
 						<div class="main">
 							<div v-link="{name:'detail',params:{pid:item.id}}">
-								<div class="shotcut">
+
+								<div class="shotcut" v-if="item.store == 0">
+									<div class="qing">已售罄</div>
 									<img :src="item.src" alt="{{ item.title }}" class="shotcut-img" style="width:100%;height:100%;" />
 								</div>
+
+								<div class="shotcut" v-else>
+									<img :src="item.src" alt="{{ item.title }}" class="shotcut-img" style="width:100%;height:100%;" />
+								</div>
+
 								<div class="shotcut-txt">
 									<p style="height:35px;width:100%;overflow: hidden;text-overflow: ellipsis;">{{ item.title }}</p>
 									<p class="relative">
@@ -401,6 +422,8 @@
     import { cartNums } from 'vxpath/getters'
 	import formatPop from 'components/format-pop'
     import Toast from 'vux/src/components/toast'
+    import axios from 'axios'
+    import qs from 'qs'
 
 	export default{
         vuex: {
@@ -436,7 +459,6 @@
         },
         ready() {
             this.dtype = sessionStorage.getItem('number');
-
             if(this.dtype == null) {
                 this.chooseSort(26);
                 this.getChonse(26);
@@ -445,7 +467,6 @@
                 this.chooseSort(this.dtype);
                 this.getChonse(this.dtype);
 			}
-
             $(function() {
                 //菜单框架自动获取高度
                 var doc_H = $(document).height();
@@ -534,58 +555,70 @@
 
 			},
             chooseSort(cid){
-                let url = localStorage.apiDomain + 'public/index/index/classifylist/cid/' + cid;
-                this.$http.get(url).then((response)=>{
-                    this.pdata = response.data.info.list;
-                    console.log(this.pdata);
-                },(response)=>{
-                    this.toastMessage = "网络开小差啦~";
-                    this.toastShow = true;
-                });
+
+                axios({
+                    method: 'get',
+                    url: localStorage.apiDomain + 'public/index/index/classifylist/cid/' + cid,
+                }).then((response) => {
+                    if (response.data.status == 1) {
+                        this.pdata = response.data.info.list;
+                        console.log(this.pdata);
+                    }
+                }).catch(function(e) {
+                    console.log(e);
+				});
             },
             comfirmFun: function (cid) {
 
             },
             goCart: function(data) {
+                let ustore = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo');
+                ustore = JSON.parse(ustore);
                 var obj = {} , _self = this, cart = JSON.parse(sessionStorage.getItem("myCart"));
-                obj = {
-                    id:data.id,
-                    name:data.title,
-                    price:data.price,
-                    shotcut:data.src,
-                    deliverytime:data.deliverytime,
-                    activestu:data.activestu,
-                    peisongok:data.peisongok,
-                    nums:this.buyNums,
-                    store:this.proNums,
-                    format:'',
-                    formatName:'',
-                };
-                //获取当前时间
-                var date = new Date(), hours = date.getHours(), minute = date.getMinutes(), seconds = date.getSeconds();
-                var minuteOfDay =  hours * 60  + minute; //从0:00分开是到目前为止的分钟数
-                var start = 0 * 60; //开始时间
-                var end = 13 * 60;  //结束时间
-                if(data.peisongok == 0 && data.deliverytime == 1) {
-                    alert("抱歉，当日配送商品已截单。请到次日配送专区选购，谢谢合作！");
-                    return false;
-                }
-                if(sessionStorage.getItem("myCart") != '') {
-                    for(var y in cart) {
-                        if (cart[y]["deliverytime"] != data.deliverytime) {
-                            if (data.deliverytime == 0) {
-                                alert("亲！您选购的商品为次日配送商品，购物车里存在当日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
-                                return false;
-                            } else if (data.deliverytime == 1) {
-                                alert("亲！您选购的商品为当日配送商品，购物车里存在次日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
-                                return false;
+                axios({
+                    method: 'get',
+                    url: localStorage.apiDomain + 'public/index/index/productdetail/uid/' + ustore.id + '/pid/' + data.id,
+                }).then((response) => {
+                    obj = {
+                        id:data.id,
+                        name:data.title,
+                        price:data.price,
+                        shotcut:data.src,
+                        deliverytime:data.deliverytime,
+                        activestu:data.activestu,
+                        peisongok:data.peisongok,
+                        nums:this.buyNums,
+                        store:this.proNums = response.data.store,
+                        format:'',
+                        formatName:'',
+                    };
+                    if(data.peisongok == 0 && data.deliverytime == 1) {
+                        alert("抱歉，当日配送商品已截单。请到次日配送专区选购，谢谢合作！");
+                        return false;
+                    } else if(data.store == 0) {
+                        alert("已售罄");
+                        return false;
+                    } else if (data.activeid > 0) {
+                        alert("这是限时抢购商品！");
+						return false;
+					}
+                    if(sessionStorage.getItem("myCart") != '') {
+                        for(var y in cart) {
+                            if (cart[y]["deliverytime"] != data.deliverytime) {
+                                if (data.deliverytime == 0) {
+                                    alert("亲！您选购的商品为次日配送商品，购物车里存在当日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
+                                    return false;
+                                } else if (data.deliverytime == 1) {
+                                    alert("亲！您选购的商品为当日配送商品，购物车里存在次日配送商品！所以在配送时间上不一致，请先结付或者删除购物车的菜品，再进行选购结付既可；谢谢您的配合！");
+                                    return false;
+                                }
                             }
                         }
                     }
-                }
-                this.setCart(obj);
-                obj = {};
-                alert("加入购物车成功");
+                    this.setCart(obj);
+                    obj = {};
+                    alert("加入购物车成功");
+                });
 			}
         },
     }

@@ -1,7 +1,417 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="be170c02-b6f5-4fd0-92ff-d35e5b042e56" name="Default" comment="" />
+    <list default="true" id="be170c02-b6f5-4fd0-92ff-d35e5b042e56" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/1.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/1.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/1.8872c9a28ba788ec4092.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/1.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/1.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/1.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/1.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/10.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/10.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/10.8872c9a28ba788ec4092.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/10.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/10.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/10.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/10.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/11.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/11.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/11.8872c9a28ba788ec4092.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/11.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/11.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/11.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/11.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/12.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/12.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/12.8872c9a28ba788ec4092.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/12.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/12.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/12.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/12.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/13.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/13.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/13.8872c9a28ba788ec4092.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/13.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/13.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/13.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/13.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/14.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/14.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/14.8872c9a28ba788ec4092.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/14.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/14.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/14.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/14.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/15.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/15.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/15.8872c9a28ba788ec4092.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/15.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/15.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/15.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/15.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/16.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/16.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/16.8872c9a28ba788ec4092.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/16.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/16.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/16.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/16.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/17.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/17.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/17.8872c9a28ba788ec4092.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/17.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/17.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/17.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/17.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/18.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/18.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/18.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/18.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/18.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/18.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/19.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/19.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/19.8872c9a28ba788ec4092.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/19.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/19.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/19.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/19.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/2.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/2.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/2.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/2.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/2.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/2.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/20.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/20.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/20.8872c9a28ba788ec4092.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/20.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/20.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/20.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/20.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/21.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/21.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/21.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/21.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/21.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/21.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/22.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/22.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/22.8872c9a28ba788ec4092.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/22.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/22.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/22.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/22.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/23.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/23.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/23.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/23.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/23.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/23.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/24.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/24.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/24.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/24.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/24.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/24.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/25.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/25.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/25.8872c9a28ba788ec4092.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/25.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/25.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/25.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/25.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/26.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/26.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/26.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/26.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/26.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/26.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/27.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/27.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/27.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/27.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/27.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/27.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/28.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/28.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/28.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/28.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/28.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/28.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/29.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/29.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/29.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/29.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/29.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/29.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/3.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/3.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/3.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/3.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/3.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/3.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/30.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/30.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/30.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/30.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/30.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/30.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/31.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/31.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/31.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/31.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/31.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/31.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/32.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/32.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/32.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/32.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/32.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/32.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/33.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/33.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/33.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/33.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/33.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/33.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/34.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/34.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/34.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/34.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/34.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/34.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/35.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/35.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/35.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/35.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/35.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/35.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/36.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/36.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/36.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/36.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/36.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/36.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/37.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/37.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/37.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/37.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/37.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/37.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/38.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/38.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/38.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/38.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/38.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/38.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/39.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/39.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/39.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/39.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/39.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/39.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/4.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/4.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/4.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/4.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/4.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/4.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/40.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/40.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/40.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/40.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/40.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/40.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/41.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/41.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/41.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/41.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/41.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/41.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/42.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/42.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/42.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/42.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/42.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/42.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/43.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/43.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/43.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/43.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/43.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/43.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/44.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/44.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/44.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/44.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/44.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/44.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/45.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/45.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/45.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/45.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/45.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/45.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/46.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/46.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/46.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/46.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/46.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/46.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/47.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/47.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/47.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/47.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/47.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/47.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/48.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/48.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/48.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/48.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/48.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/48.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/49.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/49.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/49.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/49.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/49.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/49.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/4e9c484d2f62041741d4.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/5.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/5.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/5.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/5.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/5.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/5.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/50.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/50.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/50.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/50.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/50.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/50.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/51.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/51.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/51.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/51.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/51.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/51.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/52.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/52.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/52.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/52.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/52.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/52.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/53.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/53.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/53.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/53.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/53.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/53.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/54.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/54.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/54.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/54.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/54.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/54.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/55.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/55.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/55.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/55.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/55.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/55.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/56.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/56.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/56.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/56.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/56.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/56.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/57.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/57.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/57.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/57.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/57.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/57.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/58.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/58.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/58.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/58.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/59.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/6.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/6.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/6.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/6.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/6.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/6.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/7.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/7.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/7.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/7.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/7.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/7.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/7a68c991ec8ded781b5d.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/8.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/8.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/8.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/8.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/8.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/8.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/9.4e9c484d2f62041741d4.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/9.7a68c991ec8ded781b5d.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/9.ac72a13e78afd67fe1bb.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/9.b708a46244d94398849e.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/9.cf40a6478fedc5310c61.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/9.f63b3df18a092cef3c24.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/ac72a13e78afd67fe1bb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/assets/052acc80.iconfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/assets/15054c6a.coupon.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/assets/1a291ede.comment.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/assets/21db378f.address.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/assets/5c1c2548.banner_zhuce.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/b708a46244d94398849e.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/cf40a6478fedc5310c61.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/f63b3df18a092cef3c24.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/main.4e9c484d2f62041741d4.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/main.7a68c991ec8ded781b5d.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/main.8872c9a28ba788ec4092.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/main.8872c9a28ba788ec4092.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/main.ac72a13e78afd67fe1bb.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/main.b708a46244d94398849e.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/main.cf40a6478fedc5310c61.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/main.f63b3df18a092cef3c24.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/vendors.4e9c484d2f62041741d4.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/vendors.7a68c991ec8ded781b5d.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/vendors.8872c9a28ba788ec4092.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/vendors.ac72a13e78afd67fe1bb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/vendors.b708a46244d94398849e.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/vendors.cf40a6478fedc5310c61.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/vendors.f63b3df18a092cef3c24.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/npm-debug.log" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index_prod.html" afterPath="$PROJECT_DIR$/index_prod.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/activity-event.vue" afterPath="$PROJECT_DIR$/src/components/activity-event.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/activity.vue" afterPath="$PROJECT_DIR$/src/components/activity.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/banners.vue" afterPath="$PROJECT_DIR$/src/components/banners.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/bottom-buy.vue" afterPath="$PROJECT_DIR$/src/components/bottom-buy.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/buying-like.vue" afterPath="$PROJECT_DIR$/src/components/buying-like.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-rectangle.vue" afterPath="$PROJECT_DIR$/src/components/card-rectangle.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-square.vue" afterPath="$PROJECT_DIR$/src/components/card-square.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-types.vue" afterPath="$PROJECT_DIR$/src/components/card-types.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/cart-list.vue" afterPath="$PROJECT_DIR$/src/components/cart-list.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/cart.vue" afterPath="$PROJECT_DIR$/src/components/cart.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/freepop-list.vue" afterPath="$PROJECT_DIR$/src/components/freepop-list.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/my-freepop.vue" afterPath="$PROJECT_DIR$/src/components/my-freepop.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/search.vue" afterPath="$PROJECT_DIR$/src/components/search.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/env.js" afterPath="$PROJECT_DIR$/src/config/env.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.js" afterPath="$PROJECT_DIR$/src/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/midwares/index-main.vue" afterPath="$PROJECT_DIR$/src/midwares/index-main.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/ord-detail.vue" afterPath="$PROJECT_DIR$/src/views/ord-detail.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/personal.vue" afterPath="$PROJECT_DIR$/src/views/personal.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/pro-detail.vue" afterPath="$PROJECT_DIR$/src/views/pro-detail.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/submit.vue" afterPath="$PROJECT_DIR$/src/views/submit.vue" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -18,11 +428,31 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="card-types.vue" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/card-types.vue">
+      <file leaf-file-name="card-rectangle.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/card-rectangle.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="580" column="43" lean-forward="false" selection-start-line="580" selection-start-column="43" selection-end-line="580" selection-end-column="43" />
+            <state relative-caret-position="256">
+              <caret line="431" column="29" lean-forward="false" selection-start-line="431" selection-start-column="29" selection-end-line="431" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="321">
+              <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="buying-like.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/buying-like.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-19">
+              <caret line="205" column="44" lean-forward="false" selection-start-line="205" selection-start-column="44" selection-end-line="205" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -44,9 +474,10 @@
         <option value="$PROJECT_DIR$/src/midwares/index-main.vue" />
         <option value="$PROJECT_DIR$/src/views/submit.vue" />
         <option value="$PROJECT_DIR$/src/components/sao.vue" />
-        <option value="$PROJECT_DIR$/src/main.js" />
-        <option value="$PROJECT_DIR$/src/components/card-types.vue" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/components/card-types.vue" />
+        <option value="$PROJECT_DIR$/src/components/card-rectangle.vue" />
+        <option value="$PROJECT_DIR$/src/main.js" />
       </list>
     </option>
   </component>
@@ -82,8 +513,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -293,54 +724,46 @@
       <workItem from="1496325942347" duration="1047000" />
       <workItem from="1496672186589" duration="964000" />
       <workItem from="1496754254767" duration="1285000" />
-      <workItem from="1496841484957" duration="8000" />
+      <workItem from="1496841484957" duration="783000" />
+      <workItem from="1496843399262" duration="849000" />
+      <workItem from="1496926894753" duration="2500000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21782000" />
+    <option name="totallyTimeSpent" value="25906000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19196428" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-    </layout>
-    <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19196428" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
@@ -353,6 +776,22 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/components/card-types.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/card-types.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/card-types.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -560,24 +999,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="40" column="3" lean-forward="false" selection-start-line="40" selection-start-column="3" selection-end-line="40" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/order-payment.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3057">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/buying-like.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="28" lean-forward="false" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -597,8 +1022,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/card-types.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="580" column="43" lean-forward="false" selection-start-line="580" selection-start-column="43" selection-end-line="580" selection-end-column="43" />
+        <state relative-caret-position="753">
+          <caret line="607" column="43" lean-forward="false" selection-start-line="607" selection-start-column="43" selection-end-line="607" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/buying-like.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-19">
+          <caret line="205" column="44" lean-forward="false" selection-start-line="205" selection-start-column="44" selection-end-line="205" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/card-rectangle.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="431" column="29" lean-forward="false" selection-start-line="431" selection-start-column="29" selection-end-line="431" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
           <folding />
         </state>
       </provider>
