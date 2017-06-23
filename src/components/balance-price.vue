@@ -1,3 +1,110 @@
+<template>
+	<div class="bl-wrapper">
+		<div class="line" style="border:none;">
+			<div class="left">商品金额：</div>
+			<div class="right">
+				{{ sfee }}
+			</div>
+		</div>
+		<div class="line" style="border:none;">
+			<div class="left">优惠券抵扣：</div>
+			<div class="right">
+				<label>-</label>
+				{{ cfee }}
+			</div>
+		</div>
+		<div class="line" style="border:none;">
+			<div class="left">积分抵扣：</div>
+			<div class="right">
+				<label>-</label>
+				{{ scfee }}
+			</div>
+		</div>
+		<div class="line" style="border:none;">
+			<div class="left">快递运费：</div>
+			<div class="right">
+				{{ ffee }}
+			</div>
+		</div>
+		<div class="line bottom" v-if="showSum" style="border:none;">
+			应付金额：<label>¥{{ lastSum }}</label>
+		</div>
+	</div>
+</template>
+
+<script>
+	export default{
+		props: {
+			sum: {	//总价
+				type: [String,Number],
+				default: 0
+			},
+			coupon: {	//优惠券
+				type: [String,Number],
+				default: 0
+			},
+			score: {	//积分
+				type: [String,Number],
+				default: 0
+			},
+			freight: {	//快递
+				type: [String,Number],
+				default: 0
+			},
+			showSum: {
+				type: Boolean,
+				default: false
+			}
+		},
+		data() {
+			return {
+				
+			}
+		},
+		ready() {
+			
+		},
+		computed: {
+			sfee: function() {
+				let fee = this.sum;
+				if(typeof fee === 'string') {
+					fee = parseFloat(fee);
+				}
+				return fee.toFixed(2);
+			},
+			cfee: function() {
+				let fee = this.coupon;
+				if(typeof fee === 'string') {
+					fee = parseFloat(fee);
+				}
+				return fee.toFixed(2);
+			},
+			scfee: function() {
+				let fee = this.score;
+				if(typeof fee === 'string') {
+					fee = parseFloat(fee);
+				}
+				return fee.toFixed(2);
+			},
+			ffee: function() {
+				let fee = this.freight;
+				if(typeof fee === 'string') {
+					fee = parseFloat(fee);
+				}
+				return fee.toFixed(2);
+			},
+			lastSum: function(){
+			    //getSum = (总价 + 快递费) - (优惠券 + 积分)
+				let getSum = (this.sum + this.freight) - (this.coupon + this.score);
+				if(getSum <= 0) {
+					getSum = 0.01;
+				}
+				return getSum.toFixed(2);
+			}
+		}
+	}
+</script>
+
 <style scoped>
 	.bl-wrapper{
 		width: 94%;
@@ -50,109 +157,3 @@
 		color:#f9ad0c;
 	}
 </style>
-
-<template>
-	<div class="bl-wrapper">
-		<div class="line" style="border:none;">
-			<div class="left">商品金额：</div>
-			<div class="right">
-				{{ sfee }}
-			</div>
-		</div>
-		<div class="line" style="border:none;">
-			<div class="left">优惠券抵扣：</div>
-			<div class="right">
-				<label>-</label>
-				{{ cfee }}
-			</div>
-		</div>
-		<div class="line" style="border:none;">
-			<div class="left">积分抵扣：</div>
-			<div class="right">
-				<label>-</label>
-				{{ scfee }}
-			</div>
-		</div>
-		<div class="line" style="border:none;">
-			<div class="left">快递运费：</div>
-			<div class="right">
-				{{ ffee }}
-			</div>
-		</div>
-		<div class="line bottom" v-if="showSum" style="border:none;">
-			应付金额：<label>¥{{ lastSum }}</label>
-		</div>
-	</div>
-</template>
-
-<script>
-	export default{
-		props: {
-			sum: {
-				type: [String,Number],
-				default: 0
-			},
-			coupon: {
-				type: [String,Number],
-				default: 0
-			},
-			score: {
-				type: [String,Number],
-				default: 0
-			},
-			freight: {
-				type: [String,Number],
-				default: 0
-			},
-			showSum: {
-				type: Boolean,
-				default: false
-			}
-		},
-		data() {
-			return {
-				
-			}
-		},
-		ready() {
-			
-		},
-		computed: {
-			sfee: function() {
-				let fee = this.sum;
-				if(typeof fee === 'string') {
-					fee = parseFloat(fee);
-				}
-				return fee.toFixed(2);
-			},
-			cfee: function() {
-				let fee = this.coupon;
-				if(typeof fee === 'string') {
-					fee = parseFloat(fee);
-				}
-				return fee.toFixed(2);
-			},
-			scfee: function() {
-				let fee = this.score;
-				if(typeof fee === 'string') {
-					fee = parseFloat(fee);
-				}
-				return fee.toFixed(2);
-			},
-			ffee: function() {
-				let fee = this.freight;
-				if(typeof fee === 'string') {
-					fee = parseFloat(fee);
-				}
-				return fee.toFixed(2);
-			},
-			lastSum: function(){
-				let getSum = (this.sum + this.freight) - (this.coupon + this.score);
-				if(getSum <= 0) {
-					getSum = 0.01;
-				}
-				return getSum.toFixed(2);
-			}
-		}
-	}
-</script>

@@ -1,115 +1,4 @@
-<style scoped>
-.input-wrapper{
-	width:90%;
-	height:auto;
-	margin:auto;
-	padding:8% 0% 0% 0%;
-}
 
-.btn-wrapper{
-	width:90%;
-	margin:8% 5% 10% 5%;
-}
-
-.input-wrapper .list{
-	width:100%;
-	height:auto;
-	margin-bottom:0.8rem;
-	font-size:0;
-	line-height:2.5rem;
-	position:relative;
-}
-
-.input-wrapper .list:last-child{
-	margin-bottom:0rem;
-}
-
-.input-wrapper .list label,.input-wrapper .list input,.input-wrapper .list select{
-	display:inline-block;
-	font-size:1.6rem;
-}
-
-.input-wrapper .list label{
-	width:25%;
-}
-
-.input-wrapper .list input,.input-wrapper .list select{
-	width:75%;
-	height:2.5rem;
-	text-align:right;
-	background-color:transparent;
-}
-
-.input-wrapper .list select{
-	border:none;
-	text-align:right;
-	appearance:none;
-	-webkit-appearance:none;
-	-moz-appearance:none;
-	direction:rtl;
-}
-
-.input-wrapper .list .arrow{
-	width:2.5%;
-	height:100%;
-	position:absolute;
-	top:0rem;
-	right:0rem;
-	background-image:url('../images/arrow.png');
-	background-size:contain;
-	background-repeat:no-repeat;
-	background-position:center;
-}
-
-.input-wrapper .list.pwd{
-	text-align:center;
-}
-
-.input-wrapper .list.pwd input{
-	width:90%;
-	height:3.5rem;
-	text-align:left;
-	background-color:transparent;
-	margin-bottom:0.8rem;
-	border-bottom: 1px solid #ccc;
-	font-size: 14px;
-}
-
-</style>
-
-<style>
-.weui_cells{
-	margin-top:0 !important;
-}
-
-.weui_btn_default{
-	background-color:#F9AD0C !important;
-	color:#fff !important;
-	border-radius:0.2rem;
-}
-
-.weui_btn_default:active{
-	background-color:#DE9A08 !important;
-}
-
-.weui_btn_disabled.weui_btn_default{
-	background-color:#F3C76A !important;
-}
-
-a.calendar-title{
-	font-size:1.8rem;
-	margin:0.5rem 0rem;
-}
-
-table thead tr th{
-	font-size:1.4rem;
-	font-weight:600;
-}
-
-div.input-wrapper .weui_cell.vux-tap-active{
-	display:none;
-}
-</style>
 
 <template>
 	<!-- 输入内容 -->
@@ -143,11 +32,15 @@ div.input-wrapper .weui_cell.vux-tap-active{
 			<input type="password" placeholder="请输入新密码" v-model="data.npwd" />
 			<input type="password" placeholder="请确认新密码" v-model="data.cpwd" />
 		</div>
+		<div class="list">
+			<label style="line-height: 30px;">主题颜色</label>
+			<input type="color" class="chonseColor" v-model="colorVal" @change="chonseColor()" />
+		</div>
 	</div>
 
 	<!-- 底部按钮 -->
 	<div class="btn-wrapper">
-		<x-button :text="btnText" :disabled="btnDis" @click="postData"></x-button>
+		<x-button :text="btnText" id="confirm" :disabled="btnDis" @click="postData"></x-button>
 		<x-button text="退出登录" style="background-color:transparent !important;color:#81c429 !important;border:1px solid #81c429;margin-top:10px;" @click="showExit"></x-button>
 	</div>
 
@@ -192,11 +85,26 @@ export default{
 				birthday:"TODAY",
 				opwd:'',
 				npwd:'',
-				cpwd:''
-			}
+				cpwd:'',
+			},
+            colorVal: ''
 		}
 	},
 	methods: {
+        chonseColor () {
+            var pColor = document.getElementsByClassName("public-color");
+            localStorage.setItem("color",this.colorVal);
+            var cVal = localStorage.getItem("color");
+            for(var i = 0; i <pColor.length; i++) {
+				pColor[i].style.color = cVal;
+			}
+			var btnColor = document.getElementsByClassName("public-bgcolor");
+			for(var i = 0; i <btnColor.length; i++) {
+                btnColor[i].style.background = cVal;
+			}
+			console.log();
+			console.log(this.colorVal);
+		},
 		changePwd: function(event){
 			let pwd = document.getElementById("pwd");
 			if(pwd.style.display==="none"){
@@ -216,6 +124,8 @@ export default{
 			this.clearAll();
 			sessionStorage.removeItem('userInfo');
 			localStorage.removeItem('userInfo');
+			localStorage.removeItem('openid');
+			sessionStorage.removeItem('openid');
 			this.$router.go({name:'index'});
 		},
 		checkBefore: function(){
@@ -327,3 +237,133 @@ export default{
 	}
 }
 </script>
+
+<style scoped>
+	.input-wrapper{
+		width:90%;
+		height:auto;
+		margin:auto;
+		padding:8% 0% 0% 0%;
+	}
+
+	.btn-wrapper{
+		width:90%;
+		margin:8% 5% 10% 5%;
+	}
+
+	.input-wrapper .list{
+		width:100%;
+		height:auto;
+		margin-bottom:0.8rem;
+		font-size:0;
+		line-height:2.5rem;
+		position:relative;
+	}
+
+	.input-wrapper .list:last-child{
+		margin-bottom:0rem;
+	}
+
+	.input-wrapper .list label,.input-wrapper .list input,.input-wrapper .list select{
+		display:inline-block;
+		font-size:1.6rem;
+	}
+
+	.input-wrapper .list label{
+		width:25%;
+	}
+
+	.input-wrapper .list .chonseColor{
+		width: 15%;
+		height: 25px;
+		float: right;
+		position: relative;
+		top: 3px;
+		border: 3px solid #ccc;
+		border-radius: 5px;
+		appearance:none;
+		-o-appearance:none;
+		-ms-appearance:none;
+		-moz-appearance:none;
+		-webkit-appearance:none;
+	}
+
+	.input-wrapper .list input,.input-wrapper .list select{
+		width:75%;
+		height:2.5rem;
+		text-align:right;
+		background-color:transparent;
+	}
+
+	.input-wrapper .list select{
+		border:none;
+		text-align:right;
+		appearance:none;
+		-webkit-appearance:none;
+		-moz-appearance:none;
+		direction:rtl;
+	}
+
+	.input-wrapper .list .arrow{
+		width:2.5%;
+		height:100%;
+		position:absolute;
+		top:0rem;
+		right:0rem;
+		background-image:url('../images/arrow.png');
+		background-size:contain;
+		background-repeat:no-repeat;
+		background-position:center;
+	}
+
+	.input-wrapper .list.pwd{
+		text-align:center;
+	}
+
+	.input-wrapper .list.pwd input{
+		width:90%;
+		height:3.5rem;
+		text-align:left;
+		background-color:transparent;
+		margin-bottom:0.8rem;
+		border-bottom: 1px solid #ccc;
+		font-size: 14px;
+	}
+
+
+
+</style>
+
+<style>
+	.weui_cells{
+		margin-top:0 !important;
+	}
+
+	.weui_btn_default{
+		background-color:#F9AD0C !important;
+		color:#fff !important;
+		border-radius:0.2rem;
+	}
+
+	.weui_btn_default:active{
+		background-color:#DE9A08 !important;
+	}
+
+	.weui_btn_disabled.weui_btn_default{
+		background-color:#F3C76A !important;
+	}
+
+	a.calendar-title{
+		font-size:1.8rem;
+		margin:0.5rem 0rem;
+	}
+
+	table thead tr th{
+		font-size:1.4rem;
+		font-weight:600;
+	}
+
+	div.input-wrapper .weui_cell.vux-tap-active{
+		display:none;
+	}
+</style>

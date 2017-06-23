@@ -8,6 +8,7 @@ const routers = {
     	footer:true,
     	title:'绿秧田商城',
     	position:1,
+        savedPosition: sessionStorage.getItem("scrolltop"),
         saveScrollPosition: true,
         scrollBehavior (to, from, savedPosition) {
             if (to.hash) {
@@ -41,7 +42,25 @@ const routers = {
                 component (resolve) {
                     require(['./midwares/index-column.vue'], resolve);
                 }
-            }
+            },
+            'card-types/:cid': {
+                name:'cardtypes',
+                header:true,
+                footer:true,
+                title:'下单',
+                component (resolve) {
+                    require(['./components/card-types.vue'], resolve);
+                }
+            },
+            'banners/:cid': {
+                name:'banners',
+                header:false,
+                footer:false,
+                title:'banners',
+                component (resolve) {
+                    require(['./components/banners.vue'], resolve);
+                }
+            },
         }
     },
     '/classify': {
@@ -170,9 +189,9 @@ const routers = {
     '/article/:cid': {
         name:'article',
         header:true,
-        footer:false,
+        footer:true,
         title:'精选编辑',
-        position:1,
+        position:3,
         component (resolve) {
             require(['./views/article.vue'], resolve);
         }
@@ -195,7 +214,7 @@ const routers = {
         position:1,
         component (resolve) {
             require(['./views/pro-detail.vue'], resolve);
-        } 
+        }
     },
     '/comment/list/:pid': {
         name:'comment-list',
@@ -340,26 +359,6 @@ const routers = {
             require(['./components/testSwiper.vue'], resolve);
         }
     },
-    '/activity': {
-        name:'activity',
-        header:true,
-        footer:true,
-        title:'活动',
-        position:3,
-        component (resolve) {
-            require(['./components/activity.vue'], resolve);
-        }
-    },
-    '/activity-event': {
-        name:'activity-event',
-        header:true,
-        footer:true,
-        title:'活动详情',
-        position:0,
-        component (resolve) {
-            require(['./components/activity-event.vue'], resolve);
-        }
-    },
     '/integral': {
         name:'integral',
         header:true,
@@ -495,15 +494,6 @@ const routers = {
             require(['./components/freepop-list.vue'], resolve);
         }
     },
-    'card-types': {
-        name:'cardtypes',
-        header:true,
-        footer:true,
-        title:'下单',
-        component (resolve) {
-            require(['./components/card-types.vue'], resolve);
-        }
-    },
     'card-square': {
         name:'cardsquare',
         header:false,
@@ -538,15 +528,6 @@ const routers = {
         title:'抢购',
         component (resolve) {
             require(['./components/tap-card.vue'], resolve);
-        }
-    },
-    'banners': {
-        name:'banners',
-        header:false,
-        footer:false,
-        title:'banners',
-        component (resolve) {
-            require(['./components/banners.vue'], resolve);
         }
     },
     'sao': {
@@ -610,6 +591,26 @@ const routers = {
         component (resolve) {
             require(['./components/surplus.vue'], resolve);
         }
-    }
+    },
+    '/card-image' : {
+        name:'card-image',
+        header:true,
+        footer:true,
+        title:'活动',
+        position:3,
+        component (resolve) {
+            require(['./components/card-image.vue'], resolve);
+        }
+    },
+    '/card-coupon' : {
+        name:'card-coupon',
+        header:true,
+        footer:true,
+        title:'活动',
+        position:3,
+        component (resolve) {
+            require(['./components/card-coupon.vue'], resolve);
+        }
+    },
 };
 export default routers;

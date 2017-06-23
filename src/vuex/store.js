@@ -5,24 +5,46 @@ Vue.use(Vuex);
 
 //应用状态
 const state = {
-	cart: sessionStorage.getItem('myCart') ? JSON.parse(sessionStorage.getItem('myCart')) : [],
-	selCart: JSON.parse(sessionStorage.getItem('mySelCart')) || [],
+	cart: localStorage.getItem('myCart') ? JSON.parse(localStorage.getItem('myCart')) : [],
+	selCart: JSON.parse(localStorage.getItem('mySelCart')) || [],
     dtype: 1,
 	shopname: {},
     message: {},
 	text: "",
-    number: 0,
+    giftList: {},
+    song: "",
+	giftstu : 0,
+	scroll: 0,
+	visibleEle: false,
 }
 
 //应用状态操作
 const mutations = {
-    myScrollTop (state,number) {
-        state.number = number;
+	myVisible (state,visibleEle) {
+		state.visibleEle = visibleEle;
+	},
+	scroll (state,scroll) {
+		state.scroll = scroll;
+        sessionStorage.setItem("scrolltop",JSON.stringify(state.scroll));
+	},
+    mystu (state,giftstu) {	//赠品状态
+        state.giftstu = giftstu;
+    },
+    mySong (state,song) {
+        state.song = song;
+        sessionStorage.setItem("song",JSON.stringify(state.song));
+    },
+    commitData (state, params) {
+    	state[params.target] = params.data;
+	},
+    myGift (state,giftList) {	//自提点ID
+        state.giftList = giftList;
+        sessionStorage.setItem("giftlist",JSON.stringify(state.giftList));
     },
     myActiveTwo (state,text) {
         state.text = text;
     },
-    myVipMessage (state,message) {
+    myMessage (state,message) {
         state.message = message;
         sessionStorage.setItem("messgae",JSON.stringify(state.message));
     },
@@ -49,14 +71,14 @@ const mutations = {
 		}else{
 			state.cart.push(obj);
 		}
-        sessionStorage.setItem('myCart',JSON.stringify(state.cart));
+        localStorage.setItem('myCart',JSON.stringify(state.cart));
 	},
 	SETCARTOBJS (state,objs) {
 		state.cart = objs.slice(0);
 		for(let plist=0;plist<state.cart.length;plist++){
 			state.cart[plist].price = state.cart[plist].price/state.cart[plist].nums;
 		}
-        sessionStorage.setItem('myCart',JSON.stringify(state.cart));
+        localStorage.setItem('myCart',JSON.stringify(state.cart));
 	},
 	INCRECARTNUMS (state,id,format) {
 		for(let plist = 0; plist < state.cart.length; plist++) {
@@ -65,7 +87,7 @@ const mutations = {
 				break;
 			}
 		}
-        sessionStorage.setItem('myCart',JSON.stringify(state.cart));
+        localStorage.setItem('myCart',JSON.stringify(state.cart));
 	},
 	REDUCECARTNUMS (state,id,format) {
 		for(let plist=0;plist<state.cart.length;plist++){
@@ -74,7 +96,7 @@ const mutations = {
 				break;
 			}
 		}
-        sessionStorage.setItem('myCart',JSON.stringify(state.cart));
+        localStorage.setItem('myCart',JSON.stringify(state.cart));
 	},
 	DELCARTOBJ (state,id,format) {
 		for(let plist=0;plist<state.cart.length;plist++){
@@ -83,7 +105,7 @@ const mutations = {
 				break;
 			}
 		}
-        sessionStorage.setItem('myCart',JSON.stringify(state.cart));
+        localStorage.setItem('myCart',JSON.stringify(state.cart));
 	},
 	DELCARTOBJS (state,objs) {
 		for(let po=0;po<objs.length;po++){
@@ -94,13 +116,13 @@ const mutations = {
 				}
 			}
 		}
-        sessionStorage.setItem('myCart',JSON.stringify(state.cart));
+        localStorage.setItem('myCart',JSON.stringify(state.cart));
 	},
 	CLEARCART (state) {
 		state.selCart = [];
 		state.cart = [];
-		sessionStorage.removeItem('mySelCart');
-        sessionStorage.removeItem('myCart');
+        localStorage.removeItem('mySelCart');
+        localStorage.removeItem('myCart');
 	},
 	SETSELCART (state,sarray) {
 		if(typeof sarray==='object'&&sarray.length>0){
@@ -117,7 +139,7 @@ const mutations = {
 					}
 				}
 			}
-			sessionStorage.setItem('mySelCart',JSON.stringify(state.selCart));
+            localStorage.setItem('mySelCart',JSON.stringify(state.selCart));
 		}
 	},
 	CLEARSELCART (state){
@@ -140,8 +162,8 @@ const mutations = {
 		}else{
 			state.cart = [];
 		}
-		sessionStorage.setItem('mySelCart',JSON.stringify(state.selCart));
-        sessionStorage.setItem('myCart',JSON.stringify(state.cart));
+        localStorage.setItem('mySelCart',JSON.stringify(state.selCart));
+        localStorage.setItem('myCart',JSON.stringify(state.cart));
 	}
 }
 

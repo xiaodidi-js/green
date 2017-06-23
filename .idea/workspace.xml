@@ -2,75 +2,135 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be170c02-b6f5-4fd0-92ff-d35e5b042e56" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/1.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/10.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/11.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/12.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/13.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/14.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/15.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/16.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/17.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/18.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/19.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/2.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/20.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/21.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/22.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/23.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/24.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/25.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/26.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/27.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/28.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/29.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/3.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/30.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/31.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/32.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/33.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/34.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/35.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/36.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/37.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/38.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/39.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/4.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/40.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/41.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/42.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/43.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/44.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/45.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/4551dfe405aabb6c48f2.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/46.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/47.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/48.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/49.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/5.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/50.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/51.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/52.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/53.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/54.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/55.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/56.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/57.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/58.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/59.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/6.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/7.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/8.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/9.4551dfe405aabb6c48f2.chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/main.4551dfe405aabb6c48f2.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/vendors.4551dfe405aabb6c48f2.js" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/1.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/10.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/11.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/12.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/13.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/14.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/15.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/16.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/17.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/18.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/19.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/2.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/20.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/21.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/22.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/23.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/24.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/25.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/26.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/27.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/28.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/29.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/3.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/30.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/31.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/32.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/33.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/34.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/35.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/36.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/37.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/38.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/39.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/4.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/40.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/41.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/42.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/43.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/44.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/45.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/46.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/47.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/48.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/49.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/5.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/50.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/51.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/52.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/53.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/54.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/55.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/56.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/57.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/58.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/59.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/6.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/7.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/8.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/9.fb9dad0142e26aeea5d6.chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/fb9dad0142e26aeea5d6.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/main.fb9dad0142e26aeea5d6.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/vendors.fb9dad0142e26aeea5d6.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/index-search.vue" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index_prod.html" afterPath="$PROJECT_DIR$/index_prod.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/activity-event.vue" afterPath="$PROJECT_DIR$/src/components/activity-event.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/activity.vue" afterPath="$PROJECT_DIR$/src/components/activity.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/app.vue" afterPath="$PROJECT_DIR$/src/components/app.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/balance-price.vue" afterPath="$PROJECT_DIR$/src/components/balance-price.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/balance-two.vue" afterPath="$PROJECT_DIR$/src/components/balance-two.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/banners.vue" afterPath="$PROJECT_DIR$/src/components/banners.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/bottom-buy.vue" afterPath="$PROJECT_DIR$/src/components/bottom-buy.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/bottom-confirm.vue" afterPath="$PROJECT_DIR$/src/components/bottom-confirm.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/bottom-pay.vue" afterPath="$PROJECT_DIR$/src/components/bottom-pay.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/bottom.vue" afterPath="$PROJECT_DIR$/src/components/bottom.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/buying-like.vue" afterPath="$PROJECT_DIR$/src/components/buying-like.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-address.vue" afterPath="$PROJECT_DIR$/src/components/card-address.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-column.vue" afterPath="$PROJECT_DIR$/src/components/card-column.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-coupon.vue" afterPath="$PROJECT_DIR$/src/components/card-coupon.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-image.vue" afterPath="$PROJECT_DIR$/src/components/card-image.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-orders.vue" afterPath="$PROJECT_DIR$/src/components/card-orders.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-recommend.vue" afterPath="$PROJECT_DIR$/src/components/card-recommend.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-rectangle.vue" afterPath="$PROJECT_DIR$/src/components/card-rectangle.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-rush.vue" afterPath="$PROJECT_DIR$/src/components/card-rush.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-square.vue" afterPath="$PROJECT_DIR$/src/components/card-square.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/card-types.vue" afterPath="$PROJECT_DIR$/src/components/card-types.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/cart-list.vue" afterPath="$PROJECT_DIR$/src/components/cart-list.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/cart.vue" afterPath="$PROJECT_DIR$/src/components/cart.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/col-image.vue" afterPath="$PROJECT_DIR$/src/components/col-image.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/coupon-list.vue" afterPath="$PROJECT_DIR$/src/components/coupon-list.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/freepop-list.vue" afterPath="$PROJECT_DIR$/src/components/freepop-list.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/header-search.vue" afterPath="$PROJECT_DIR$/src/components/header-search.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/integral.vue" afterPath="$PROJECT_DIR$/src/components/integral.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/my-coupop.vue" afterPath="$PROJECT_DIR$/src/components/my-coupop.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/my-freepop.vue" afterPath="$PROJECT_DIR$/src/components/my-freepop.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/my-switch.vue" afterPath="$PROJECT_DIR$/src/components/my-switch.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/order-payment.vue" afterPath="$PROJECT_DIR$/src/components/order-payment.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/sao.vue" afterPath="$PROJECT_DIR$/src/components/sao.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/search.vue" afterPath="$PROJECT_DIR$/src/components/search.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/seckill-floor.vue" afterPath="$PROJECT_DIR$/src/components/seckill-floor.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/settings.vue" afterPath="$PROJECT_DIR$/src/components/settings.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/surplus.vue" afterPath="$PROJECT_DIR$/src/components/surplus.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/tap-card.vue" afterPath="$PROJECT_DIR$/src/components/tap-card.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/env.js" afterPath="$PROJECT_DIR$/src/config/env.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/libs/util.js" afterPath="$PROJECT_DIR$/src/libs/util.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.js" afterPath="$PROJECT_DIR$/src/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/midwares/cla-list.vue" afterPath="$PROJECT_DIR$/src/midwares/cla-list.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/midwares/cla-main.vue" afterPath="$PROJECT_DIR$/src/midwares/cla-main.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/midwares/classification.vue" afterPath="$PROJECT_DIR$/src/midwares/classification.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/midwares/index-main.vue" afterPath="$PROJECT_DIR$/src/midwares/index-main.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/midwares/per-orders.vue" afterPath="$PROJECT_DIR$/src/midwares/per-orders.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router.js" afterPath="$PROJECT_DIR$/src/router.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/styles/common.css" afterPath="$PROJECT_DIR$/src/styles/common.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/article.vue" afterPath="$PROJECT_DIR$/src/views/article.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/com-detail.vue" afterPath="$PROJECT_DIR$/src/views/com-detail.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/com-list.vue" afterPath="$PROJECT_DIR$/src/views/com-list.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/express.vue" afterPath="$PROJECT_DIR$/src/views/express.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/index.vue" afterPath="$PROJECT_DIR$/src/views/index.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/login.vue" afterPath="$PROJECT_DIR$/src/views/login.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/new-index.vue" afterPath="$PROJECT_DIR$/src/views/new-index.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/ord-detail.vue" afterPath="$PROJECT_DIR$/src/views/ord-detail.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/personal.vue" afterPath="$PROJECT_DIR$/src/views/personal.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/pro-detail.vue" afterPath="$PROJECT_DIR$/src/views/pro-detail.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/submit.vue" afterPath="$PROJECT_DIR$/src/views/submit.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vuex/actions.js" afterPath="$PROJECT_DIR$/src/vuex/actions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vuex/store.js" afterPath="$PROJECT_DIR$/src/vuex/store.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -88,51 +148,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="card-rectangle.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/card-rectangle.vue">
+      <file leaf-file-name="pro-detail.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/views/pro-detail.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="433" column="28" lean-forward="false" selection-start-line="433" selection-start-column="28" selection-end-line="433" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="card-types.vue" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/card-types.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-983">
-              <caret line="525" column="23" lean-forward="false" selection-start-line="525" selection-start-column="23" selection-end-line="525" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="buying-like.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/buying-like.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="222" column="33" lean-forward="false" selection-start-line="218" selection-start-column="20" selection-end-line="222" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/search.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="172" column="40" lean-forward="false" selection-start-line="172" selection-start-column="40" selection-end-line="172" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="card-square.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/card-square.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="208" column="28" lean-forward="false" selection-start-line="208" selection-start-column="28" selection-end-line="208" selection-end-column="28" />
+            <state relative-caret-position="323">
+              <caret line="364" column="50" lean-forward="false" selection-start-line="364" selection-start-column="50" selection-end-line="364" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -143,6 +163,10 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>comfirmFun</find>
+      <find>giftstu</find>
+      <find>.num-counter</find>
+      <find>seckillShow</find>
+      <find>goPage</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -154,18 +178,30 @@
         <option value="$PROJECT_DIR$/src/components/bottom.vue" />
         <option value="$USER_HOME$/Desktop/a.html" />
         <option value="$PROJECT_DIR$/src/vuex/actions.js" />
-        <option value="$PROJECT_DIR$/src/vuex/store.js" />
-        <option value="$PROJECT_DIR$/src/router.js" />
-        <option value="$PROJECT_DIR$/src/midwares/index-main.vue" />
-        <option value="$PROJECT_DIR$/src/views/submit.vue" />
         <option value="$PROJECT_DIR$/src/components/sao.vue" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/components/search.vue" />
         <option value="$PROJECT_DIR$/src/components/card-square.vue" />
         <option value="$PROJECT_DIR$/src/components/buying-like.vue" />
         <option value="$PROJECT_DIR$/src/components/card-rectangle.vue" />
-        <option value="$PROJECT_DIR$/src/main.js" />
         <option value="$PROJECT_DIR$/src/components/card-types.vue" />
+        <option value="$PROJECT_DIR$/src/components/order-payment.vue" />
+        <option value="$PROJECT_DIR$/src/components/card-recommend.vue" />
+        <option value="$PROJECT_DIR$/src/views/submit.vue" />
+        <option value="$PROJECT_DIR$/src/components/cart-list.vue" />
+        <option value="$PROJECT_DIR$/src/views/personal.vue" />
+        <option value="$PROJECT_DIR$/src/vuex/store.js" />
+        <option value="$PROJECT_DIR$/src/midwares/per-orders.vue" />
+        <option value="$PROJECT_DIR$/src/router.js" />
+        <option value="$USER_HOME$/Desktop/index.html" />
+        <option value="$USER_HOME$/Desktop/blog/index.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/src/components/header-search.vue" />
+        <option value="$PROJECT_DIR$/src/components/my-freepop.vue" />
+        <option value="$PROJECT_DIR$/src/main.js" />
+        <option value="$PROJECT_DIR$/src/components/banners.vue" />
+        <option value="$PROJECT_DIR$/src/midwares/index-main.vue" />
+        <option value="$PROJECT_DIR$/src/views/pro-detail.vue" />
       </list>
     </option>
   </component>
@@ -201,8 +237,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -297,17 +331,55 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="green" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="green" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="green" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="green" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path" value="D:/Program Files/nodejs/node" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/blog" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/HBuilder项目/green/src/vuex/store.js" />
@@ -416,11 +488,24 @@
       <workItem from="1496843399262" duration="849000" />
       <workItem from="1496926894753" duration="2500000" />
       <workItem from="1496930704366" duration="2472000" />
+      <workItem from="1497013521115" duration="1896000" />
+      <workItem from="1497104399878" duration="2443000" />
+      <workItem from="1497159248702" duration="692000" />
+      <workItem from="1497188370705" duration="202000" />
+      <workItem from="1497276089693" duration="57000" />
+      <workItem from="1497361636115" duration="301000" />
+      <workItem from="1497363156938" duration="1432000" />
+      <workItem from="1497445518287" duration="5897000" />
+      <workItem from="1497532374710" duration="769000" />
+      <workItem from="1497620880086" duration="2473000" />
+      <workItem from="1497705495158" duration="855000" />
+      <workItem from="1497875057446" duration="1628000" />
+      <workItem from="1498138635018" duration="3574000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28378000" />
+    <option name="totallyTimeSpent" value="50597000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -433,16 +518,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19196428" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17559524" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296131" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5532258" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -450,7 +536,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -463,8 +548,8 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19196428" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5532258" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17559524" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -484,81 +569,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/card-rectangle.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/card-types.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/card-types.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/card-types.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/card-types.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/buying-like.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/sao.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="24" column="25" lean-forward="false" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/submit.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18221">
-          <caret line="959" column="64" lean-forward="false" selection-start-line="959" selection-start-column="64" selection-end-line="959" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/sao.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="24" column="25" lean-forward="false" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -658,53 +668,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/a.vue" />
-    <entry file="file://$PROJECT_DIR$/src/components/bottom.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="548">
-          <caret line="236" column="17" lean-forward="false" selection-start-line="236" selection-start-column="17" selection-end-line="236" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/a.html" />
     <entry file="file://$PROJECT_DIR$/src/vuex/getters.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-953">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/vuex/store.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="15" column="10" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/index-search.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2261">
-          <caret line="120" column="10" lean-forward="false" selection-start-line="116" selection-start-column="8" selection-end-line="120" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/vuex/actions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="931">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/midwares/index-main.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="196" column="34" lean-forward="false" selection-start-line="196" selection-start-column="34" selection-end-line="196" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="24" column="25" lean-forward="false" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -715,13 +683,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/order-payment.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3057">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-114">
@@ -729,65 +690,238 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/submit.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-36">
-          <caret line="958" column="51" lean-forward="false" selection-start-line="958" selection-start-column="51" selection-end-line="958" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/pro-detail.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="956" column="12" lean-forward="false" selection-start-line="956" selection-start-column="12" selection-end-line="956" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/search.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="172" column="40" lean-forward="false" selection-start-line="172" selection-start-column="40" selection-end-line="172" selection-end-column="40" />
-          <folding />
+        <state relative-caret-position="3610">
+          <caret line="190" column="40" lean-forward="false" selection-start-line="190" selection-start-column="40" selection-end-line="190" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/card-square.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="208" column="28" lean-forward="false" selection-start-line="208" selection-start-column="28" selection-end-line="208" selection-end-column="28" />
+        <state relative-caret-position="3990">
+          <caret line="210" column="28" lean-forward="false" selection-start-line="210" selection-start-column="28" selection-end-line="210" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/card-rectangle.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8246">
+          <caret line="435" column="28" lean-forward="false" selection-start-line="435" selection-start-column="28" selection-end-line="435" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/buying-like.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4237">
+          <caret line="224" column="33" lean-forward="false" selection-start-line="224" selection-start-column="33" selection-end-line="224" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/card-types.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="536" column="49" lean-forward="false" selection-start-line="536" selection-start-column="49" selection-end-line="536" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/card-recommend.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="87" column="11" lean-forward="true" selection-start-line="87" selection-start-column="11" selection-end-line="87" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/order-payment.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2185">
+          <caret line="184" column="24" lean-forward="true" selection-start-line="184" selection-start-column="24" selection-end-line="184" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/submit.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="576" column="44" lean-forward="true" selection-start-line="576" selection-start-column="44" selection-end-line="576" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/vuex/actions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="931">
+          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/personal.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1233">
+          <caret line="364" column="8" lean-forward="true" selection-start-line="364" selection-start-column="8" selection-end-line="364" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/cart-list.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="553">
+          <caret line="366" column="25" lean-forward="false" selection-start-line="366" selection-start-column="25" selection-end-line="366" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/vuex/store.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="16" column="10" lean-forward="false" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/bottom.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3684">
+          <caret line="249" column="5" lean-forward="true" selection-start-line="249" selection-start-column="5" selection-end-line="249" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/midwares/per-orders.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="130" column="52" lean-forward="false" selection-start-line="130" selection-start-column="29" selection-end-line="130" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/bottom-buy.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="88" lean-forward="false" selection-start-line="21" selection-start-column="88" selection-end-line="21" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="22" lean-forward="true" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/env.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/index.html" />
+    <entry file="file://$USER_HOME$/Desktop/blog/index.html" />
+    <entry file="file://$PROJECT_DIR$/src/libs/color.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/midwares/classification.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="118" column="5" lean-forward="true" selection-start-line="118" selection-start-column="5" selection-end-line="118" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/index-search.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="86" column="0" lean-forward="true" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="34" lean-forward="false" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/libs/util.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/vuex/vconsole.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/my-freepop.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-456">
+          <caret line="24" column="10" lean-forward="false" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="601" column="62" lean-forward="false" selection-start-line="601" selection-start-column="62" selection-end-line="601" selection-end-column="62" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+        <state relative-caret-position="976">
+          <caret line="91" column="4" lean-forward="false" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="25" />
+          <folding>
+            <element signature="e#104#143#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/header-search.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="32" column="19" lean-forward="false" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/card-rectangle.vue">
+    <entry file="file://$PROJECT_DIR$/src/midwares/index-main.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="433" column="28" lean-forward="false" selection-start-line="433" selection-start-column="28" selection-end-line="433" selection-end-column="28" />
-          <folding />
+        <state relative-caret-position="95">
+          <caret line="5" column="59" lean-forward="false" selection-start-line="5" selection-start-column="59" selection-end-line="5" selection-end-column="59" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#443#490#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/buying-like.vue">
+    <entry file="file://$PROJECT_DIR$/src/components/banners.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="222" column="33" lean-forward="false" selection-start-line="218" selection-start-column="20" selection-end-line="222" selection-end-column="33" />
-          <folding />
+        <state relative-caret-position="76">
+          <caret line="97" column="23" lean-forward="true" selection-start-line="97" selection-start-column="23" selection-end-line="97" selection-end-column="23" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#swiper#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#1326#1372#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/card-types.vue">
+    <entry file="file://$PROJECT_DIR$/src/views/pro-detail.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-983">
-          <caret line="525" column="23" lean-forward="false" selection-start-line="525" selection-start-column="23" selection-end-line="525" selection-end-column="23" />
+        <state relative-caret-position="323">
+          <caret line="364" column="50" lean-forward="false" selection-start-line="364" selection-start-column="50" selection-end-line="364" selection-end-column="50" />
           <folding />
         </state>
       </provider>
